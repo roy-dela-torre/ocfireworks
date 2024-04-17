@@ -1,0 +1,36 @@
+section.wishlist .card.item-product {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+section.wishlist a.product_type_simple.add_to_cart.alt{
+    display: block;
+    width: 50%;
+    max-width: 100%;
+    padding: 15px 20px;
+    font-size: 15px;
+    text-align: center;
+    border: 1px solid #00CBFF;
+    border-radius: 10px;
+    background: #00CBFF;
+    transition: 0.5s;
+}
+section.wishlist .wishlist-items-wrapper.my-wishlists{
+    margin-bottom: 50px;
+}
+section.wishlist ul.shop_table.cart.wishlist_table.wishlist_view.responsive.mobile{
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+}
+section.wishlist li{
+    width: 33.33333333%;
+    flex: 0 0 auto;
+}
+section.wishlist{}
+section.wishlist{}
+section.wishlist{}
+section.wishlist{}
+section.wishlist{}
+section.wishlist{}
+section.wishlist{}
