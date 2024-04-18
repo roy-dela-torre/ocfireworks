@@ -65,12 +65,12 @@ $(document).ready(function() {
             url: url, // Use the URL from the link
             method: 'GET', // Make a GET request (since the link is a GET request)
             beforeSend: function(xhr) {
-                    $("#overlay").show();
+                $("#overlay").show();
             },
             success: function(response) {
                 $("#overlay").hide();
-                var rowId = link.closest('.content').data('row-id');
-                $('#yith-wcwl-row-' + rowId).remove();
+                // Find the closest col-md-3 element containing the content element and remove it
+                link.closest('.col-md-3').remove();
             },
             error: function(xhr, status, error) {
                 // Handle error, e.g., display an error message
@@ -79,5 +79,4 @@ $(document).ready(function() {
         });
     });
 });
-
 </script>

@@ -83,75 +83,80 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
         <div class="container-fluid">
             <div class="row">
                 <div class="header d-flex align-items-center justify-content-between">
-                    <h2>featured products</h2>
+                    <h2>Featured Products</h2>
                     <a href="http://" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
                 </div>
                 <?php
-                        $args = array(
-                            'post_type'        => 'product',
-                            'posts_per_page'   => 4,
-                            'post_status'      => 'publish',
-                            'order'            => 'DESC',
-                        );
-                        global $product;
-                        $counter = 1;
-                        $productLoop = new WP_Query($args);
-                        if ($productLoop->have_posts()):
-                            while ($productLoop->have_posts()) : $productLoop->the_post();
-                                $featured_image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
-                                $product = wc_get_product(get_the_ID());
-                                $short_description = $product->get_short_description();
-                                $product_id = get_the_ID();
-                                if ($product) {
-                                    if ($product->is_type('variable')) {
-                                        $min_variation_price = number_format($product->get_variation_price('min'),2);
-                                        $max_variation_price = number_format($product->get_variation_price('max'),2);
-                                        $price_range = '₱'.$min_variation_price . ' - ' . '₱'.$max_variation_price;
-                                        $price = $price_range;
-                                    } 
-                                    else {
-                                        $price = $product->get_price_html();
-                                    }
-                                } ?>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 product_column">
+                $args = array(
+                    'post_type' => 'product',
+                    'posts_per_page' => 4,
+                    'post_status' => 'publish',
+                    'order' => 'DESC',
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'product_cat',
+                            'field' => 'slug',
+                            'terms' => 'featured-products',
+                        ),
+                    ),
+                );
+                
+                global $product;
+                $productLoop = new WP_Query($args);
+                if ($productLoop->have_posts()):
+                    while ($productLoop->have_posts()): $productLoop->the_post();
+                        $featured_image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        $product = wc_get_product(get_the_ID());
+                        if ($product) {
+                            if ($product->is_type('variable')) {
+                                $min_variation_price = number_format($product->get_variation_price('min'), 2);
+                                $max_variation_price = number_format($product->get_variation_price('max'), 2);
+                                $price_range = '₱' . $min_variation_price . ' - ' . '₱' . $max_variation_price;
+                                $price = $price_range;
+                            } else {
+                                $price = $product->get_price_html();
+                            }
+                        }
+                ?>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 product_column">
+                        <div class="product_content">
+                            <div class="product_image position-relative">
+                                <img loading="lazy" src="<?php echo $featured_image_url; ?>" alt="<?php echo get_the_title(); ?>" class="cards">
+                                <div class="absolute_button position-absolute <?php echo $product->is_on_sale() ? "" : "justify-content-end" ?>">
+                                    <?php if ($product->is_on_sale()): ?>
+                                        <span class="sale">Sale</span>
+                                    <?php endif; ?>
+                                    <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]') ?>
+                                </div>
+                                <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
+                            </div>
                             <div class="product_content">
-                                <div class="product_image position-relative">
-                                    <img loading="lazy" src="<?php echo $featured_image_url; ?>" alt="<?php echo get_the_title(); ?>" class="cards">
-                                    <div class="absolute_button position-absolute <?php echo $product->is_on_sale() ? "" : "justify-content-end"?>">
-                                        <?php if($product->is_on_sale()):?>
-                                            <span class="sale">Sale</span>
-                                        <?php endif;?>
-                                        <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]')?>
+                                <h3 class="text-center"><?php echo esc_html(get_the_title()); ?></h3>
+                                <div class="product_reviews d-flex align-items-center justify-content-center">
+                                    <div class="reviews_star">
+                                        <img src="<?php echo $img; ?>/star.png" alt="">
+                                        <img src="<?php echo $img; ?>/star.png" alt="">
+                                        <img src="<?php echo $img; ?>/star.png" alt="">
+                                        <img src="<?php echo $img; ?>/star.png" alt="">
+                                        <img src="<?php echo $img; ?>/star.png" alt="">
                                     </div>
-                                    <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                                </div>
-                                <div class="product_content">
-                                    <h3 class="text-center"><?php echo esc_html(get_the_title()); ?></h3>
-                                    <div class="product_reviews d-flex align-items-center justify-content-center">
-                                        <div class="reviews_star">
-                                            <img src="<?php echo $img; ?>/star.png" alt="">
-                                            <img src="<?php echo $img; ?>/star.png" alt="">
-                                            <img src="<?php echo $img; ?>/star.png" alt="">
-                                            <img src="<?php echo $img; ?>/star.png" alt="">
-                                            <img src="<?php echo $img; ?>/star.png" alt="">
-                                        </div>
-                                        <div class="review_summary">
-                                            <span>0.0</span>
-                                        </div>
+                                    <div class="review_summary">
+                                        <span>0.0</span>
                                     </div>
-                                    <p class="price"><?php echo $price; ?></p>
                                 </div>
-                                <div class="add_to_cart">
-                                    <a href="<?php echo esc_url($product->add_to_cart_url()); ?>" target="_blank" rel="noopener noreferrer">Add to Cart</a>
-                                </div>
+                                <p class="price"><?php echo $price; ?></p>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="<?php echo esc_url($product->add_to_cart_url()); ?>" target="_blank" rel="noopener noreferrer">Add to Cart</a>
                             </div>
                         </div>
-                    <?php $counter +=1; endwhile;
-                endif; wp_reset_postdata(); ?>
+                    </div>
+                <?php endwhile; endif; wp_reset_postdata(); ?>
             </div>
         </div>
     </div>
 </section>
+
 
 <section class="special_product pt-0">
     <div class="wrapper">
@@ -163,10 +168,17 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 </div>
                 <?php
                         $args = array(
-                            'post_type'        => 'product',
-                            'posts_per_page'   => 4,
-                            'post_status'      => 'publish',
-                            'order'            => 'DESC',
+                            'post_type' => 'product',
+                            'posts_per_page' => 4,
+                            'post_status' => 'publish',
+                            'order' => 'DESC',
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'product_cat', 
+                                    'field' => 'slug',
+                                    'terms' => 'special-products',
+                                ),
+                            ),
                         );
                         global $product;
                         $counter = 1;
@@ -454,11 +466,11 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                     <div class="product_info">
                         <p class="product_name"></p>
                         <p class="price"></p>
+                        <a href="/wishlist/" class="view_wishlist">View wish List</a>
                     </div>
                 </div>
                 <div class="group_button">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Browse product</button>
-                    <a href="/wishlist/" class="view_wishlist">View wish List</a>
                 </div>
             </div>
         </div>
@@ -467,28 +479,24 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 <?php get_footer();?>
 <script>
 $(document).ready(function() {
-    // Hide specific elements
     $('.yith-wcwl-wishlistexistsbrowse').hide();
-    // Replace icons with custom images
     replaceIcons($('i.yith-wcwl-icon.fa.fa-heart-o'), '<?php echo $img; ?>/add_to_wishlist.png');
     replaceIcons($('section.featured_product .yith-wcwl-add-to-wishlist.exists.wishlist-fragment.on-first-load'), '<?php echo $img; ?>/added_to_wishlist.png');
     replaceIcons($('section.special_product .yith-wcwl-add-to-wishlist.exists.wishlist-fragment.on-first-load'), '<?php echo $img; ?>/added_to_wishlist.png');
-    setTimeout(() => {
-        replaceIcons($('section.special_product .yith-wcwl-wishlistaddedbrowse a'), '<?php echo $img; ?>/added_to_wishlist.png');
-        $('section.special_product .yith-wcwl-wishlistaddedbrowse a').show()
-    }, 2000);
-    
-    // Add click event handler to product columns in featured and special product sections
     handleProductColumns($('section.featured_product .row .product_column'));
     handleProductColumns($('section.special_product .row .product_column'));
-});
+    $('button.btn-close').click(function() {
+        console.log('click')
+        setTimeout(() => {
+            $('section.featured_product a[data-title="Browse wishlist"]').html(`<img src="<?php echo $img; ?>/added_to_wishlist.png" alt="">`)
+        }, 1000);
+    });
 
-// Function to replace icons with custom images
+});
 function replaceIcons(element, imgUrl) {
+    console.log('icon replace')
     element.html(`<img src="${imgUrl}" alt="">`);
 }
-
-// Function to handle click event on product columns
 function handleProductColumns(columns) {
     columns.each(function() {
         $(this).find('.yith-wcwl-add-button img').on('click', function() {
@@ -497,18 +505,11 @@ function handleProductColumns(columns) {
         });
     });
 }
-
-// Function to update the wishlist modal with product information
 function updateWishlistModal(button) {
     var contentContainer = button.closest('.product_content');
     var productName = contentContainer.find('h3.text-center').text();
     var productPrice = contentContainer.find('.price').text();
     var productImage = contentContainer.find('.product_image img').attr('src');
-    
-    console.log('Product Name:', productName);
-    console.log('Product Price:', productPrice);
-    console.log('Product Image:', productImage);
-    
     $('.product_added_to_wislist img').attr('src', productImage);
     $('.product_added_to_wislist p.product_name').text(productName);
     $('.product_added_to_wislist p.price').text(productPrice);
