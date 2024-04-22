@@ -23,45 +23,42 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+$img = get_stylesheet_directory_uri().'/assets/img/homepage';
+$product_title = get_the_title($product->get_id());
+$product_short_description = $product->get_short_description();
+$product_link = get_permalink($product->get_id());
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
-	<?php
-	/**
-	 * Hook: woocommerce_before_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_open - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item' );
 
-	/**
-	 * Hook: woocommerce_before_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_show_product_loop_sale_flash - 10
-	 * @hooked woocommerce_template_loop_product_thumbnail - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
-	 */
-	do_action( 'woocommerce_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_after_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_rating - 5
-	 * @hooked woocommerce_template_loop_price - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_after_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_close - 5
-	 * @hooked woocommerce_template_loop_add_to_cart - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item' );
-	?>
-</li>
+<div class="<?php echo is_archive() ? "col-xl-4 col-sm-6 col-12" : "col-lg-3 col-md-4 col-sm-6 col-12"?> product_column">
+	<div class="product_content">
+		<div class="product_image position-relative">
+			<img loading="lazy" src="<?php echo wp_get_attachment_url($product->get_image_id()); ?>" alt="<?php echo get_the_title(); ?>" class="cards">
+			<div class="absolute_button position-absolute <?php echo $product->is_on_sale() ? "" : "justify-content-end" ?>">
+				<?php if ($product->is_on_sale()): ?>
+					<span class="sale">Sale</span>
+				<?php endif; ?>
+				<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]') ?>
+			</div>
+			<a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
+		</div>
+		<div class="product_content">
+			<h3 class="text-center"><?php echo $product_title; ?></h3>
+			<div class="product_reviews d-flex align-items-center justify-content-center">
+				<div class="reviews_star d-flex align-items-center">
+					<?php for ($i = 0; $i < 5; $i++): ?>
+						<img src="<?php echo $img; ?>/star.png" alt="">
+					<?php endfor; ?>
+				</div>
+				<div class="review_summary">
+					<span>0.0</span>
+				</div>
+			</div>
+			<p class="price">
+				<?php wc_get_template('loop/price.php'); ?>
+			</p>
+		</div>
+		<div class="add_to_cart">
+			<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" target="_blank" rel="noopener noreferrer">Add to Cart</a>
+		</div>
+	</div>
+</div>

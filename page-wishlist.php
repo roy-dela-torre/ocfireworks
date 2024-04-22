@@ -71,6 +71,12 @@ $(document).ready(function() {
                 $("#overlay").hide();
                 // Find the closest col-md-3 element containing the content element and remove it
                 link.closest('.col-md-3').remove();
+                var rowSelector = "section.wishlist .row"; // Replace with your row's selector (e.g., "#example tbody tr")
+                var row = $(rowSelector);
+                if (row.length && row.children().length === 0) {
+                    // Reload the page
+                    location.reload();
+                }
             },
             error: function(xhr, status, error) {
                 // Handle error, e.g., display an error message
