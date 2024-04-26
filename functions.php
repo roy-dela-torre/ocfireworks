@@ -63,20 +63,19 @@ function custom_login_form_shortcode() {
        ?>
        <form method="post" class="custom-login-form" action="<?php echo esc_url(site_url('wp-login.php', 'login_post')); ?>">
            <p>
-               <label for="user_login">Username:</label>
                <input type="text" name="log" id="user_login" placeholder="Email" required />
            </p>
            <p>
-               <label for="user_pass">Password:</label>
                <input type="password" name="pwd" id="user_pass" placeholder="Password" required />
+           </p>
+           <p>
+               <input type="submit" name="wp-submit" id="wp-submit" class="black_button w-100" value="Log In" />
            </p>
            <p class="login-remember">
                <label>
-                   <input name="rememberme" type="checkbox" id="rememberme" value="forever"> Remember Me
+                   <input name="rememberme" type="checkbox" id="rememberme" value="forever" class="">
+                   <span>Remember Me</span>
                </label>
-           </p>
-           <p>
-               <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary" value="Log In" />
            </p>
        </form>
        <?php
@@ -191,3 +190,21 @@ add_action( 'admin_enqueue_scripts', 'enqueue_custom_admin_css' );
 
 
 // clear cart function
+
+
+// update tabs button
+add_filter( 'woocommerce_product_tabs', 'update_product_tab_titles' );
+function update_product_tab_titles( $tabs ) {
+    $tabs['description']['title'] = __( 'overview', 'woocommerce' );
+    $tabs['reviews']['title'] = __( 'review', 'woocommerce' );
+    return $tabs;
+}
+
+
+add_filter('loop_shop_per_page', 'custom_shop_per_page', 20);
+
+function custom_shop_per_page($cols) {
+    return 6; // Change 8 to the desired number of products per page
+}
+
+

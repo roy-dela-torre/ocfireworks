@@ -8,26 +8,22 @@ if (is_user_logged_in()) {
 get_header();
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/register.css">
-<div class="bd__custom">
-    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/register-banner.jpg" alt="Registration">
-</div>
-</div>
-
 <section class="registration">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="__side col-lg-5 col-md-12">
-                <div class="form">
-                    <h1>Create an Account</h1>
-                    <?php echo do_shortcode('[registration_form]'); ?>
-                    <p class="text-center">Already have an account? <a href="<?php echo get_home_url()?>/my-account/" rel="noopener noreferrer">Log in</a></p>
-                    <?php echo do_shortcode('[nextend_social_login_register_flow]')?>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="__side col-lg-5 col-md-12">
+                    <div class="form">
+                        <h1>Create an Account</h1>
+                        <?php echo do_shortcode('[registration_form]'); ?>
+                        <p class="text-center">Already have an account? <a href="<?php echo get_home_url()?>/my-account/" rel="noopener noreferrer">Log in</a></p>
+                        <?php echo do_shortcode('[nextend_social_login_register_flow]')?>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-12 pe-md-0">
-                <div class="image-container">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/register-banner.jpg" alt="Registration">
+                <div class="col-lg-6 col-md-12 pe-md-0">
+                    <div class="image-container">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/register-banner.jpg" alt="Registration">
+                    </div>
                 </div>
             </div>
         </div>

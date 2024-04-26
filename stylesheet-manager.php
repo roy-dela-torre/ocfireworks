@@ -23,4 +23,13 @@
 <?php elseif(is_page('contact-us')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>contact-us.css">
 
+<?php elseif(is_page('show-builder')):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>show_builder.css">
+
+<?php elseif(is_page('login') || is_page(103)):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>login.css">
+
+<?php elseif(is_page('register') || is_page(105)):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>register.css">
+
 <?php endif;?>

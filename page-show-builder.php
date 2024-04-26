@@ -1,0 +1,28 @@
+<?php get_header();
+/*Template Name: Show Builder*/
+?>
+<section class="show_builder">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <div class="form_content">
+                        <h2 class="text-white">Reach Out to Us</h2>
+                        <p class="text-white">At OC Fireworks, we're here to help you make your next celebration unforgettable.  Whether you have questions about our products, need help planning your fireworks display, or just want to chat about pyrotechnics, we'd love to hear from you!</p>
+                        <?php echo do_shortcode('[contact-form-7 id="700a603" title="Show Builder"]')?>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="contact_us_info">
+                        <h1>Help is here!</h1>
+                        <p>It can be difficult to decide which fireworks to purchase for your show. Let us help you. Fill out the contact information below and use the comment box to tell us about your budget and what you like to see light up your sky. Then submit! One of our fireworks professionals will reach out to you via email and help build the best show for you and your budget. Please note, this service is to help get the most bang for your buck; this is NOT a show designing service.</p>
+                        <p>You must have an account on our website for the process to work, so please create an account with your information before submitting here.</p>
+                        <p>If you do not submit a budget, your request will be ignored. If you do not provide direction on what you like, you will receive an assortment of items. You can always make changes once you receive our suggestions.</p>
+                        <p>Office Hours: Monday-Friday 9am-5pm ET</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php get_footer();?>

@@ -98,11 +98,11 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 													$checked = ($current_url === $category_url) ? 'checked' : '';
 
 													?>
-													<li>
+													<li class="position-relative">
 														<!-- Use the category slug as the ID for the radio button -->
 														<input type="radio" name="" id="<?php echo str_replace(' ', '-', strtolower(esc_html($category->name))); ?>" <?php echo $checked; ?>>
 														<!-- Add the URL to the href attribute of the anchor tag -->
-														<a href="<?php echo esc_url($category_url); ?>" rel="noopener noreferrer">
+														<a href="<?php echo esc_url($category_url); ?>" rel="noopener noreferrer" class="stretched-link">
 															<span class="name"><?php echo esc_html($category->name); ?></span>
 														</a>
 													</li>

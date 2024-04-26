@@ -213,6 +213,10 @@ section.product_main .spinner {
     animation: sp-anime 0.8s infinite linear;
 }
 
+section.product_main .group_button_on_hover {
+    display: none;
+}
+
 @keyframes sp-anime {
     100% {
         transform: rotate(360deg);

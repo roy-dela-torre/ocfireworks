@@ -19,7 +19,9 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
-                    <img src="<?php echo $img?>/banner_image.png" alt="" class="w-100">
+                    <div class="image">
+                        <img src="<?php echo $img?>/banner_image.png" alt="" class="w-100">
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,7 +34,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <h2 class="text-center">Brand Blast Off</h2>
             <div class="owl-carousel owl-theme p-0" id="brands">
                 <?php for($i=1;$i<=10;$i++){ ?>
-                    <img src="<?php echo $img; ?>/logo<?php echo $i; ?>.png" alt="">
+                    <img src="<?php echo $img; ?>/logo<?php echo $i; ?>.png" alt="" width="186" height="186">
                 <?php }?>
             </div>
             <a href="http://" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
@@ -178,7 +180,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                                 <p class="price"><?php echo $price; ?></p>
                             </div>
                             <div class="add_to_cart">
-                                <a href="<?php echo $product->get_stock_status() === 'outofstock' ? 'javascript:void(0);' : esc_url(wc_get_cart_url() . '?add-to-cart=' . esc_attr($product_id)); ?>"> Add to Cart</a>
+                                <?php echo do_shortcode('[add_to_cart id="' . $product->get_id() . '"]'); ?>
                             </div>
                         </div>
                     </div>
@@ -287,7 +289,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                                 <p class="price"><?php echo $price; ?></p>
                             </div>
                             <div class="add_to_cart">
-                                <a href="<?php echo $product->get_stock_status() === 'outofstock' ? 'javascript:void(0);' : esc_url(wc_get_cart_url() . '?add-to-cart=' . esc_attr($product_id)); ?>"> Add to Cart</a>
+                                <?php echo do_shortcode('[add_to_cart id="' . $product->get_id() . '"]'); ?>
                             </div>
                         </div>
                     </div>
@@ -517,6 +519,35 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
         </div>
     </div>
 </section>
+
 <?php echo get_template_part('wishlist_pop_up'); ?>
 <?php echo get_template_part('video_pop_up'); ?>
 <?php get_footer();?>
+<script>
+    $(document).ready(function () {
+        var iframeHTML;
+        function replaceThumbnailWithIframe() {
+            if (typeof iframeHTML !== 'undefined') {
+                $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+            } else {
+                console.error('iframeHTML is not defined');
+            }
+        }
+        $('section.special_product .product_column .play, section.featured_product .product_column .play').click(function() {
+            iframeHTML = $(this).closest('.product_column').find('.iframe').html();
+            console.log(iframeHTML)
+            var title = $(this).closest('.product_column').find('h3.product_title').text();
+            $('#video_modal #video_modalLabel').text(title);
+            $('.video_modal').click();
+        });
+        $('img.play_button').click(replaceThumbnailWithIframe);
+        $('img.play_button').click(function(){
+            $(this).hide()
+        })
+
+        $('div#video_modal button.btn.btn-secondary').click(function(){
+            $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
+            $('img.play_button').show()
+        })
+    });
+</script>

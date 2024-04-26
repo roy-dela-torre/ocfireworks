@@ -1,4 +1,4 @@
-<section class="product_video d-none">
+<section class="product_video p-0">
   <!--Video Modal -->
   <button type="button" class="btn btn-primary d-none video_modal" data-bs-toggle="modal" data-bs-target="#video_modal">
   </button>

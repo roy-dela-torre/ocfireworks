@@ -14,6 +14,44 @@
         });
         elementsToResize.css('height', tallestHeight);
     }
+    $(document).ready(function() {
+        // image lazy load
+        $('img').each(function() {
+            var originalSrc = $(this).attr('src');
+            var width = $(this).width(); // Get the width of the image
+            var height = $(this).height(); // Get the height of the image
+            $(this).attr({
+                'data-src': originalSrc,
+                'src': originalSrc, // Clear the src attribute
+                'class': $(this).attr('class') + ' lazyloaded', // Add the lazyloaded class
+                'decoding': 'async', // Add the decoding attribute
+                'width': width,
+                'height': height
+            });
+        });
+
+        // show hide mini cart on nav
+        $('.add_to_cart p.product.woocommerce.add_to_cart_inline').click(function(){
+            setTimeout(() => {
+                $('.pop_up_cart').show()
+                $('span.close').show()
+            }, 2000);
+        })
+        $('span.close').click(function (e) { 
+            e.preventDefault();
+            $('.pop_up_cart').hide()
+        });
+
+        // sticky nav
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 65) { 
+                $('.sticky-header').addClass('fixed-top');
+            } else {
+                $('.sticky-header').removeClass('fixed-top');
+            }
+        });
+    });
+
 </script>
 <?php if(is_front_page()):?>
     <?php $img = get_stylesheet_directory_uri().'/assets/img/homepage'; ?>
@@ -115,30 +153,6 @@
                     $('span.cart_count').text('<?php echo WC()->cart->get_cart_contents_count(); ?>')
                 }, 1500);
             })
-
-
-            var iframeHTML;
-            function replaceThumbnailWithIframe() {
-                if (typeof iframeHTML !== 'undefined') {
-                    $('.modal-body .video_thumbnail').replaceWith(iframeHTML);
-                } else {
-                    console.error('iframeHTML is not defined');
-                }
-            }
-            $('section.special_product .product_column .play, section.featured_product .product_column .play').click(function() {
-                $('section.product_video').removeClass('d-none')
-                iframeHTML = $(this).closest('.product_column').find('.iframe').html();
-                var title = $(this).closest('.product_column').find('h3.product_title').text();
-                $('#video_modal #video_modalLabel').text(title);
-                $('.video_modal').click();
-            });
-            $('img.play_button').click(replaceThumbnailWithIframe);
-            
-            $('section.product_video button.btn.btn-secondary,div#video_modal').click(function(){
-                $('section.product_video').addClass('d-none')
-            })
-
-
         })
     </script>
 <?php elseif(is_page('about-us')):?>
@@ -151,16 +165,27 @@
 <?php elseif(is_archive()):?>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('section.product_main li').each(function(){
-                $(this).click(function(){
-                    $(this).find('a').click()
-                    $(this).find('input[type="radio"]').click()
-                    $(this).find('input[type="radio"]').prop('checked', true);
-                })
-            })
+            // $('section.product_main li').each(function(){
+            //     $(this).click(function(){
+            //         $(this).find('a').click()
+            //         $(this).find('input[type="radio"]').click()
+            //         $(this).find('input[type="radio"]').prop('checked', true);
+            //     })
+            // })
             setInterval(() => {
                 setEqualHeightForSection('section.product_main','h3')
             }, 500);
+
+            // function handleRadioButtonClick() {
+            //     // Find the associated anchor tag
+            //     var anchor = $(this).siblings('a');
+                
+            //     // Trigger a click event on the anchor tag
+            //     anchor.click();
+            // }
+
+            // // Attach click event handler to radio buttons
+            // $('.accordion-body input[type="radio"]').click(handleRadioButtonClick);
         })
     </script>
 <?php elseif(is_page('contact-us')):?>
@@ -171,4 +196,32 @@
             })
         })
     </script>
+
+<?php elseif(is_single()):?>
+    <script>
+        $(document).ready(function () {
+            $('div#review_form_wrapper div#review_form').hide()
+            $('div#write_a_review .modal-content').html($('div#review_form_wrapper div#review_form').html())
+            $('button.write_review').click(function(){
+                $('div#write_a_review .comment-form-rating p.stars').slice(1).remove();
+            })
+            
+        });
+    </script>
+
+<?php elseif(is_cart() || is_page(9)):?>
+    <script>
+        $(document).ready(function () {
+            $('.quantity button').click(function(e){
+                console.log('ahhaha')
+                e.preventDefault();
+                setTimeout(() => {
+                    $('span.cart_count').text('<?php echo WC()->cart->get_cart_contents_count(); ?>')
+                }, 1500);
+            })
+        });
+    </script>
 <?php endif;?>
+
+
+
