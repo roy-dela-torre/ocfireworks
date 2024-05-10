@@ -233,7 +233,7 @@ $home = get_home_url();
             </div>
         </div>
         <div class="main_nav">
-            <nav class="navbar navbar-expand-xxl px-0">
+            <nav class="navbar navbar-expand-xxl p-0">
                 <div class="container-fluid">
                     <a class="navbar-brand d-block d-xxl-none" href="<?php echo $home;?>">
                         <img src="<?php echo $img; ?>/logo.png" alt="">

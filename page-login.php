@@ -5,26 +5,25 @@
         window.location.href = '<?php echo get_home_url(); ?>/my-account/';
     </script>
 <?php } else { ?>
+  <!-- login page -->
     <section class="login">
         <div class="wrapper">
           <div class="container-fluid">
-              <div class="wrapper">
-                  <div class="row">
-                      <div class="col-lg-6 col-md-12">
-                        <div class="login_form">
-                          <h1 class="text-white">Login</h1>
-                          <p class="text-white">Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
-                          <?php echo do_shortcode('[custom_login_form]'); ?>
-                          <p class="text-center">Don’t Have an Account? <strong><a href="<?php echo get_home_url(); ?>/login/" target="_blank" rel="noopener noreferrer"></a></strong></p>
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-12">
-                        <div class="image">
-                          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/login_image.jpg" alt="">
-                        </div>
-                      </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                  <div class="login_form">
+                    <h1 class="text-white">Login</h1>
+                    <p class="text-white">Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+                    <?php echo do_shortcode('[custom_login_form]'); ?>
+                    <p class="text-center">Don’t Have an Account? <strong><a href="<?php echo get_home_url(); ?>/login/" target="_blank" rel="noopener noreferrer"></a></strong></p>
                   </div>
-              </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                  <div class="image">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/login_image.jpg" alt="">
+                  </div>
+                </div>
+            </div>
           </div>
         </div>
     </section>

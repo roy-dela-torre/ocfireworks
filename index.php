@@ -7,9 +7,9 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="content">
-                        <h1 class="text-white">OC Fireworks:</h1>
-                        <img src="<?php echo $img?>/banner_image.png" alt="" class="w-100 d-block d-lg-none">
-                        <p class="text-white">Let the Good Times Explode! Light up the fun! Shop OC Fireworks for dazzling displays and unforgettable memories.</p>
+                        <h1 class="text-white">Let the Good Times Explode!</h1>
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100 d-block d-lg-none">
+                        <p class="text-white">Light up the fun! Shop OC Fireworks for dazzling displays and unforgettable memories.</p>
                         <a href="<?php echo get_home_url(); ?>/shop/" target="_blank" rel="noopener noreferrer" class="shop_now">
                             SHOP NOW
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="17" viewBox="0 0 22 17" fill="none">
@@ -20,7 +20,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="image">
-                        <img src="<?php echo $img?>/banner_image.png" alt="" class="w-100">
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100">
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
     </div>
 </section>
 
-<section class="brands">
+<section class="brands px-0">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <h2 class="text-center">Brand Blast Off</h2>
@@ -49,31 +49,31 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 <h2 class="text-center text-uppercase text-white">Shop by Categories</h2>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img src="<?php echo $img; ?>/Events.jpg" alt="Events">
+                        <img loading="lazy" src="<?php echo $img; ?>/Events.jpg" alt="Events">
                         <h3 class="text-center text-white position-absolute">Events</h3>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img src="<?php echo $img; ?>/Sky Show.jpg" alt="Sky Show">
+                        <img loading="lazy" src="<?php echo $img; ?>/Sky Show.jpg" alt="Sky Show">
                         <h3 class="text-center text-white position-absolute">Sky Show</h3>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img src="<?php echo $img; ?>/Ground Effects.jpg" alt="Ground Effects">
+                        <img loading="lazy" src="<?php echo $img; ?>/Ground Effects.jpg" alt="Ground Effects">
                         <h3 class="text-center text-white position-absolute">Ground Effects</h3>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img src="<?php echo $img; ?>/Novelties.jpg" alt="Novelties">
+                        <img loading="lazy" src="<?php echo $img; ?>/Novelties.jpg" alt="Novelties">
                         <h3 class="text-center text-white position-absolute">Novelties</h3>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img src="<?php echo $img; ?>/Supplies.jpg" alt="Supplies">
+                        <img loading="lazy" src="<?php echo $img; ?>/Supplies.jpg" alt="Supplies">
                         <h3 class="text-center text-white position-absolute">Supplies</h3>
                     </div>
                 </div>
@@ -86,14 +86,14 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="header d-flex align-items-center justify-content-between">
-                    <h2>Featured Products</h2>
+                <div class="header d-flex align-sm-items-center justify-content-between">
+                    <h2 class="mb-0">Featured Products</h2>
                     <a href="<?php echo get_home_url(); ?>/product-category/featured-products/" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
                 </div>
                 <?php
                 $args = array(
                     'post_type' => 'product',
-                    'posts_per_page' => 4,
+                    'posts_per_page' => 6,
                     'post_status' => 'publish',
                     'order' => 'DESC',
                     'tax_query' => array(
@@ -104,15 +104,18 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                         ),
                     ),
                 );
-                
+                $count = 0;
                 global $product;
                 $productLoop = new WP_Query($args);
                 if ($productLoop->have_posts()):
                     while ($productLoop->have_posts()): $productLoop->the_post();
-                        $featured_image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
                         $product = wc_get_product(get_the_ID());
                         $product_id = get_the_ID();
                         $video_iframe = get_field('video_iframe', $product_id);
+                        $title = get_the_title();
+                        // $add_to_cart = '<a href="' . ($product->get_stock_status() === 'outofstock' ? 'javascript:void(0);' : esc_url(wc_get_cart_url() . '?add-to-cart=' . esc_attr($product_id))) . '" target="_blank" class="red_button w-100 text-center">Add to cart</a>';
+                        $product_url = get_the_permalink();
                         if ($product) {
                             if ($product->is_type('variable')) {
                                 $min_variation_price = number_format($product->get_variation_price('min'), 2);
@@ -124,67 +127,28 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             }
                         }
                 ?>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 product_column">
-                        <div class="product_content">
-                            <?php if(!empty($video_iframe)):?>
-                                <div class="iframe d-none">
-                                    <?php echo $video_iframe; ?>
-                                </div>
-                            <?php endif; ?>
-                            <div class="product_image position-relative">
-                                <img loading="lazy" src="<?php echo $featured_image_url; ?>" alt="<?php echo get_the_title(); ?>" class="cards">
-                                <div class="absolute_button position-absolute <?php echo $product->is_on_sale() ? "" : "justify-content-end" ?>">
-                                    <?php if ($product->is_on_sale()): ?>
-                                        <span class="sale">Sale</span>
-                                    <?php endif; ?>
-                                    <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]') ?>
-                                </div>
-                                <div class="group_button_on_hover">
-                                    <div class="view d-flex flex-column align-items-center position-relative">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
-                                            <path d="M25.5 31.25C28.9518 31.25 31.75 28.4518 31.75 25C31.75 21.5482 28.9518 18.75 25.5 18.75C22.0482 18.75 19.25 21.5482 19.25 25C19.25 28.4518 22.0482 31.25 25.5 31.25Z" fill="white"/>
-                                            <path d="M48.8436 24.4688C47.0058 19.7151 43.8154 15.6041 39.6667 12.6439C35.518 9.68368 30.5928 8.00402 25.4998 7.8125C20.4069 8.00402 15.4817 9.68368 11.333 12.6439C7.18422 15.6041 3.99382 19.7151 2.15607 24.4688C2.03196 24.812 2.03196 25.188 2.15607 25.5312C3.99382 30.2849 7.18422 34.3959 11.333 37.3561C15.4817 40.3163 20.4069 41.996 25.4998 42.1875C30.5928 41.996 35.518 40.3163 39.6667 37.3561C43.8154 34.3959 47.0058 30.2849 48.8436 25.5312C48.9677 25.188 48.9677 24.812 48.8436 24.4688ZM25.4998 35.1562C23.4911 35.1562 21.5275 34.5606 19.8573 33.4446C18.1871 32.3286 16.8854 30.7424 16.1167 28.8866C15.348 27.0308 15.1468 24.9887 15.5387 23.0186C15.9306 21.0485 16.8979 19.2388 18.3183 17.8184C19.7386 16.3981 21.5483 15.4308 23.5184 15.0389C25.4886 14.647 27.5306 14.8481 29.3865 15.6168C31.2423 16.3856 32.8285 17.6873 33.9444 19.3575C35.0604 21.0277 35.6561 22.9913 35.6561 25C35.6519 27.6923 34.5806 30.2732 32.6768 32.177C30.773 34.0808 28.1922 35.1521 25.4998 35.1562Z" fill="white"/>
-                                        </svg>
-                                        <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link view">View</a>
-                                    </div>
-                                    <?php if(!empty($video_iframe)):?>
-                                        <div class="play d-flex flex-column align-items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7318 8C14.0128 7.99929 13.3056 8.18176 12.6767 8.53019C12.0318 8.85891 11.4885 9.35694 11.105 9.9709C10.7216 10.5849 10.5124 11.2916 10.5 12.0153V37.9825C10.5124 38.7062 10.7216 39.413 11.105 40.0269C11.4885 40.6409 12.0318 41.1389 12.6767 41.4676C13.317 41.8233 14.0386 42.0066 14.771 41.9998C15.5034 41.993 16.2214 41.7962 16.855 41.4287L37.8437 28.4464C38.4914 28.1199 39.0357 27.62 39.4159 27.0024C39.7962 26.3847 39.9974 25.6736 39.9971 24.9483C39.9969 24.223 39.7952 23.512 39.4145 22.8946C39.0338 22.2772 38.4892 21.7777 37.8412 21.4517L16.8525 8.56667C16.2078 8.19453 15.4762 7.99906 14.7318 8Z" fill="white"/>
-                                            </svg>
-                                            <span class="play">View</span>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="product_content">
-                                <h3 class="text-center product_title"><?php echo esc_html(get_the_title()); ?></h3>
-                                <div class="product_reviews d-flex align-items-center justify-content-center">
-                                    <?php 
-                                    $total_reviews = $product->get_review_count();
-                                    for ($i = 1; $i <= 5; $i++): ?>
-                                        <?php if ($i <= $total_reviews): ?>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#FFD600">
-                                                <path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
-                                            </svg>
-                                        <?php else: ?>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#A9A9A9">
-                                                <path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
-                                            </svg>
-                                        <?php endif; ?>
-                                    <?php endfor; ?>
-                                    <div class="review_summary">
-                                        <span><?php echo number_format($total_reviews, 1); ?></span>
-                                    </div>
-                                </div>
-                                <p class="price"><?php echo $price; ?></p>
-                            </div>
-                            <div class="add_to_cart">
-                                <?php echo do_shortcode('[add_to_cart id="' . $product->get_id() . '"]'); ?>
-                            </div>
-                        </div>
+                    <?php
+                        // Set up data to pass to the template
+                        $data = array(
+                            'img_url' => $img_url,     // Image URL
+                            'title' => $title, // Product title
+                            'price' => $price, // Product price
+                            'product_url' => $product_url,
+                            'product' => $product,
+                            'product_id' => $product_id
+                        );
+                        // Load the template
+                        ob_start();
+                    ?>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 product_column <?php echo $count > 3 ? 'd-block d-lg-none' : ''?>">
+                        <?php echo wc_get_template('template/product_content.php', $data);?>
                     </div>
-                <?php endwhile; endif; wp_reset_postdata(); ?>
+                    <?php
+                        $content = ob_get_clean();
+                        // Output the content
+                        echo $content;
+                    $count += 1;
+                endwhile; endif; wp_reset_postdata(); ?>
             </div>
         </div>
     </div>
@@ -195,14 +159,14 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="header d-flex align-items-center justify-content-between">
-                    <h2>Special products</h2>
+                <div class="header d-flex align-sm-items-center justify-content-between">
+                    <h2 class="mb-0">Special products</h2>
                     <a href="<?php echo get_home_url(); ?>/product-category/special-products/" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
                 </div>
                 <?php
                 $args = array(
                     'post_type' => 'product',
-                    'posts_per_page' => 4,
+                    'posts_per_page' => 6,
                     'post_status' => 'publish',
                     'order' => 'DESC',
                     'tax_query' => array(
@@ -213,15 +177,18 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                         ),
                     ),
                 );
-                
+                $count = 0;
                 global $product;
                 $productLoop = new WP_Query($args);
                 if ($productLoop->have_posts()):
                     while ($productLoop->have_posts()): $productLoop->the_post();
-                        $featured_image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
                         $product = wc_get_product(get_the_ID());
                         $product_id = get_the_ID();
                         $video_iframe = get_field('video_iframe', $product_id);
+                        $title = get_the_title();
+                        // $add_to_cart = '<a href="' . ($product->get_stock_status() === 'outofstock' ? 'javascript:void(0);' : esc_url(wc_get_cart_url() . '?add-to-cart=' . esc_attr($product_id))) . '" target="_blank" class="red_button w-100 text-center">Add to cart</a>';
+                        $product_url = get_the_permalink();
                         if ($product) {
                             if ($product->is_type('variable')) {
                                 $min_variation_price = number_format($product->get_variation_price('min'), 2);
@@ -233,67 +200,28 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             }
                         }
                 ?>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 product_column">
-                        <div class="product_content">
-                            <?php if(!empty($video_iframe)):?>
-                                <div class="iframe d-none">
-                                    <?php echo $video_iframe; ?>
-                                </div>
-                            <?php endif; ?>
-                            <div class="product_image position-relative">
-                                <img loading="lazy" src="<?php echo $featured_image_url; ?>" alt="<?php echo get_the_title(); ?>" class="cards">
-                                <div class="absolute_button position-absolute <?php echo $product->is_on_sale() ? "" : "justify-content-end" ?>">
-                                    <?php if ($product->is_on_sale()): ?>
-                                        <span class="sale">Sale</span>
-                                    <?php endif; ?>
-                                    <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]') ?>
-                                </div>
-                                <div class="group_button_on_hover">
-                                    <div class="view d-flex flex-column align-items-center position-relative">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
-                                            <path d="M25.5 31.25C28.9518 31.25 31.75 28.4518 31.75 25C31.75 21.5482 28.9518 18.75 25.5 18.75C22.0482 18.75 19.25 21.5482 19.25 25C19.25 28.4518 22.0482 31.25 25.5 31.25Z" fill="white"/>
-                                            <path d="M48.8436 24.4688C47.0058 19.7151 43.8154 15.6041 39.6667 12.6439C35.518 9.68368 30.5928 8.00402 25.4998 7.8125C20.4069 8.00402 15.4817 9.68368 11.333 12.6439C7.18422 15.6041 3.99382 19.7151 2.15607 24.4688C2.03196 24.812 2.03196 25.188 2.15607 25.5312C3.99382 30.2849 7.18422 34.3959 11.333 37.3561C15.4817 40.3163 20.4069 41.996 25.4998 42.1875C30.5928 41.996 35.518 40.3163 39.6667 37.3561C43.8154 34.3959 47.0058 30.2849 48.8436 25.5312C48.9677 25.188 48.9677 24.812 48.8436 24.4688ZM25.4998 35.1562C23.4911 35.1562 21.5275 34.5606 19.8573 33.4446C18.1871 32.3286 16.8854 30.7424 16.1167 28.8866C15.348 27.0308 15.1468 24.9887 15.5387 23.0186C15.9306 21.0485 16.8979 19.2388 18.3183 17.8184C19.7386 16.3981 21.5483 15.4308 23.5184 15.0389C25.4886 14.647 27.5306 14.8481 29.3865 15.6168C31.2423 16.3856 32.8285 17.6873 33.9444 19.3575C35.0604 21.0277 35.6561 22.9913 35.6561 25C35.6519 27.6923 34.5806 30.2732 32.6768 32.177C30.773 34.0808 28.1922 35.1521 25.4998 35.1562Z" fill="white"/>
-                                        </svg>
-                                        <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link view">View</a>
-                                    </div>
-                                    <?php if(!empty($video_iframe)):?>
-                                        <div class="play d-flex flex-column align-items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7318 8C14.0128 7.99929 13.3056 8.18176 12.6767 8.53019C12.0318 8.85891 11.4885 9.35694 11.105 9.9709C10.7216 10.5849 10.5124 11.2916 10.5 12.0153V37.9825C10.5124 38.7062 10.7216 39.413 11.105 40.0269C11.4885 40.6409 12.0318 41.1389 12.6767 41.4676C13.317 41.8233 14.0386 42.0066 14.771 41.9998C15.5034 41.993 16.2214 41.7962 16.855 41.4287L37.8437 28.4464C38.4914 28.1199 39.0357 27.62 39.4159 27.0024C39.7962 26.3847 39.9974 25.6736 39.9971 24.9483C39.9969 24.223 39.7952 23.512 39.4145 22.8946C39.0338 22.2772 38.4892 21.7777 37.8412 21.4517L16.8525 8.56667C16.2078 8.19453 15.4762 7.99906 14.7318 8Z" fill="white"/>
-                                            </svg>
-                                            <span class="play">View</span>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="product_content">
-                                <h3 class="text-center product_title"><?php echo esc_html(get_the_title()); ?></h3>
-                                <div class="product_reviews d-flex align-items-center justify-content-center">
-                                    <?php 
-                                    $total_reviews = $product->get_review_count();
-                                    for ($i = 1; $i <= 5; $i++): ?>
-                                        <?php if ($i <= $total_reviews): ?>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#FFD600">
-                                                <path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
-                                            </svg>
-                                        <?php else: ?>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#A9A9A9">
-                                                <path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
-                                            </svg>
-                                        <?php endif; ?>
-                                    <?php endfor; ?>
-                                    <div class="review_summary">
-                                        <span><?php echo number_format($total_reviews, 1); ?></span>
-                                    </div>
-                                </div>
-                                <p class="price"><?php echo $price; ?></p>
-                            </div>
-                            <div class="add_to_cart">
-                                <?php echo do_shortcode('[add_to_cart id="' . $product->get_id() . '"]'); ?>
-                            </div>
-                        </div>
+                    <?php
+                        // Set up data to pass to the template
+                        $data = array(
+                            'img_url' => $img_url,     // Image URL
+                            'title' => $title, // Product title
+                            'price' => $price, // Product price
+                            'product_url' => $product_url,
+                            'product' => $product,
+                            'product_id' => $product_id
+                        );
+                        // Load the template
+                        ob_start();
+                    ?>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 product_column <?php echo $count > 3 ? 'd-block d-lg-none' : ''?>">
+                        <?php echo wc_get_template('template/product_content.php', $data);?>
                     </div>
-                <?php endwhile; endif; wp_reset_postdata(); ?>
+                    <?php
+                        $content = ob_get_clean();
+                        // Output the content
+                        echo $content;
+                    $count += 1;
+                endwhile; endif; wp_reset_postdata(); ?>
             </div>
         </div>
     </div>
@@ -306,34 +234,35 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 <div class="col-lg-7 col-md-12">
                     <div class="content">
                         <h2>Lights, Sky & Celebration: About Us</h2>
-                        <img src="<?php echo $img; ?>/Yorem ipsum dolor sit(About Us).jpg" alt="Lights, Sky & Celebration: About Us" class="d-block d-lg-none">
+                        <img loading="lazy" src="<?php echo $img; ?>/Yorem ipsum dolor sit(About Us).jpg" alt="Lights, Sky & Celebration: About Us" class="d-block d-lg-none">
                         <p>OC Fireworks isn't just another fireworks store, we're your one-stop shop for everything fireworks, both online and in-store! Established in Indiana, USA, we've been lighting up celebrations nationwide with our extensive selection of fireworks and related products.</p>
                         <p>Whether you're a seasoned fireworks enthusiast in South Bend, Mishawaka, or Elkhart looking for the latest and greatest, or a casual celebrator browsing online from anywhere in the US, OC Fireworks has you covered. We offer a vast and ever-changing inventory of fireworks, from classic sparklers and fun fountains to awe-inspiring 500 gram cakes.</p>
+                        <a href="<?php echo get_home_url(); ?>/about-us/" target="_blank" rel="noopener noreferrer" class="red_button">Learn More</a>
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block">
                     <div class="image d-flex justify-content-end">
-                        <img src="<?php echo  $img; ?>/Yorem ipsum dolor sit(About Us).jpg" alt="Lights, Sky & Celebration: About Us">
+                        <img loading="lazy" src="<?php echo  $img; ?>/Yorem ipsum dolor sit(About Us).jpg" alt="Lights, Sky & Celebration: About Us">
                     </div>
                 </div>
                 <div class="owl-carousel owl-theme" id="about_us">
-                    <div class="item d-flex align-items-center">
-                        <img src="<?php echo $img; ?>/Large Selection.png" alt=""><span>Large Selection</span>
+                    <div class="item d-flex align-items-center justify-content-center">
+                        <img loading="lazy" src="<?php echo $img; ?>/Large Selection.png" alt=""><h3 class="mb-0 text-uppercase">Large Selection</h3>
                     </div>
-                    <div class="item d-flex align-items-center">
-                        <img src="<?php echo $img; ?>/Great Prices.png" alt=""><span>Great Prices</span>
+                    <div class="item d-flex align-items-center justify-content-center">
+                        <img loading="lazy" src="<?php echo $img; ?>/Great Prices.png" alt=""><h3 class="mb-0 text-uppercase">Great Prices</h3>
                     </div>
-                    <div class="item d-flex align-items-center">
-                        <img src="<?php echo $img; ?>/high quality.png" alt=""><span>high quality</span>
+                    <div class="item d-flex align-items-center justify-content-center">
+                        <img loading="lazy" src="<?php echo $img; ?>/high quality.png" alt=""><h3 class="mb-0 text-uppercase">high quality</h3>
                     </div>
-                    <div class="item d-flex align-items-center">
-                        <img src="<?php echo $img; ?>/Large Selection.png" alt=""><span>Large Selection</span>
+                    <div class="item d-flex align-items-center justify-content-center">
+                        <img loading="lazy" src="<?php echo $img; ?>/Free shipping.png" alt=""><h3 class="mb-0 text-uppercase">Free shipping</h3>
                     </div>
-                    <div class="item d-flex align-items-center">
-                        <img src="<?php echo $img; ?>/Great Prices.png" alt=""><span>Great Prices</span>
+                    <div class="item d-flex align-items-center justify-content-center">
+                        <img loading="lazy" src="<?php echo $img; ?>/retail.png" alt=""><h3 class="mb-0 text-uppercase">retail</h3>
                     </div>
-                    <div class="item d-flex align-items-center">
-                        <img src="<?php echo $img; ?>/high quality.png" alt=""><span>high quality</span>
+                    <div class="item d-flex align-items-center justify-content-center">
+                        <img loading="lazy" src="<?php echo $img; ?>/whole sale.png" alt=""><h3 class="mb-0 text-uppercase">whole sale</h3>
                     </div>
                 </div>
             </div>
@@ -345,8 +274,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="header d-flex align-items-center justify-content-between">
-                    <h2 class="text-white text-uppercase">Sparking Joy with Fireworks</h2>
+                <div class="header d-flex align-sm-items-center justify-content-between">
+                    <h2 class="text-white text-uppercase mb-0">Sparking Joy with Fireworks</h2>
                     <a href="http://" target="_blank" rel="noopener noreferrer" class="view_all_blogs white_button text-uppercase">View All Blogs</a>
                 </div>
                 <div class="main_content">
@@ -372,7 +301,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                                 if($large_content == true):?>
                                     <div class="large_content d-flex flex-column" onclick="window.open('<?php echo $link; ?>', '_blank')">
                                         <div class="blog_image">
-                                            <img src="<?php echo $img; ?>/larg_content.jpg" alt="">
+                                            <img loading="lazy" src="<?php echo $img; ?>/larg_content.jpg" alt="">
                                         </div>
                                         <div class="content">
                                             <span class="date"><?php echo $date; ?></span>
@@ -388,7 +317,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                                 <?php else: ?>
                                     <div class="small_content d-flex" onclick="window.open('<?php echo $link; ?>', '_blank')">
                                         <div class="blog_image">
-                                            <img src="<?php echo $img; ?>/small_content.jpg" alt="">
+                                            <img loading="lazy" src="<?php echo $img; ?>/small_content.jpg" alt="">
                                         </div>
                                         <div class="content">
                                             <span class="date"><?php echo $date; ?></span>
@@ -417,7 +346,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <div class="row">
                 <div class="content">
                     <div class="main_content">
-                        <img src="<?php echo $img; ?>/form_image.jpg" alt="">
+                        <img loading="lazy" src="<?php echo $img; ?>/form_image.jpg" alt="">
                         <div class="form_content">
                             <h2 class="text-white">Reach Out to Us</h2>
                             <p class="text-white">At OC Fireworks, we're here to help you make your next celebration unforgettable.  Whether you have questions about our products, need help planning your fireworks display, or just want to chat about pyrotechnics, we'd love to hear from you!</p>
@@ -444,7 +373,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                     <div class="large_content d-flex align-items-center justify-content-center position-relative flex-column">
                         <div class="review d-flex justify-content-center">
                             <?php for($i = 0; $i < 5; $i++) { ?>
-                                <img src="<?php echo $img; ?>/star.png" alt="">
+                                <img loading="lazy" src="<?php echo $img; ?>/star.png" alt="">
                             <?php } ?>
                         </div>
                         <div class="content">
@@ -452,7 +381,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             <p class="text-center">Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque. Ut diam quam, semper iaculis condimentum ac, vestibulum eu nisl.</p>
                         </div>
                         <div class="author d-flex align-items-center">
-                            <img src="<?php echo $img; ?>/author.png" alt="">
+                            <img loading="lazy" src="<?php echo $img; ?>/author.png" alt="">
                             <div class="name">
                                 <p class="name">Borem ipsum dolor</p>
                                 <p class="position">Borem ipsum dolor</p>
@@ -462,14 +391,14 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                     <div class="small_content d-flex flex-column">
                         <div class="review d-flex justify-content-center">
                             <?php for($i = 0; $i < 5; $i++) { ?>
-                                <img src="<?php echo $img; ?>/star.png" alt="">
+                                <img loading="lazy" src="<?php echo $img; ?>/star.png" alt="">
                             <?php } ?>
                         </div>
                         <div class="content">
                             <p class="text-center">“Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.”</p>
                         </div>
                         <div class="author d-flex align-items-center">
-                            <img src="<?php echo $img; ?>/author.png" alt="">
+                            <img loading="lazy" src="<?php echo $img; ?>/author.png" alt="">
                             <div class="name">
                                 <p class="name">Borem ipsum dolor</p>
                                 <p class="position">Borem ipsum dolor</p>
@@ -479,14 +408,14 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                     <div class="small_content d-flex flex-column">
                         <div class="review d-flex justify-content-center">
                             <?php for($i = 0; $i < 5; $i++) { ?>
-                                <img src="<?php echo $img; ?>/star.png" alt="">
+                                <img loading="lazy" src="<?php echo $img; ?>/star.png" alt="">
                             <?php } ?>
                         </div>
                         <div class="content">
                             <p class="text-center">“Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.”</p>
                         </div>
                         <div class="author d-flex align-items-center">
-                            <img src="<?php echo $img; ?>/author.png" alt="">
+                            <img loading="lazy" src="<?php echo $img; ?>/author.png" alt="">
                             <div class="name">
                                 <p class="name">Borem ipsum dolor</p>
                                 <p class="position">Borem ipsum dolor</p>
@@ -511,7 +440,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             <?php echo do_shortcode('[contact-form-7 id="45c6cd8" title="Homepage News Letter"]')?>
                         </div>
                         <div class="image">
-                            <img src="<?php echo $img; ?>/news_letter.jpg" alt="">
+                            <img loading="lazy" src="<?php echo $img; ?>/news_letter.jpg" alt="">
                         </div>
                     </div>
                 </div>

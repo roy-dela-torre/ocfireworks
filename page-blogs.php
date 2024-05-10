@@ -1,7 +1,7 @@
 <?php get_header();
 /*Template Name: Blogs*/
 ?>
-<section class="blogs">
+<section class="blogs bg-white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -74,7 +74,7 @@
     </div>
 </section>
 
-<section class="other_blogs">
+<section class="other_blogs bg-white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -86,7 +86,7 @@
                     $curpage = $paged ? $paged : 1;
                     $args = array(
                         'post_type'        => 'post',
-                        'posts_per_page'   => 3,
+                        'posts_per_page'   => 9,
                         'post_status' 	   => 'publish',
                         'order' => 'ASC',
                         'paged' => $paged,
@@ -98,8 +98,7 @@
                             $date = get_the_date();
                             $title = get_the_title();
                             $description = get_the_excerpt();
-                            $link = get_permalink(); 
-                            $excluded_posts[] = $id; ?>
+                            $link = get_permalink(); ?>
                             <div class="col-lg-4 col-md-6 col-sm-12">
                                 <div class="content">
                                     <div class="blog_image">

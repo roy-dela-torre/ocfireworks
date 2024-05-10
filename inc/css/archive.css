@@ -64,16 +64,7 @@ section.product_main .product_image {
     margin-bottom: 30px;
 }
 
-section.product_main .product_image::before {
-    content: url('../../assets/img/homepage/view_product.png');
-    position: absolute;
-    display: none;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(0deg, rgba(33, 33, 33, 0.50) 0%, rgba(33, 33, 33, 0.50) 100%);
-    align-items: center;
-    justify-content: center;
-}
+
 
 section.product_main .product_image:hover::before {
     display: flex;
@@ -215,6 +206,11 @@ section.product_main .spinner {
 
 section.product_main .group_button_on_hover {
     display: none;
+}
+
+div#categores ul{
+    max-height: 600px;
+    overflow-x: scroll;
 }
 
 @keyframes sp-anime {

@@ -6,11 +6,24 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
-                    <div class="form_content">
-                        <h2 class="text-white">Reach Out to Us</h2>
-                        <p class="text-white">At OC Fireworks, we're here to help you make your next celebration unforgettable.  Whether you have questions about our products, need help planning your fireworks display, or just want to chat about pyrotechnics, we'd love to hear from you!</p>
-                        <?php echo do_shortcode('[contact-form-7 id="700a603" title="Show Builder"]')?>
-                    </div>
+                <?php
+                        $section = "show_builder";
+                        $header = get_the_title();
+                        $p_text = "At OC Fireworks, we're here to help you make your next celebration unforgettable. Whether you have questions about our products, need help planning your fireworks display, or just want to chat about pyrotechnics, we'd love to hear from you!";
+                        $shortcode = '[contact-form-7 id="700a603" title="Show Builder"]';
+                        $data = array(
+                            'section' => $section,
+                            'header' => $header,    
+                            'p_text' => $p_text, 
+                            'shortcode' => $shortcode, 
+                        );
+                        ob_start();
+                    ?>
+                    <?php echo wc_get_template('template/form.php', $data);?>
+                    <?php
+                        $content = ob_get_clean();
+                        echo $content;
+                ?>
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="contact_us_info">

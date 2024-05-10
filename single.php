@@ -2,24 +2,8 @@
 <?php get_header();
 $imgPath = get_stylesheet_directory_uri().'/assets/img/homepage/';
 $homeUrl = get_home_url();
-?>
-<style>
-	blockquote{
-		padding-left: 30px;
-		border-left: 2px solid #094074;
-		margin-left: 30px !important;
-	}
-	blockquote *{
-		font-style: italic !important;
-	}
-</style>
-
-<?php
 $theTitle = "";
-        // Start the loop.
 while (have_posts()) : the_post();
-
-// GATHER DATA (DEFAULT VALUE FROM WORDPRESS)
   $blog_id = get_the_ID();
   $blog_title = get_the_title();
   $blog_link = get_permalink();
@@ -43,7 +27,7 @@ while (have_posts()) : the_post();
                         <?php echo the_content(); ?>
                     </div>
                     <div class="share">
-                        <h5>Share it on:</h5>
+                        <span class="share">Share it on:</span>
                         <div class="soc-med-icons">
                             <a href="https://www.facebook.com/sharer.php?u=<?php echo get_home_url().get_post_field('post_name', get_the_ID()); ?>" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
@@ -110,44 +94,48 @@ while (have_posts()) : the_post();
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-            <?php
-            $blogsPost = array('post_type' => 'post', 'order' => 'rand', 'posts_per_page' => 3, );
-            $blogsLoop = new WP_Query($blogsPost);
-            if ($blogsLoop->have_posts()):
-                while ($blogsLoop->have_posts()):
-                    $blogsLoop->the_post();
-                    $blog_id = get_the_ID();
-                    if (has_post_thumbnail()) {
-                        $blogsImg = get_the_post_thumbnail_url($blog_id, 'medium');
-                    } else {
-                        $blogsImg = '';
-                    }
-                    ?>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="content">
-                            <div class="blogs_image">
-                                <img src="<?php echo $blogsImg; ?>" alt="<?php echo the_title(); ?>">
-                            </div>
-                            <div class="blogs_content">
-                                <div class="articles-date"><span><?php echo date('M j, Y', strtotime(get_the_date())); ?></span></div>
-                                <div class="articles-title"><h5><?php echo wp_trim_words(get_the_title(), 7); ?></h5></div>
-                                <div class="articles-text"><p><?php echo wp_trim_words(get_the_excerpt(), 14); ?></p></div>
-                                <div class="read-more-content">
-                                    <a href="<?php echo get_permalink();?>" target="_blank" rel="noopener noreferrer" class="read_more">Read More
+                <div class="header">
+                    <h2 class="text-uppercase text-center">Lorem ipsum dolor sit amet </h2>
+                </div>
+                <?php
+                $args = array(
+                    'post_type'        => 'post',
+                    'posts_per_page'   => 3,
+                    'post_status' 	   => 'publish',
+                    'order' => 'ASC',
+                    'paged' => $paged,
+                );
+                $blogs_query = new WP_Query($args);
+                if ($blogs_query->have_posts()):
+                    while ($blogs_query->have_posts()) : $blogs_query->the_post();
+                        $id = get_the_ID();
+                        $date = get_the_date();
+                        $title = get_the_title();
+                        $description = get_the_excerpt();
+                        $link = get_permalink(); ?>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="content">
+                                <div class="blog_image">
+                                    <img src="<?php echo get_the_post_thumbnail_url($blog_id); ?>" alt="<?php echo get_the_title(); ?>" class="img-fluid w-100">
+                                </div>
+                                <div class="main_content">
+                                    <span class="date"><?php echo $date; ?></span>
+                                    <h3><?php echo wp_trim_words($title,7);?></h3>
+                                    <p><?php echo wp_trim_words($description,14); ?></p>
+                                    <a href="<?php echo $link; ?>" target="_blank" rel="noopener noreferrer" class="read_more">Read More
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M16 12.0169C15.9981 12.2799 15.9426 12.5397 15.8369 12.7805C15.7312 13.0212 15.5776 13.2378 15.3854 13.4169L9.69722 18.7469C9.50277 18.9204 9.24835 19.0109 8.98827 18.999C8.7282 18.9871 8.48306 18.8737 8.30519 18.6832C8.12732 18.4927 8.0308 18.24 8.03624 17.9791C8.04167 17.7182 8.14864 17.4698 8.3343 17.2869L13.9626 12.0169L8.3343 6.7469C8.23488 6.6582 8.15418 6.5504 8.09695 6.43C8.03972 6.3096 8.00711 6.1789 8.00104 6.0456C7.99497 5.9123 8.01557 5.7792 8.06161 5.654C8.10766 5.5289 8.17823 5.4142 8.26917 5.3168C8.36011 5.2194 8.46957 5.1412 8.59112 5.0868C8.71266 5.0324 8.84383 5.003 8.97691 5.0002C9.10998 4.9974 9.24226 5.0214 9.36597 5.0706C9.48968 5.1198 9.6023 5.1934 9.69722 5.2869L15.3844 10.6129C15.5772 10.7924 15.7313 11.0095 15.8372 11.251C15.9431 11.4925 15.9985 11.7531 16 12.0169Z" fill="#FF0000"></path>
+                                            <path d="M16 12.0169C15.9981 12.2799 15.9426 12.5397 15.8369 12.7805C15.7312 13.0212 15.5776 13.2378 15.3854 13.4169L9.69722 18.7469C9.50277 18.9204 9.24835 19.0109 8.98827 18.999C8.7282 18.9871 8.48306 18.8737 8.30519 18.6832C8.12732 18.4927 8.0308 18.24 8.03624 17.9791C8.04167 17.7182 8.14864 17.4698 8.3343 17.2869L13.9626 12.0169L8.3343 6.7469C8.23488 6.6582 8.15418 6.5504 8.09695 6.43C8.03972 6.3096 8.00711 6.1789 8.00104 6.0456C7.99497 5.9123 8.01557 5.7792 8.06161 5.654C8.10766 5.5289 8.17823 5.4142 8.26917 5.3168C8.36011 5.2194 8.46957 5.1412 8.59112 5.0868C8.71266 5.0324 8.84383 5.003 8.97691 5.0002C9.10998 4.9974 9.24226 5.0214 9.36597 5.0706C9.48968 5.1198 9.6023 5.1934 9.69722 5.2869L15.3844 10.6129C15.5772 10.7924 15.7313 11.0095 15.8372 11.251C15.9431 11.4925 15.9985 11.7531 16 12.0169Z" fill="#FF0000"/>
                                         </svg>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endwhile;
-            endif; ?>
-            </div>
+                <?php endwhile; ?>
+            <?php endif; ?>    
         </div>
     </div>
 </section>
+
 
 
 
@@ -157,16 +145,3 @@ while (have_posts()) : the_post();
 
 <?php
 get_footer();?>
-<!-- <script>
-$(document).ready(function() {
-    var h3Elements = $('section.moreBlogs h3');
-    var tallestHeight = 0;
-    h3Elements.each(function() {
-        var height = $(this).height();
-        if (height > tallestHeight) {   
-            tallestHeight = height;
-        }
-    });
-    $('section.moreBlogs h3').css('height',tallestHeight)
-});
-</script> -->

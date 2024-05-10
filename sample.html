@@ -1,80 +1,66 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/inc/css/global.css">
-    <link rel="stylesheet" href="/inc/css/term_and_condition.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Image Rotation on Mouse Drag</title>
+<style>
+  .container {
+    width: 300px;
+    height: 300px;
+    perspective: 600px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+</style>
 </head>
 <body>
-    <section class="term_and_condition">
-        <div class="container-fluid">
-            <div class="wrapper">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-12">
-                        <div class="buttons">
-                            <a href="#button1" class="active">1. Information Collection</a>
-                            <a href="#button2" class="">2. Data Security</a>
-                            <a href="#button3" class="">3. Usage of Information</a>
-                            <a href="#button4" class="">4. Payment Security</a>
-                            <a href="#button5" class="">5. Communication</a>
-                            <a href="#button6" class="">6. Cookies</a>
-                            <a href="#button7" class="">7. Consent</a>
-                            <a href="#button8" class="">8. Updates</a>
-                            
-                        </div>
-                    </div>
-                    <div class="col-xl-9 col-lg-8 col-md-12">
-                        <div class="content">
-                            <div id="button1">
-                                <h2>1. Information Collection</h2>
-                                <p>We collect essential customer information, including contact details and purchase history, solely for the purpose of fulfilling orders and providing excellent service.</p>
-                            </div>
-                            <div id="button2">
-                                <h2>2. Data Security</h2>
-                                <p>Your data is secure with us. We implement industry-standard security measures to protect your information from unauthorized access or disclosure.</p>
-                            </div>
-                            <div id="button3">
-                               <h3>3. Usage of Information</h3>
-                                <p>We use your information exclusively for order processing, delivery, and customer support. Your data is never shared or sold to third parties.</p>
-                            </div>
-                            <div id="button4">
-                                <h3>4. Payment Security</h3>
-                                <p>Flasked utilizes secure payment gateways to ensure the confidentiality of your financial information. Your payment details are encrypted and processed securely.</p>
-                            </div>
-                            <div id="button5">
-                                <h3>5. Communication</h3>
-                                <p>We may contact you for order-related updates or promotions. You have the option to opt out of promotional communications.</p>
-                            </div>
 
-                            <div id="button6">
-                                <h3>6. Cookies</h3>
-                                <p>Flasked uses cookies to enhance your browsing experience. These cookies do not capture personally identifiable information and can be managed in your browser settings.</p>
-                            </div>
-                            <div id="button7">
-                                <h3>7. Consent</h3>
-                                <p>By making a purchase on Flasked, you consent to the terms outlined in our privacy policy.</p>
-                            </div>
-                            <div id="button5">
-                                <h3>8. Updates</h3>
-                                <p>Our privacy policy may be updated periodically. Please check this page for the latest information.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="container">
+  <img class="image" src="https://via.placeholder.com/300" alt="3D Image">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+  var isDragging = false;
+  var previousX;
+  var previousY;
+  var startXRotation = 0;
+  var startYRotation = 0;
+
+  $('.image').on('mousedown', function(e) {
+    isDragging = true;
+    previousX = e.clientX;
+    previousY = e.clientY;
+  });
+
+  $(document).on('mouseup', function() {
+    isDragging = false;
+  });
+
+  $(document).on('mousemove', function(e) {
+    if (isDragging) {
+      var deltaX = e.clientX - previousX;
+      var deltaY = e.clientY - previousY;
+      previousX = e.clientX;
+      previousY = e.clientY;
+      
+      startXRotation += deltaY * 0.5;
+      startYRotation -= deltaX * 0.5;
+
+      $('.image').css('transform', 'rotateX(' + startXRotation + 'deg) rotateY(' + startYRotation + 'deg)');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script src="/inc/js/bootstrap.bundle.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('.buttons a').click(function() {
-            $('.buttons a').removeClass('active')
-            $(this).addClass('active')
-        });
-    })    
-</script>

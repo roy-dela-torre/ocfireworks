@@ -38,7 +38,7 @@ if ( post_password_required() ) {
 		<div class="wrapper">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-6 col-md-12">
+					<div class="col-xl-6 col-lg-12">
 						<div class="product_image">
 							<?php
 								if ( function_exists( 'woocommerce_show_product_images' ) ) {
@@ -47,7 +47,7 @@ if ( post_password_required() ) {
 							?>
 						</div>
 					</div>
-					<div class="col-lg-6 col-md-12">
+					<div class="col-xl-6 col-lg-12">
 						<div class="summary entry-summary">
 							<h1><?php echo the_title(); ?></h1>
 
@@ -211,7 +211,12 @@ if ( post_password_required() ) {
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="3d_videos">
-												<iframe data-src="https://www.iconasys.com/Downloads/360/multi-purpose-tool-360-view/iframe.html" width="100%" height="500" scrolling="yes" class="iframe-class lazyloaded" frameborder="0" src="https://www.iconasys.com/Downloads/360/multi-purpose-tool-360-view/iframe.html"></iframe>	
+												<!-- <iframe data-src="https://www.iconasys.com/Downloads/360/multi-purpose-tool-360-view/iframe.html" width="100%" height="500" scrolling="yes" class="iframe-class lazyloaded" frameborder="0" src="https://www.iconasys.com/Downloads/360/multi-purpose-tool-360-view/iframe.html"></iframe>	 -->
+													<!-- Use it like any other HTML element -->
+												<model-viewer alt="3D image" src="https://d1a370nemizbjq.cloudfront.net/0a08c3a8-c67a-41ea-bfdb-28d0e9894db7.glb" ar ar-modes="webxr scene-viewer quick-look" seamless-poster shadow-intensity="1" camera-controls auto-rotate style="height: 100%;width: 100%;"></model-viewer>
+
+												<!-- Import the component -->
+												<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 											</div>
 										</div>
 									</div>

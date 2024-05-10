@@ -79,10 +79,17 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 
 										// Get the current URL
 										$current_url = getCurrentUrlarchive();
-
+										
 										// Check if categories are found and no errors occurred
 										if ($product_categories && !is_wp_error($product_categories)) {
 											echo '<ul class="ps-0 mb-0">';
+											?>
+											<li class="position-relative">
+												<input type="radio" name="" id="showAll" <?php echo is_shop() ? "checked" : "" ?>>
+												<a href="<?php echo get_home_url(); ?>/shop/" rel="noopener noreferrer" class="stretched-link">
+													<span class="name">Show ALl</span>
+												</a>
+											</li><?php 
 											foreach ($product_categories as $category) {
 												// Skip the "Uncategorized" category and move to the next iteration
 												if (esc_html($category->name) === "Uncategorized") {

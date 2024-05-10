@@ -1,7 +1,9 @@
-<?php get_header(); ?>
+<?php get_header(); 
+/*Template Name: Checkout*/
+?>
 <section class="checkout">
-    <div class="container-fluid">
-        <div class="wrapper">
+    <div class="wrapper">
+        <div class="container-fluid">
             <div class="row">
                 <?php echo do_shortcode('[woocommerce_checkout]')?>
             </div>

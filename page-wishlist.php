@@ -56,6 +56,89 @@
 </section>
 <?php get_footer(); ?>
 <script>
+ function setupPagination() {
+        const paginationNumbers = $("#pagination-numbers");
+        const paginatedList = $("section.wishlist .row");
+        const listItems = paginatedList.find(".col-lg-3 ");
+        const nextButton = $("#next-button");
+        const prevButton = $("#prev-button");
+
+        const paginationLimit = 4;
+        const pageCount = Math.ceil(listItems.length / paginationLimit);
+        let currentPage = 1;
+
+        const disableButton = (button) => {
+            button.addClass("disabled");
+            button.attr("disabled", true);
+        };
+
+        const enableButton = (button) => {
+            button.removeClass("disabled");
+            button.removeAttr("disabled");
+        };
+
+        const handlePageButtonsStatus = () => {
+            if (currentPage === 1) {
+                disableButton(prevButton);
+            } else {
+                enableButton(prevButton);
+            }
+
+            if (pageCount === currentPage) {
+                disableButton(nextButton);
+            } else {
+                enableButton(nextButton);
+            }
+        };
+
+        const handleActivePageNumber = () => {
+            $(".pagination-number").removeClass("active").each(function() {
+                const pageIndex = Number($(this).attr("page-index"));
+                if (pageIndex === currentPage) {
+                    $(this).addClass("active");
+                }
+            });
+        };
+
+        const appendPageNumber = (index) => {
+            const pageNumber = $("<button></button>").addClass("pagination-number").html(index).attr("page-index", index).attr("aria-label", "Page " + index);
+            paginationNumbers.append(pageNumber);
+        };
+
+        const getPaginationNumbers = () => {
+            for (let i = 1; i <= pageCount; i++) {
+                appendPageNumber(i);
+            }
+        };
+
+        const setCurrentPage = (pageNum) => {
+            currentPage = pageNum;
+
+            handleActivePageNumber();
+            handlePageButtonsStatus();
+
+            const prevRange = (pageNum - 1) * paginationLimit;
+            const currRange = pageNum * paginationLimit;
+
+            listItems.hide().slice(prevRange, currRange).show();
+        };
+
+        getPaginationNumbers();
+        setCurrentPage(1);
+
+        prevButton.on("click", function() {
+            setCurrentPage(currentPage - 1);
+        });
+
+        nextButton.on("click", function() {
+            setCurrentPage(currentPage + 1);
+        });
+
+        $(document).on("click", ".pagination-number", function() {
+            setCurrentPage(parseInt($(this).attr("page-index")));
+        });
+        console.log('function run again')
+    }
 $(document).ready(function() {
     $('.remove_from_wishlist').on('click', function(event) {
         event.preventDefault(); // Prevent the default link behavior
@@ -69,8 +152,7 @@ $(document).ready(function() {
             },
             success: function(response) {
                 $("#overlay").hide();
-                // Find the closest col-md-3 element containing the content element and remove it
-                link.closest('.col-md-3').remove();
+                link.closest('.col-lg-3').remove();
                 var rowSelector = "section.wishlist .row"; // Replace with your row's selector (e.g., "#example tbody tr")
                 var row = $(rowSelector);
                 if (row.length && row.children().length === 0) {
@@ -83,6 +165,11 @@ $(document).ready(function() {
                 console.error('Error removing product from wishlist:', error);
             }
         });
+    });
+    setupPagination();
+    $('#prev-button,#next-button,button.pagination-number').click(function(event) {
+        event.preventDefault(); // Prevent the default behavior
+        // Your logic for handling previous button click goes here
     });
 });
 </script>

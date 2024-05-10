@@ -49,7 +49,7 @@
     </footer>
     <div class="copy_right">
         <div class="content d-flex align-items-center justify-content-between">
-            <p class="text-white text-uppercase mb-0 text-center">Copyright © <?php echo date('Y'); ?> OC FIreworks | SEO by SEO-Hacker. Optimized and maintained by Sean Si</p>
+            <p class="text-white text-uppercase mb-0 text-center">Copyright © <?php echo date('Y'); ?> <a href="<?php echo get_home_url(); ?>/sitemap_index.xml" target="_blank" rel="noopener noreferrer" class="text-white">OC FIreworks</a> | SEO by SEO-Hacker. Optimized and maintained by Sean Si</p>
             <div class="payment_method">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/visa.png" alt="">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/discover.png" alt="">

@@ -29,27 +29,54 @@ $post_thumbnail_id = $product->get_image_id();
 $wrapper_classes   = apply_filters(
 	'woocommerce_single_product_image_gallery_classes',
 	array(
-		'woocommerce-product-gallery',
-		'woocommerce-product-gallery--' . ( $post_thumbnail_id ? 'with-images' : 'without-images' ),
-		'woocommerce-product-gallery--columns-' . absint( $columns ),
-		'images',
+		'carousel',
+		'slide',
 	)
 );
 ?>
-<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
-	<div class="woocommerce-product-gallery__wrapper">
-		<?php
-		if ( $post_thumbnail_id ) {
-			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
-		} else {
-			$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
-			$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
-			$html .= '</div>';
-		}
-
-		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-
-		do_action( 'woocommerce_product_thumbnails' );
-		?>
-	</div>
+<div id="carouselExampleCaptions" class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <?php
+        $gallery_images = $product->get_gallery_image_ids();
+        
+        // Featured image
+        $active_class = 'active';
+        ?>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="<?php echo esc_attr( $active_class ); ?>" aria-current="true" aria-label="Slide 1">
+            <?php echo wp_get_attachment_image( $post_thumbnail_id, 'full', false, array( 'class' => 'd-block w-100' ) ); ?>
+        </button>
+        <?php
+        foreach ( $gallery_images as $index => $image_id ) {
+            $active_class = ( $index === 0 ) ? 'active' : '';
+            ?>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?php echo esc_attr( $index + 1 ); ?>" class="<?php echo esc_attr( $active_class ); ?>" aria-current="true" aria-label="Slide <?php echo esc_attr( $index + 2 ); ?>">
+                <?php echo wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'd-block w-100' ) ); ?>
+            </button>
+            <?php
+        }
+        ?>
+    </div>
+    <div class="carousel-inner">
+        <?php
+        // Featured image
+        $active_class = 'active';
+        ?>
+        <div class="carousel-item <?php echo esc_attr( $active_class ); ?>">
+            <?php echo wp_get_attachment_image( $post_thumbnail_id, 'full', false, array( 'class' => 'd-block w-100' ) ); ?>
+            <div class="carousel-caption d-none d-md-block">
+                <h5><?php echo esc_html__( 'Slide label', 'your-text-domain' ); ?></h5>
+                <p><?php echo esc_html__( 'Some representative placeholder content for the slide.', 'your-text-domain' ); ?></p>
+            </div>
+        </div>
+        <?php
+        foreach ( $gallery_images as $index => $image_id ) {
+            $active_class = ( $index === 0 ) ? 'active' : '';
+            ?>
+            <div class="carousel-item <?php echo esc_attr( $active_class ); ?>">
+                <?php echo wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'd-block w-100' ) ); ?>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 </div>
