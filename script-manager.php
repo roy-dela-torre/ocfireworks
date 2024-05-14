@@ -34,7 +34,25 @@
         $('.product_added_to_wislist p.product_name').text(productName);
         $('.product_added_to_wislist p.price').text(productPrice);
     }
+    function popUpcartUpdate(selfUrl){
+        $.ajax({
+                url: selfUrl, // Use the self URL
+                method: 'GET', // Make a GET request
+                beforeSend: function(xhr) {
+                },
+                success: function(response) {
+                    $('.cart_button span.cart_count').text($(response).find('span.cart_count').text()); 
+                    $('.product_summary').html($(response).find('.product_summary').html());
+                },
+                error: function(xhr, status, error) {
+                    // Handle error, e.g., display an error message
+                    console.error('Error updating cart:', error);
+                }
+            });
+    }
     $(document).ready(function() {
+        $('span.cart_count').text('<?php echo WC()->cart->get_cart_contents_count(); ?>')
+        console.log(<?php echo WC()->cart->get_cart_contents_count(); ?>)
         // image lazy load
         $('img[loading="lazy"]').each(function() {
             var originalSrc = $(this).attr('src');
@@ -53,13 +71,16 @@
 
         // show hide mini cart on nav
         $('.add_to_cart p.product.woocommerce.add_to_cart_inline').click(function(){
+            var selfUrl = window.location.href; // Get the current page URL
+            popUpcartUpdate(selfUrl)
+            popUpcartUpdate(selfUrl)
             setTimeout(() => {
-                $('.pop_up_cart').show()
-                $('span.close').show()
-            }, 2000);
-        })
-        $('span.close').click(function (e) { 
-            e.preventDefault();
+                $('.pop_up_cart').show();
+                $('span.close').show();
+            }, 3000);
+        });
+
+        $('span.close').click(function () { 
             $('.pop_up_cart').hide()
         });
 
@@ -102,6 +123,7 @@
         $('header li.menu-item-has-children>a').append(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
             <path d="M11.9831 16.5C11.7201 16.4981 11.4603 16.4426 11.2195 16.3369C10.9788 16.2312 10.7622 16.0776 10.5831 15.8854L5.25311 10.1972C5.0796 10.0028 4.98914 9.74835 5.00104 9.48827C5.01294 9.2282 5.12625 8.98306 5.31679 8.80519C5.50733 8.62732 5.76001 8.5308 6.02089 8.53624C6.28177 8.54167 6.53018 8.64864 6.71311 8.8343L11.9831 14.4626L17.2531 8.8343C17.3418 8.73488 17.4496 8.65418 17.57 8.59695C17.6904 8.53972 17.8211 8.50711 17.9544 8.50104C18.0877 8.49497 18.2208 8.51557 18.346 8.56161C18.4711 8.60766 18.5858 8.67823 18.6832 8.76917C18.7806 8.86011 18.8588 8.96957 18.9132 9.09112C18.9676 9.21266 18.997 9.34383 18.9998 9.47691C19.0026 9.60998 18.9786 9.74226 18.9294 9.86597C18.8802 9.98968 18.8066 10.1023 18.7131 10.1972L13.3871 15.8844C13.2076 16.0772 12.9905 16.2313 12.749 16.3372C12.5075 16.4431 12.2469 16.4985 11.9831 16.5Z" fill="#212121"/>
             </svg>`);
+
 
     });
     
@@ -173,11 +195,7 @@
 
             handleProductColumns($('section.featured_product .row .product_column'));
             handleProductColumns($('section.special_product .row .product_column'));
-            $('.add_to_cart a').click(function(){
-                setTimeout(() => {
-                    $('span.cart_count').text('<?php echo WC()->cart->get_cart_contents_count(); ?>')
-                }, 1500);
-            })
+        
             
             // banner hover function change banner to gif
             $(document).on('click scroll', function (e) { 
@@ -296,13 +314,7 @@
 <?php elseif(is_cart() || is_page(9)):?>
     <script>
         $(document).ready(function () {
-            $('.quantity button').click(function(e){
-                console.log('ahhaha')
-                e.preventDefault();
-                setTimeout(() => {
-                    $('span.cart_count').text('<?php echo WC()->cart->get_cart_contents_count(); ?>')
-                }, 1500);
-            })
+            
         });
     </script>
 
@@ -344,11 +356,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             handleProductColumns($('section.my_account .row .product_column'));
-            $('.add_to_cart a').click(function(){
-                setTimeout(() => {
-                    $('span.cart_count').text('<?php echo WC()->cart->get_cart_contents_count(); ?>')
-                }, 1500);
-            })
+           
             var iframeHTML;
             function replaceThumbnailWithIframe() {
                 console.log('click')

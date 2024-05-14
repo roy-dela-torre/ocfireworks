@@ -2,7 +2,9 @@ section.cart h1 {
     color: #BF2126;
     margin-bottom: 30px;
 }
-
+html{
+    overflow-x: hidden;
+}
 section.cart thead tr th {
     color: #FFF;
     text-align: center;
@@ -81,7 +83,9 @@ section.cart tbody tr td {
     line-height: normal;
     text-transform: uppercase;
 }
-
+section .group_button>button {
+    width: 50%;
+}
 section.cart .quantity button {
     border: none;
     padding: 10px;
@@ -137,23 +141,6 @@ input.input-text.qty.text[type=number] {
     -moz-appearance: textfield;
 }
 
-section.cart .cart-container .woocommerce {
-    display: flex;
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: calc(-1 * var(--bs-gutter-y));
-    margin-right: calc(-.5 * var(--bs-gutter-x));
-    margin-left: calc(-.5 * var(--bs-gutter-x))
-}
-
-section.cart .cart-container .woocommerce>* {
-    flex-shrink: 0;
-    padding-right: calc(var(--bs-gutter-x) * .5);
-    padding-left: calc(var(--bs-gutter-x) * .5);
-    margin-top: var(--bs-gutter-y)
-}
 
 section.cart .cart-container .woocommerce form.woocommerce-cart-form {
     display: flex;
@@ -171,10 +158,14 @@ section.cart .cart-container .woocommerce .cart_totals {
     padding: 47px 27px;
     border-radius: 10px;
     background: #FFF;
+    float: none;
 }
 
 section.cart .cart-container .woocommerce .woocommerce-notices-wrapper {
     width: 100%;
+}
+section.cart .cart-container .woocommerce .woocommerce-notices-wrapper .woocommerce-message{
+    margin-bottom: 30px;
 }
 
 section.cart .cart-container .woocommerce .cart-collaterals {

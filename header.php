@@ -20,7 +20,7 @@ $home = get_home_url();
                         <span>Contact Us: <a href="tel:+574-742-8164">574-742-8164</a></span>
                     </div>
                     <div class="promocode">
-                        <span>Promo Code Sign Up</span>
+                        <span><a href="<?php echo get_home_url(); ?>/sign-up-to-save/" target="_blank" rel="noopener noreferrer">Promo Code Sign Up</a></span>
                     </div>
                     <div class="connect_with_us d-flex align-items-center">
                         <span>Connect with Us:</span>
@@ -136,7 +136,7 @@ $home = get_home_url();
                                     </a>
                                     <div class="cart_button">
                                         <a href="<?php echo $home; ?>/cart/" target="_blank" rel="noopener noreferrer" class="cart">
-                                            <span class="cart_count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+                                            <span class="cart_count"><?php echo WC()->cart->get_cart_contents_count();?></span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                                                 <g clip-path="url(#clip0_528_1537)">
                                                     <path d="M28.455 5.75344C28.1922 5.42033 27.8572 5.15129 27.4752 4.96663C27.0932 4.78197 26.6743 4.68653 26.25 4.6875H7.24969L6.53813 1.66031C6.48971 1.45452 6.37317 1.27114 6.20741 1.13993C6.04165 1.00871 5.83641 0.937379 5.625 0.9375H1.875C1.62636 0.9375 1.3879 1.03627 1.21209 1.21209C1.03627 1.3879 0.9375 1.62636 0.9375 1.875C0.9375 2.12364 1.03627 2.3621 1.21209 2.53791C1.3879 2.71373 1.62636 2.8125 1.875 2.8125H4.8825L8.19656 16.8994C7.47382 16.9585 6.80208 17.2953 6.32225 17.839C5.84243 18.3827 5.59181 19.0911 5.62298 19.8156C5.65414 20.5401 5.96467 21.2243 6.48942 21.7248C7.01417 22.2253 7.71235 22.5031 8.4375 22.5H24.375C24.6236 22.5 24.8621 22.4012 25.0379 22.2254C25.2137 22.0496 25.3125 21.8111 25.3125 21.5625C25.3125 21.3139 25.2137 21.0754 25.0379 20.8996C24.8621 20.7238 24.6236 20.625 24.375 20.625H8.4375C8.18886 20.625 7.9504 20.5262 7.77459 20.3504C7.59877 20.1746 7.5 19.9361 7.5 19.6875C7.5 19.4389 7.59877 19.2004 7.77459 19.0246C7.9504 18.8488 8.18886 18.75 8.4375 18.75H24.2644C24.8987 18.7516 25.5148 18.538 26.0121 18.1442C26.5093 17.7503 26.8582 17.1994 27.0019 16.5816L28.9884 8.14406C29.0865 7.73121 29.0895 7.30147 28.9971 6.88731C28.9046 6.47315 28.7193 6.08543 28.455 5.75344Z" fill="white"/>
@@ -156,12 +156,12 @@ $home = get_home_url();
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="82" height="39" viewBox="0 0 82 39" fill="none">
                                                     <path d="M41 0L81.7032 39H0.296806L41 0Z" fill="white"/>
                                                 </svg>
+                                                <span class="close" style="display: none;">
+                                                    <img src="<?php echo $img; ?>/close.png" alt="">
+                                                </span>
                                                 <div class="product_summary">
                                                     <div class="header_cart d-flex align-items-center justify-content-between">
                                                         <span class="your_cart">Your Cart</span>
-                                                        <span class="close" style="display: none;">
-                                                            <img src="<?php echo $img; ?>/close.png" alt="">
-                                                        </span>
                                                     </div>
                                                     <?php
                                                     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
@@ -200,7 +200,7 @@ $home = get_home_url();
                                             </svg>
                                         </a>
                                         <?php if (is_user_logged_in()): ?>
-                                            <a href="<?php echo wp_logout_url(); ?>" target="_blank" rel="noopener noreferrer">
+                                            <a href="<?php echo wp_logout_url( get_home_url() ); ?>" target="_blank" rel="noopener noreferrer">
                                                 LOGOUT
                                             </a>
                                         <?php else: ?>
@@ -249,7 +249,7 @@ $home = get_home_url();
                                 <span>Contact Us: <a href="tel:+574-742-8164">574-742-8164</a></span>
                             </div>
                             <div class="promocode">
-                                <span>Promo Code Sign Up</span>
+                                <span><a href="<?php get_home_url(); ?>/register-discount/" target="_blank" rel="noopener noreferrer">Promo Code Sign Up</a></span>
                             </div>
                         </div>
                     </div>

@@ -455,7 +455,7 @@ header .main_nav .contact a {
     text-decoration: none;
 }
 
-header div.top_nav .promocode span,
+header div.top_nav .promocode span a,
 header .main_nav .promocode span {
     color: #212121;
     text-align: center;
@@ -863,10 +863,21 @@ header p.qty {
     text-transform: uppercase;
 }
 
-header .product_summary span.close img {
+header span.close img {
     width: 20px !important;
     height: 20px !important;
     object-fit: contain;
+}
+header span.close{
+    position: absolute;
+    right: 20px;
+    top: 75px;
+    z-index: 2;
+
+
+}
+header .cart_main_content{
+    position: relative;
 }
 
 header .pop_up_cart p.total-label,
@@ -890,6 +901,10 @@ header .pop_up_cart .order-total {
 header .pop_up_cart .product_summary .group_button {
     gap: 15px 0;
     padding-top: 32px;
+}
+
+header .pop_up_cart .product_summary .group_button a{
+    justify-content: center;
 }
 
 header .pop_up_cart .product_summary .header_cart {

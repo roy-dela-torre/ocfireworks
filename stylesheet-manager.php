@@ -33,7 +33,7 @@
 <?php elseif(is_page('forgot-password') || is_page(11)):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>login.css">
     
-<?php elseif(is_page('register') || is_page(105)):?>
+<?php elseif(is_page('register') || is_page(105) || is_page('register-discount')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>register.css">
 
 <?php elseif(is_page('events')):?>
@@ -59,11 +59,11 @@
 <?php elseif(is_page('product-demos')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>product_demos.css">
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?php elseif(is_page('sign-up-to-save') || is_page(250)):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>sign-up-to-save.css">
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?php elseif(is_page('professional-fireworks') || is_page(254)):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>professional-fireworks.css">
 
 <?php elseif(is_page('')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>.css">

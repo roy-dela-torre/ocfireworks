@@ -1,66 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Image Rotation on Mouse Drag</title>
-<style>
-  .container {
-    width: 300px;
-    height: 300px;
-    perspective: 600px;
-    margin: 0 auto;
-    position: relative;
-  }
-  .image {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transition: transform 0.5s;
-    transform-style: preserve-3d;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop by Categories</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div class="container">
-  <img class="image" src="https://via.placeholder.com/300" alt="3D Image">
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function(){
-  var isDragging = false;
-  var previousX;
-  var previousY;
-  var startXRotation = 0;
-  var startYRotation = 0;
-
-  $('.image').on('mousedown', function(e) {
-    isDragging = true;
-    previousX = e.clientX;
-    previousY = e.clientY;
-  });
-
-  $(document).on('mouseup', function() {
-    isDragging = false;
-  });
-
-  $(document).on('mousemove', function(e) {
-    if (isDragging) {
-      var deltaX = e.clientX - previousX;
-      var deltaY = e.clientY - previousY;
-      previousX = e.clientX;
-      previousY = e.clientY;
-      
-      startXRotation += deltaY * 0.5;
-      startYRotation -= deltaX * 0.5;
-
-      $('.image').css('transform', 'rotateX(' + startXRotation + 'deg) rotateY(' + startYRotation + 'deg)');
-    }
-  });
-});
-</script>
-
+    <div class="container">
+        <h1>Shop by Categories</h1>
+        <div class="grid">
+            <div class="grid-item">
+              <img loading="lazy" src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" alt="Events" data-src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" class="undefined lazyloaded" decoding="async" width="476" height="300">
+                <div class="overlay">Events</div>
+            </div>
+            <div class="grid-item">
+              <img loading="lazy" src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" alt="Events" data-src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" class="undefined lazyloaded" decoding="async" width="476" height="300">
+                <div class="overlay">Sky Show</div>
+            </div>
+            <div class="grid-item">
+              <img loading="lazy" src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" alt="Events" data-src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" class="undefined lazyloaded" decoding="async" width="476" height="300">
+                <div class="overlay">Ground Effects</div>
+            </div>
+            <div class="grid-item">
+              <img loading="lazy" src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" alt="Events" data-src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" class="undefined lazyloaded" decoding="async" width="476" height="300">
+                <div class="overlay">Novelties</div>
+            </div>
+            <div class="grid-item">
+              <img loading="lazy" src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" alt="Events" data-src="http://localhost/ocfireworks/wp-content/themes/ocfireworks/assets/img/homepage/Events.jpg" class="undefined lazyloaded" decoding="async" width="476" height="300">
+                <div class="overlay">Supplies</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #b71c1c;
+    color: #fff;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.grid-item .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.grid-item:hover .overlay {
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .grid-item .overlay {
+        font-size: 1rem;
+    }
+}
+
+
+</style>

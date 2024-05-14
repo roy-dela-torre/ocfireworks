@@ -24,32 +24,68 @@ if ( ! function_exists( 'ocfireworks' ) ) :
         return $excerpt;
     }
 
-    function registration_form() {
-        ob_start();
-        ?>
-        <form method="post" class="woocommerce-form woocommerce-form-register register">
-            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" value="<?php if (!empty($_POST['username'])) echo esc_attr($_POST['username']); ?>" required placeholder="Full Name" />
+// Modify the registration form shortcode
+function registration_form() {
+    ob_start();
+    ?>
+    <form method="post" class="woocommerce-form woocommerce-form-register register">
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="first_name" id="reg_first_name" placeholder="First Name" value="<?php if (!empty($_POST['first_name'])) echo esc_attr($_POST['first_name']); ?>"/>
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="last_name" id="reg_last_name" placeholder="Last Name" value="<?php if (!empty($_POST['last_name'])) echo esc_attr($_POST['last_name']); ?>" />
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="number" class="woocommerce-Input woocommerce-Input--text input-text" name="billing_phone" id="billing_phone" placeholder="Phone Number" value="<?php if (!empty($_POST['billing_phone'])) echo esc_attr($_POST['billing_phone']); ?>" />
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" placeholder="Email Address" autocomplete="email" value="<?php if (!empty($_POST['email'])) echo esc_attr($_POST['email']); ?>" />
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_1" id="password_1" autocomplete="off" placeholder="Password" />
+            <span class="show-password-input"></span>
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_2" id="password_2" autocomplete="off" placeholder="Confirm Password" />
+            <span class="show-password-input"></span>
+        </p>
+        <p class="woocommerce-form-row form-row">
+            <?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
+            <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="Register"><?php echo is_page('register') ? "Create Account" : "Submit"?></button>
+        </p>
+        <div class="group">
+            <p class="register-remember w-100">
+                <label>
+                    <input name="rememberme" type="checkbox" id="rememberme" value="forever" class="">
+                    <span>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="<?php echo get_home_url(); ?>/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></span>
+                </label>
             </p>
-            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" placeholder="Email Address" autocomplete="email" value="<?php if (!empty($_POST['email'])) echo esc_attr($_POST['email']); ?>" required />
-            </p>
-            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <span class="password-input"><input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" placeholder="Password" required /><span class="show-password-input"></span></span>
-            </p>
-            <!-- <div class="woocommerce-privacy-policy-text">
-                <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="<?php echo esc_url(get_privacy_policy_url()); ?>" class="woocommerce-privacy-policy-link" target="_blank">privacy policy</a>.</p>
-            </div> -->
-            <p class="woocommerce-form-row form-row">
-                <?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
-                <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="Register">create an account</button>
-            </p>
-        </form>
-        <?php
-        return ob_get_clean();
+        </div>
+        
+    </form>
+    <?php
+    // Display WooCommerce error messages
+    wc_print_notices();
+    return ob_get_clean();
+}
+
+add_shortcode('registration_form', 'registration_form');
+
+// Hook into user registration to save first name and last name
+function save_extra_user_fields($user_id) {
+    if (isset($_POST['first_name'])) {
+        update_user_meta($user_id, 'first_name', sanitize_text_field($_POST['first_name']));
     }
-    
-    add_shortcode('registration_form', 'registration_form');
+    if (isset($_POST['last_name'])) {
+        update_user_meta($user_id, 'last_name', sanitize_text_field($_POST['last_name']));
+    }
+    if (isset($_POST['billing_phone'])) {
+        update_user_meta($user_id, 'billing_phone', sanitize_text_field($_POST['billing_phone']));
+    }
+}
+add_action('user_register', 'save_extra_user_fields');
+
+
 
 
 //Log in Form
@@ -72,14 +108,14 @@ function custom_login_form_shortcode() {
                 <input type="submit" name="wp-submit" id="wp-submit" class="black_button w-100" value="Log In" />
             </p>
            <div class="group">
-            <p class="login-remember">
+                <p class="login-remember">
                     <label>
                         <input name="rememberme" type="checkbox" id="rememberme" value="forever" class="">
                         <span>Remember Me</span>
                     </label>
                 </p>
                 <p class="forgot-password">
-                    <a href="<?php echo esc_url(wp_lostpassword_url()); ?>">Forgot Password?</a>
+                    <a href="<?php echo get_home_url()?>/forgot-password/">Forgot Password?</a>
                 </p>
            </div>
         </form>
@@ -374,102 +410,14 @@ add_action( 'woocommerce_account_payment-methods_endpoint', 'payment_methods_con
 
 
 
+// Function to remove <br> tags from Contact Form 7 forms
+function remove_br_from_cf7_form($form) {
+    // Remove <br> and <br /> tags
+    $form = str_replace('<br>', '', $form);
+    $form = str_replace('<br />', '', $form);
+    return $form;
+}
 
-
-// function add_fireworks_categories() {
-//     $categories = array(
-//         'Badaboom Fireworks',
-//         'Black Cat Fireworks',
-//         'Black Scorpion/Chili Fireworks',
-//         'Blast Wave Fireworks',
-//         'Boomer',
-//         'Boomer Fireworks',
-//         'Bright Star Fireworks',
-//         'Brothers Fireworks',
-//         'Cannon Brand',
-//         'China Generic',
-//         'Cutting Edge Fireworks',
-//         'Dominator Fireworks',
-//         'Dominator Proline Fireworks',
-//         'Dragon Blade Fireworks',
-//         'Dragon Slayer Fireworks',
-//         'Eastsun Fireworks',
-//         'Fathead Fireworks',
-//         'Firehawk Fireworks',
-//         'Fisherman Pyrotechnics',
-//         'Flower King Fireworks',
-//         'Fowl Fireworks',
-//         'Freedom First Fireworks',
-//         'Golden Bear',
-//         'Great Grizzly',
-//         'Guandu Fireworks',
-//         'Happy Family Fireworks',
-//         'Hero Pyro',
-//         'Hot Shot Brand',
-//         'Inked Pyro',
-//         'Jetwell',
-//         'Keystone Fireworks',
-//         'King Bird Fireworks',
-//         'Kylin King',
-//         'Legend',
-//         'Legend Fireworks',
-//         'Leopard Fireworks',
-//         'Liberty Bell',
-//         'Lidu Fireworks Co.',
-//         'Link Triad Fireworks',
-//         'Machine Made Pyro',
-//         'Mad Ox Fireworks',
-//         'Magnus Fireworks',
-//         'Mean Monkey Fireworks',
-//         'Mega Ton Fireworks',
-//         'Megabanger',
-//         'Miracle Fireworks',
-//         'Mixed Brands',
-//         'Night Owl Fireworks',
-//         'OC Fireworks',
-//         'OCFireworks',
-//         'OMG Fireworks',
-//         'Overstock Central Fireworks',
-//         'Powder Keg Fireworks',
-//         'Power Blast Fireworks',
-//         'Pyro Demon Fireworks',
-//         'Pyro Diablo Fireworks',
-//         'Pyro Eagle Fireworks',
-//         'Pyro High Fireworks',
-//         'Pyro King',
-//         'Pyro Nation',
-//         'Pyro Packed Fireworks',
-//         'Raccoon Fireworks',
-//         'Red Rhino Fireworks',
-//         'Shock Wave',
-//         'Shogun',
-//         'Shotgun Brand Fireworks',
-//         'Showtime Fireworks',
-//         'Sky Bacon Fireworks',
-//         'Sky Painter Fireworks',
-//         'Sky Thunder',
-//         'Sunwing Fireworks',
-//         'T-Sky Fireworks',
-//         'Tannerite',
-//         'Time Bandit Fireworks',
-//         'Topgun Fireworks',
-//         'Wild Dragon Fireworks',
-//         'Winda',
-//         'Winda Fireworks',
-//         'Wise Guy Fireworks',
-//         'World Class Fireworks'
-//     );
-
-//     foreach ($categories as $category) {
-//         wp_insert_term($category, 'product_cat', array(
-//             'description' => '',
-//             'slug' => sanitize_title($category),
-//             'parent' => 0
-//         ));
-//     }
-// }
-
-// add_action('init', 'add_fireworks_categories');
-
-
+// Apply the function to the wpcf7_form_elements filter
+add_filter('wpcf7_form_elements', 'remove_br_from_cf7_form');
 

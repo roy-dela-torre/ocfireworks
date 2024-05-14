@@ -58,6 +58,12 @@ section.banner a.shop_now:hover path {
 }
 
 
+section.brands h2,
+section.brands #brands{
+    margin-bottom: 50px;
+}
+
+
 
 section.shop_by_categories {
     background: url('../../assets/img/homepage/Shop\ by\ Categories.png')no-repeat top center/cover;

@@ -27,23 +27,29 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
 				<p class="w-100 woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_first_name" id="account_first_name" autocomplete="given-name" value="<?php echo esc_attr( $user->first_name ); ?>" placeholder="First Name" disabled />
+					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_first_name" id="account_first_name" autocomplete="given-name" value="<?php echo esc_attr( $user->first_name ); ?>" placeholder="First Name"  />
 				</p>
 			</div>
 			<div class="col-md-6 col-sm-12">
 				<p class="w-100 woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
-					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_last_name" id="account_last_name" autocomplete="family-name" value="<?php echo esc_attr( $user->last_name ); ?>" placeholder="Last Name" disabled />
+					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_last_name" id="account_last_name" autocomplete="family-name" value="<?php echo esc_attr( $user->last_name ); ?>" placeholder="Last Name"  />
 				</p>
 			</div>
 			<div class="col-md-6 col-sm-12">
 				<p class="w-100 woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="billing_phone" id="billing_phone" value="<?php echo esc_attr( get_user_meta( get_current_user_id(), 'billing_phone', true ) ); ?>" placeholder="Phone Number" disabled />
+					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="billing_phone" id="billing_phone" value="<?php echo esc_attr( get_user_meta( get_current_user_id(), 'billing_phone', true ) ); ?>" placeholder="Phone Number"  />
 				</p>
 			</div>
 
 			<div class="col-md-6 col-sm-12">
 				<p class="w-100 woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-					<input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" value="<?php echo esc_attr( get_userdata( get_current_user_id() )->user_email ); ?>" placeholder="Email" disabled />
+					<input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" value="<?php echo esc_attr( get_userdata( get_current_user_id() )->user_email ); ?>" placeholder="Email"  />
+				</p>
+			</div>
+			<div class="col-md-12">
+				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+					<label for="account_display_name"><?php esc_html_e( 'Display name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_display_name" id="account_display_name" value="<?php echo esc_attr( $user->first_name ); ?>" /> <span><em><?php esc_html_e( 'This will be how your name will be displayed in the account section and in reviews', 'woocommerce' ); ?></em></span>
 				</p>
 			</div>
 			<div class="col-md-12">

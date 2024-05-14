@@ -170,7 +170,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<?php } ?>
 		</div>
 
-		<div class="group_button d-flex align-items-center">
+		<div class="group_button d-flex align-items-center w-100">
 			<button type="submit" class="red_button update_cart button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 			<button class="black_button delete_cart_item" id="delete_cart_item">Empty Cart</button>
 		</div>
