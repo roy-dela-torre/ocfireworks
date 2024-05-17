@@ -10,7 +10,7 @@
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 25px;
+    font-size: clamp(1.125rem, 1.0135rem + 0.4575vw, 1.5625rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -21,7 +21,7 @@
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 25px;
+    font-size: clamp(1.125rem, 1.0135rem + 0.4575vw, 1.5625rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -71,7 +71,10 @@
     z-index: 2;
 }
 
-
+.product_content span.price{
+    display: flex;
+    align-items: center;
+}
 
 .product_content .product_image {
     margin-bottom: 30px;
@@ -113,7 +116,7 @@
     color: #BF2126;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 25px;
+    font-size: clamp(1.125rem, 1.0135rem + 0.4575vw, 1.5625rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;

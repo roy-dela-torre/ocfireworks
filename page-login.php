@@ -13,7 +13,7 @@
                 <div class="col-lg-6 col-md-12">
                   <div class="login_form">
                     <h1 class="text-white">Login</h1>
-                    <p class="text-white">Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+                    <p class="text-white">Welcome back! Let's ignite some excitement and log in for a dazzling experience.</p>
                     <?php echo do_shortcode('[custom_login_form]'); ?>
                     <p class="text-center">Don’t Have an Account? <strong><a href="<?php echo get_home_url(); ?>/login/" target="_blank" rel="noopener noreferrer"></a></strong></p>
                   </div>

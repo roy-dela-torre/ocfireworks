@@ -8,14 +8,14 @@ $img = get_stylesheet_directory_uri().'/assets/img/shipping_info';
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-7 col-md-12">
                     <div class="content mw-lg-100">
-                        <h1 class="text-white">Yorem ipsum dolor sit amet Lorem isa consectetur </h1>
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100 d-block d-lg-none">
-                        <p class="text-white">Lorem ipsum dolor sit amet consectetur. Volutpat urna in ipsum nisi sit vitae risus. Dolor diam volutpat nulla nulla. Vitae malesuada odio et dictum senectus natoque in diam vitae. Mattis eu nunc ullamcorper eu ornare feugiat ante vel. Vitae phasellus nisi et semper pharetra. Bibendum suscipit lectus arcu et a. </p>
+                        <h1 class="text-white">Boom! Delivered to Your Doorstep!</h1>
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="Boom! Delivered to Your Doorstep!" class="w-100 d-block d-lg-none">
+                        <p class="text-white">No more scrambling to find a tent and pick-up truck. This page is your one-stop shop for all things fireworks delivery! We'll answer your burning questions about shipping times, costs, and anything else to keep your grand finale smooth and explosive.</p>
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block">
                     <div class="image">
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100">
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="Boom! Delivered to Your Doorstep!" class="w-100">
                     </div>
                 </div>
             </div>

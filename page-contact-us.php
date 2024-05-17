@@ -9,7 +9,7 @@
                     <?php
                         $section = "contact_us";
                         $header = get_the_title();
-                        $p_text = "At OC Fireworks, we're here to help you make your next celebration unforgettable. Whether you have questions about our products, need help planning your fireworks display, or just want to chat about pyrotechnics, we'd love to hear from you!";
+                        $p_text = "Light up your night!  OC Fireworks makes any event explosive. Contact us for a firework finale you won't forget!";
                         $shortcode = '[contact-form-7 id="85e7ba4" title="Contact Us"]';
                         $data = array(
                             'section' => $section,

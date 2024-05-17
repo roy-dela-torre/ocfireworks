@@ -48,6 +48,9 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 	<div class="wrapper">
 		<div class="container-fluid">
 			<div class="row">
+				<div class="header">
+					<h2 class="red_text text-center mb-0">Fourth of July Fireworks</h2>
+				</div>
 				<div class="col-xl-3 col-lg-4 col-md-12">
 					<div class="sidebar_filter">
 						<span class="filter">Filters</span>
@@ -187,6 +190,77 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 		</div>
 	</div>
 </section>
+<?php
+if ( class_exists( 'WooCommerce' ) ) :
+    global $product;
+
+    if ( is_a( $product, 'WC_Product' ) ) {
+        $related_products_ids = wc_get_related_products( $product->get_id(), 4 ); // Fetch 4 related products
+
+        if ( $related_products_ids ) { ?>
+            <section class="related_products">
+                <div class="wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <?php
+                            $heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Other Products', 'woocommerce' ) );
+
+                            if ( $heading ) :
+                                ?>
+                                <h2 class="text-center"><?php echo esc_html( $heading ); ?></h2>
+                            <?php endif; ?>
+                            <?php woocommerce_product_loop_start(); ?>
+                                <?php foreach ( $related_products_ids as $related_product_id ) : 
+                                    $related_product = wc_get_product( $related_product_id );
+
+                                    // Ensure the product is valid and visible
+                                    if ( ! $related_product || ! $related_product->is_visible() ) {
+                                        continue;
+                                    }
+
+                                    $img_url = get_the_post_thumbnail_url( $related_product_id, 'medium' );
+                                    $title = get_the_title( $related_product_id );
+                                    $product_url = get_permalink( $related_product_id );
+                                    $price = $related_product->get_price_html();
+                                    $video_iframe = get_field('video_iframe', $related_product_id);
+
+                                    $data = array(
+                                        'img_url' => $img_url, // Image URL
+                                        'title' => $title, // Product title
+                                        'price' => $price, // Product price
+                                        'product_url' => $product_url,
+                                        'product' => $related_product,
+                                        'product_id' => $related_product_id,
+                                        'video_iframe' => $video_iframe
+                                    );
+
+                                    ob_start();
+                                    ?>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 product_column">
+                                        <?php echo wc_get_template( 'template/product_content.php', $data ); ?>
+                                    </div>
+                                    <?php
+                                    $content = ob_get_clean();
+                                    echo $content;
+                                endforeach; ?>
+                            <?php woocommerce_product_loop_end(); ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <?php
+        }
+    }
+endif;
+?>
+
+<?php if(is_page('')):?>
+<?php //elseif():?>
+<?php //elseif():?>
+<?php //elseif():?>
+<?php //elseif():?>
+<?php endif;?>
+
 <?php echo get_template_part('wishlist_pop_up'); ?>
 <?php do_action( 'woocommerce_after_main_content' );
 

@@ -2,9 +2,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="uoVUFD_osDNOnE_y3kkfMsHP4EFWD1wXbIilGyizDPo" />	
     <title><?php the_title();?></title>
     <?php include('stylesheet-manager.php')?>
     <?php wp_head()?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XD9KCVMXG"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1XD9KCVMXG');
+    </script>
+    <!-- Google tag (gtag.js) end -->
 </head>
 <body <?php body_class(); ?>>
 <?php $img = get_stylesheet_directory_uri().'/assets/img/global';
@@ -20,7 +30,7 @@ $home = get_home_url();
                         <span>Contact Us: <a href="tel:+574-742-8164">574-742-8164</a></span>
                     </div>
                     <div class="promocode">
-                        <span><a href="<?php echo get_home_url(); ?>/sign-up-to-save/" target="_blank" rel="noopener noreferrer">Promo Code Sign Up</a></span>
+                        <span><a href="<?php echo get_home_url(); ?>/sign-up-to-save/" target="_blank" rel="noopener noreferrer">Get Up to 5% percent discount sign up here</a></span>
                     </div>
                     <div class="connect_with_us d-flex align-items-center">
                         <span>Connect with Us:</span>
@@ -243,13 +253,13 @@ $home = get_home_url();
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <?php wp_nav_menu(array('Primary Menu' => 'Primary','menu_class' => 'navMenu navbar-nav me-auto mb-2 mb-lg-0','container' => false,));?>
-                        <div class="group_top_nav d-flex d-md-none justify-content-between">
+                        <div class="group_top_nav d-flex d-lg-none justify-content-between">
                             <div class="contact d-flex align-items-center">
                                 <img src="<?php echo $img; ?>/phone.png" alt="">
                                 <span>Contact Us: <a href="tel:+574-742-8164">574-742-8164</a></span>
                             </div>
                             <div class="promocode">
-                                <span><a href="<?php get_home_url(); ?>/register-discount/" target="_blank" rel="noopener noreferrer">Promo Code Sign Up</a></span>
+                                <span><a href="<?php get_home_url(); ?>/register-discount/" target="_blank" rel="noopener noreferrer">Get Up to 5% percent discount sign up here</a></span>
                             </div>
                         </div>
                     </div>

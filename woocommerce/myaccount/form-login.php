@@ -36,7 +36,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 				<div class="col-lg-6 col-md-12">
 					<div class="login_form">
 						<h2 class="text-white"><?php esc_html_e( 'Login', 'woocommerce' ); ?></h2>
-						<p class="text-white">Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+						<p class="text-white">Welcome back! Let's ignite some excitement and log in for a dazzling experience.</p>
 						<form class="woocommerce-form woocommerce-form-login login" method="post">
 
 							<?php do_action( 'woocommerce_login_form_start' ); ?>

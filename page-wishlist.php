@@ -56,8 +56,10 @@
 </section>
 <?php get_footer(); ?>
 <script>
- function setupPagination() {
+    function setupPagination() {
         const paginationNumbers = $("#pagination-numbers");
+        paginationNumbers.empty(); // Clear existing pagination numbers
+
         const paginatedList = $("section.wishlist .row");
         const listItems = paginatedList.find(".col-lg-3 ");
         const nextButton = $("#next-button");
@@ -140,6 +142,7 @@
         console.log('function run again')
     }
 $(document).ready(function() {
+    setupPagination();
     $('.remove_from_wishlist').on('click', function(event) {
         event.preventDefault(); // Prevent the default link behavior
         var link = $(this);
@@ -159,6 +162,7 @@ $(document).ready(function() {
                     // Reload the page
                     location.reload();
                 }
+                setupPagination();
             },
             error: function(xhr, status, error) {
                 // Handle error, e.g., display an error message
@@ -166,7 +170,7 @@ $(document).ready(function() {
             }
         });
     });
-    setupPagination();
+    
     $('#prev-button,#next-button,button.pagination-number').click(function(event) {
         event.preventDefault(); // Prevent the default behavior
         // Your logic for handling previous button click goes here

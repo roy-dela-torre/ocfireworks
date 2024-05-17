@@ -61,8 +61,7 @@ do_action( 'woocommerce_before_account_navigation' );
                                             href="#offcanvasExample"
                                             role="button"
                                             aria-controls="offcanvasExample"
-                                        >Menu
-                                            <svg
+                                        >Menu<svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="21"
                                                 height="21"
@@ -147,7 +146,7 @@ do_action( 'woocommerce_before_account_navigation' );
                                 </div>
                                 <?php //wc_get_template('myaccount/navigation.php'); ?>
                                 <div class="col-lg-9 col-md-12 ps-lg-5">
-                                   <?php echo do_shortcode('[woocommerce_recently_viewed_products]')?>
+                                    <?php echo do_shortcode('[recently_viewed_products]'); ?>
                                 </div>
                             </div>
                         </div>

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="content d-flex flex-column align-items-center">
                     <h1 class="text-center">404</h1>
-                    <p class="text-center">Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. </p>
+                    <p class="text-center">Hold your horses (and sparklers)! Our fireworks page seems to be taking a siesta right now. Blast back to the homepage for a grand ol' time, and we'll get those fiery friends sparkling soon.</p>
                     <a href="<?php get_home_url(); ?>" target="_blank" rel="noopener noreferrer" class="red_button">Back to hompage</a>
                 </div>
             </div>

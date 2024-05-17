@@ -10,7 +10,7 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/after_you_order';
                     <div class="content mw-lg-100">
                         <h1 class="text-white">After You Order</h1>
                         <img loading="lazy" src="<?php echo $img_path?>/banner_image.jpg" alt="" class="w-100 d-block d-lg-none mb-3">
-                        <p class="text-white mb-0">Lorem ipsum dolor sit amet consectetur. Volutpat urna in ipsum nisi sit vitae risus. Dolor diam volutpat nulla nulla. Vitae malesuada odio et dictum senectus natoque in diam vitae. Mattis eu nunc ullamcorper eu ornare feugiat ante vel. Vitae phasellus nisi et semper pharetra. Bibendum suscipit lectus arcu et a.</p>
+                        <p class="text-white mb-0">Your OC Fireworks order is a blast... waiting safely! Review these quick tips for an unforgettable (and safe) celebration.</p>
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block ps-lg-5">

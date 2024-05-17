@@ -8,7 +8,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 <div class="col-lg-6 col-md-12">
                     <div class="content">
                         <h1 class="text-white">Let the Good Times Explode!</h1>
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100 d-block d-lg-none">
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="Let the Good Times Explode" class="w-100 d-block d-lg-none">
                         <p class="text-white">Light up the fun! Shop OC Fireworks for dazzling displays and unforgettable memories.</p>
                         <a href="<?php echo get_home_url(); ?>/shop/" target="_blank" rel="noopener noreferrer" class="shop_now">
                             SHOP NOW
@@ -20,7 +20,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="image">
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100">
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="Let the Good Times Explode" class="w-100">
                     </div>
                 </div>
             </div>
@@ -34,13 +34,26 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <h2 class="text-center">Brand Blast Off</h2>
             <div class="owl-carousel owl-theme p-0" id="brands">
                 <?php for($i=1;$i<=10;$i++){ ?>
-                    <img src="<?php echo $img; ?>/logo<?php echo $i; ?>.png" alt="" width="186" height="186">
+                    <img src="<?php echo $img; ?>/logo<?php echo $i; ?>.png" alt="logo<?php echo $i; ?>" width="186" height="186">
                 <?php }?>
             </div>
-            <a href="http://" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
+            <a href="<?php echo get_home_url(); ?>/brands/" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
         </div>
     </div>
 </section>
+<?php
+    // $title = "BRAND BLAST OFF";
+    // $data = array(
+    //     'title' => $title, // Product title
+    // );
+    // ob_start();
+?>
+<?php //echo wc_get_template('template/brand.php', $data);?>
+<?php
+    // $content = ob_get_clean();
+    // // Output the content
+    // echo $content;
+?>
 
 <section class="shop_by_categories">
     <div class="wrapper">
@@ -109,7 +122,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 $productLoop = new WP_Query($args);
                 if ($productLoop->have_posts()):
                     while ($productLoop->have_posts()): $productLoop->the_post();
-                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                         $product = wc_get_product(get_the_ID());
                         $product_id = get_the_ID();
                         $video_iframe = get_field('video_iframe', $product_id);
@@ -135,7 +148,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             'price' => $price, // Product price
                             'product_url' => $product_url,
                             'product' => $product,
-                            'product_id' => $product_id
+                            'product_id' => $product_id,
+                            'video_iframe' => $video_iframe
                         );
                         // Load the template
                         ob_start();
@@ -182,7 +196,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 $productLoop = new WP_Query($args);
                 if ($productLoop->have_posts()):
                     while ($productLoop->have_posts()): $productLoop->the_post();
-                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                         $product = wc_get_product(get_the_ID());
                         $product_id = get_the_ID();
                         $video_iframe = get_field('video_iframe', $product_id);
@@ -208,7 +222,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             'price' => $price, // Product price
                             'product_url' => $product_url,
                             'product' => $product,
-                            'product_id' => $product_id
+                            'product_id' => $product_id,
+                            'video_iframe' => $video_iframe
                         );
                         // Load the template
                         ob_start();
@@ -247,22 +262,28 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 </div>
                 <div class="owl-carousel owl-theme" id="about_us">
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/Large Selection.png" alt=""><h3 class="mb-0 text-uppercase">Large Selection</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/Large Selection.png" alt="Large Selection">
+                        <h3 class="mb-0 text-uppercase">Large Selection</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/Great Prices.png" alt=""><h3 class="mb-0 text-uppercase">Great Prices</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/Great Prices.png" alt="Great Prices">
+                        <h3 class="mb-0 text-uppercase">Great Prices</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/high quality.png" alt=""><h3 class="mb-0 text-uppercase">high quality</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/high quality.png" alt="High quality">
+                        <h3 class="mb-0 text-uppercase">High quality</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/Free shipping.png" alt=""><h3 class="mb-0 text-uppercase">Free shipping</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/Free shipping.png" alt="Free shipping">
+                        <h3 class="mb-0 text-uppercase">Free shipping</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/retail.png" alt=""><h3 class="mb-0 text-uppercase">retail</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/retail.png" alt="Retail">
+                        <h3 class="mb-0 text-uppercase">Retail</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/whole sale.png" alt=""><h3 class="mb-0 text-uppercase">whole sale</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/whole sale.png" alt="Whole sale">
+                        <h3 class="mb-0 text-uppercase">Whole sale</h3>
                     </div>
                 </div>
             </div>
@@ -298,10 +319,11 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                                 $title = get_the_title();
                                 $description = get_the_excerpt();
                                 $link = get_permalink(); 
+                                $img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                                 if($large_content == true):?>
                                     <div class="large_content d-flex flex-column" onclick="window.open('<?php echo $link; ?>', '_blank')">
                                         <div class="blog_image">
-                                            <img loading="lazy" src="<?php echo $img; ?>/larg_content.jpg" alt="">
+                                            <img loading="lazy" src="<?php echo $img_url; ?>" alt="<?php echo $title; ?>">
                                         </div>
                                         <div class="content">
                                             <span class="date"><?php echo $date; ?></span>
@@ -317,7 +339,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                                 <?php else: ?>
                                     <div class="small_content d-flex" onclick="window.open('<?php echo $link; ?>', '_blank')">
                                         <div class="blog_image">
-                                            <img loading="lazy" src="<?php echo $img; ?>/small_content.jpg" alt="">
+                                            <img loading="lazy" src="<?php echo $img_url; ?>" alt="<?php echo $title; ?>">
                                         </div>
                                         <div class="content">
                                             <span class="date"><?php echo $date; ?></span>
@@ -346,7 +368,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <div class="row">
                 <div class="content">
                     <div class="main_content">
-                        <img loading="lazy" src="<?php echo $img; ?>/form_image.jpg" alt="">
+                        <img loading="lazy" src="<?php echo $img; ?>/form_image.jpg" alt="Reach Out to Us">
                         <div class="form_content">
                             <h2 class="text-white">Reach Out to Us</h2>
                             <p class="text-white">At OC Fireworks, we're here to help you make your next celebration unforgettable.  Whether you have questions about our products, need help planning your fireworks display, or just want to chat about pyrotechnics, we'd love to hear from you!</p>
@@ -440,7 +462,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             <?php echo do_shortcode('[contact-form-7 id="45c6cd8" title="Homepage News Letter"]')?>
                         </div>
                         <div class="image">
-                            <img loading="lazy" src="<?php echo $img; ?>/news_letter.jpg" alt="">
+                            <img loading="lazy" src="<?php echo $img; ?>/news_letter.jpg" alt="Ignite Your Inbox: Sign Up for the OC Fireworks Newsletter!">
                         </div>
                     </div>
                 </div>
@@ -450,33 +472,4 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 </section>
 
 <?php echo get_template_part('wishlist_pop_up'); ?>
-<?php echo get_template_part('video_pop_up'); ?>
 <?php get_footer();?>
-<script>
-    $(document).ready(function () {
-        var iframeHTML;
-        function replaceThumbnailWithIframe() {
-            if (typeof iframeHTML !== 'undefined') {
-                $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
-            } else {
-                console.error('iframeHTML is not defined');
-            }
-        }
-        $('section.special_product .product_column .play, section.featured_product .product_column .play').click(function() {
-            iframeHTML = $(this).closest('.product_column').find('.iframe').html();
-            console.log(iframeHTML)
-            var title = $(this).closest('.product_column').find('h3.product_title').text();
-            $('#video_modal #video_modalLabel').text(title);
-            $('.video_modal').click();
-        });
-        $('img.play_button').click(replaceThumbnailWithIframe);
-        $('img.play_button').click(function(){
-            $(this).hide()
-        })
-
-        $('div#video_modal button.btn.btn-secondary').click(function(){
-            $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
-            $('img.play_button').show()
-        })
-    });
-</script>

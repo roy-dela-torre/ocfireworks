@@ -21,4 +21,5 @@ $imgPath = get_stylesheet_directory_uri().'/assets/img/homepage/'; ?>
 <?php else: ?>
   <?php echo do_shortcode('[woocommerce_my_account]'); ?>
 <?php endif;?>
+
 <?php get_footer(); ?>

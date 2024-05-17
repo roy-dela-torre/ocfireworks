@@ -65,8 +65,8 @@
 <?php elseif(is_page('professional-fireworks') || is_page(254)):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>professional-fireworks.css">
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?php elseif(is_page('fourth-of-july-fireworks')):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>fourth-of-july-fireworks.css">
 
 <?php elseif(is_page('')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>.css">

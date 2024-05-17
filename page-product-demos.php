@@ -22,8 +22,8 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/product_demos';
                 <div class="col-lg-12">
                     <div class="full_width">
                         <div class="content">
-                            <h2 class="text-white">Rorem ipsum dolor sit amet consectetur adipiscing </h2>
-                            <p class="text-white">Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                            <h2 class="text-white">Witness the Spectacle. Order Now.</h2>
+                            <p class="text-white">Witness the magic of OC Fireworks come alive in our product demos. See the dazzling effects, vibrant colors, and breathtaking displays for yourself. Order yours today and transform any event into a celebration of unforgettable brilliance.</p>
                             <a href="<?php echo get_home_url(); ?>/shop/" target="_blank" rel="noopener noreferrer" class="shop_now">
                                 SHOP NOW
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="17" viewBox="0 0 22 17" fill="none">

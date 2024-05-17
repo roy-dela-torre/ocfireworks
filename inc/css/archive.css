@@ -33,7 +33,7 @@ section.product_main {
 }
 
 section.product_main .header {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 section.product_main .absolute_button {
@@ -132,7 +132,11 @@ section.product_main .row {
 }
 
 div#yith-wcwl-popup-message,
-div#yith-wcwl-message {
+div#yith-wcwl-message,
+.woocommerce .woocommerce-pagination ul.page-numbers::after,
+.woocommerce .woocommerce-pagination ul.page-numbers::before,
+.woocommerce-page .woocommerce-pagination ul.page-numbers::after,
+.woocommerce-page .woocommerce-pagination ul.page-numbers::before {
     display: none !important;
 }
 
@@ -208,9 +212,71 @@ section.product_main .group_button_on_hover {
     display: none;
 }
 
-div#categores ul{
+section.product_main nav.woocommerce-pagination ul li a.prev.page-numbers,
+section.product_main nav.woocommerce-pagination ul li a.next.page-numbers {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+section.product_main nav.woocommerce-pagination ul li a.page-numbers {
+    color: #ACACAC;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+    /* 138.889% */
+    padding: 0 8px;
+}
+
+section.product_main nav.woocommerce-pagination ul {
+    display: flex;
+    align-items: center;
+    gap: 0 9px;
+    justify-content: center;
+    border: none;
+}
+
+section.product_main nav.woocommerce-pagination {
+    margin-top: 60px;
+    border: none;
+}
+
+.woocommerce .woocommerce-pagination ul.page-numbers li,
+.woocommerce-page .woocommerce-pagination ul.page-numbers li {
+    border: none;
+}
+
+.woocommerce nav.woocommerce-pagination ul li span.current{
+    color: var(--Red, #BF2126);
+    font-family: 'Inter',sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px; /* 138.889% */
+    background-color: transparent;
+}
+
+section.product_main {}
+
+section.product_main {}
+
+section.product_main {}
+
+section.product_main {}
+
+section.product_main {}
+
+div#categores ul {
     max-height: 600px;
     overflow-x: scroll;
+}
+
+
+
+section.related_products h2 {
+    margin-bottom: 60px;
 }
 
 @keyframes sp-anime {

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="content d-flex flex-column align-items-center">
                     <h1 class="text-center">Thank you</h1>
-                    <p class="text-center">Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. </p>
+                    <p class="text-center">Don't miss out on the dazzling displays! Our fireworks are selling fast, so browse our selection again soon and light up your next celebration.</p>
                     <a href="<?php get_home_url(); ?>" target="_blank" rel="noopener noreferrer" class="red_button">Back to hompage</a>
                 </div>
             </div>

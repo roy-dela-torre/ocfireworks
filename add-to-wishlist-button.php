@@ -58,6 +58,6 @@ global $product;
 		data-title="<?php echo esc_attr( apply_filters( 'yith_wcwl_add_to_wishlist_title', $label ) ); ?>"
 		rel="nofollow"
 	>
-		<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/add_to_wishlist.png" alt="">
+		<img loading="lazy" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/add_to_wishlist.png" alt="">
 	</a>
 </div>
