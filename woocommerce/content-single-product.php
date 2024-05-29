@@ -133,9 +133,7 @@ if ( post_password_required() ) {
 										do_action( 'woocommerce_after_add_to_cart_quantity' );
 										?>
 
-										<div class="add_to_cart">
-											<?php echo do_shortcode('[add_to_cart id="' . $product->get_id() . '"]'); ?>
-										</div>
+										<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button buttont alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
 										<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 									</form>
@@ -243,44 +241,3 @@ if ( post_password_required() ) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <?php do_action( 'woocommerce_after_single_product' ); ?>
 <?php echo get_template_part('wishlist_pop_up'); ?>
-<?php $img = get_stylesheet_directory_uri().'/assets/img/homepage'; ?>
-    <script type="text/javascript">
-        function replaceIcons(element, imgUrl) {
-            element.html(`<img src="${imgUrl}" alt="">`);
-        }
-        function handleProductColumns(columns) {
-            columns.each(function() {
-                $(this).find('.yith-wcwl-add-button img').on('click', function() {
-                    $('.wishlist_modal_btn').trigger('click');
-                    updateWishlistModal($(this));
-                });
-            });
-        }
-        function updateWishlistModal(button) {
-            var contentContainer = button.closest('.product_content');
-            var productName = contentContainer.find('h3.text-center').text();
-            var productPrice = contentContainer.find('.price').text();
-            var productImage = contentContainer.find('.product_image img').attr('src');
-            $('.product_added_to_wislist .product img').attr('src', productImage);
-            $('.product_added_to_wislist p.product_name').text(productName);
-            $('.product_added_to_wislist p.price').text(productPrice);
-        }
-        $(document).ready(function(){
-            $('.yith-wcwl-wishlistexistsbrowse').hide();
-            replaceIcons($('i.yith-wcwl-icon.fa.fa-heart-o'), '<?php echo $img; ?>/add_to_wishlist.png');
-            replaceIcons($('section.related_products .yith-wcwl-add-to-wishlist.exists.wishlist-fragment.on-first-load'), '<?php echo $img; ?>/added_to_wishlist.png');
-            handleProductColumns($('section.related_products .row .product_column'));
-            $('button.btn-close').click(function() {
-                console.log('click')
-                setTimeout(() => {
-                    $('section.related_products a[data-title="Browse wishlist"]').html(`<img src="<?php echo $img; ?>/added_to_wishlist.png" alt="">`)
-                }, 1000);
-            });
-            $('.add_to_cart a').click(function(){
-                setTimeout(() => {
-                    $('span.cart_count').text('<?php echo WC()->cart->get_cart_contents_count(); ?>')
-                }, 1500);
-            })
-        })
-    </script>
-

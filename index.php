@@ -470,6 +470,4 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
         </div>
     </div>
 </section>
-
-<?php echo get_template_part('wishlist_pop_up'); ?>
 <?php get_footer();?>

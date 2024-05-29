@@ -100,7 +100,7 @@ section.signup_to_save input.wpcf7-form-control.wpcf7-submit.has-spinner:hover {
     -ms-transition: 1s ease all;
     -o-transition: 1s ease all;
     background: var(--Linear, linear-gradient(180deg, #FFFFFF 0%, #BDBDBD 100%));
-    color: #BF2126;
+    color: var(--secondary_font_color);
 }
 
 section.signup_to_save h1 {

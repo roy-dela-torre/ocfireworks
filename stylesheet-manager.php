@@ -27,11 +27,11 @@
 <?php elseif(is_page('show-builder')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>show_builder.css">
 
-<?php elseif(is_page('login') || is_page(103) || is_page('forgot-password') || is_page(216)):?>
+<?php elseif(is_page('login') || is_page(103)):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>login.css">
 
-<?php elseif(is_page('forgot-password') || is_page(11)):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>login.css">
+<?php elseif(is_page('forgot-password') || is_page(216)):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>forgot_password.css">
     
 <?php elseif(is_page('register') || is_page(105) || is_page('register-discount')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>register.css">
@@ -65,11 +65,11 @@
 <?php elseif(is_page('professional-fireworks') || is_page(254)):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>professional-fireworks.css">
 
-<?php elseif(is_page('fourth-of-july-fireworks')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>fourth-of-july-fireworks.css">
+<?php elseif(is_order_received_page()):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>is_order_received_page.css">
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?php elseif(is_page('events') || is_page(62)):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>events.css">
 
 <?php elseif(is_page('')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>.css">

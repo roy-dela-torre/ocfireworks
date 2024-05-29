@@ -1,4 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+    --primay_font_color: #212121;
+    --secondary_font_color: #BF2126;
+}
+
+@font-face {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../../assets/fonts/roboto_100_900.woff2') format('woff2');
+}
+
 body {
     background-color: #F8F8F8;
 }
@@ -14,26 +26,29 @@ img {
 
 h1 {
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: clamp(2.5rem, 2.3407rem + 0.6536vw, 3.125rem);
     font-style: normal;
     font-weight: 700;
-    line-height: clamp(3.125rem, 2.9657rem + 0.6536vw, 3.75rem);;
+    line-height: clamp(3.125rem, 2.9657rem + 0.6536vw, 3.75rem);
     text-transform: uppercase;
 }
 
 h2 {
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: clamp(1.875rem, 1.7157rem + 0.6536vw, 2.5rem);
     font-style: normal;
     font-weight: 700;
-    line-height: clamp(2.5rem, 2.3407rem + 0.6536vw, 3.125rem);;
+    line-height: clamp(2.5rem, 2.3407rem + 0.6536vw, 3.125rem);
     text-transform: uppercase;
 }
 
 h3 {
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: clamp(1.25rem, 1.0907rem + 0.6536vw, 1.875rem);
     font-style: normal;
@@ -44,6 +59,7 @@ h3 {
 
 h4 {
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 20px;
     font-style: normal;
@@ -58,13 +74,13 @@ p {
     font-style: normal;
     font-weight: 300;
     line-height: 25px;
-    /* 138.889% */
+    color: #212121;
 }
 
 h5 {
     color: var(--Red, #BF2126);
-    text-align: center;
-    font-family: "Roboto Condensed",sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: clamp(1.25rem, 1.1703rem + 0.3268vw, 1.5625rem);
     font-style: normal;
     font-weight: 700;
@@ -76,6 +92,7 @@ a.read_more {
     color: #F00;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -94,7 +111,7 @@ a.read_more:hover {
     -ms-transition: .5s ease all;
     -o-transition: .5s ease all;
     gap: 0 15px;
-    color: #212121;
+    color: var(--primay_font_color);
 }
 
 a.read_more:hover path {
@@ -104,6 +121,13 @@ a.read_more:hover path {
 
 a {
     text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    text-decoration-line: unset;
+    -moz-text-decoration-line: unset;
 }
 
 p:last-child {
@@ -112,13 +136,13 @@ p:last-child {
 
 .wrapper,
 .main_nav .navbar {
-    max-width: 1544px;
+    max-width: 1614px;
     margin: 0 auto;
     position: unset;
 }
 
 section .wrapper {
-    max-width: 1560px;
+    max-width: 1614px;
     padding: 0 30px;
 }
 
@@ -128,6 +152,7 @@ section .wrapper {
     background: linear-gradient(180deg, #BF2126 0%, #3F0002 100%);
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -155,6 +180,7 @@ section .black_button {
     background: var(--Linear, linear-gradient(180deg, #626262 0%, #000 100%));
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -165,20 +191,23 @@ section .black_button {
     white-space: pre;
     border: none;
 }
-section .red_text{
-    color: #BF2126;
+
+section .red_text {
+    color: var(--secondary_font_color);
 }
+
 section .black_button:hover {
     transition: 1s ease all;
     -webkit-transition: 1s ease all;
     -moz-transition: 1s ease all;
     -ms-transition: 1s ease all;
     -o-transition: 1s ease all;
-    background: var(--Linear, linear-gradient(180deg, #BF5121 0%, #4B1700 100%));
+    background: var(--Linear, linear-gradient(180deg, #FFF 0%, #BDBDBD 100%));
+    color: #BF2126;
 }
 
-section h2 + img,
-section h1 + img{
+section h2+img,
+section h1+img {
     margin-bottom: 30px;
 }
 
@@ -189,6 +218,7 @@ section h1 + img{
     background: var(--Linear, linear-gradient(180deg, #BF5121 0%, #4B1700 100%));
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -216,8 +246,9 @@ section .white_button {
     padding: 10px 20px;
     border-radius: 5px;
     background: var(--Linear, linear-gradient(180deg, #FFF 0%, #BDBDBD 100%));
-    color: #BF2126;
+    color: var(--secondary_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -263,28 +294,8 @@ section .white_button:hover {
 
 .product_added_to_wislist .modal.show .modal-dialog h5 {
     color: var(--Red, #BF2126);
-    text-align: center;
     font-family: "Roboto Condensed", sans-serif;
-    font-optical-sizing: auto;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: uppercase;
-    margin-bottom: 50px;
-}
-
-.product_added_to_wislist .product {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.product_added_to_wislist p.product_name,
-.product_added_to_wislist p.price {
-    color: var(--Alternate-Black, #212121);
-    font-family: "Roboto Condensed", sans-serif;
-    font-optical-sizing: auto;
+    font-stretch: condensed;
     font-size: 25px;
     font-style: normal;
     font-weight: 700;
@@ -293,12 +304,52 @@ section .white_button:hover {
     margin-bottom: 15px;
 }
 
+.product_added_to_wislist .product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product_added_to_wislist p.product_name {
+    color: var(--primay_font_color);
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.product_added_to_wislist p.price {
+    color: var(--primay_font_color);
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.product_added_to_wislist p.price del bdi,
+.product_added_to_wislist p.price {
+    color: var(--primay_font_color);
+}
+
+.product_added_to_wislist p.price ins bdi {
+    color: var(--secondary_font_color);
+}
+
+
 .product_added_to_wislist a.view_wishlist {
     padding: 10px 20px;
     border-radius: 5px;
     background: linear-gradient(180deg, #BF2126 0%, #3F0002 100%);
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -364,6 +415,7 @@ section.product_video .modal-footer button.btn {
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -406,6 +458,7 @@ section.product_video h3#video_modalLabel {
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: clamp(1.5625rem, 1.1642rem + 1.634vw, 3.125rem);
     font-style: normal;
@@ -449,8 +502,9 @@ header div.top_nav {
 
 header div.top_nav .contact span,
 header .main_nav .contact span {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -461,8 +515,9 @@ header .main_nav .contact span {
 
 header div.top_nav .contact a,
 header .main_nav .contact a {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 20px;
     font-style: normal;
@@ -474,9 +529,10 @@ header .main_nav .contact a {
 
 header div.top_nav .promocode span a,
 header .main_nav .promocode span {
-    color: #212121;
+    color: var(--primay_font_color);
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 20px;
     font-style: normal;
@@ -487,8 +543,9 @@ header .main_nav .promocode span {
 }
 
 header div.top_nav .connect_with_us span {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -516,7 +573,7 @@ header div.top_nav .socmed img {
 
 
 header .middle_nav {
-    background-color: #212121;
+    background-color: var(--primay_font_color);
 }
 
 header .middle_nav .logo {
@@ -536,6 +593,7 @@ header .middle_nav a,
 header .middle_nav span {
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -556,6 +614,7 @@ header .middle_nav a.cart span.cart_count {
     -o-border-radius: 50%;
     color: white;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 12px;
     font-style: normal;
@@ -635,8 +694,9 @@ header .main_nav li:hover a svg path {
 }
 
 header .main_nav li>a {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -707,8 +767,9 @@ header ul.sub-menu {
 }
 
 header ul.sub-menu li a {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -813,6 +874,7 @@ header .product_summary {
 header .product_summary span.your_cart {
     color: var(--Red, #BF2126);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 40px;
     font-style: normal;
@@ -851,8 +913,9 @@ header .pop_up_cart svg path {
 }
 
 header p.product_name {
-    color: var(--Alternate-Black, #212121);
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -871,6 +934,7 @@ header p.price span.woocommerce-Price-amount.amount bdi,
 header .middle_nav span.woocommerce-Price-currencySymbol {
     color: var(--Red, #BF2126);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -880,8 +944,9 @@ header .middle_nav span.woocommerce-Price-currencySymbol {
 }
 
 header p.qty {
-    color: var(--Alternate-Black, #212121);
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -895,7 +960,8 @@ header span.close img {
     height: 20px !important;
     object-fit: contain;
 }
-header span.close{
+
+header span.close {
     position: absolute;
     right: 20px;
     top: 75px;
@@ -903,7 +969,8 @@ header span.close{
 
 
 }
-header .cart_main_content{
+
+header .cart_main_content {
     position: relative;
 }
 
@@ -911,6 +978,7 @@ header .pop_up_cart p.total-label,
 header .pop_up_cart .order-total span.woocommerce-Price-amount.amount bdi {
     color: var(--Red, #BF2126);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 30px;
     font-style: normal;
@@ -931,7 +999,7 @@ header .pop_up_cart .product_summary .group_button {
     padding-top: 32px;
 }
 
-header .pop_up_cart .product_summary .group_button a{
+header .pop_up_cart .product_summary .group_button a {
     justify-content: center;
 }
 
@@ -971,9 +1039,11 @@ footer .wrapper {
     justify-content: space-between;
     width: 100%;
 }
-.copy_right p{
+
+.copy_right p {
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -987,13 +1057,14 @@ footer .col {
     max-width: fit-content;
 }
 
-footer .row{
+footer .row {
     justify-content: space-between;
 }
 
 footer h5 {
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -1007,6 +1078,7 @@ footer h5 {
 footer a {
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-optical-sizing: auto;
     font-size: 18px;
     font-style: normal;
@@ -1025,13 +1097,15 @@ footer a:last-child {
 footer .logo {
     margin-bottom: 22px;
 }
-footer .my_account{
+
+footer .my_account {
     display: flex;
     flex-wrap: wrap;
     max-width: 330px;
     gap: 0 30px;
 }
-footer .my_account a{
+
+footer .my_account a {
     width: calc(50% - 15px);
 }
 
@@ -1093,11 +1167,13 @@ footer .my_account a{
     header ul.sub-menu {
         background-color: transparent;
     }
-    header .main_nav ul#menu-ocfireworksnavmenu{
+
+    header .main_nav ul#menu-ocfireworksnavmenu {
         max-height: 600px;
         overflow-y: scroll;
     }
-    header .main_nav li{
+
+    header .main_nav li {
         padding: 25px 20px;
     }
 }
@@ -1121,8 +1197,8 @@ footer .my_account a{
         padding: 70px 30px;
     }
 
-    section .wrapper ,
-    footer .wrapper{
+    section .wrapper,
+    footer .wrapper {
         padding: 0;
         max-width: 100%;
     }
@@ -1166,19 +1242,23 @@ footer .my_account a{
         -ms-transform: rotate(270deg);
         -o-transform: rotate(270deg);
     }
-    header div.top_nav .row{
+
+    header div.top_nav .row {
         gap: 24px 0;
     }
+
     footer .col {
         width: calc(100% / 3);
         flex: 0 0 auto;
         max-width: 100%;
     }
-    footer .row{
+
+    footer .row {
         justify-content: unset;
         gap: 30px 0;
     }
-    footer .my_account{
+
+    footer .my_account {
         max-width: 100%;
     }
 }
@@ -1223,7 +1303,7 @@ footer .my_account a{
         flex-wrap: wrap;
     }
 
-    
+
 
     .copy_right {
         padding: 51px 30px;
@@ -1236,15 +1316,18 @@ footer .my_account a{
     header .pop_up_cart svg {
         left: 16px;
     }
+
     header .main_nav .group_top_nav {
         padding: 15px 0;
         flex-direction: column;
         gap: 12px 0;
     }
-    header .main_nav .promocode a{
-        color: #212121;
+
+    header .main_nav .promocode a {
+        color: var(--primay_font_color);
         text-align: center;
-        font-family: "Roboto Condensed",sans-serif;
+        font-family: "Roboto Condensed", sans-serif;
+        font-stretch: condensed;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -1252,7 +1335,8 @@ footer .my_account a{
         text-decoration-line: underline;
         text-transform: uppercase;
     }
-    footer .my_account a{
+
+    footer .my_account a {
         width: 100%;
     }
 }
@@ -1313,16 +1397,20 @@ footer .my_account a{
         top: 10px;
         right: 10px;
     }
-    header .main_sub_menu{
+
+    header .main_sub_menu {
         padding: 0;
     }
-    header .main_nav li{
+
+    header .main_nav li {
         padding: 15px 12px;
     }
-    header .main_sub_menu ul.child_sub_menu li{
+
+    header .main_sub_menu ul.child_sub_menu li {
         width: 100%;
     }
-    footer .my_account{
+
+    footer .my_account {
         flex-direction: column;
     }
 }
@@ -1360,18 +1448,21 @@ footer .my_account a{
 }
 
 @media (max-width: 390px) {
-    header .middle_nav .left_menu>div{
+    header .middle_nav .left_menu>div {
         flex-wrap: wrap;
         gap: 30px 12px;
     }
-    header .main_nav .navbar-brand img{
+
+    header .main_nav .navbar-brand img {
         max-width: 200px;
     }
-    .copy_right .payment_method{
+
+    .copy_right .payment_method {
         flex-wrap: wrap;
         justify-content: center;
     }
-    footer .col{
+
+    footer .col {
         width: 100%;
     }
 }

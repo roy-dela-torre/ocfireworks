@@ -1,34 +1,27 @@
 section.events .header{
-    max-width: 1084px;
-    margin: 0 auto 60px auto;
-}
-section.events img{
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    max-width: 1048px;
+    margin: 0 auto calc(60px - 24px) auto;
 }
 section.events .content{
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 309px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    overflow: hidden;
 }
-section.events h3{
-    color: #FFF;
-    text-align: center;
-    font-family: "Roboto Condensed",sans-serif;
-    font-size: clamp(1.5625rem, 1.3235rem + 0.9804vw, 2.5rem);
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: uppercase;
-    position: absolute;
+section.events h2{
+    max-width: 350px;
+    padding: 30px;
 }
-section.events {}
-section.events {}
-section.events {}
-section.events {}
-section.events {}
-section.events {}
+section.events img{
+    min-height: 309px;
+}
+section.events .row{
+    gap: 24px 0;
+}

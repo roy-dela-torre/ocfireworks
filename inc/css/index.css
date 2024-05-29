@@ -63,6 +63,12 @@ section.brands #brands{
     margin-bottom: 50px;
 }
 
+section.brands h2{
+    color: var(--primay_font_color);
+}
+.owl-carousel .owl-stage{
+    display: flex;
+}
 
 
 section.shop_by_categories {
@@ -127,7 +133,7 @@ section.special_product .header{
 
 section.featured_product h2,
 section.special_product h2{
-    color: #212121;
+    color: var(--primay_font_color);
 }
 section.featured_product .row,
 section.special_product .row{
@@ -255,7 +261,7 @@ section.blogs .small_content img {
 }
 
 section.blogs span.date {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -347,7 +353,7 @@ section.reach_out_to_us input[type="submit"] {
 section.reach_out_to_us input[type="submit"]:hover {
     transition: .5 ease all;
     background: var(--Linear, linear-gradient(180deg, #FFF 0%, #BDBDBD 100%));
-    color: #BF2126;
+    color: var(--secondary_font_color);
     -webkit-transition: .5 ease all;
     -moz-transition: .5 ease all;
     -ms-transition: .5 ease all;
@@ -559,7 +565,7 @@ section.news_letter input[type="submit"] {
 section.news_letter input[type="submit"]:hover {
     transition: .5 ease all;
     background: var(--Linear, linear-gradient(180deg, #FFF 0%, #BDBDBD 100%));
-    color: #BF2126;
+    color: var(--secondary_font_color);
     -webkit-transition: .5 ease all;
     -moz-transition: .5 ease all;
     -ms-transition: .5 ease all;

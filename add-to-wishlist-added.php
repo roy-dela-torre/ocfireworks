@@ -51,6 +51,6 @@ global $product;
 		 *
 		 * @return string
 		 */
-		echo wp_kses_post( apply_filters( 'yith_wcwl_browse_wishlist_label', '<img loading="lazy" src="' . esc_url( get_stylesheet_directory_uri() ) . '/assets/img/global/added_to_wishlist.png" alt="">', $product_id ) ); ?>
+		echo wp_kses_post( apply_filters( 'yith_wcwl_browse_wishlist_label', '<img src="' . esc_url( get_stylesheet_directory_uri() ) . '/assets/img/global/added_to_wishlist.png" alt="">', $product_id ) ); ?>
 	</a>
 </div>

@@ -22,9 +22,10 @@ $gravatar_url = get_avatar_url( $current_user->user_email, array( 'size' => 150 
 <div class="col-lg-3">
     <nav class="woocommerce-MyAccount-navigation d-none d-lg-block sticky-top">
         <div class="profile">
-            <div class="image d-flex flex-column align-items-center mb-[30px]">
+            <div class="image d-flex flex-column align-items-center position-relative">
                 <img loading="lazy" src="<?php echo esc_url( $gravatar_url ); ?>" alt="Profile Image" class="mb-3 profile-image rounded-circle img-fluid" width="100" height="100">
                 <p class="name text-center">Hi <?php echo esc_attr( $current_user->first_name ); ?> <?php echo esc_attr( $current_user->last_name ); ?></p>
+                <a href="https://en.gravatar.com/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
             </div>
         </div>
         <ul class="mb-0">

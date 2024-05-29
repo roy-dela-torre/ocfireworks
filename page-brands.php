@@ -5,9 +5,12 @@
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
+                <div class="header">
+                    <h1 class="text-center red_text">Lorem Ipsum Brands</h1>
+                </div>
                 <?php
                 $product_categories = get_terms(array(
-                    'taxonomy' => 'product_cat', // assuming 'product_cat' is the taxonomy for WooCommerce product categories
+                    'taxonomy' => 'brands', // assuming 'product_cat' is the taxonomy for WooCommerce product categories
                     'hide_empty' => false, // set to true if you want to hide empty categories
                 ));
                 if ($product_categories && !is_wp_error($product_categories)) {
@@ -63,7 +66,7 @@
         const nextButton = $("#next-button");
         const prevButton = $("#prev-button");
 
-        const paginationLimit = 8;
+        const paginationLimit = 12;
         const pageCount = Math.ceil(listItems.length / paginationLimit);
         let currentPage = 1;
 

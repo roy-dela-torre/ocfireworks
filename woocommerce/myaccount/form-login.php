@@ -54,7 +54,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 							<p class="form-row">
 								<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
-								<button type="submit" class="red_button woocommerce-button button woocommerce-form-login__submit<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><?php esc_html_e( 'Log in', 'woocommerce' ); ?></button>
+								<button type="submit" class="black_button woocommerce-button button woocommerce-form-login__submit<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><?php esc_html_e( 'Log in', 'woocommerce' ); ?></button>
 							</p>
 							<div class="group">
 								<p class="login-remember">
@@ -73,7 +73,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 				</div>
 				<div class="col-lg-6 col-md-12">
 					<div class="image">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/login_image.jpg" alt="">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/login_image.jpg" alt="Login">
 					</div>
 				</div>
 			</div>

@@ -15,12 +15,11 @@
                     <h1 class="text-white">Login</h1>
                     <p class="text-white">Welcome back! Let's ignite some excitement and log in for a dazzling experience.</p>
                     <?php echo do_shortcode('[custom_login_form]'); ?>
-                    <p class="text-center">Don’t Have an Account? <strong><a href="<?php echo get_home_url(); ?>/login/" target="_blank" rel="noopener noreferrer"></a></strong></p>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
                   <div class="image">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/login_image.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/login_image.jpg" alt="Login">
                   </div>
                 </div>
             </div>

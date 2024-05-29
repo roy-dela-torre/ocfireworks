@@ -25,6 +25,9 @@ section.registration input:not([type="submit"]):not([name="rememberme"]) {
     /* 138.889% */
 
 }
+section.registration input:not([type="submit"]):not([name="rememberme"]).invalid{
+    border: 1px solid red;
+}
 
 section.registration input:not([type="submit"]):not([name="rememberme"]):focus {
     outline: none;
@@ -43,6 +46,10 @@ section.registration input:not([type="submit"])::placeholder {
 section.registration p.register-remember {
     display: flex;
 }
+section.registration p.register-remember label{
+    display: flex;
+    gap: 0 15px;
+}
 
 
 section.registration p.register-remember label span {
@@ -52,7 +59,7 @@ section.registration p.register-remember label span {
     font-style: normal;
     font-weight: 300;
     line-height: 25px;
-    /* 138.889% */
+    width: calc(100% - 30px);
 }
 section.registration p.register-remember label span a{
     color: #FFF;
@@ -80,6 +87,7 @@ section.registration .image img {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     width: 100%;
+    max-height: 630px;
 }
 
 section.registration input#rememberme {
@@ -89,13 +97,13 @@ section.registration input#rememberme {
     background: none;
     cursor: pointer;
     line-height: 0;
-    margin: 0 .6em 0 0;
     outline: 0;
     padding: 0 !important;
     vertical-align: text-top;
     height: 15px;
     width: 15px;
     -webkit-appearance: none;
+    margin-top: 5px;
 }
 
 section.registration input#rememberme:hover {
@@ -221,7 +229,7 @@ section.registration button.woocommerce-Button.woocommerce-button.button.woocomm
     -ms-transition: 1s ease all;
     -o-transition: 1s ease all;
     background: var(--Linear, linear-gradient(180deg, #FFFFFF 0%, #BDBDBD 100%));
-    color: #BF2126;
+    color: var(--secondary_font_color);
 }
 
 .woocommerce form .form-row::after,
@@ -259,7 +267,7 @@ section.registration a {
 }
 
 form.woocommerce-form.woocommerce-form-register.register p:nth-child(-n+ 4) {
-    width: calc(50% - 12px);
+    width: calc(50% - 7.5px);
 }
 
 form.woocommerce-form.woocommerce-form-register.register p {
@@ -273,8 +281,9 @@ p.woocommerce-form-row.woocommerce-form-row--wide.form-row.form-row-wide {
 form.woocommerce-form.woocommerce-form-register.register {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 15px;
     margin-top: 30px;
+    margin-bottom: 0;
 }
 
 @media (max-width: 991px) {
@@ -294,5 +303,11 @@ form.woocommerce-form.woocommerce-form-register.register {
 @media (max-width: 767px) {
     form.woocommerce-form.woocommerce-form-register.register p:nth-child(-n+ 4){
         width: 100%;
+    }
+}
+
+@media (max-width:575px) {
+    section.registration .signup_form{
+        padding: 30px;
     }
 }

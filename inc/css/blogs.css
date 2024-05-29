@@ -86,7 +86,7 @@ section.blogs .small_content img {
 }
 
 section.blogs span.date {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -169,7 +169,7 @@ section.other_blogs .main_content {
 }
 
 section.other_blogs span.date {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -278,5 +278,10 @@ section.other_blogs .blog_image img {
     section.blogs .main_content>div img,
     section.other_blogs .blog_image img {
         min-height: 350px;
+    }
+}
+@media (max-width:575px) {
+    section.other_blogs h2{
+        margin-bottom: 0;
     }
 }

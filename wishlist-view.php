@@ -20,12 +20,14 @@ if (!defined('YITH_WCWL')) {
                 $price = $item->get_formatted_product_price();
                 $product_url = esc_url(get_permalink(apply_filters('woocommerce_in_cart_product', $item->get_product_id())));
                 $product_id = $item->get_product_id();
-
+                $video_iframe = get_field('video_iframe', $product_id);
                 // Get image URL
                 $image_id = $product->get_image_id();
                 if ($image_id) {
                     $img_url = wp_get_attachment_image_src($image_id, 'full')[0];
                 }
+
+
 
                 // Set up data to pass to the template
                 $data = array(
@@ -36,7 +38,8 @@ if (!defined('YITH_WCWL')) {
                     'product_url' => $product_url,
                     'product' => $product,
                     'product_id' => $product_id,
-                    'item' => $item
+                    'item' => $item,
+                    'video_iframe' => $video_iframe
                 );
 
                 // Load the template
@@ -48,6 +51,9 @@ if (!defined('YITH_WCWL')) {
                 <?php
                 $content = ob_get_clean();
                 echo $content; // Output the content
+
+
+                
             endif;
         endforeach;
 

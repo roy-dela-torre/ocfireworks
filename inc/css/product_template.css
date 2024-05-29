@@ -87,7 +87,7 @@
 }
 
 .product_content h3 {
-    color: #BF2126;
+    color: var(--secondary_font_color);
     margin-bottom: 16px;
 }
 
@@ -112,8 +112,8 @@
     line-height: normal;
 }
 
-.product_content p.price {
-    color: #BF2126;
+.product_content span.woocommerce-Price-amount.amount bdi  {
+    color: var(--secondary_font_color);
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
     font-size: clamp(1.125rem, 1.0135rem + 0.4575vw, 1.5625rem);
@@ -128,7 +128,14 @@
     gap: 0 5px;
 }
 
-.product_content p.price del bdi {
+.product_content p.price{
+    display: flex;
+    align-items: center;
+    gap: 0 5px;
+    justify-content: center;
+}
+
+.product_content del span.woocommerce-Price-amount.amount bdi {
     color: var(--Alternate-Black, #212121);
 }
 .product_content p.price del{

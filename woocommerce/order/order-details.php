@@ -38,92 +38,91 @@ if ( $show_downloads ) {
         )
     );
 }
-?>
+else if(!is_order_received_page()): ?>
+	<div class="woocommerce-order-details">
+		<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
 
-<div class="woocommerce-order-details">
-    <?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
+		<h2 class="woocommerce-order-details__title"><?php esc_html_e( 'Order details', 'woocommerce' ); ?></h2>
 
-    <h2 class="woocommerce-order-details__title"><?php esc_html_e( 'Order details', 'woocommerce' ); ?></h2>
-
-	<div class="order-items">
-		<div class="row">
-			<?php
-			// Get current user
-			$current_user = wp_get_current_user();
-			$orders = wc_get_orders(array(
-				'customer' => $current_user->ID,
-				'status'   => array_keys(wc_get_order_statuses()), // Fetch all orders regardless of status
-				'posts_per_page' => -1,
-			));
-			
-			foreach ($orders as $order) {
-				$items = $order->get_items();
-				foreach ($items as $item) {
-					$product = $item->get_product();
-					$img_url = get_the_post_thumbnail_url($product->get_id(), 'large');
-					$video_iframe = get_field('video_iframe', $product->get_id());
-					$price = $product->get_price_html();
-					$title = get_the_title();
-					$product_url = get_the_permalink();
-					$product_id =  $product->get_id();
-					$add_to_cart = '<a href="' . ($product->get_stock_status() === 'outofstock' ? 'javascript:void(0);' : esc_url(wc_get_cart_url() . '?add-to-cart=' . esc_attr($product_id))) . '" target="_blank" class="red_button w-100 text-center">Add to cart</a>';
-					?>
-					<?php
-						// Set up data to pass to the template
-						$data = array(
-							'img_url' => $img_url,     // Image URL
-							'title' => $title, // Product title
-							'price' => $price, // Product price
-							'product_url' => $product_url,
-							'product' => $product,
-							'product_id' => $product_id
-						);
-						// Load the template
-						ob_start();
+		<div class="order-items">
+			<div class="row">
+				<?php
+				// Get current user
+				$current_user = wp_get_current_user();
+				$orders = wc_get_orders(array(
+					'customer' => $current_user->ID,
+					'status'   => array_keys(wc_get_order_statuses()), // Fetch all orders regardless of status
+					'posts_per_page' => -1,
+				));
+				
+				foreach ($orders as $order) {
+					$items = $order->get_items();
+					foreach ($items as $item) {
+						$product = $item->get_product();
+						$img_url = get_the_post_thumbnail_url($product->get_id(), 'large');
+						$video_iframe = get_field('video_iframe', $product->get_id());
+						$price = $product->get_price_html();
+						$title = get_the_title();
+						$product_url = get_the_permalink();
+						$product_id =  $product->get_id();
+						$add_to_cart = '<a href="' . ($product->get_stock_status() === 'outofstock' ? 'javascript:void(0);' : esc_url(wc_get_cart_url() . '?add-to-cart=' . esc_attr($product_id))) . '" target="_blank" class="red_button w-100 text-center">Add to cart</a>';
 						?>
-						<div class="col-md-6 col-sm-12 product_column">
-							<?php echo wc_get_template('template/product_content.php', $data);?>
-						</div>
 						<?php
-							$content = ob_get_clean();
-							// Output the content
-							echo $content; 
-						?>
-					<?php
+							// Set up data to pass to the template
+							$data = array(
+								'img_url' => $img_url,     // Image URL
+								'title' => $title, // Product title
+								'price' => $price, // Product price
+								'product_url' => $product_url,
+								'product' => $product,
+								'product_id' => $product_id
+							);
+							// Load the template
+							ob_start();
+							?>
+							<div class="<?php echo is_order_received_page() ? 'col-xl-3 col-lg-4 col-md-6' : 'col-md-6 col-sm-12'; ?> product_column">
+								<?php echo wc_get_template('template/product_content.php', $data);?>
+							</div>
+							<?php
+								$content = ob_get_clean();
+								// Output the content
+								echo $content; 
+							?>
+						<?php
+					}
 				}
-			}
-			?>
+				?>
+			</div>
 		</div>
+		<div class="order-totals d-none">
+			<?php foreach ( $order->get_order_item_totals() as $key => $total ) : ?>
+				<div class="order-total">
+					<span class="total-label"><?php echo esc_html( $total['label'] ); ?></span>
+					<span class="total-value"><?php echo wp_kses_post( $total['value'] ); ?></span>
+				</div>
+			<?php endforeach; ?>
+
+			<?php if ( $order->get_customer_note() ) : ?>
+				<div class="order-note">
+					<span class="note-label"><?php esc_html_e( 'Note:', 'woocommerce' ); ?></span>
+					<span class="note-value"><?php echo wp_kses_post( nl2br( wptexturize( $order->get_customer_note() ) ) ); ?></span>
+				</div>
+			<?php endif; ?>
+		</div>
+
+		<?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
 	</div>
-    <div class="order-totals d-none">
-        <?php foreach ( $order->get_order_item_totals() as $key => $total ) : ?>
-            <div class="order-total">
-                <span class="total-label"><?php echo esc_html( $total['label'] ); ?></span>
-                <span class="total-value"><?php echo wp_kses_post( $total['value'] ); ?></span>
-            </div>
-        <?php endforeach; ?>
+<?php else: ?>
+	<?php
+	/**
+	 * Action hook fired after the order details.
+	 *
+	 * @since 4.4.0
+	 * @param WC_Order $order Order data.
+	 */
+	do_action( 'woocommerce_after_order_details', $order );
 
-        <?php if ( $order->get_customer_note() ) : ?>
-            <div class="order-note">
-                <span class="note-label"><?php esc_html_e( 'Note:', 'woocommerce' ); ?></span>
-                <span class="note-value"><?php echo wp_kses_post( nl2br( wptexturize( $order->get_customer_note() ) ) ); ?></span>
-            </div>
-        <?php endif; ?>
-    </div>
-
-    <?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
-</div>
-
-<?php
-/**
- * Action hook fired after the order details.
- *
- * @since 4.4.0
- * @param WC_Order $order Order data.
- */
-do_action( 'woocommerce_after_order_details', $order );
-
-if ( $show_customer_details ) {
-    wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
-}
-?>
+	if ( $show_customer_details ) {
+		wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
+	}
+endif; ?>

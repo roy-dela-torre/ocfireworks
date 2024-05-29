@@ -67,9 +67,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 				$("#overlay").hide();
 				
 				const tempDiv = $('<div>').html(response);
-				const newContent = tempDiv.find('ul.products.row.columns-4').html();
-				$('ul.products.row.columns-4').html(newContent);
-				<?php echo get_template_part('pop_function'); ?>
+				const newContent = tempDiv.find('section.product_main ul.products.row.columns-4').html();
+				$('section.product_main ul.products.row.columns-4').html(newContent);
 			},
 			error: function(xhr, status, error) {
 				$("#overlay").hide();
@@ -90,6 +89,5 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 			var newText = $(this).text();
 			$(this).closest('.dropdown').find('.btn').text(newText);
 		});
-		<?php echo get_template_part('pop_function'); ?>
     });
 </script>

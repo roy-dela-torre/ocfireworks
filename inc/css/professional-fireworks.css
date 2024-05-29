@@ -115,7 +115,7 @@ section.professional_firewrorks input.wpcf7-form-control.wpcf7-submit.has-spinne
     -ms-transition: 1s ease all;
     -o-transition: 1s ease all;
     background: var(--Linear, linear-gradient(180deg, #FFFFFF 0%, #BDBDBD 100%));
-    color: #BF2126;
+    color: var(--secondary_font_color);
 }
 
 section.professional_firewrorks h1 {

@@ -43,7 +43,7 @@ section.<?php echo $section; ?> input[type="submit"]{
 section.<?php echo $section; ?> input[type="submit"]:hover{
     transition: .5 ease all;
     background: var(--Linear, linear-gradient(180deg, #FFF 0%, #BDBDBD 100%));
-    color: #BF2126;
+    color: var(--secondary_font_color);
     -webkit-transition: .5 ease all;
     -moz-transition: .5 ease all;
     -ms-transition: .5 ease all;

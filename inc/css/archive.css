@@ -7,12 +7,12 @@ section.banner {
 }
 
 section.banner .content {
-    max-width: 1087px;
+    max-width: 1110px;
     margin: 0 auto;
 }
 
-section.banner .term-description p {
-    color: white;
+section.banner p {
+    color: white !important;
     text-align: center;
 }
 
@@ -28,13 +28,11 @@ section.banner h1 {
 
 
 
+
 section.product_main {
     background: #F8F8F8;
 }
 
-section.product_main .header {
-    margin-bottom: 30px;
-}
 
 section.product_main .absolute_button {
     top: 0;
@@ -71,7 +69,7 @@ section.product_main .product_image:hover::before {
 }
 
 section.product_main h3 {
-    color: #BF2126;
+    color: var(--secondary_font_color);
     margin-bottom: 16px;
 }
 
@@ -219,7 +217,8 @@ section.product_main nav.woocommerce-pagination ul li a.next.page-numbers {
     border: none;
 }
 
-section.product_main nav.woocommerce-pagination ul li a.page-numbers {
+section.product_main nav.woocommerce-pagination ul li a.page-numbers,
+section.product_main a.page-numbers {
     color: #ACACAC;
     font-family: 'Inter', sans-serif;
     font-size: 18px;
@@ -230,7 +229,8 @@ section.product_main nav.woocommerce-pagination ul li a.page-numbers {
     padding: 0 8px;
 }
 
-section.product_main nav.woocommerce-pagination ul {
+section.product_main nav.woocommerce-pagination ul,
+section.product_main .paging {
     display: flex;
     align-items: center;
     gap: 0 9px;
@@ -238,7 +238,8 @@ section.product_main nav.woocommerce-pagination ul {
     border: none;
 }
 
-section.product_main nav.woocommerce-pagination {
+section.product_main nav.woocommerce-pagination,
+section.product_main .paging {
     margin-top: 60px;
     border: none;
 }
@@ -248,29 +249,90 @@ section.product_main nav.woocommerce-pagination {
     border: none;
 }
 
-.woocommerce nav.woocommerce-pagination ul li span.current{
+.woocommerce nav.woocommerce-pagination ul li span.current,
+section.product_main span.page-numbers.current {
     color: var(--Red, #BF2126);
-    font-family: 'Inter',sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 300;
-    line-height: 25px; /* 138.889% */
+    line-height: 25px;
+    /* 138.889% */
     background-color: transparent;
 }
 
-section.product_main {}
+section.product_main .accordion-item:first-of-type>.accordion-header .accordion-button {
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
 
-section.product_main {}
+section.product_main .accordion-item:first-of-type>.accordion-header .accordion-button:focus {
+    box-shadow: none;
+}
 
-section.product_main {}
+section.product_main .sidebar_filter {
+    border-radius: 10px;
+    overflow: hidden;
+}
 
-section.product_main {}
+section.product_main span.filter {
+    padding: 15px 30px;
+    color: #FFF;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    background-color: var(--primay_font_color);
+    width: 100%;
+    display: block;
+}
 
-section.product_main {}
+section.product_main button.accordion-button {
+    padding: 15px 30px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+section.product_main button.accordion-button:focus{
+    box-shadow: none;
+}
+
+section.product_main button.accordion-button:not(.collapsed) {
+    background: var(--Linear, linear-gradient(180deg, #FFF 0%, #BDBDBD 100%));
+    color: var(--primay_font_color);
+}
+
+section.product_main button.accordion-button:not(.collapsed)::after {
+    background-image: url('../../assets/img/global/accordion_up.png');
+    background-position: center;
+}
+
+section.product_main .accordion-item:last-of-type>.accordion-header .accordion-button.collapsed {
+    background: var(--linear-red, linear-gradient(180deg, #BF2126 0%, #3F0002 100%));
+    color: #FFF;
+}
+
+section.product_main .accordion-item:last-of-type>.accordion-header .accordion-button.collapsed::after {
+    background-image: url('../../assets/img/global/accordion_down.png');
+    background-position: center;
+}
+
+section.product_main .accordion-item {
+    border: none !important;
+}
 
 div#categores ul {
     max-height: 600px;
-    overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 
@@ -278,6 +340,99 @@ div#categores ul {
 section.related_products h2 {
     margin-bottom: 60px;
 }
+
+
+
+
+
+
+div.range-slider {
+    position: relative;
+    width: 100%;
+    height: 95px;
+}
+
+div.range-slider input[type="range"] {
+    pointer-events: none;
+    position: absolute;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: 14px;
+    background: #F1EFEF;
+    box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    left: 0;
+    top: 50px;
+    width: 300px;
+    outline: none;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+div.range-slider input[type="range"]::-webkit-slider-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 14px;
+    background-color: var(--secondary_font_color);
+}
+
+div.range-slider input[type="range"]::-moz-range-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 14px;
+    background-color: var(--secondary_font_color);
+}
+
+div.range-slider input[type="range"]::-ms-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -ms-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 14px;
+    border: 0;
+    background-image: linear-gradient(to bottom, #F1EFEF 0%, #413F41 100%);
+}
+
+div.range-slider input[type=range]::-moz-range-track {
+    position: relative;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 1);
+    border: 0;
+}
+
+div.range-slider input[type=range]:last-of-type::-moz-range-track {
+    -moz-appearance: none;
+    background: none transparent;
+    border: 0;
+}
+
+div.range-slider input[type=range]::-moz-focus-outer {
+    border: 0;
+}
+
+
+
+section.product_main .accordion-item input{
+    accent-color: var(--primay_font_color);
+}
+
+
 
 @keyframes sp-anime {
     100% {

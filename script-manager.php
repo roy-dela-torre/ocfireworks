@@ -15,6 +15,7 @@
         elementsToResize.css('height', tallestHeight);
     }
     function handleProductColumns(columns) {
+        // console.log('asdlsakdjasldkj')
         columns.each(function() {
             $(this).find('.yith-wcwl-add-button img').on('click', function() {
                 $('.wishlist_modal_btn').trigger('click');
@@ -25,11 +26,11 @@
     function updateWishlistModal(button) {
         var contentContainer = button.closest('.product_content');
         var productName = contentContainer.find('h5.text-center').text();
-        var productPrice = contentContainer.find('.price').text();
+        var productPrice = contentContainer.find('.price').html();
         var productImage = contentContainer.find('.product_image img').attr('src');
         $('.product_added_to_wislist .product img').attr('src', productImage);
         $('.product_added_to_wislist p.product_name').text(productName);
-        $('.product_added_to_wislist p.price').text(productPrice);
+        $('.product_added_to_wislist p.price').html(productPrice);
     }
     function popUpcartUpdate(selfUrl){
         $.ajax({
@@ -55,21 +56,51 @@
         }
     }
     $(document).ready(function() {
+        $('.product_column').each(function(){
+            $(this).find('.yith-wcwl-add-button img').click(function(){
+                console.log('wishlist image click')
+                $('.wishlist_modal_btn').trigger('click');
+                updateWishlistModal($(this));
+            })
+        })
         $('span.cart_count').text('<?php echo WC()->cart->get_cart_contents_count(); ?>')
-        console.log(<?php echo WC()->cart->get_cart_contents_count(); ?>)
         // image lazy load
         $('img[loading="lazy"]').each(function() {
-            var originalSrc = $(this).attr('src');
-            var width = $(this).width(); // Get the width of the image
-            var height = $(this).height(); // Get the height of the image
-            $(this).attr({
-                'data-src': originalSrc,
-                'src': originalSrc, // Clear the src attribute
-                'class': $(this).attr('class') + ' lazyloaded', // Add the lazyloaded class
-                'decoding': 'async', // Add the decoding attribute
-                'width': width,
-                'height': height
-            });
+            var $img = $(this);
+            var originalSrc = $img.attr('data-src') || $img.attr('src');
+            var width = $img.width();
+            var height = $img.height();
+
+            // Ensure originalSrc is set properly
+            if (originalSrc) {
+                $img.attr({
+                    'data-src': originalSrc,
+                    'src': '', // Clear the src attribute to trigger lazy loading
+                    'decoding': 'async',
+                    'width': width,
+                    'height': height
+                }).one('error', function() {
+                    // If there's an error loading the image, revert to original src
+                    $(this).attr('src', originalSrc);
+                });
+
+                // Use IntersectionObserver for lazy loading
+                if ('IntersectionObserver' in window) {
+                    var observer = new IntersectionObserver(function(entries, observer) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                var img = entry.target;
+                                img.src = img.getAttribute('data-src');
+                                observer.unobserve(img);
+                            }
+                        });
+                    });
+                    observer.observe(this);
+                } else {
+                    // Fallback for browsers without IntersectionObserver support
+                    $img.attr('src', originalSrc);
+                }
+            }
         });
         
 
@@ -128,29 +159,30 @@
             <path d="M11.9831 16.5C11.7201 16.4981 11.4603 16.4426 11.2195 16.3369C10.9788 16.2312 10.7622 16.0776 10.5831 15.8854L5.25311 10.1972C5.0796 10.0028 4.98914 9.74835 5.00104 9.48827C5.01294 9.2282 5.12625 8.98306 5.31679 8.80519C5.50733 8.62732 5.76001 8.5308 6.02089 8.53624C6.28177 8.54167 6.53018 8.64864 6.71311 8.8343L11.9831 14.4626L17.2531 8.8343C17.3418 8.73488 17.4496 8.65418 17.57 8.59695C17.6904 8.53972 17.8211 8.50711 17.9544 8.50104C18.0877 8.49497 18.2208 8.51557 18.346 8.56161C18.4711 8.60766 18.5858 8.67823 18.6832 8.76917C18.7806 8.86011 18.8588 8.96957 18.9132 9.09112C18.9676 9.21266 18.997 9.34383 18.9998 9.47691C19.0026 9.60998 18.9786 9.74226 18.9294 9.86597C18.8802 9.98968 18.8066 10.1023 18.7131 10.1972L13.3871 15.8844C13.2076 16.0772 12.9905 16.2313 12.749 16.3372C12.5075 16.4431 12.2469 16.4985 11.9831 16.5Z" fill="#212121"/>
             </svg>`);
 
-        var iframeHTML;
-        
-       
+            var iframeHTML;
+            function replaceThumbnailWithIframe() {
+                if (typeof iframeHTML !== 'undefined') {
+                    $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+                } else {
+                    console.error('iframeHTML is not defined');
+                }
+            }
+            $('.product_column .play').click(function() {
+                iframeHTML = $(this).closest('.product_column').find('.iframe').html();
+                console.log(iframeHTML)
+                var title = $(this).closest('.product_column').find('h3.product_title').text();
+                $('#video_modal #video_modalLabel').text(title);
+                $('.video_modal').click();
+            });
+            $('img.play_button').click(replaceThumbnailWithIframe);
+            $('img.play_button').click(function(){
+                $(this).hide()
+            })
 
-        $('section.special_product .product_column .play, section.featured_product .product_column .play').click(function() {
-            iframeHTML = $(this).closest('.product_column').find('.iframe').html();
-            console.log(iframeHTML)
-            var title = $(this).closest('.product_column').find('h3.product_title').text();
-            $('#video_modal #video_modalLabel').text(title);
-            $('.video_modal').click();
-        });
-
-        $('img.play_button').click(replaceThumbnailWithIframe);
-        
-        $('img.play_button').click(function(){
-            $(this).hide();
-        });
-
-        $('div#video_modal button.btn-secondary').click(function(){
-            $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
-            $('img.play_button').show();
-        });
-
+            $('div#video_modal button.btn.btn-secondary').click(function(){
+                $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
+                $('img.play_button').show()
+            })
 
         
         var next = $('<img>', {
@@ -164,6 +196,7 @@
         });
         $('a.prev.page-numbers').html(prev);
 
+        handleProductColumns($('section.searchResults .row .product_column'));
 
     });
     
@@ -293,7 +326,7 @@
 <?php elseif(is_page('curbside-pickup')):?>
     <script>
         $(document).ready(function () {
-            $('.maps img').hover(function(){
+            $('.maps img,.content img').hover(function(){
                 $(this).replaceWith(`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2979.830235591817!2d-86.12994982392547!3d41.68100967126406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8816cfced2f51055%3A0x31b6dc1f1e028037!2sOCFireworks.com!5e0!3m2!1sen!2sph!4v1715232345741!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`);
             })
         });
@@ -304,9 +337,53 @@
            
         })
     </script>
-<?php elseif(is_archive()):?>
+<?php elseif(is_archive() || is_page('wholesale-fireworks-online')):?>
     <script type="text/javascript">
+        function getVals($sliderSection) {
+            var $sliders = $sliderSection.find('input[type="range"]');
+            var slide1 = parseFloat($sliders.eq(0).val());
+            var slide2 = parseFloat($sliders.eq(1).val());
+
+            // Neither slider will clip the other, so make sure we determine which is larger
+            if (slide1 > slide2) {
+                var tmp = slide2;
+                slide2 = slide1;
+                slide1 = tmp;
+            }
+
+            var $displayElement = $sliderSection.find('.rangeValues');
+            $displayElement.text("$" + slide1 + " - $" + slide2);
+
+            // Get all products
+            $('.product_column').each(function() {
+                var $product = $(this);
+                var price = parseFloat($product.find('.price ins .woocommerce-Price-amount').text().replace('$', '')) || 
+                            parseFloat($product.find('.price .woocommerce-Price-amount').first().text().replace('$', ''));
+
+                if (price >= slide1 && price <= slide2) {
+                    $product.show();
+                } else {
+                    $product.hide();
+                }
+            });
+        }
+
+        function initializeSlider($sliderSection) {
+            var $sliders = $sliderSection.find('input[type="range"]');
+            $sliders.on('input', function() {
+                getVals($sliderSection);
+            });
+            // Manually trigger event first time to display values
+            $sliders.eq(0).trigger('input');
+        }
+
+        // Initialize sliders for mobile and desktop
+        $('#price_mobile .range-slider, #price .range-slider').each(function() {
+            initializeSlider($(this));
+        });
+ 
         $(document).ready(function(){
+              // Initialize Sliders
             // $('section.product_main li').each(function(){
             //     $(this).click(function(){
             //         $(this).find('a').click()
@@ -342,11 +419,11 @@
 <?php elseif(is_single()):?>
     <script>
         $(document).ready(function () {
-            $('div#review_form_wrapper div#review_form').hide()
-            $('div#write_a_review .modal-content').html($('div#review_form_wrapper div#review_form').html())
-            $('button.write_review').click(function(){
-                $('div#write_a_review .comment-form-rating p.stars').slice(1).remove();
-            })
+            // $('div#review_form_wrapper div#review_form').hide()
+            // $('div#write_a_review .modal-content').html($('div#review_form_wrapper div#review_form').html())
+            // $('button.write_review').click(function(){
+            //     $('div#write_a_review .comment-form-rating p.stars').slice(1).remove();
+            // })
 
             const comments = $('ol.commentlist li');
             const maxVisibleComments = 3;
@@ -445,4 +522,12 @@
             })
         });
     </script>
+<?php elseif(is_page('4th-of-july-fireworks-for-sale') || is_page(257)):?>
+<script>
+    $(document).ready(function () {
+        setEqualHeightForSection('section.best_fire_word','h3')
+        setEqualHeightForSection('section.how_to_plan_you_4th_of_july','h3')
+        setEqualHeightForSection('section.how_to_use_4th_of_july','h3')
+    });
+</script>
 <?php endif;?>

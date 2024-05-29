@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="uoVUFD_osDNOnE_y3kkfMsHP4EFWD1wXbIilGyizDPo" />	
-    <title><?php the_title();?></title>
+    <title><?php wp_title();?></title>
     <?php include('stylesheet-manager.php')?>
     <?php wp_head()?>
     <!-- Google tag (gtag.js) -->
@@ -214,7 +214,7 @@ $home = get_home_url();
                                                 LOGOUT
                                             </a>
                                         <?php else: ?>
-                                            <a href="<?php echo $home;?>/login/" target="_blank" rel="noopener noreferrer">
+                                            <a href="<?php echo $home;?>/my-account/" target="_blank" rel="noopener noreferrer">
                                                 LOGIN
                                             </a>
                                         <?php endif; ?>

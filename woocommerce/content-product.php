@@ -28,6 +28,9 @@ $col = "";
 if (is_page('recently-viewed') || is_archive()) {
     $col = "col-xl-4 col-sm-6 col-12";
 }
+else if (is_page()) {
+    $col = "col-xl-4 col-sm-6 col-12";
+}
 elseif(is_account_page() && ! is_page('recently-viewed')){
     $col = "col-xl-4 col-sm-6 col-12";
 }
@@ -47,11 +50,15 @@ $data = array(
 
 // Load the template
 ob_start();
-?>
+if(is_page('4th of July Fireworks for Sale | OC Fireworks') || is_page(281)): ?>
+    <div class="<?php echo $col; ?> product_column">
+        <?php echo wc_get_template('template/product_content.php', $data); ?>
+    </div>
+<?php else: ?>
 <div class="<?php echo $col; ?> product_column">
     <?php echo wc_get_template('template/product_content.php', $data); ?>
 </div>
-<?php
+<?php endif;
 $content = ob_get_clean();
 // Output the content
 echo $content;

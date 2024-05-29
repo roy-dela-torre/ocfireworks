@@ -16,7 +16,6 @@
  */
 
 defined( 'ABSPATH' ) || exit; ?>
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/forgot_password.css">
 <section class="forget_password">
 	<div class="wrapper">
 		<div class="container-fluid">
@@ -26,7 +25,7 @@ defined( 'ABSPATH' ) || exit; ?>
 						<h1 class="text-white">Spark a New Password </h1>
 						<?php do_action( 'woocommerce_before_lost_password_form' ); ?>
 							<form method="post" class="woocommerce-ResetPassword lost_reset_password">
-								<p><?php echo apply_filters( 'woocommerce_lost_password_message', esc_html__( 'Let\'s get you back in. Enter your email address and we\'ll send you instructions to reset your password', 'woocommerce' ) ); ?></p><?php // @codingStandardsIgnoreLine ?>
+								<p class="mb-0"><?php echo apply_filters( 'woocommerce_lost_password_message', esc_html__( 'Let\'s get you back in. Enter your email address and we\'ll send you instructions to reset your password', 'woocommerce' ) ); ?></p><?php // @codingStandardsIgnoreLine ?>
 								<input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" autocomplete="username" placeholder="Enter your username or email address"/>
 								<?php do_action( 'woocommerce_lostpassword_form' ); ?>
 								<p class="woocommerce-form-row form-row">

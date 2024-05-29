@@ -115,18 +115,30 @@ section.login input#rememberme:checked:before {
 }
 
 
-form.custom-login-form p,
-form.woocommerce-ResetPassword.lost_reset_password p {
+form.custom-login-form p {
     margin-bottom: 0;
 }
 
-form.custom-login-form,
-form.woocommerce-ResetPassword.lost_reset_password {
+form.custom-login-form{
     display: flex;
     flex-direction: column;
     gap: 15px 0;
     margin-bottom: 0;
 }
+form.custom-login-form  input#wp-submit{
+    margin-top: 15px;
+}
+section.login .login_form>p:nth-child(2){
+    margin-bottom: 30px;
+}
+
+section.login button.black_button{
+    width: 100%;
+    border: none;
+    justify-content: center;
+}
+
+
 
 section.login .group {
     display: flex;
@@ -190,7 +202,7 @@ section.login .group a {
     -ms-transition: 1s ease all;
     -o-transition: 1s ease all;
     background: var(--Linear, linear-gradient(180deg, #FFFFFF 0%, #BDBDBD 100%));
-    color: #BF2126;
+    color: var(--secondary_font_color);
 }
 
 .woocommerce form .form-row::after,
@@ -232,10 +244,21 @@ section.login a {
     }
 
     section.login .row {
-        gap: 50px 0;
+        gap: 30px 0;
     }
 
     section.login .image img {
         width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    section.login .login_form{
+        padding: 30px;
+    }
+    section.login .group{
+        flex-direction: column;
+        gap: 20px 0;
+        align-items: start;
     }
 }

@@ -28,7 +28,7 @@ section.searchResults .product_content h5{
     -webkit-line-clamp: 2;
 }
 section.searchResults h3 {
-    color: #BF2126;
+    color: var(--secondary_font_color);
     margin-bottom: 16px;
 }
 section.searchResults .product_reviews {
@@ -56,7 +56,7 @@ section.searchResults p.price {
     margin-bottom: 30px;
 }
 section.searchResults p.price ins{
-    color: #BF2126;
+    color: var(--secondary_font_color);
 }
 section.searchResults .add_to_cart a {
     border-radius: 0px 0px 5px 5px;
@@ -77,6 +77,22 @@ section.searchResults .add_to_cart a {
 section.searchResults .row {
     gap: 24px 0;
 }
+
+section.searchResults .product_column>div{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    overflow: hidden;
+} 
+
+
+
+
+
+
+
 
 
 section.searchResults .small_content .content {
@@ -103,7 +119,7 @@ footer {
     background-color: #F8F8F8;
 }
 section.searchResults span.date {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -133,7 +149,7 @@ section.searchResults .small_content h3 {
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
-    color: #212121;
+    color: var(--primay_font_color);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -142,7 +158,7 @@ section.searchResults .small_content h3 {
 }
 
 section.searchResults h1{
-    color: #BF2126;
+    color: var(--secondary_font_color);
     margin-bottom: 50px;
 }
 

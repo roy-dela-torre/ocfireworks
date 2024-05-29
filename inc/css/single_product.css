@@ -25,7 +25,7 @@ section.single_product del bdi {
 }
 
 section.single_product ins bdi {
-    color: #BF2126;
+    color: var(--secondary_font_color);
     font-family: "Roboto Condensed";
     font-size: clamp(1.5625rem, 1.3235rem + 0.9804vw, 2.5rem);
     font-style: normal;
@@ -239,13 +239,14 @@ section.product_reviews .woocommerce-tabs.wc-tabs-wrapper ul.tabs.wc-tabs li {
 
 section.product_reviews .woocommerce-tabs.wc-tabs-wrapper ul.tabs.wc-tabs li.active a {
     border-bottom: 2px solid var(--Red, #BF2126);
-    color: #BF2126 !important;
+    color: var(--secondary_font_color) !important;
 }
 
 section.product_reviews .woocommerce-tabs.wc-tabs-wrapper .left_content_reviews {
-    gap: 0 30px;
+    gap: 30px 0;
     flex-wrap: wrap;
 }
+section.product_reviews .woocommerce-tabs.wc-tabs-wrapper .left_content_reviews
 
 section.product_reviews .woocommerce-tabs.wc-tabs-wrapper .review_summary span {
     color: var(--Alternate-Black, #212121);
@@ -430,7 +431,7 @@ div#write_a_review form#commentform p.form-submit input#submit:hover {
     -ms-transition: .5s ease all;
     -o-transition: .5s ease all;
     background: linear-gradient(180deg, #FFFFFF 0%, #BDBDBD 100%) !important;
-    color: #BF2126 !important;
+    color: var(--secondary_font_color) !important;
 }
 
 
@@ -554,7 +555,7 @@ section.related_products .product_image:hover::before {
 }
 
 section.related_products h3 {
-    color: #BF2126;
+    color: var(--secondary_font_color);
     margin-bottom: 16px;
 }
 

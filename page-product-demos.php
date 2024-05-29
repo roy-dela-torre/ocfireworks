@@ -11,13 +11,13 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/product_demos';
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="content"></div>
-                    <h3 class="red_text text-center"> 2020 Online Virtual Demo</h3>
-                    <img src="<?php echo $img_path; ?>/2020 Online Virtual Demo.jpg" alt="2020 Online Virtual Demo">
+                    <h2 class="red_text text-center"> 2020 Online Virtual Demo</h2>
+                    <img src="<?php echo $img_path; ?>/2020 Online Virtual Demo.jpg" alt="2020 Online Virtual Demo" class="w-100">
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="content"></div>
-                    <h3 class="red_text text-center">2019 Public Demo</h3>
-                    <img src="<?php echo $img_path; ?>/2019 Public Demo.jpg" alt="2019 Public Demo">
+                    <h2 class="red_text text-center">2019 Public Demo</h2>
+                    <img src="<?php echo $img_path; ?>/2019 Public Demo.jpg" alt="2019 Public Demo" class="w-100">
                 </div>
                 <div class="col-lg-12">
                     <div class="full_width">

@@ -20,7 +20,7 @@ section.my_account nav.woocommerce-MyAccount-navigation li a {
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
-    background-color: #BF2126;
+    background-color: var(--secondary_font_color);
     display: block;
 }
 
@@ -29,7 +29,7 @@ section.my_account nav.woocommerce-MyAccount-navigation li {
 }
 
 section.my_account nav.woocommerce-MyAccount-navigation li.is-active a {
-    background-color: #212121;
+    background-color: var(--primay_font_color);
 }
 
 section.my_account ul {
@@ -44,12 +44,12 @@ section.my_account nav.woocommerce-MyAccount-navigation li a:hover {
     -ms-transition: .5s ease all;
     -o-transition: .5s ease all;
     background-color: white;
-    color: #BF2126;
+    color: var(--secondary_font_color);
 }
 
 section.my_account nav.woocommerce-MyAccount-navigation li:last-child a {
     background-color: white;
-    color: #BF2126;
+    color: var(--secondary_font_color);
     display: flex;
     align-items: center;
     gap: 0 10px;
@@ -103,7 +103,7 @@ section.my_account form .form-row .input-text section.my_account::placeholder {
 }
 
 section.my_account h3 {
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -375,7 +375,7 @@ section.my_account .product_content {
 
 .woocommerce-order-details>h2.woocommerce-order-details__title {
     display: block !important;
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -444,7 +444,7 @@ section.my_account .profile{
     margin-bottom: 30px;
 }
 section.my_account .profile p{
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed",sans-serif;
     font-size: 18px;
     font-style: normal;

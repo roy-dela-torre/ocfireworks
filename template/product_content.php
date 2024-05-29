@@ -1,4 +1,4 @@
-<div class="product_content">
+<div class="product_content <?php echo ($product->get_stock_status()=== "outofstock") ? 'outofstock' : ''?>">
     <?php if(!empty($video_iframe)):?>
         <div class="iframe d-none">
             <?php echo $video_iframe; ?>

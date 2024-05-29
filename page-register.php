@@ -37,76 +37,81 @@ get_footer();
 
 <script>
 $(document).ready(function() {
-  // $('button[type="submit"]').click(function(e){
-  //   e.preventDefault();
-  //   var errorMessages = [];
+  $('button[type="submit"]').click(function(e){
+    e.preventDefault();
+    var errorMessages = [];
 
-  //   function addErrorMessage(field, message) {
-  //     errorMessages.push(message);
-  //     field.addClass('error');
-  //   }
+    function addErrorMessage(field, message) {
+      errorMessages.push(message);
+      field.addClass('invalid');
+    }
 
-  //   function clearErrorMessages() {
-  //     errorMessages = [];
-  //     $('input').removeClass('error');
-  //   }
+    function clearErrorMessages() {
+      errorMessages = [];
+      $('input').removeClass('invalid');
+    }
 
-  //   clearErrorMessages();
+    clearErrorMessages();
 
-  //   var regFirstName = $('input#reg_first_name');
-  //   var regLastName = $('input#reg_last_name');
-  //   var regPhone = $('input#reg_phone');
-  //   var regEmail = $('input#reg_email');
-  //   var regPassword = $('input#reg_password');
-  //   var regConfirmPassword = $('input#reg_confirm_password');
+    var regFirstName = $('input#reg_first_name');
+    var regLastName = $('input#reg_last_name');
+    var regPhone = $('input#billing_phone');
+    var regEmail = $('input#reg_email');
+    var regPassword = $('input#password_1');
+    var regConfirmPassword = $('input#password_2');
+    var disclamer = $('input#rememberme');
     
-  //   // Validation for First Name
-  //   if (regFirstName.val() === "") {
-  //     addErrorMessage(regFirstName, "First Name is required.");
-  //   }
+    // Validation for First Name
+    if (regFirstName.val() === "") {
+      addErrorMessage(regFirstName, "First Name is required.");
+    }
 
-  //   // Validation for Last Name
-  //   if (regLastName.val() === "") {
-  //     addErrorMessage(regLastName, "Last Name is required.");
-  //   }
+    // Validation for Last Name
+    if (regLastName.val() === "") {
+      addErrorMessage(regLastName, "Last Name is required.");
+    }
 
-  //   // Validation for Phone
-  //   if (regPhone.val() === "") {
-  //     addErrorMessage(regPhone, "Phone Number is required.");
-  //   }
+    // Validation for Phone
+    if (regPhone.val() === "") {
+      addErrorMessage(regPhone, "Phone Number is required.");
+    }
 
-  //   // Validation for Email
-  //   if (regEmail.val() === "") {
-  //     addErrorMessage(regEmail, "Email is required.");
-  //   } else if (!isValidEmail(regEmail.val())) {
-  //     addErrorMessage(regEmail, "Invalid email address.");
-  //   }
+    // Validation for Disclaimer checkbox
+    if (!disclamer.is(':checked')) {
+      addErrorMessage(disclamer, "Please accept before submitting.");
+    }
 
-  //   // Validation for Password
-  //   if (regPassword.val() === "") {
-  //     addErrorMessage(regPassword, "Password is required.");
-  //   }
+    // Validation for Email
+    if (regEmail.val() === "") {
+      addErrorMessage(regEmail, "Email is required.");
+    } else if (!isValidEmail(regEmail.val())) {
+      addErrorMessage(regEmail, "Invalid email address.");
+    }
 
-  //   // Validation for Confirm Password
-  //   if (regConfirmPassword.val() === "") {
-  //     addErrorMessage(regConfirmPassword, "Confirm Password is required.");
-  //   } else if (regPassword.val() !== regConfirmPassword.val()) {
-  //     addErrorMessage(regConfirmPassword, "Passwords do not match.");
-  //   }
+    // Validation for Password
+    if (regPassword.val() === "") {
+      addErrorMessage(regPassword, "Password is required.");
+    }
 
-  //   if (errorMessages.length > 0) {
-  //     var errorMessage = errorMessages.join("\n");
-  //     swal("Error", errorMessage, "error");
-  //   } 
-  //   else {
-  //     $('form.woocommerce-form.woocommerce-form-register.register').submit();
-  //   }
-  // });
+    // Validation for Confirm Password
+    if (regConfirmPassword.val() === "") {
+      addErrorMessage(regConfirmPassword, "Confirm Password is required.");
+    } else if (regPassword.val() !== regConfirmPassword.val()) {
+      addErrorMessage(regConfirmPassword, "Passwords do not match.");
+    }
 
-  // function isValidEmail(email) {
-  //   // Regular expression for email validation
-  //   var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  //   return emailPattern.test(email);
-  // }
+    if (errorMessages.length > 0) {
+      var errorMessage = errorMessages.join("\n");
+      swal("Error", errorMessage, "error");
+    } else {
+      $('form.woocommerce-form.woocommerce-form-register.register').submit();
+    }
+  });
+
+  function isValidEmail(email) {
+    // Regular expression for email validation
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+  }
 });
 </script>

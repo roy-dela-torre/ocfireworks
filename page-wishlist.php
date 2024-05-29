@@ -65,7 +65,7 @@
         const nextButton = $("#next-button");
         const prevButton = $("#prev-button");
 
-        const paginationLimit = 4;
+        const paginationLimit = 12;
         const pageCount = Math.ceil(listItems.length / paginationLimit);
         let currentPage = 1;
 
@@ -158,9 +158,10 @@ $(document).ready(function() {
                 link.closest('.col-lg-3').remove();
                 var rowSelector = "section.wishlist .row"; // Replace with your row's selector (e.g., "#example tbody tr")
                 var row = $(rowSelector);
-                if (row.length && row.children().length === 0) {
+                if ($('section.wishlist .product_column').length === 0) {
                     // Reload the page
                     location.reload();
+                    
                 }
                 setupPagination();
             },
@@ -169,7 +170,13 @@ $(document).ready(function() {
                 console.error('Error removing product from wishlist:', error);
             }
         });
+        if ($('section.wishlist .product_column').length <= 4) {
+            $('nav.pagination-container').hide()
+        }
     });
+    if ($('section.wishlist .product_column').length <= 4) {
+        $('nav.pagination-container').hide()
+    }
     
     $('#prev-button,#next-button,button.pagination-number').click(function(event) {
         event.preventDefault(); // Prevent the default behavior

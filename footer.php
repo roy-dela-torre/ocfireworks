@@ -1,4 +1,5 @@
 <?php echo get_template_part('video_pop_up'); 
+echo get_template_part('wishlist_pop_up');
 $home_url = get_home_url(); 
 ?>
     <footer>

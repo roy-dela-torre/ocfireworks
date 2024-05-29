@@ -62,7 +62,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             'price' => $price, // Product price
                             'product_url' => $product_url,
                             'product' => $product,
-                            'product_id' => $product_id
+                            'product_id' => $product_id,
+                            'video_iframe' => $video_iframe
                         );
                         // Load the template
                         ob_start();
@@ -150,47 +151,3 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 </section>
 <?php include('wishlist_pop_up.php')?>
 <?php get_footer(); ?>
-<script>
-    function setEqualHeightForSection(sectionSelector, secondSelector) {
-        var elementsToResize = $(sectionSelector).find(secondSelector);
-        var tallestHeight = 0;
-        elementsToResize.each(function () {
-            var height = $(this).height();
-            if (height > tallestHeight) {
-                tallestHeight = height;
-            }
-        });
-        elementsToResize.css('height', tallestHeight);
-    }
-    $(document).ready(function(){
-        var next = $('<img>', {
-            src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/next.png', // Replace with the actual image URL
-            alt: 'Next Image' // Add an alt attribute for accessibility
-        });
-        $('a.next.page-numbers').html(next);
-        var prev = $('<img>', {
-            src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/prev.png', // Replace with the actual image URL
-            alt: 'Next Image' // Add an alt attribute for accessibility
-        });
-        $('a.prev.page-numbers').html(prev);
-        $('.yith-wcwl-wishlistexistsbrowse').hide()
-        $('i.yith-wcwl-icon.fa.fa-heart-o').html(`<img src="<?php echo $img; ?>/add_to_wishlist.png" alt="">`)
-
-        $('section.searchResults .row.product .product_column').each(function() {
-            $(this).find('.yith-wcwl-add-button img').on('click', function() {
-                $('.wishlist_modal_btn').trigger('click');
-                var contentContainer = $(this).closest('.product_content');
-                var productName = contentContainer.find('h3.text-center').text();
-                var productPrice = contentContainer.find('.price').text();
-                var productImage = contentContainer.find('.product_image img').attr('src');
-                console.log('Product Name:', productName);
-                console.log('Product Price:', productPrice);
-                console.log('Product Image:', productImage);
-                $('.product_added_to_wislist img').attr('src', productImage);
-                $('.product_added_to_wislist p.product_name').text(productName);
-                $('.product_added_to_wislist p.price').text(productPrice);
-            });
-        });
-
-    })
-</script>

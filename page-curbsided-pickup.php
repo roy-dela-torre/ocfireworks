@@ -13,7 +13,7 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/curbsided_pickup';
                         <p class="text-white mb-0">Effortless Sparkle: Curbside Pickup Skip the lines and celebrate with ease!  Order your spectacular OC Fireworks display online and pick it up conveniently curbside. It's the perfect way to enjoy a dazzling fireworks show without the hassle.</p>
                     </div>
                 </div>
-                <div class="col-lg-5 d-none d-lg-block ps-lg-5">
+                <div class="col-lg-6 d-none d-lg-block ps-lg-5">
                     <div class="video">
                         <img loading="lazy" src="<?php echo $img_path?>/banner_image.jpg" alt="Curbside Pickup" class="w-100">
                     </div>
