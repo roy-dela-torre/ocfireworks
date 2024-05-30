@@ -42,7 +42,7 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/curbsided_pickup';
                 <div class="col-lg-6 col-md-12">
                     <div class="content">
                         <h2>When you arrive:</h2>
-                        <img src="<?php echo $img_path; ?>/maps.jpg" alt="When you arrive:" class="d-block d-lg-none w-100">
+                        <img src="<?php echo $img_path; ?>/maps.jpg" alt="When you arrive:" class="d-block d-lg-none w-100 maps">
                         <ul>
                            <li> Please check-in upfront</li>
                            <li> You will need your ID and the credit card used to pay for the order</li>

@@ -1,6 +1,16 @@
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/global.css">
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/product_template.css">
+<link rel="preload" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap/bootstrap.min.css"></noscript>
+
+<link rel="preload" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/global_desktop.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/global_desktop.css"></noscript>
+
+<link rel="preload" media="screen and (max-width: 991px)" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/global_mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" media="screen and (max-width: 991px)" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/global_mobile.css"></noscript>
+
+
+<link rel="preload" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/product_template.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/product_template.css"></noscript>
+
 <?php $css_path = get_stylesheet_directory_uri().'/inc/css/'?>
 <?php if(is_front_page()):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>index.css">

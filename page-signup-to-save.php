@@ -8,7 +8,7 @@
                 <div class="col-xl-6">
                     <div class="signup_form">
                         <h1><?php echo the_title(); ?></h1>
-                        <p>Get your promo code and secure your spot for a dazzling fireworks display. Sign up </p>
+                        <p class="mb-0">Get your promo code and secure your spot for a dazzling fireworks display. Sign up </p>
                         <?php echo do_shortcode('[contact-form-7 id="483c1c5" title="Sign up to Save!"]'); ?>
                     </div>
                 </div>

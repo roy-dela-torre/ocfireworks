@@ -63,10 +63,6 @@ $wrapper_classes   = apply_filters(
         ?>
         <div class="carousel-item <?php echo esc_attr( $active_class ); ?>">
             <?php echo wp_get_attachment_image( $post_thumbnail_id, 'full', false, array( 'class' => 'd-block w-100' ) ); ?>
-            <div class="carousel-caption d-none d-md-block">
-                <h5><?php echo esc_html__( 'Slide label', 'your-text-domain' ); ?></h5>
-                <p><?php echo esc_html__( 'Some representative placeholder content for the slide.', 'your-text-domain' ); ?></p>
-            </div>
         </div>
         <?php
         foreach ( $gallery_images as $index => $image_id ) {

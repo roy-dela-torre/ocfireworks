@@ -2,7 +2,7 @@
 $img  = get_stylesheet_directory_uri().'/assets/img/shop_whole_sale';
 ?>
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/wholesale-fireworks-online.css">
-<?php //get_template_part('template/random', 'product');?>
+<?php get_template_part('template/random', 'product');?>
 <section class="why_buy_whole_sale">
     <div class="wrapper">
         <div class="container-fluid">

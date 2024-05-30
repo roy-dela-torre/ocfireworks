@@ -7,8 +7,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="content">
-                        <h1 class="text-white">Let the Good Times Explode!</h1>
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="Let the Good Times Explode" class="w-100 d-block d-lg-none">
+                        <h1 class="text-white">OC Fireworks: Let the Good Times Explode!</h1>
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="OC Fireworks: Let the Good Times Explode" class="w-100 d-block d-lg-none">
                         <p class="text-white">Light up the fun! Shop OC Fireworks for dazzling displays and unforgettable memories.</p>
                         <a href="<?php echo get_home_url(); ?>/shop/" target="_blank" rel="noopener noreferrer" class="shop_now">
                             SHOP NOW
@@ -20,7 +20,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="image">
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="Let the Good Times Explode" class="w-100">
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="OC Fireworks: Let the Good Times Explode" class="w-100">
                     </div>
                 </div>
             </div>
@@ -64,30 +64,35 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                     <div class="content d-flex align-items-center justify-content-center position-relative">
                         <img loading="lazy" src="<?php echo $img; ?>/Events.jpg" alt="Events">
                         <h3 class="text-center text-white position-absolute">Events</h3>
+                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="content d-flex align-items-center justify-content-center position-relative">
                         <img loading="lazy" src="<?php echo $img; ?>/Sky Show.jpg" alt="Sky Show">
                         <h3 class="text-center text-white position-absolute">Sky Show</h3>
+                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="content d-flex align-items-center justify-content-center position-relative">
                         <img loading="lazy" src="<?php echo $img; ?>/Ground Effects.jpg" alt="Ground Effects">
                         <h3 class="text-center text-white position-absolute">Ground Effects</h3>
+                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="content d-flex align-items-center justify-content-center position-relative">
                         <img loading="lazy" src="<?php echo $img; ?>/Novelties.jpg" alt="Novelties">
                         <h3 class="text-center text-white position-absolute">Novelties</h3>
+                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="content d-flex align-items-center justify-content-center position-relative">
                         <img loading="lazy" src="<?php echo $img; ?>/Supplies.jpg" alt="Supplies">
                         <h3 class="text-center text-white position-absolute">Supplies</h3>
+                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
                     </div>
                 </div>
             </div>
@@ -297,7 +302,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <div class="row">
                 <div class="header d-flex align-sm-items-center justify-content-between">
                     <h2 class="text-white text-uppercase mb-0">Sparking Joy with Fireworks</h2>
-                    <a href="http://" target="_blank" rel="noopener noreferrer" class="view_all_blogs white_button text-uppercase">View All Blogs</a>
+                    <a href="<?php echo get_home_url();?>/blogs" target="_blank" rel="noopener noreferrer" class="view_all_blogs white_button text-uppercase">View All Blogs</a>
                 </div>
                 <div class="main_content">
                     <?php

@@ -31,7 +31,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/shipping_info';
                     <h2 class="text-center">ALL ORDERS CONTAINING EXPLOSIVE FIREWORKS MUST BE TRANSPORTED BY COMMONCARRIER FREIGHT (AKA TRACTOR TRAILER.)</h2>
                 </div>
                 <div class="content">
-                    <div class="image">
+                    <div class="image w-100">
                         <img src="<?php echo $img; ?>/video_thumbnail.jpg" alt="">
                     </div>
                     <span class="red">UPS, FEDEX, USPS, DHL WILL NOT TRANSPORT FIREWORKS</span>

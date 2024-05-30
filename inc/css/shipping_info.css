@@ -23,9 +23,11 @@ section.banner p {
 section.video h2{
     margin-bottom: 30px;
 }
-section.video .image img{
+section.video .image img,
+section.video .image iframe{
     width: 100%;
     margin-bottom: 30px;
+    min-height: 410px;
 }
 section.video .header{
     max-width: 1270px;

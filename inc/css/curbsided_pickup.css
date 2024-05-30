@@ -80,8 +80,11 @@ section.content_image p.location{
 section.content_image iframe{
     width: 100%;
     min-height: 500px;
+    margin-bottom: 30px;
 }
-
+section.content_image .img.maps{
+    margin-bottom: 30px;
+}
 
 
 

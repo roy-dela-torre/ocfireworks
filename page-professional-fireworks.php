@@ -8,7 +8,7 @@
                 <div class="col-xl-6">
                     <div class="signup_form">
                         <h2 class="text-white"><?php echo the_title(); ?></h2>
-                        <p>JLicensed Professionals Only. OC Fireworks offers a dazzling selection of high-quality fireworks for professional use. Browse our extensive inventory and contact us to verify your licensing before placing an order.</p>
+                        <p class="mb-0">Licensed Professionals Only. OC Fireworks offers a dazzling selection of high-quality fireworks for professional use. Browse our extensive inventory and contact us to verify your licensing before placing an order.</p>
                         <?php echo do_shortcode('[contact-form-7 id="8480d1d" title="Professional Fireworks"]'); ?>
                     </div>
                 </div>
