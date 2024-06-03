@@ -6,7 +6,7 @@
                 <div class="content d-flex flex-column align-items-center">
                     <h1 class="text-center">Thank you</h1>
                     <p class="text-center">Don't miss out on the dazzling displays! Our fireworks are selling fast, so browse our selection again soon and light up your next celebration.</p>
-                    <a href="<?php get_home_url(); ?>" class="red_button">Back to hompage</a>
+                    <a href="<?php echo get_home_url(); ?>" class="red_button">Back to hompage</a>
                 </div>
             </div>
         </div>

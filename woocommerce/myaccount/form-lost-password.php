@@ -16,6 +16,7 @@
  */
 
 defined( 'ABSPATH' ) || exit; ?>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/forgot_password.css">
 <section class="forget_password">
 	<div class="wrapper">
 		<div class="container-fluid">

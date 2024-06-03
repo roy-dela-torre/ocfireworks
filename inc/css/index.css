@@ -38,6 +38,7 @@ section.banner a.shop_now {
     width: fit-content;
     color: var(--Red, #bf2126);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -262,6 +263,7 @@ section.blogs a.read_more {
     color: red;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -321,6 +323,7 @@ section.reach_out_to_us input[type=submit] {
     background: var(--Linear, linear-gradient(180deg, #626262 0, #000 100%));
     color: #fff;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -437,6 +440,7 @@ section.testemonial .author {
 section.testemonial p.name {
     color: #fff;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -448,6 +452,7 @@ section.testemonial p.name {
 section.testemonial p.position {
     color: #fff;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 16px;
     font-style: normal;
     font-weight: 300;
@@ -534,6 +539,7 @@ section.news_letter input[type=submit] {
     background: var(--Linear, linear-gradient(180deg, #626262 0, #000 100%));
     color: #fff;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;

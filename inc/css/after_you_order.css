@@ -1,3 +1,6 @@
+footer{
+    background-color: white !important;
+}
 section.banner {
     background: url('../../assets/img/after_you_order/banner.png')no-repeat bottom center/cover;
     position: relative;
@@ -19,12 +22,22 @@ section.banner p {
     margin-bottom: 20px;
 }
 
-section.banner img{
+section.banner img,
+section.banner iframe{
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    width: 100%;
+    min-height: 400px;
+}
+section.banner .video{
+    width: 100%;
+}
+section.banner .content img,
+section.banner .content iframe{
+    margin-bottom: 30px;
 }
 
 

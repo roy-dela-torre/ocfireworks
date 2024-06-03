@@ -12,6 +12,10 @@ section.blogs .main_content {
     gap: 26px;
 }
 
+section.blogs h1{
+    margin-bottom: 20px;
+}
+
 section.blogs .main_content h3 {
     margin-bottom: 15px;
 }
@@ -106,6 +110,7 @@ section.blogs a.read_more {
     color: #F00;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -124,31 +129,7 @@ section.blogs a.read_more {
 
 
 
-section.other_blogs .paging {
-    gap: 0 9px;
-    margin-top: calc(60px - 24px);
-}
 
-
-section.other_blogs .paging a.page-numbers {
-    color: #ACACAC;
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 25px;
-    /* 138.889% */
-}
-
-section.other_blogs .paging span.page-numbers.current {
-    color: var(--Red, #BF2126);
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 25px;
-    /* 138.889% */
-}
 
 section.other_blogs h2 {
     margin-bottom: calc(60px - 24px);

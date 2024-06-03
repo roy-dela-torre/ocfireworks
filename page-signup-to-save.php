@@ -12,7 +12,7 @@
                         <?php echo do_shortcode('[contact-form-7 id="483c1c5" title="Sign up to Save!"]'); ?>
                     </div>
                 </div>
-                <div class="col-xl-6">
+                <div class="col-xl-6 ps-xl-5">
                     <div class="image">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/Sign up to Save.jpg" alt="Sign up to Save!">
                     </div>

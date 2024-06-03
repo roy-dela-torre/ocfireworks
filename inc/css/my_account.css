@@ -15,6 +15,7 @@ section.my_account nav.woocommerce-MyAccount-navigation li a {
     padding: 30px 50px;
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -105,6 +106,7 @@ section.my_account form .form-row .input-text section.my_account::placeholder {
 section.my_account h3 {
     color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -133,6 +135,7 @@ section.my_account button.woocommerce-Button.red_button.save_changes.button {
     background: linear-gradient(180deg, #BF2126 0%, #3F0002 100%);
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -176,6 +179,7 @@ section.my_account .group_button_on_hover a.view {
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 25px;
     font-style: normal;
     font-weight: 700;
@@ -187,6 +191,7 @@ section.my_account .group_button_on_hover span.play {
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 25px;
     font-style: normal;
     font-weight: 700;
@@ -244,6 +249,7 @@ section.my_account .absolute_button span {
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -274,6 +280,7 @@ section.my_account .product_reviews span {
     color: #A9A9A9;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 20px;
     font-style: normal;
     font-weight: 300;
@@ -284,6 +291,7 @@ section.my_account p.price bdi {
     color: var(--Alternate-Black, #212121);
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 25px;
     font-style: normal;
     font-weight: 700;
@@ -299,6 +307,7 @@ section.my_account .add_to_cart a {
     padding: 10px 20px;
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -377,6 +386,7 @@ section.my_account .product_content {
     display: block !important;
     color: var(--primay_font_color);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -393,6 +403,7 @@ header.woocommerce-Address-title.title a.edit {
     background: linear-gradient(180deg, #BF2126 0%, #3F0002 100%);
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -418,6 +429,7 @@ section.my_account .woocommerce .red_button {
     gap: 0 10px;
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;

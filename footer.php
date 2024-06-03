@@ -7,7 +7,7 @@ $home_url = get_home_url();
             <div class="container-fluid">
                 <div class="row">
                     <div class="logo d-flex justify-content-center">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/logo.png" alt="">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/logo.png" alt="Ocfireworks">
                     </div>
                     <div class="col">
                         <h5>Information</h5>

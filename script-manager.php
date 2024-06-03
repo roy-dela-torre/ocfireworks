@@ -56,6 +56,24 @@
         }
     }
     $(document).ready(function() {
+
+        $('#send-message').on('click', function() {
+            var message = $('#message-input').val();
+            $.ajax({
+                url: '/wp-admin/admin-ajax.php',
+                type: 'POST',
+                data: {
+                    action: 'send_message',
+                    message: message
+                },
+                success: function(response) {
+                    // Handle success (e.g., clear input field, update chat interface)
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                }
+            });
+        });
         $('.product_column').each(function(){
             $(this).find('.yith-wcwl-add-button img').click(function(){
                 console.log('wishlist image click')
@@ -532,11 +550,32 @@
         });
     </script>
 <?php elseif(is_page('4th-of-july-fireworks-for-sale') || is_page(257)):?>
-<script>
-    $(document).ready(function () {
-        setEqualHeightForSection('section.best_fire_word','h3')
-        setEqualHeightForSection('section.how_to_plan_you_4th_of_july','h3')
-        setEqualHeightForSection('section.how_to_use_4th_of_july','h3')
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            setEqualHeightForSection('section.best_fire_word','h3')
+            setEqualHeightForSection('section.how_to_plan_you_4th_of_july','h3')
+            setEqualHeightForSection('section.how_to_use_4th_of_july','h3')
+        });
+    </script>
+
+<?php elseif(is_page('After you order')):?>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('section.banner .video img,section.banner .content img').click(function(){
+                $(this).replaceWith(`<iframe width="560" height="315" src="https://www.youtube.com/embed/8Ziw73eZBl4?si=LrYGT--kw-wd7UQH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
+            })
+        })
+    </script>
+
+<?php elseif(is_page('Product Demos')):?>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('section.product_demos .content2020 img').click(function(){
+                $(this).replaceWith(`<iframe width="560" height="315" src="https://www.youtube.com/embed/U63bT6HuvKk?si=yD0XMxXNLCyLlHlh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
+            })
+            $('section.product_demos .content2019 img').click(function(){
+                $(this).replaceWith(`<iframe width="560" height="315" src="https://www.youtube.com/embed/i0px8Or4d_M?si=WK6QdbgHQv8BYca2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
+            })
+        })
+    </script>
 <?php endif;?>

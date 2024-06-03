@@ -158,6 +158,7 @@ p:last-child {
 section .wrapper {
     max-width: 1614px;
     padding: 0 30px;
+    width: 100%;
 }
 
 .red_button {
@@ -408,6 +409,45 @@ p.product.woocommerce.add_to_cart_inline span.woocommerce-Price-amount.amount {
 p.product.woocommerce.add_to_cart_inline a.added_to_cart.wc-forward {
     display: none;
 }
+.product_column .product_content{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    overflow: hidden;
+}
+
+
+
+
+/* pagiation css */
+section .paging {
+    gap: 0 25px;
+    margin-top: calc(60px - 24px);
+}
+
+
+section .paging a.page-numbers {
+    color: #ACACAC;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+    /* 138.889% */
+}
+
+section .paging span.page-numbers.current {
+    color: var(--Red, #BF2126);
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+    /* 138.889% */
+}
+/* pagination css */
 
 /* video popup */
 section.product_video .modal-content {
@@ -509,7 +549,13 @@ section.product_video iframe {
 header div.top_nav .row>div {
     width: fit-content;
 }
-
+header div.top_nav .row>div.contact:hover path,
+header div.top_nav .row>div.contact:hover span,
+header div.top_nav .row>div.contact:hover a,
+header div.top_nav .row>div.promocode:hover a{
+    color: #FF0000;
+    fill: #FF0000;
+}
 header div.top_nav {
     padding: 21px 0;
 }

@@ -68,7 +68,7 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 		<div class="row">
 			<div class="col-md-12">
 				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-					<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_current" id="password_current" autocomplete="off" placeholder="Current password (leave blank to leave unchanged)"/>
+					<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_1" id="password_current" autocomplete="off" placeholder="Current password (leave blank to leave unchanged)"/>
 				</p>
 			</div>
 			<div class="col-md-12">

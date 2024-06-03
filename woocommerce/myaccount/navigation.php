@@ -36,8 +36,9 @@ $gravatar_url = get_avatar_url( $current_user->user_email, array( 'size' => 150 
                 'edit-account'      => __( 'My Account Page', 'woocommerce' ),
                 'edit-address'      => __( 'Shipping and Billing address', 'woocommerce' ),
                 'recently-viewed'   => __( 'Recently Viewed Products', 'woocommerce' ), // Added recently viewed products tab
+                'message'           => __( 'Message', 'woocommerce' ),
                 'orders'            => __( 'Order History', 'woocommerce' ),
-                'payment-methods'         => __( 'Payment Methods', 'woocommerce' ),
+                'payment-methods'   => __( 'Payment Methods', 'woocommerce' ),
                 'customer-logout'   => __( 'Log Out', 'woocommerce' ),
             );
             

@@ -14,6 +14,7 @@ section.searchResults .absolute_button span {
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -39,6 +40,7 @@ section.searchResults .product_reviews span {
     color: #A9A9A9;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 20px;
     font-style: normal;
     font-weight: 300;
@@ -48,6 +50,7 @@ section.searchResults p.price {
     color: var(--Alternate-Black, #212121);
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 25px;
     font-style: normal;
     font-weight: 700;
@@ -64,6 +67,7 @@ section.searchResults .add_to_cart a {
     padding: 10px 20px;
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -136,6 +140,7 @@ section.searchResults a.read_more {
     color: #F00;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -144,6 +149,7 @@ section.searchResults a.read_more {
 }
 section.searchResults .small_content h3 {
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: clamp(1.25rem, 1.1703rem + 0.3268vw, 1.5625rem);
     font-style: normal;
     font-weight: 700;

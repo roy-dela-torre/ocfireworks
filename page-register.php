@@ -4,7 +4,6 @@ if (is_user_logged_in()) {
     header('Location: ' . get_home_url() . '/my-account/');
     exit; // Make sure to exit to prevent further execution
 }
-
 get_header();
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
@@ -14,6 +13,7 @@ get_header();
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="signup_form">
+                        <?php wc_print_notices(); ?>
                         <h1><?php echo the_title(); ?></h1>
                         <p>Already have an account? <a href="<?php echo get_home_url()?>/my-account/" rel="noopener noreferrer">Log in</a></p>
                         <?php echo do_shortcode('[registration_form]'); ?>
@@ -29,75 +29,69 @@ get_header();
     </div>
 </section>
 
-<?php
-get_footer();
-?>
+<?php get_footer(); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <!-- Your JavaScript code here -->
 
 <script>
 $(document).ready(function() {
-  $('button[type="submit"]').click(function(e){
+  $('button.woocommerce-Button.woocommerce-form-register__submit').click(function(e){
     e.preventDefault();
     var errorMessages = [];
 
     function addErrorMessage(field, message) {
       errorMessages.push(message);
-      field.addClass('invalid');
+      field.addClass('error');
     }
 
     function clearErrorMessages() {
       errorMessages = [];
-      $('input').removeClass('invalid');
+      $('input').removeClass('error');
     }
 
     clearErrorMessages();
 
-    var regFirstName = $('input#reg_first_name');
-    var regLastName = $('input#reg_last_name');
-    var regPhone = $('input#billing_phone');
-    var regEmail = $('input#reg_email');
-    var regPassword = $('input#password_1');
-    var regConfirmPassword = $('input#password_2');
-    var disclamer = $('input#rememberme');
+    var firstName = $('#reg_first_name');
+    var lastName = $('#reg_last_name');
+    var email = $('#reg_email');
+    var phone = $('#billing_phone');
+    var password1 = $('#password_1');
+    var password2 = $('#password_2');
     
     // Validation for First Name
-    if (regFirstName.val() === "") {
-      addErrorMessage(regFirstName, "First Name is required.");
+    if (firstName.val() === "") {
+      addErrorMessage(firstName, "First Name is required.");
     }
 
     // Validation for Last Name
-    if (regLastName.val() === "") {
-      addErrorMessage(regLastName, "Last Name is required.");
-    }
-
-    // Validation for Phone
-    if (regPhone.val() === "") {
-      addErrorMessage(regPhone, "Phone Number is required.");
-    }
-
-    // Validation for Disclaimer checkbox
-    if (!disclamer.is(':checked')) {
-      addErrorMessage(disclamer, "Please accept before submitting.");
+    if (lastName.val() === "") {
+      addErrorMessage(lastName, "Last Name is required.");
     }
 
     // Validation for Email
-    if (regEmail.val() === "") {
-      addErrorMessage(regEmail, "Email is required.");
-    } else if (!isValidEmail(regEmail.val())) {
-      addErrorMessage(regEmail, "Invalid email address.");
+    if (email.val() === "") {
+      addErrorMessage(email, "Email is required.");
+    } else if (!isValidEmail(email.val())) {
+      addErrorMessage(email, "Invalid email address.");
+    }
+
+    // Validation for Phone Number
+    if (phone.val() === "") {
+      addErrorMessage(phone, "Phone Number is required.");
     }
 
     // Validation for Password
-    if (regPassword.val() === "") {
-      addErrorMessage(regPassword, "Password is required.");
+    if (password1.val() === "") {
+      addErrorMessage(password1, "Password is required.");
+    } else if (password1.val().length < 12) {
+      addErrorMessage(password1, "Very weak - Please enter a stronger password.");
     }
 
     // Validation for Confirm Password
-    if (regConfirmPassword.val() === "") {
-      addErrorMessage(regConfirmPassword, "Confirm Password is required.");
-    } else if (regPassword.val() !== regConfirmPassword.val()) {
-      addErrorMessage(regConfirmPassword, "Passwords do not match.");
+    if (password2.val() === "") {
+      addErrorMessage(password2, "Confirm Password is required.");
+    } else if (password1.val() !== password2.val()) {
+      addErrorMessage(password2, "Your passwords do not match. Please re-enter your password.");
     }
 
     if (errorMessages.length > 0) {

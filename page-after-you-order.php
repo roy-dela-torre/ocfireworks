@@ -2,7 +2,7 @@
 /*Template Name: After you order*/
 $img_path = get_stylesheet_directory_uri().'/assets/img/after_you_order';
 ?>
-<section class="banner">
+<section class="banner bg-white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row align-items-center">

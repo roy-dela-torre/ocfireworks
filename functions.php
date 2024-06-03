@@ -29,46 +29,142 @@ function registration_form() {
     ob_start();
     ?>
     <form method="post" class="woocommerce-form woocommerce-form-register register">
+        <?php do_action('woocommerce_before_customer_login_form'); ?>
         <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
             <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="first_name" id="reg_first_name" placeholder="First Name" value="<?php if (!empty($_POST['first_name'])) echo esc_attr($_POST['first_name']); ?>"/>
         </p>
         <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-            <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="last_name" id="reg_last_name" placeholder="Last Name" value="<?php if (!empty($_POST['last_name'])) echo esc_attr($_POST['last_name']); ?>" />
+            <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="last_name" id="reg_last_name" placeholder="Last Name" value="<?php if (!empty($_POST['last_name'])) echo esc_attr($_POST['last_name']); ?>"/>
         </p>
         <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-            <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" placeholder="Email Address" autocomplete="email" value="<?php if (!empty($_POST['email'])) echo esc_attr($_POST['email']); ?>" />
+            <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" placeholder="Email Address" autocomplete="email" value="<?php if (!empty($_POST['email'])) echo esc_attr($_POST['email']); ?>"/>
         </p>
         <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-            <input type="number" class="woocommerce-Input woocommerce-Input--text input-text" name="billing_phone" id="billing_phone" placeholder="Phone Number" value="<?php if (!empty($_POST['billing_phone'])) echo esc_attr($_POST['billing_phone']); ?>" />
+            <input type="number" class="woocommerce-Input woocommerce-Input--text input-text" name="billing_phone" id="billing_phone" placeholder="Phone Number" value="<?php if (!empty($_POST['billing_phone'])) echo esc_attr($_POST['billing_phone']); ?>"/>
         </p>
         <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-            <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_1" id="password_1" autocomplete="off" placeholder="Password" />
+            <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_1" id="password_1" autocomplete="off" placeholder="Password"/>
             <span class="show-password-input"></span>
         </p>
         <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-            <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_2" id="password_2" autocomplete="off" placeholder="Confirm Password" />
+            <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_2" id="password_2" autocomplete="off" placeholder="Confirm Password"/>
             <span class="show-password-input"></span>
         </p>
         <div class="group">
             <p class="register-remember w-100">
                 <label>
-                    <input name="rememberme" type="checkbox" id="rememberme" value="forever" class="">
+                    <input name="rememberme" type="checkbox" id="rememberme" value="forever" class=""/>
                     <span>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="<?php echo get_home_url(); ?>/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></span>
                 </label>
             </p>
         </div>
         <p class="woocommerce-form-row form-row">
             <?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
-            <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="Register"><?php echo is_page('register') ? "Create Account" : "Submit"?></button>
+            <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="Register"><?php echo is_page('sign-up') ? "Create Account" : "Submit"?></button>
         </p>
-        
+        <?php do_action('woocommerce_after_customer_login_form'); ?>
     </form>
+
     <?php
-    // Display WooCommerce error messages
     return ob_get_clean();
 }
 
 add_shortcode('registration_form', 'registration_form');
+
+function custom_process_registration() {
+    if ('POST' !== strtoupper($_SERVER['REQUEST_METHOD'])) {
+        return;
+    }
+
+    // Verify nonce
+    $nonce_value = isset($_POST['woocommerce-register-nonce']) ? $_POST['woocommerce-register-nonce'] : '';
+    if (!wp_verify_nonce($nonce_value, 'woocommerce-register')) {
+        wc_add_notice(__('Invalid registration attempt. Please try again.', 'woocommerce'), 'error');
+        return;
+    }
+
+    // Validate input fields
+    $first_name = isset($_POST['first_name']) ? sanitize_text_field($_POST['first_name']) : '';
+    $last_name = isset($_POST['last_name']) ? sanitize_text_field($_POST['last_name']) : '';
+    $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+    $phone = isset($_POST['billing_phone']) ? sanitize_text_field($_POST['billing_phone']) : '';
+    $password = isset($_POST['password_1']) ? $_POST['password_1'] : '';
+    $password2 = isset($_POST['password_2']) ? $_POST['password_2'] : '';
+    $checkbox = isset($_POST['rememberme']) ? sanitize_text_field($_POST['rememberme']) : '';
+
+    // Debugging
+    echo '<script>console.log("Password 1: ' . $password . '");</script>';
+    echo '<script>console.log("Password 2: ' . $password2 . '");</script>';
+    echo '<script>console.log("Checkbox: ' . $checkbox . '");</script>';
+
+    if (empty($first_name)) {
+        wc_add_notice(__('First name is required.', 'woocommerce'), 'error');
+    }
+
+    if (empty($last_name)) {
+        wc_add_notice(__('Last name is required.', 'woocommerce'), 'error');
+    }
+
+    if (empty($email) || !is_email($email)) {
+        wc_add_notice(__('Please provide a valid email address.', 'woocommerce'), 'error');
+    }
+
+    if (empty($phone)) {
+        wc_add_notice(__('Phone number is required.', 'woocommerce'), 'error');
+    }
+
+    if (empty($password)) {
+        wc_add_notice(__('Password is required.', 'woocommerce'), 'error');
+    }
+
+    if (empty($password2)) {
+        wc_add_notice(__('Confirm password is required.', 'woocommerce'), 'error');
+    }
+
+    if (!empty($password) && !empty($password2) && $password !== $password2) {
+        wc_add_notice(__('Passwords do not match.', 'woocommerce'), 'error');
+    }
+
+    if (empty($checkbox)) {
+        wc_add_notice(__('You must agree to the terms and conditions.', 'woocommerce'), 'error');
+    }
+
+    if (wc_notice_count('error') > 0) {
+        return;
+    }
+
+    // Register the user
+    $user_data = array(
+        'user_login' => $email,
+        'user_email' => $email,
+        'user_pass' => $password,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+    );
+
+    $user_id = wp_insert_user($user_data);
+
+    if (is_wp_error($user_id)) {
+        wc_add_notice($user_id->get_error_message(), 'error');
+    } else {
+        // Save additional fields
+        if (!empty($phone)) {
+            update_user_meta($user_id, 'billing_phone', $phone);
+        }
+
+        // Log the user in
+        wc_set_customer_auth_cookie($user_id);
+
+        // Redirect to the My Account page
+        $redirect = wc_get_page_permalink('myaccount');
+        wp_redirect($redirect);
+        exit;
+    }
+}
+add_action('template_redirect', 'custom_process_registration');
+
+
+
 
 // Hook into user registration to save first name and last name
 function save_extra_user_fields($user_id) {
@@ -118,7 +214,7 @@ function custom_login_form_shortcode() {
                 <button type="submit" class="black_button woocommerce-button button woocommerce-form-login__submit<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><?php esc_html_e( 'Log in', 'woocommerce' ); ?></button>
             </p>
             <div class="group">
-                <p class="login-remember">
+                <p class="login-remember mb-0">
                     <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme d-flex align-items-center">
                         <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" placeholder="Password"/> <span><?php esc_html_e( 'Remember me', 'woocommerce' ); ?></span>
                     </label>
@@ -335,3 +431,28 @@ function display_recently_viewed_products() {
     echo do_shortcode('[recently_viewed_products]');
 }
 add_action( 'woocommerce_account_recently-viewed_endpoint', 'display_recently_viewed_products' );
+
+
+
+
+
+
+
+// Register the custom endpoint for recently view products
+function add_custom_my_account_endpoint_message() {
+    add_rewrite_endpoint( 'message', EP_ROOT | EP_PAGES );
+}
+add_action( 'init', 'add_custom_my_account_endpoint_message' );
+
+// Add the Recently Viewed tab to My Account navigation
+function add_message( $items ) {
+    $items['message'] = __( 'Message', 'woocommerce' );
+    return $items;
+}
+add_filter( 'woocommerce_account_menu_items', 'add_message', 99 );
+
+// Display content for the Recently Viewed endpoint
+function display_message_products() {
+    echo do_shortcode('[message_products]');
+}
+add_action( 'woocommerce_account_message_endpoint', 'display_message_products' );

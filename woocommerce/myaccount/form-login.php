@@ -57,16 +57,16 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 								<button type="submit" class="black_button woocommerce-button button woocommerce-form-login__submit<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><?php esc_html_e( 'Log in', 'woocommerce' ); ?></button>
 							</p>
 							<div class="group">
-								<p class="login-remember">
+								<p class="login-remember mb-0">
 									<label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme d-flex align-items-center">
 										<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" placeholder="Password"/> <span><?php esc_html_e( 'Remember me', 'woocommerce' ); ?></span>
 									</label>
 								</p>
 								<p class="woocommerce-LostPassword lost_password">
-									<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Lost your password?', 'woocommerce' ); ?></a>
+									<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Lost your password?', 'woocommerce' ); ?></a>
 								</p>
 							</div>
-							<p class="text-white text-center">Don’t Have an Account? <strong><a href="<?php echo get_home_url(); ?>/register/" target="_blank" rel="noopener noreferrer">Sign Up</a></strong></p>
+							<p class="text-white text-center">Don’t Have an Account? <strong><a href="<?php echo get_home_url(); ?>/sign-up/" target="_blank" rel="noopener noreferrer">Sign Up</a></strong></p>
 							<?php do_action( 'woocommerce_login_form_end' ); ?>
 						</form>
 					</div>

@@ -49,6 +49,7 @@ section.registration p.register-remember {
 section.registration p.register-remember label{
     display: flex;
     gap: 0 15px;
+    margin-top: 45px;
 }
 
 
@@ -87,7 +88,6 @@ section.registration .image img {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     width: 100%;
-    max-height: 630px;
 }
 
 section.registration input#rememberme {
@@ -167,6 +167,7 @@ section.registration .group {
 section.registration .group a {
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -208,6 +209,7 @@ section.registration button.woocommerce-Button.woocommerce-button.button.woocomm
     background: var(--Linear, linear-gradient(180deg, #626262 0%, #000 100%));
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -254,6 +256,7 @@ section.registration h1 {
 section.registration a {
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -266,12 +269,17 @@ section.registration a {
     color: #000;
 }
 
-form.woocommerce-form.woocommerce-form-register.register p:nth-child(-n+ 4) {
+form.woocommerce-form.woocommerce-form-register.register p:nth-child(-n+ 5) {
     width: calc(50% - 7.5px);
 }
-
-form.woocommerce-form.woocommerce-form-register.register p {
+form.woocommerce-form.woocommerce-form-register.register  .woocommerce-notices-wrapper,
+form.woocommerce-form.woocommerce-form-register.register p,
+form.woocommerce-form.woocommerce-form-register.register ul.woocommerce-error {
     width: 100%;
+}
+
+form.woocommerce-form.woocommerce-form-register.register .woocommerce-error{
+    margin-bottom: 0;
 }
 
 p.woocommerce-form-row.woocommerce-form-row--wide.form-row.form-row-wide {

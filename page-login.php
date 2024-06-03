@@ -4,29 +4,9 @@
     <script>
         window.location.href = '<?php echo get_home_url(); ?>/my-account/';
     </script>
-<?php } else { ?>
-  <!-- login page -->
-    <section class="login">
-        <div class="wrapper">
-          <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                  <div class="login_form">
-                    <h1 class="text-white">Login</h1>
-                    <p class="text-white">Welcome back! Let's ignite some excitement and log in for a dazzling experience.</p>
-                    <?php echo do_shortcode('[custom_login_form]'); ?>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                  <div class="image">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/login_image.jpg" alt="Login">
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
-    </section>
-<?php } ?>
+<?php } else { 
+ wc_get_template('woocommerce/myaccount/form-login.php');
+} ?>
 <?php get_footer(); ?>
 
 <script>
