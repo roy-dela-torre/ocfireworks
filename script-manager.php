@@ -57,23 +57,6 @@
     }
     $(document).ready(function() {
 
-        $('#send-message').on('click', function() {
-            var message = $('#message-input').val();
-            $.ajax({
-                url: '/wp-admin/admin-ajax.php',
-                type: 'POST',
-                data: {
-                    action: 'send_message',
-                    message: message
-                },
-                success: function(response) {
-                    // Handle success (e.g., clear input field, update chat interface)
-                },
-                error: function(xhr, status, error) {
-                    // Handle error
-                }
-            });
-        });
         $('.product_column').each(function(){
             $(this).find('.yith-wcwl-add-button img').click(function(){
                 console.log('wishlist image click')
@@ -83,44 +66,7 @@
         })
         $('span.cart_count').text('<?php echo WC()->cart->get_cart_contents_count(); ?>')
         // image lazy load
-        $('img[loading="lazy"]').each(function() {
-            var $img = $(this);
-            var originalSrc = $img.attr('data-src') || $img.attr('src');
-            var width = $img.width();
-            var height = $img.height();
 
-            // Ensure originalSrc is set properly
-            if (originalSrc) {
-                $img.attr({
-                    'data-src': originalSrc,
-                    'src': '', // Clear the src attribute to trigger lazy loading
-                    'decoding': 'async',
-                    'width': width,
-                    'height': height
-                }).one('error', function() {
-                    // If there's an error loading the image, revert to original src
-                    $(this).attr('src', originalSrc);
-                });
-
-                // Use IntersectionObserver for lazy loading
-                if ('IntersectionObserver' in window) {
-                    var observer = new IntersectionObserver(function(entries, observer) {
-                        entries.forEach(function(entry) {
-                            if (entry.isIntersecting) {
-                                var img = entry.target;
-                                img.src = img.getAttribute('data-src');
-                                observer.unobserve(img);
-                            }
-                        });
-                    });
-                    observer.observe(this);
-                } else {
-                    // Fallback for browsers without IntersectionObserver support
-                    $img.attr('src', originalSrc);
-                }
-            }
-        });
-        
 
         // show hide mini cart on nav
         $('.add_to_cart p.product.woocommerce.add_to_cart_inline').click(function(){
@@ -133,13 +79,13 @@
             }, 3000);
         });
 
-        $('span.close').click(function () { 
+        $('span.close').click(function () {
             $('.pop_up_cart').hide()
         });
 
         // sticky nav
         $(window).scroll(function() {
-            if ($(this).scrollTop() > 65) { 
+            if ($(this).scrollTop() > 65) {
                 $('.sticky-header').addClass('fixed-top');
             } else {
                 $('.sticky-header').removeClass('fixed-top');
@@ -202,7 +148,7 @@
                 $('img.play_button').show()
             })
 
-        
+
         var next = $('<img>', {
             src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/next.png', // Replace with the actual image URL
             alt: 'Next Image' // Add an alt attribute for accessibility
@@ -217,7 +163,7 @@
         handleProductColumns($('section.searchResults .row .product_column'));
 
     });
-    
+
 
 </script>
 <?php if(is_front_page()):?>
@@ -234,7 +180,7 @@
                 autoWidth: true,
                 center: true,
                 autoplaySpeed: 4200,
-                autoplayTimeout: 4200, 
+                autoplayTimeout: 4200,
                 slideTransition: 'linear',
                 items: 13,
                 mouseDrag: false,
@@ -282,6 +228,44 @@
                     }
                 }
             })
+
+            $('img[loading="lazy"]').each(function() {
+                var $img = $(this);
+                var originalSrc = $img.attr('data-src') || $img.attr('src');
+                var width = $img.width();
+                var height = $img.height();
+
+                // Ensure originalSrc is set properly
+                if (originalSrc) {
+                    $img.attr({
+                        'data-src': originalSrc,
+                        'src': '', // Clear the src attribute to trigger lazy loading
+                        'decoding': 'async',
+                        'width': width,
+                        'height': height
+                    }).one('error', function() {
+                        // If there's an error loading the image, revert to original src
+                        $(this).attr('src', originalSrc);
+                    });
+
+                    // Use IntersectionObserver for lazy loading
+                    if ('IntersectionObserver' in window) {
+                        var observer = new IntersectionObserver(function(entries, observer) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
+                                    var img = entry.target;
+                                    img.src = img.getAttribute('data-src');
+                                    observer.unobserve(img);
+                                }
+                            });
+                        });
+                        observer.observe(this);
+                    } else {
+                        // Fallback for browsers without IntersectionObserver support
+                        $img.attr('src', originalSrc);
+                    }
+                }
+            });
             
 
             handleProductColumns($('section.featured_product .row .product_column'));
@@ -519,7 +503,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             handleProductColumns($('section.my_account .row .product_column'));
-           
+
             var iframeHTML;
             function replaceThumbnailWithIframe() {
                 console.log('click')

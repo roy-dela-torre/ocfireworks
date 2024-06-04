@@ -41,7 +41,7 @@ $gravatar_url = get_avatar_url( $current_user->user_email, array( 'size' => 150 
                 'payment-methods'   => __( 'Payment Methods', 'woocommerce' ),
                 'customer-logout'   => __( 'Log Out', 'woocommerce' ),
             );
-            
+
 
             // Loop through the menu items in the desired order
             foreach ( $menu_order as $endpoint => $label ) :
@@ -92,7 +92,7 @@ $gravatar_url = get_avatar_url( $current_user->user_email, array( 'size' => 150 
                         'downloads'         => __( 'Downloads', 'woocommerce' ),
                         'customer-logout'   => __( 'Log Out', 'woocommerce' ),
                     );
-                    
+
 
                     // Loop through the menu items in the desired order
                     foreach ( $menu_order as $endpoint => $label ) :

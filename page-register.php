@@ -13,7 +13,6 @@ get_header();
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="signup_form">
-                        <?php wc_print_notices(); ?>
                         <h1><?php echo the_title(); ?></h1>
                         <p>Already have an account? <a href="<?php echo get_home_url()?>/my-account/" rel="noopener noreferrer">Log in</a></p>
                         <?php echo do_shortcode('[registration_form]'); ?>

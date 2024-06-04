@@ -1,0 +1,27 @@
+section.special_deals .header{
+    max-width: 1048px;
+    margin: 0 auto calc(60px - 24px) auto;
+}
+section.special_deals .content{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 309px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    overflow: hidden;
+}
+section.special_deals h2{
+    max-width: 350px;
+    padding: 30px;
+}
+section.special_deals img{
+    min-height: 309px;
+}
+section.special_deals .row{
+    gap: 24px 0;
+}

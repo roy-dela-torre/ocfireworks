@@ -280,6 +280,14 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 						<?php
 						if (is_page()) {
 							// Query random products
+							// function getCurrentUrlarchive1() {
+							// 	$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+							// 	$host = $_SERVER['HTTP_HOST'];
+							// 	$requestUri = $_SERVER['REQUEST_URI'];
+							// 	return $scheme . '://' . $host . $requestUri;
+							// }
+							$url = $current_url;
+							echo $url;
 							$fourth_of_july_sale = "4th-of-july-fireworks-for-sale";
 							$whole_sale_fireworks = "";
 							global $paged;
@@ -292,7 +300,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 								'paged' => $paged,
 								'tax_query' => array(
 									array(
-										'taxonomy' => 'product_cat',
+										'taxonomy' => 'fireworks-for-events',
 										'field' => 'slug',
 										'terms' => '4th-of-july-fireworks-for-sale',
 									),
