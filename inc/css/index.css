@@ -203,6 +203,7 @@ section.blogs .large_content {
 }
 section.blogs .large_content img{
     min-height: 400px;
+    width: 100%;
 }
 section.blogs .header {
     margin-bottom: 50px

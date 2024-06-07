@@ -90,14 +90,14 @@
 <?php elseif(is_page('Novelty Fireworks for Sale')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>novelty.css">
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?php elseif(is_page('Fireworks Supply Store')):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>firewors-supply-status.css">
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?php elseif(is_page('Sky Show')):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>sky-show.css">
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?php elseif(is_page('Ground Effects')):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>ground_effect.css">
 
 <?php elseif(is_page('')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>.css">

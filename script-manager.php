@@ -162,6 +162,20 @@
 
         handleProductColumns($('section.searchResults .row .product_column'));
 
+
+        // delete duplicated section
+        var $sections = $('section');
+        var uniqueSections = {};
+
+        $sections.each(function() {
+            var id = $(this).attr('class'); // Assuming the ID attribute uniquely identifies each section
+            if (!uniqueSections[id]) {
+                uniqueSections[id] = true;
+            } else {
+                $(this).remove(); // Remove the duplicated section
+            }
+        });
+
     });
 
 

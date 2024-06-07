@@ -456,3 +456,37 @@ function display_message_products() {
     echo do_shortcode('[message_products]');
 }
 add_action( 'woocommerce_account_message_endpoint', 'display_message_products' );
+
+
+
+
+
+// Register categories for pages
+function add_categories_to_pages() {
+    register_taxonomy_for_object_type('category', 'page');
+}
+add_action('init', 'add_categories_to_pages');
+
+// Add a new column to the pages list
+// function add_page_categories_column($columns) {
+//     $columns['page_categories'] = __('Categories', 'textdomain');
+//     return $columns;
+// }
+// add_filter('manage_pages_columns', 'add_page_categories_column');
+
+// Populate the new column with category data
+function populate_page_categories_column($column, $post_id) {
+    if ($column === 'page_categories') {
+        $categories = get_the_terms($post_id, 'category');
+        if ($categories && !is_wp_error($categories)) {
+            $category_names = array();
+            foreach ($categories as $category) {
+                $category_names[] = esc_html($category->name);
+            }
+            echo implode(', ', $category_names);
+        } else {
+            echo __('No Categories', 'textdomain');
+        }
+    }
+}
+add_action('manage_pages_custom_column', 'populate_page_categories_column', 10, 2);

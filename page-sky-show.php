@@ -1,8 +1,8 @@
 <?php get_header();
-/*Template Name: Events*/
-$img_path = get_stylesheet_directory_uri().'/assets/img/events/';
+/*Template Name: Sky Show Fireworks for Sale*/
+$img = get_stylesheet_directory_uri().'/assets/img/sky_show';
 ?>
-<section class="events">
+<section class="sky_show">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -12,9 +12,9 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/events/';
                 </div>
                 <?php
                 $product_categories = get_terms(array(
-                    'taxonomy' => 'fireworks-for-events',
+                    'taxonomy' => 'sky-show',
                     'hide_empty' => true,
-                    'number' => 3
+                    'posts_per_page' => -1,
                 ));
 
                 if ($product_categories && !is_wp_error($product_categories)) {

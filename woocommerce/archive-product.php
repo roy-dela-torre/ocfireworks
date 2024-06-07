@@ -37,7 +37,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 				<div class="content">
 					<?php if ( is_page() ) : ?>
 						<!-- Display the page title for regular pages -->
-						<h1 class="text-center text-white"><?php wp_title(); ?></h1>
+						<h1 class="text-center text-white"><?php the_field('header'); ?></h1>
 						<?php the_field('banner_content'); ?>
 					<?php else : ?>
 						<!-- Display the WooCommerce page title for archive pages -->
@@ -56,7 +56,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 		<div class="container-fluid">
 			<div class="row">
 				<div class="header">
-					<h2 class="red_text text-center"><?php the_field('header'); ?></h2>
+					<h2 class="red_text text-center"><?php the_title(); ?></h2>
 				</div>
 				<div class="col-xl-3 col-lg-4 d-none d-lg-block">
 					<div class="sidebar_filter">
@@ -279,17 +279,17 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 					<div class="product_list">
 						<?php
 						if (is_page()) {
-							// Query random products
-							// function getCurrentUrlarchive1() {
-							// 	$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-							// 	$host = $_SERVER['HTTP_HOST'];
-							// 	$requestUri = $_SERVER['REQUEST_URI'];
-							// 	return $scheme . '://' . $host . $requestUri;
-							// }
-							$url = $current_url;
-							echo $url;
-							$fourth_of_july_sale = "4th-of-july-fireworks-for-sale";
-							$whole_sale_fireworks = "";
+							$current_page_id = get_the_ID();
+							$page_slug = get_post_field('post_name', $current_page_id);
+							$taxonomies = get_object_taxonomies('product', 'names');
+							$found_taxonomy = '';
+							foreach ($taxonomies as $taxonomy) {
+								$term = get_term_by('slug', $page_slug, $taxonomy);
+								if ($term && !is_wp_error($term)) {
+									$found_taxonomy = $taxonomy;
+									break;
+								}
+							}
 							global $paged;
                         	$curpage = $paged ? $paged : 1;
 							$args = array(
@@ -300,28 +300,20 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 								'paged' => $paged,
 								'tax_query' => array(
 									array(
-										'taxonomy' => 'fireworks-for-events',
+										'taxonomy' => $found_taxonomy,
 										'field' => 'slug',
-										'terms' => '4th-of-july-fireworks-for-sale',
+										'terms' => $page_slug,
 									),
 								),
 							);
 							$productLoop = new WP_Query($args);
 
 							if ($productLoop->have_posts()) :
-								// Start product loop
 								woocommerce_product_loop_start();
-
-								// Loop through random products
 								while ($productLoop->have_posts()) : $productLoop->the_post();
-									// Load product content template
 									wc_get_template_part('content', 'product');
 								endwhile;
-
-								// End product loop
 								woocommerce_product_loop_end();
-
-								// Reset post data
 								wp_reset_postdata();
 								?>
 								<div class="paging d-flex justify-content-center align-items-center">
@@ -335,18 +327,12 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 								</div>
 								<?php
 							else :
-								// No random products found
 								do_action('woocommerce_no_products_found');
 							endif;
 						} else {
-							// Display products in the default way
 							if (woocommerce_product_loop()) {
-								// Hook: woocommerce_before_shop_loop
 								do_action('woocommerce_before_shop_loop');
-
-								// Start product loop
 								woocommerce_product_loop_start();
-
 								if (wc_get_loop_prop('total')) {
 									while (have_posts()) {
 										the_post();
@@ -356,20 +342,13 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 										wc_get_template_part('content', 'product');
 									}
 								}
-
-								// End product loop
 								woocommerce_product_loop_end();
-
-								// Hook: woocommerce_after_shop_loop
 								do_action('woocommerce_after_shop_loop');
 							} else {
-								// No products found
 								do_action('woocommerce_no_products_found');
 							}
 						}
 						?>
-
-						<!-- Hook: woocommerce_after_main_content -->
 						<?php do_action('woocommerce_after_main_content'); ?>
 					</div>
 
@@ -378,23 +357,12 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 		</div>
 	</div>
 </section>
+
 <?php get_template_part('template/related', 'product');
-if (is_page('Spectacular 4th of July OC Fireworks on Sale')):
-    get_template_part('categories_landing_page/fourth-of-july'); 
-	elseif (is_page('Unlock the Best of Wholesale Fireworks Online with OC Fireworks') || is_product_category('wholesale-fireworks-online')):
-	get_template_part('categories_landing_page/whole-sale'); ?>
-<?php //elseif():?>
-<?php //elseif():?>
-<?php endif;?>
-
-<?php echo get_template_part('wishlist_pop_up'); ?>
-<?php do_action( 'woocommerce_after_main_content' );
-
-/**
- * Hook: woocommerce_sidebar.
- *
- * @hooked woocommerce_get_sidebar - 10
- */
-// do_action( 'woocommerce_sidebar' );
-
+if(is_page()){
+	get_template_part('template/random', 'product');
+}
+get_template_part('template/page', 'landing');
+echo get_template_part('wishlist_pop_up'); 
+do_action( 'woocommerce_after_main_content' );
 get_footer( 'shop' );

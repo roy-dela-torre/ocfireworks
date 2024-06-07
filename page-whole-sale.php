@@ -1,5 +1,5 @@
 <?php get_header();
-/*Template Name: Wholesale Fireworks Online | OC Fireworks*/ ?>
+/*Template Name: Shop Wholesale*/ ?>
 
 <?php
 get_template_part('woocommerce/archive', 'product'); 
