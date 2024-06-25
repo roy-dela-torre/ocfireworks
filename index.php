@@ -60,45 +60,60 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
         <div class="container-fluid">
             <div class="row">
                 <h2 class="text-center text-uppercase text-white">Shop by Categories</h2>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Events.jpg" alt="Events">
-                        <h3 class="text-center text-white position-absolute">Events</h3>
-                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
+                
+                <?php
+                // Get category IDs for 'Uncategorized' and 'Special Offers'
+                $exclude_categories = array(
+                    get_cat_ID('Uncategorized'),
+                    get_cat_ID('Special Offers')
+                );
+
+                // Fetch all categories excluding 'Uncategorized' and 'Special Offers'
+                $categories = get_categories(array(
+                    'taxonomy'   => 'category',
+                    'orderby'    => 'name',
+                    'order'      => 'ASC',
+                    'hide_empty' => false,
+                    'exclude'    => $exclude_categories
+                ));
+
+                $counter = 0; // Initialize counter
+
+                // Loop through each category
+                foreach ($categories as $category) {
+                    // Get the category slug
+                    $category_slug = $category->slug;
+
+                    // Get the custom field for the category image (assuming using ACF)
+                    $category_image = get_field('category_image', 'category_' . $category->term_id);
+
+                    // Default image if no custom field is set
+                    if (!$category_image) {
+                        $category_image = 'path/to/default/image.jpg'; // Replace with your default image path
+                    }
+
+                    // Set column class based on counter
+                    $col_class = ($counter < 3) ? 'col-lg-4 col-md-6 col-sm-12' : 'col-md-6 col-sm-12';
+                    ?>
+
+                    <div class="<?php echo $col_class; ?>">
+                        <div class="content d-flex align-items-center justify-content-center position-relative">
+                            <img loading="lazy" src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr($category->name); ?>">
+                            <h3 class="text-center text-white position-absolute"><?php echo esc_html($category->name); ?></h3>
+                            <a href="<?php echo esc_url(home_url($category_slug)); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Sky Show.jpg" alt="Sky Show">
-                        <h3 class="text-center text-white position-absolute">Sky Show</h3>
-                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Ground Effects.jpg" alt="Ground Effects">
-                        <h3 class="text-center text-white position-absolute">Ground Effects</h3>
-                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Novelties.jpg" alt="Novelties">
-                        <h3 class="text-center text-white position-absolute">Novelties</h3>
-                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Supplies.jpg" alt="Supplies">
-                        <h3 class="text-center text-white position-absolute">Supplies</h3>
-                        <a href="<?php echo get_home_url();?>/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                    </div>
-                </div>
+
+                    <?php
+                    $counter++; // Increment counter
+                }
+                ?>
             </div>
         </div>
     </div>
 </section>
+
+
 
 <section class="featured_product">
     <div class="wrapper">

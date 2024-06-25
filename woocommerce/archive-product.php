@@ -69,8 +69,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 									</button>
                                 </h5>
                                 <div id="categores" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body p-0">
-									<?php
+									<div class="accordion-body p-0">
+										<?php
 										// Function to get the current page URL
 										function getCurrentUrlarchive() {
 											$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
@@ -89,7 +89,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 
 										// Get the current URL
 										$current_url = getCurrentUrlarchive();
-										
+
 										// Check if categories are found and no errors occurred
 										if ($product_categories && !is_wp_error($product_categories)) {
 											echo '<ul class="ps-0 mb-0">';
@@ -97,9 +97,10 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 											<li class="position-relative">
 												<input type="radio" name="" id="showAll" <?php echo is_shop() ? "checked" : "" ?>>
 												<a href="<?php echo get_home_url(); ?>/shop/" rel="noopener noreferrer" class="stretched-link">
-													<span class="name">Show ALl</span>
+													<span class="name">Show All</span>
 												</a>
-											</li><?php 
+											</li>
+											<?php 
 											foreach ($product_categories as $category) {
 												// Skip the "Uncategorized" category and move to the next iteration
 												if (esc_html($category->name) === "Uncategorized") {
@@ -114,6 +115,10 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 													// Determine whether to add the checked attribute based on the current URL
 													$checked = ($current_url === $category_url) ? 'checked' : '';
 
+													// Get the category thumbnail ID and image HTML
+													$thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true);
+													$image = wp_get_attachment_image($thumbnail_id, 'thumbnail');
+
 													?>
 													<li class="position-relative">
 														<!-- Use the category slug as the ID for the radio button -->
@@ -121,6 +126,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 														<!-- Add the URL to the href attribute of the anchor tag -->
 														<a href="<?php echo esc_url($category_url); ?>" rel="noopener noreferrer" class="stretched-link">
 															<span class="name"><?php echo esc_html($category->name); ?></span>
+															<?php echo $image; // Display the category image ?>
 														</a>
 													</li>
 													<?php
@@ -132,8 +138,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 											echo '<li>No product categories found</li>';
 										}
 										?>
+									</div>
 
-                                    </div>
                                 </div>
                             </div>
 							
@@ -146,11 +152,10 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 								<div id="price" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 									<div class="accordion-body">
 										<p class="text-center">$500 is the maximum amount.</p>
-										<div class="range-slider">
-											<input value="0" min="0" max="50" step="1" type="range">
-											<input value="50" min="0" max="50" step="1" type="range">
-											<span class="rangeValues"></span>
-										</div>
+										<form action="">
+											<input value="0" min="0" max="50" step="1" type="range" class="min">
+											<input value="50" min="0" max="500" step="1" type="range" class="max">
+										</form>
 									</div>
 								</div>
 							</div>
@@ -279,6 +284,9 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 					<div class="product_list">
 						<?php
 						if (is_page()) {
+							$orderby = isset($_GET['orderby']) ? sanitize_text_field($_GET['orderby']) : 'rand';
+        					set_query_var('orderby', $orderby);
+							get_template_part('woocommerce/loop/orderby'); 
 							$current_page_id = get_the_ID();
 							$page_slug = get_post_field('post_name', $current_page_id);
 							$taxonomies = get_object_taxonomies('product', 'names');

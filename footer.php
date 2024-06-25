@@ -67,6 +67,6 @@ $home_url = get_home_url();
         </div>
     </div>
 </body>
-<?php wp_footer()?>
 <?php include('script-manager.php')?>
+<?php wp_footer()?>
 </html>

@@ -57,6 +57,63 @@
     }
     $(document).ready(function() {
 
+        var currentUrl = window.location.href;
+        $('ul#menu-ocfireworksnavmenu a').each(function() {
+            var navUrl = $(this).attr('href');
+            if(currentUrl === navUrl) {
+                $(this).parent('li').addClass('active');
+            }
+        });
+        
+        $('img[loading="lazy"]').each(function() {
+            var $img = $(this);
+            var originalSrc = $img.attr('data-src') || $img.attr('src');
+
+            // Ensure originalSrc is set properly
+            if (originalSrc) {
+                // Use IntersectionObserver for lazy loading
+                if ('IntersectionObserver' in window) {
+                    var observer = new IntersectionObserver(function(entries, observer) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                var img = entry.target;
+                                img.src = img.getAttribute('data-src');
+                                observer.unobserve(img);
+                            }
+                        });
+                    });
+                    observer.observe(this);
+                } else {
+                    // Fallback for browsers without IntersectionObserver support
+                    $img.attr('src', originalSrc);
+                }
+
+                // Set the width and height after the image is loaded
+                $img.on('load', function() {
+                    var width = $img.width();
+                    var height = $img.height();
+                    $img.attr({
+                        'width': width,
+                        'height': height
+                    });
+                }).attr({
+                    'data-src': originalSrc,
+                    'decoding': 'async'
+                }).one('error', function() {
+                    // If there's an error loading the image, revert to original src
+                    $(this).attr('src', originalSrc);
+                });
+            }
+        });
+
+        // var priceSpan = $('span.price,p.product.woocommerce.add_to_cart_inline');
+
+        // // Find the dash text node and remove it
+        // priceSpan.contents().filter(function() {
+        //     return this.nodeType === 3 && this.nodeValue.trim() === '–';
+        // }).remove();
+
+
         $('.product_column').each(function(){
             $(this).find('.yith-wcwl-add-button img').click(function(){
                 console.log('wishlist image click')
@@ -242,44 +299,6 @@
                     }
                 }
             })
-
-            $('img[loading="lazy"]').each(function() {
-                var $img = $(this);
-                var originalSrc = $img.attr('data-src') || $img.attr('src');
-                var width = $img.width();
-                var height = $img.height();
-
-                // Ensure originalSrc is set properly
-                if (originalSrc) {
-                    $img.attr({
-                        'data-src': originalSrc,
-                        'src': '', // Clear the src attribute to trigger lazy loading
-                        'decoding': 'async',
-                        'width': width,
-                        'height': height
-                    }).one('error', function() {
-                        // If there's an error loading the image, revert to original src
-                        $(this).attr('src', originalSrc);
-                    });
-
-                    // Use IntersectionObserver for lazy loading
-                    if ('IntersectionObserver' in window) {
-                        var observer = new IntersectionObserver(function(entries, observer) {
-                            entries.forEach(function(entry) {
-                                if (entry.isIntersecting) {
-                                    var img = entry.target;
-                                    img.src = img.getAttribute('data-src');
-                                    observer.unobserve(img);
-                                }
-                            });
-                        });
-                        observer.observe(this);
-                    } else {
-                        // Fallback for browsers without IntersectionObserver support
-                        $img.attr('src', originalSrc);
-                    }
-                }
-            });
             
 
             handleProductColumns($('section.featured_product .row .product_column'));
@@ -353,75 +372,18 @@
            
         })
     </script>
-<?php elseif(is_archive() || is_page('wholesale-fireworks-online')):?>
+<?php elseif(is_archive() || is_page()):?>
     <script type="text/javascript">
-        function getVals($sliderSection) {
-            var $sliders = $sliderSection.find('input[type="range"]');
-            var slide1 = parseFloat($sliders.eq(0).val());
-            var slide2 = parseFloat($sliders.eq(1).val());
-
-            // Neither slider will clip the other, so make sure we determine which is larger
-            if (slide1 > slide2) {
-                var tmp = slide2;
-                slide2 = slide1;
-                slide1 = tmp;
-            }
-
-            var $displayElement = $sliderSection.find('.rangeValues');
-            $displayElement.text("$" + slide1 + " - $" + slide2);
-
-            // Get all products
-            $('.product_column').each(function() {
-                var $product = $(this);
-                var price = parseFloat($product.find('.price ins .woocommerce-Price-amount').text().replace('$', '')) || 
-                            parseFloat($product.find('.price .woocommerce-Price-amount').first().text().replace('$', ''));
-
-                if (price >= slide1 && price <= slide2) {
-                    $product.show();
-                } else {
-                    $product.hide();
-                }
-            });
-        }
-
-        function initializeSlider($sliderSection) {
-            var $sliders = $sliderSection.find('input[type="range"]');
-            $sliders.on('input', function() {
-                getVals($sliderSection);
-            });
-            // Manually trigger event first time to display values
-            $sliders.eq(0).trigger('input');
-        }
-
-        // Initialize sliders for mobile and desktop
-        $('#price_mobile .range-slider, #price .range-slider').each(function() {
-            initializeSlider($(this));
+        $(document).ready(function() {
+            $('#price input').on('input',function(){
+                $('section.product_main ul.products product_column').each(function(){
+                    var price = $(this).find('p.price bdi').text()
+                    if(price > $('input.max').val()){
+                        $(this).toggleClass('d-none')
+                    }
+                })
+            })
         });
- 
-        $(document).ready(function(){
-              // Initialize Sliders
-            // $('section.product_main li').each(function(){
-            //     $(this).click(function(){
-            //         $(this).find('a').click()
-            //         $(this).find('input[type="radio"]').click()
-            //         $(this).find('input[type="radio"]').prop('checked', true);
-            //     })
-            // })
-            setInterval(() => {
-                setEqualHeightForSection('section.product_main','h3')
-            }, 500);
-
-            // function handleRadioButtonClick() {
-            //     // Find the associated anchor tag
-            //     var anchor = $(this).siblings('a');
-                
-            //     // Trigger a click event on the anchor tag
-            //     anchor.click();
-            // }
-
-            // // Attach click event handler to radio buttons
-            // $('.accordion-body input[type="radio"]').click(handleRadioButtonClick);
-        })
     </script>
 <?php elseif(is_page('contact-us')):?>
     <script type="text/javascript">

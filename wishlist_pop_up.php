@@ -14,7 +14,7 @@
                         <h5 class="text-uppercase">Added to wish list</h5>
                         <p class="product_name"></p>
                         <p class="price"></p>
-                        <a href="<?php echo get_home_url(); ?>/wishlist/" class="view_wishlist">View wish List</a>
+                        <a href="<?php echo get_home_url(); ?>/wishlist/" class="view_wishlist" target="_blank">View wish List</a>
                     </div>
                 </div>
                 <div class="group_button">

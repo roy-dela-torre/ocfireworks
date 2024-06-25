@@ -95,6 +95,9 @@
     footer {
         padding: 50px 8px;
     }
+    .copy_right {
+        padding: 50px 20px;
+    }
 
     .product_added_to_wislist .product {
         flex-direction: column;
@@ -132,6 +135,7 @@
     footer .my_account {
         flex-direction: column;
     }
+    
 }
 
 @media (max-width:575px) {
@@ -168,13 +172,28 @@
         padding: 20px;
         min-width: 320px;
     }
+    header div.top_nav,
+    header .middle_nav{
+        padding: 10px 0;
+    }
+    header .middle_nav svg{
+        width: 20px;
+        height: 20px;
+    }
+    header .middle_nav .left_menu>div {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    header .middle_nav .search{
+        padding-top: 10px !important;
+    }
+    header .middle_nav .left_menu{
+        gap: 10px 0;
+    }
 }
 
 @media (max-width: 390px) {
-    header .middle_nav .left_menu>div {
-        flex-wrap: wrap;
-        gap: 30px 12px;
-    }
+   
 
     header .main_nav .navbar-brand img {
         max-width: 200px;

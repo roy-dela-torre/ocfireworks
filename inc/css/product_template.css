@@ -125,7 +125,6 @@
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
-    margin-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,6 +135,7 @@
     align-items: center;
     gap: 0 5px;
     justify-content: center;
+    margin-bottom: 30px;
 }
 .product_content p.price.sale del span.woocommerce-Price-amount.amount bdi{
     color: var(--primay_font_color);

@@ -56,23 +56,25 @@ if ( ! comments_open() ) {
 								</div>
 								<div class="product_reviews d-flex align-items-center">
 									<p class="mb-0">Average rating</p>
-									<?php 
-									for ($i = 1; $i <= 5; $i++): ?>
-										<?php if ($i <= $review_count): ?>
-											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#FFD600">
-												<path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
-											</svg>
-										<?php else: ?>
-											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#A9A9A9">
-												<path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
-											</svg>
-										<?php endif; ?>
-									<?php endfor; ?>
+									<div class="star">
+										<?php 
+										for ($i = 1; $i <= 5; $i++): ?>
+											<?php if ($i <= $review_count): ?>
+												<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#FFD600">
+													<path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
+												</svg>
+											<?php else: ?>
+												<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#A9A9A9">
+													<path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
+												</svg>
+											<?php endif; ?>
+										<?php endfor; ?>
+									</div>
 								</div>
 							</div>
 						<?php endif; ?>
 						<!-- Button trigger modal -->
-						<button type="button" class="btn red_button text-center write_review" data-bs-toggle="modal" data-bs-target="#write_a_review">Write a Review</button>
+						<button type="button" class="red_button text-center write_review" data-bs-toggle="modal" data-bs-target="#write_a_review">Write a Review</button>
 
 						<!-- Modal -->
 						<div class="modal fade" id="write_a_review" tabindex="-1" aria-labelledby="write_a_reviewLabel" aria-hidden="true">
@@ -81,7 +83,21 @@ if ( ! comments_open() ) {
 									<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 										<div id="review_form_wrapper">
 											<div id="review_form">
-												<h2 class="text-white">Write A Review</h2>
+												<div class="header d-flex align-items-center justify-content-between">
+													<h2 class="text-white">Write A Review </h2>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+														<svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+															<g clip-path="url(#clip0_1181_51581)">
+																<path d="M2.93179 17.5698C1.97669 16.6474 1.21486 15.5439 0.690774 14.3239C0.166684 13.1038 -0.109178 11.7916 -0.120716 10.4638C-0.132254 9.13605 0.120763 7.81926 0.623572 6.59029C1.12638 5.36133 1.86891 4.24481 2.80784 3.30589C3.74677 2.36696 4.86328 1.62443 6.09225 1.12162C7.32121 0.61881 8.63801 0.365793 9.9658 0.377331C11.2936 0.388869 12.6058 0.664731 13.8258 1.18882C15.0459 1.71291 16.1493 2.47473 17.0718 3.42984C18.8934 5.31586 19.9013 7.84188 19.8785 10.4638C19.8557 13.0858 18.8041 15.5939 16.95 17.448C15.0959 19.3021 12.5878 20.3538 9.9658 20.3766C7.34383 20.3994 4.81781 19.3914 2.93179 17.5698ZM11.4018 10.4998L14.2318 7.66984L12.8218 6.25984L10.0018 9.08984L7.17179 6.25984L5.76179 7.66984L8.59179 10.4998L5.76179 13.3298L7.17179 14.7398L10.0018 11.9098L12.8318 14.7398L14.2418 13.3298L11.4118 10.4998H11.4018Z" fill="white"/>
+															</g>
+															<defs>
+																<clipPath id="clip0_1181_51581">
+																<rect width="20" height="20" fill="white" transform="translate(0 0.5)"/>
+																</clipPath>
+															</defs>
+														</svg>
+													</button>
+												</div>
 												<p>Gorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. </p>
 												<?php
 												$commenter    = wp_get_current_commenter();

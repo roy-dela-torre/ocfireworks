@@ -81,13 +81,13 @@
 <?php elseif(is_page('events') || is_page(62)):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>events.css">
 
-<?php elseif(is_page('Fireworks Supply Store')):?>
+<?php elseif(is_page('Fireworks Supply Store') || is_page(72)):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>supply.css">
 
 <?php elseif(is_page('Special Deals & Prices for Firework')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>special_deals.css">
 
-<?php elseif(is_page('Novelty Fireworks for Sale')):?>
+<?php elseif(is_page('Novelties') || is_page(69)):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>novelty.css">
 
 <?php elseif(is_page('Fireworks Supply Store')):?>

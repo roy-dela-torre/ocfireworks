@@ -1,18 +1,20 @@
 <?php
 if ( ! function_exists( 'ocfireworks' ) ) :
-    function ocfireworks() {
+    function ocfireworks_setup() {
         add_theme_support( 'post-thumbnails' );
-        add_theme_support( 'post-formats',  array ( 'aside', 'gallery', 'quote', 'image', 'video' ) );
-        register_nav_menus( array(
-            'primary'   => __( 'Primary Menu', 'ocfireworksNavMenu' )
-        ) );
+        add_theme_support( 'post-formats', array( 'aside', 'gallery', 'quote', 'image', 'video' ) );
         add_theme_support( 'woocommerce' );
         add_theme_support( 'wc-product-gallery-zoom' ); 
         add_theme_support( 'wc-product-gallery-lightbox' ); 
         add_theme_support( 'wc-product-gallery-slider' );
+    
+        register_nav_menus( array(
+            'primary' => __( 'Primary Menu', 'ocfireworks' ),
+            'secondary' => __( 'Secondary Menu', 'ocfireworks' ),
+        ) );
     }
+    add_action( 'after_setup_theme', 'ocfireworks_setup' );
     endif; 
-    add_action( 'after_setup_theme', 'ocfireworks' );
     function get_excerpt($limit, $source = null){
         $excerpt = $source == "content" ? get_the_content() : get_the_excerpt();
         $excerpt = preg_replace(" (\[.*?\])",'',$excerpt);
@@ -79,7 +81,7 @@ function custom_process_registration() {
     // Verify nonce
     $nonce_value = isset($_POST['woocommerce-register-nonce']) ? $_POST['woocommerce-register-nonce'] : '';
     if (!wp_verify_nonce($nonce_value, 'woocommerce-register')) {
-        wc_add_notice(__('Invalid registration attempt. Please try again.', 'woocommerce'), 'error');
+        // wc_add_notice(__('Invalid registration attempt. Please try again.', 'woocommerce'), 'error');
         return;
     }
 
@@ -393,26 +395,6 @@ function bbloomer_recently_viewed_shortcode() {
 }
 
 
-
-
-
-
-
-
-// Function to remove <br> tags from Contact Form 7 forms
-function remove_br_from_cf7_form($form) {
-    // Remove <br> and <br /> tags
-    $form = str_replace('<br>', '', $form);
-    $form = str_replace('<br />', '', $form);
-    return $form;
-}
-
-// Apply the function to the wpcf7_form_elements filter
-add_filter('wpcf7_form_elements', 'remove_br_from_cf7_form');
-
-
-
-
 // Register the custom endpoint for recently view products
 function add_custom_my_account_endpoint() {
     add_rewrite_endpoint( 'recently-viewed', EP_ROOT | EP_PAGES );
@@ -436,26 +418,20 @@ add_action( 'woocommerce_account_recently-viewed_endpoint', 'display_recently_vi
 
 
 
-
-
-// Register the custom endpoint for recently view products
-function add_custom_my_account_endpoint_message() {
-    add_rewrite_endpoint( 'message', EP_ROOT | EP_PAGES );
+// Function to remove <br> tags from Contact Form 7 forms
+function remove_br_from_cf7_form($form) {
+    // Remove <br> and <br /> tags
+    $form = str_replace('<br>', '', $form);
+    $form = str_replace('<br />', '', $form);
+    return $form;
 }
-add_action( 'init', 'add_custom_my_account_endpoint_message' );
 
-// Add the Recently Viewed tab to My Account navigation
-function add_message( $items ) {
-    $items['message'] = __( 'Message', 'woocommerce' );
-    return $items;
-}
-add_filter( 'woocommerce_account_menu_items', 'add_message', 99 );
+// Apply the function to the wpcf7_form_elements filter
+add_filter('wpcf7_form_elements', 'remove_br_from_cf7_form');
 
-// Display content for the Recently Viewed endpoint
-function display_message_products() {
-    echo do_shortcode('[message_products]');
-}
-add_action( 'woocommerce_account_message_endpoint', 'display_message_products' );
+
+
+
 
 
 

@@ -18,7 +18,7 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/fourth_of_july';
                         <h2 class="text-white">Best Fireworks to Buy on the 4th of July Sale</h2>
                         <img src="<?php echo $img_path; ?>/Best Fireworks to Buy on the 4th of July Sale.jpg" alt="Best Fireworks to Buy on the 4th of July Sale" class="img-fluid w-100 d-block d-lg-none mb-4 mobile">
                         <p class="text-white">Finding the best fireworks to buy for the 4th of July is about more than just stunning displays; it's about creating unforgettable moments with loved ones. </p>
-                        <p class="text-white">OC Fireworks’ curated selection features top-quality fireworks renowned for their vibrant colors, breathtaking effects, and impeccable safety standards</p>
+                        <p class="text-white">OC Fireworks’ curated selection features top-quality fireworks renowned for their vibrant colors, breathtaking effects, and impeccable safety standards.</p>
                     </div>
                 </div>
             </div>
@@ -139,25 +139,26 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/fourth_of_july';
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col-lg-6">
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="image">
+                        <img src="<?php echo $img_path;  ?>/How to Use 4th of July Fireworks Safely.jpg" alt="How to Use 4th of July Fireworks Safely">
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
                     <div class="content d-flex flex-column h-100">
                         <h2 class="red_text">How to Use 4th of July Fireworks Safely</h2>
                         <img src="<?php echo $img_path;  ?>/How to Use 4th of July Fireworks Safely.jpg" alt="How to Use 4th of July Fireworks Safely" class="w-100 img-fluid d-block d-lg-none">
                         <p>Enjoy the 4th of July fireworks with our tips. Learn essential safety guidelines for a memorable and injury-free celebration.</p>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block ps-lg-5">
-                    <div class="image">
-                        <img src="<?php echo $img_path;  ?>/How to Use 4th of July Fireworks Safely.jpg" alt="How to Use 4th of July Fireworks Safely">
-                    </div>
-                </div>
+               
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="content box d-flex flex-column">
                         <img src="<?php echo $img_path; ?>/Read and Understand the Fireworks Instructions.png" alt="Read and Understand the Fireworks Instructions">
                         <h3 class="red_text">Read and Understand the Fireworks Instructions</h3>
-                        <p>Fireworks are fun, but they're also powerful explosives. Ignoring their instructions can lead to serious injuries, fires, and property damage</p>
+                        <p>Fireworks are fun, but they're also powerful explosives. Ignoring their instructions can lead to serious injuries, fires, and property damage.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">

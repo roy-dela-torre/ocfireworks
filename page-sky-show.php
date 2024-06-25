@@ -7,8 +7,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/sky_show';
         <div class="container-fluid">
             <div class="row">
                 <div class="header red_text">
-                    <h1 class="text-center">Gorem ipsum dolor sit amet Events adipiscing elit</h1>
-                    <p class="text-center">Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
+                    <h1 class="text-center">Reach for the Stars with Sky High Effects!</h1>
+                    <p class="text-center">Take your celebrations to new heights with our Sky High Effects Main Section! Explore a dazzling array of rockets, comets, and aerial fireworks guaranteed to leave your guests breathless.  Light up the night sky and create an unforgettable spectacle that everyone will be talking about.</p>
                 </div>
                 <?php
                 $product_categories = get_terms(array(

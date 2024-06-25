@@ -175,7 +175,7 @@ $home = get_home_url();
                                         <?php endif; ?>
                                         <span>|</span>
                                         <a href="<?php echo $home;?>/sign-up/" target="_blank" rel="noopener noreferrer">
-                                                SIGNUP
+                                                SIG NUP
                                         </a>
                                     </div>
                                     <div class="shipping d-flex align-items-center mw-md-100 position-relative">
@@ -203,7 +203,14 @@ $home = get_home_url();
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <?php wp_nav_menu(array('Primary Menu' => 'Primary','menu_class' => 'navMenu navbar-nav me-auto mb-2 mb-lg-0','container' => false,));?>
+                        <?php
+                            wp_nav_menu( array(
+                                'theme_location' => 'primary',   // This should match the location registered in functions.php
+                                'menu_class'     => 'navMenu navbar-nav me-auto mb-2 mb-lg-0',
+                                'container'      => false,
+                            ) );
+                        ?>
+
                         <div class="group_top_nav d-flex d-lg-none justify-content-between">
                             <div class="contact d-flex align-items-center">
                                 <img src="<?php echo $img; ?>/phone.png" alt="">

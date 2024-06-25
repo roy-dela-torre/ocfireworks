@@ -4,6 +4,7 @@
     <?php echo do_shortcode($shortcode); ?>
 </div>
 <style>
+
 section.<?php echo $section; ?> form p{
     display: flex;
     flex-wrap: wrap;

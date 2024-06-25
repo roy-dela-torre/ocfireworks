@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="header">
-                    <h1 class="text-center red_text">Lorem Ipsum Brands</h1>
+                    <h1 class="text-center red_text">Browse the Best: Top Brands, Top Fireworks!</h1>
                 </div>
                 <?php
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;

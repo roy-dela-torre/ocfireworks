@@ -7,86 +7,53 @@ $img = get_stylesheet_directory_uri().'/assets/img/novelty';
         <div class="container-fluid">
             <div class="row">
                 <div class="header red_text">
-                    <h1 class="text-center">Gorem ipsum dolor sit amet Events adipiscing elit</h1>
-                    <p class="text-center">Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
+                    <h1 class="text-center">Fireworks Fun Awaits: Explore Our Novelties!</h1>
+                    <p class="text-center">Unleash your inner pyrotechnician! Here at OC Fireworks, our Novelties Main Page is your gateway to a dazzling array of firework categories. We have everything you need to create a truly unforgettable spectacle. Dive in and discover the perfect fireworks to ignite your next celebration!</p>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Extremely Loud.jpg" alt="Extremely Loud">
-                        <h2 class="text-white mb-0 position-absolute text-center">Extremely Loud</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Helicopters.jpg" alt="Helicopters">
-                        <h2 class="text-white mb-0 position-absolute text-center">Helicopters</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Low Noise Fireworks.jpg" alt="Low Noise Fireworks">
-                        <h2 class="text-white mb-0 position-absolute text-center">Low Noise Fireworks</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Novelty Fireworks.jpg" alt="Novelty Fireworks">
-                        <h2 class="text-white mb-0 position-absolute text-center">Novelty Fireworks</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Parachutes.jpg" alt="Parachutes">
-                        <h2 class="text-white mb-0 position-absolute text-center">Parachutes</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Planes.jpg" alt="Planes">
-                        <h2 class="text-white mb-0 position-absolute text-center">Planes</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Roman Candles.jpg" alt="Roman Candles">
-                        <h2 class="text-white mb-0 position-absolute text-center">Roman Candles</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Safe & Sane.jpg" alt="Safe & Sane">
-                        <h2 class="text-white mb-0 position-absolute text-center">Safe & Sane</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Sky Lanterns.jpg" alt="Sky Lanterns">
-                        <h2 class="text-white mb-0 position-absolute text-center">Sky Lanterns</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Snaps.jpg" alt="Snaps">
-                        <h2 class="text-white mb-0 position-absolute text-center">Snaps</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="content">
-                        <a href="http://" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
-                        <img class="w-100 img-fluid h-100 object-fit-cover" src="<?php echo $img; ?>/Sparklers.jpg" alt="Sparklers">
-                        <h2 class="text-white mb-0 position-absolute text-center">Sparklers</h2>
-                    </div>
-                </div>
+                <?php
+                $product_categories = get_terms(array(
+                    'taxonomy' => 'novelties',
+                    'hide_empty' => false,
+                    'posts_per_page' => -1,
+                ));
+
+                if ($product_categories && !is_wp_error($product_categories)) {
+                    foreach ($product_categories as $category) {
+                        if (esc_html($category->name) === "Uncategorized") {
+                            continue;
+                        }
+                        $category_url = get_term_link($category);
+                        if (!is_wp_error($category_url)) {
+                            ?>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="content">
+                                    <!-- get the current url and then get the slug -->
+                                    <?php
+                                    $parsed_url = wp_parse_url($category_url);
+                                    $path = trim($parsed_url['path'], '/');
+                                    $path_segments = explode('/', $path);
+                                    $slug = end($path_segments);
+                                    ?>
+                                    <!-- combine the home url and slug -->
+                                    <a href="<?php echo get_home_url().'/'.$slug; ?>" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
+                                    <?php
+                                    $image_url = get_field('featured_image', 'term_' . $category->term_id);
+                                    if ($image_url) {
+                                        echo '<img class="w-100 img-fluid h-100 object-fit-cover" src="' . esc_url($image_url) . '" alt="Fourth of July Fireworks">';
+                                    } else {
+                                        echo '<img class="w-100 img-fluid h-100 object-fit-cover" src="' . esc_url(get_template_directory_uri() . '/fallback-image.jpg') . '" alt="Fallback Image">';
+                                    }
+                                    ?>
+                                    <h2 class="text-white mb-0 position-absolute text-center"><?php echo esc_html($category->name); ?></h2>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                } else {
+                    echo 'No product categories found';
+                }
+                ?>
             </div>
         </div>
     </div>

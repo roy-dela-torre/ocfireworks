@@ -57,10 +57,7 @@ if ( post_password_required() ) {
 
 							$rating_count = $product->get_rating_count();
 							$review_count = $product->get_review_count();
-							$average      = $product->get_average_rating();
-
-							if ( $rating_count > 0 ) : ?>
-
+							$average      = $product->get_average_rating(); ?>
 								<div class="product_reviews d-flex align-items-center">
 									<?php 
 									for ($i = 1; $i <= 5; $i++): ?>
@@ -75,38 +72,38 @@ if ( post_password_required() ) {
 										<?php endif; ?>
 									<?php endfor; ?>
 									<div class="review_summary">
-										<span><?php echo number_format($review_count, 1); ?></span>
+										<span> <?php echo $rating_count <= 0 ? '0.0 (No Reviews Yet.)': number_format($average, 1)?></span>
 									</div>
 								</div>
-							<?php endif; ?>
 
 							<?php if ( $price_html = $product->get_price_html() ) : ?>
-								<span class="price"><?php echo $price_html; ?></span>
+								<span class="price <?php echo $product->is_on_sale() ? 'sale':''?> d-flex align-items-center"><?php echo $price_html; ?></span>
 							<?php endif; ?>
 
 							<div class="info">
 								<div class="d-flex align-items-center">
 									<strong class="text-uppercase">Availability:</strong>
-									<p></p>
+									<p>In stock | Usually ships within 24 hours or less</p>
 								</div>
 								<div class="d-flex align-items-center">
 									<strong class="text-uppercase">less Weight:</strong>
-									<p></p>
+									<p>8.79 LBS</p>
 								</div>
 								<div class="d-flex align-items-center">
 									<strong class="text-uppercase">Shots:</strong>
-									<p></p>
+									<p>36</p>
 								</div>
 								<div class="d-flex align-items-center">
 									<strong class="text-uppercase">Duration:</strong>
-									<p></p>
+									<p>≈28</p>
 								</div>
 								<div class="d-flex align-items-center">
 									<strong class="text-uppercase">Duration Range:</strong>
-									<p></p>
+									<p>15-30</p>
 								</div>
 							</div>
-							<?php if ( ! $product->is_purchasable() ) {
+							<div class="group_content">
+								<?php if ( ! $product->is_purchasable() ) {
 									return;
 								}
 
@@ -137,26 +134,12 @@ if ( post_password_required() ) {
 
 										<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 									</form>
-
+									
 									<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 
 								<?php endif; ?>
-
-							<?php
-							/**
-							 * Hook: woocommerce_single_product_summary.
-							 *
-							 * @hooked woocommerce_template_single_title - 5
-							 * @hooked woocommerce_template_single_rating - 10
-							 * @hooked woocommerce_template_single_price - 10
-							 * @hooked woocommerce_template_single_excerpt - 20
-							 * @hooked woocommerce_template_single_add_to_cart - 30
-							 * @hooked woocommerce_template_single_meta - 40
-							 * @hooked woocommerce_template_single_sharing - 50
-							 * @hooked WC_Structured_Data::generate_product_data() - 60
-							 */
-							//do_action( 'woocommerce_single_product_summary' );
-							?>
+								<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]') ?>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -196,27 +179,27 @@ if ( post_password_required() ) {
 								</div>
 							<?php endforeach; ?>
 							<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--custom_tab panel entry-content wc-tab" id="tab-custom_tab" role="tabpanel" aria-labelledby="tab-title-custom_tab" style="">
-								<h2>See fireworks Display</h2>
 								<div class="videos">
 									<div class="row">
 										<div class="col-lg-6 col-md-12">
 											<div class="youtube_videos">
+												<h3>Zoo Party (Power Blast Fireworks)</h3>
 												<?php if(!empty($video_iframe)):?>
 													<div class="iframe">
-														
-														<iframe width="560" height="315" src="<?php echo $video_iframe; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+														<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">
+														<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/play.png" alt="" class="play_button">
+														<!-- <iframe width="560" height="315" src="<?php echo $video_iframe; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
 													</div>
 												<?php endif; ?>
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="3d_videos">
-												<!-- <iframe data-src="https://www.iconasys.com/Downloads/360/multi-purpose-tool-360-view/iframe.html" width="100%" height="500" scrolling="yes" class="iframe-class lazyloaded" frameborder="0" src="https://www.iconasys.com/Downloads/360/multi-purpose-tool-360-view/iframe.html"></iframe>	 -->
-													<!-- Use it like any other HTML element -->
-												<model-viewer alt="3D image" src="https://d1a370nemizbjq.cloudfront.net/0a08c3a8-c67a-41ea-bfdb-28d0e9894db7.glb" ar ar-modes="webxr scene-viewer quick-look" seamless-poster shadow-intensity="1" camera-controls auto-rotate style="height: 100%;width: 100%;"></model-viewer>
-
-												<!-- Import the component -->
-												<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+											<h3>Lorem Ipsum 3d fireworks</h3>
+												<div class="thumbnail">
+													<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">
+													<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/play.png" alt="" class="play_button">
+												</div>
 											</div>
 										</div>
 									</div>

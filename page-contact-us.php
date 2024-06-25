@@ -18,9 +18,7 @@
                             'shortcode' => $shortcode, 
                         );
                         ob_start();
-                    ?>
-                    <?php echo wc_get_template('template/form.php', $data);?>
-                    <?php
+                        echo wc_get_template('template/form.php', $data);
                         $content = ob_get_clean();
                         echo $content;
                     ?>
