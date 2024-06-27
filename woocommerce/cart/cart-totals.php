@@ -113,12 +113,6 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
 </div>
-<?php if ( wc_coupons_enabled() ) { ?>
-	<div class="coupon">
-		<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="red_button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
-		<?php do_action( 'woocommerce_cart_coupon' ); ?>
-	</div>
-<?php } ?>
 <div class="wc-proceed-to-checkout">
 	<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
 	<button class="continue_shopping"><a href="<?php echo get_home_url(); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link">Continue shopping</a></button>

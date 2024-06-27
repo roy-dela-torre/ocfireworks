@@ -180,30 +180,30 @@
             <path d="M11.9831 16.5C11.7201 16.4981 11.4603 16.4426 11.2195 16.3369C10.9788 16.2312 10.7622 16.0776 10.5831 15.8854L5.25311 10.1972C5.0796 10.0028 4.98914 9.74835 5.00104 9.48827C5.01294 9.2282 5.12625 8.98306 5.31679 8.80519C5.50733 8.62732 5.76001 8.5308 6.02089 8.53624C6.28177 8.54167 6.53018 8.64864 6.71311 8.8343L11.9831 14.4626L17.2531 8.8343C17.3418 8.73488 17.4496 8.65418 17.57 8.59695C17.6904 8.53972 17.8211 8.50711 17.9544 8.50104C18.0877 8.49497 18.2208 8.51557 18.346 8.56161C18.4711 8.60766 18.5858 8.67823 18.6832 8.76917C18.7806 8.86011 18.8588 8.96957 18.9132 9.09112C18.9676 9.21266 18.997 9.34383 18.9998 9.47691C19.0026 9.60998 18.9786 9.74226 18.9294 9.86597C18.8802 9.98968 18.8066 10.1023 18.7131 10.1972L13.3871 15.8844C13.2076 16.0772 12.9905 16.2313 12.749 16.3372C12.5075 16.4431 12.2469 16.4985 11.9831 16.5Z" fill="#212121"/>
             </svg>`);
 
-            var iframeHTML;
-            function replaceThumbnailWithIframe() {
-                if (typeof iframeHTML !== 'undefined') {
-                    $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
-                } else {
-                    console.error('iframeHTML is not defined');
-                }
+        var iframeHTML;
+        function replaceThumbnailWithIframe() {
+            if (typeof iframeHTML !== 'undefined') {
+                $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+            } else {
+                console.error('iframeHTML is not defined');
             }
-            $('.product_column .play').click(function() {
-                iframeHTML = $(this).closest('.product_column').find('.iframe').html();
-                console.log(iframeHTML)
-                var title = $(this).closest('.product_column').find('h3.product_title').text();
-                $('#video_modal #video_modalLabel').text(title);
-                $('.video_modal').click();
-            });
-            $('img.play_button').click(replaceThumbnailWithIframe);
-            $('img.play_button').click(function(){
-                $(this).hide()
-            })
+        }
+        $('.product_column .play').click(function() {
+            iframeHTML = $(this).closest('.product_column').find('.iframe').html();
+            console.log(iframeHTML)
+            var title = $(this).closest('.product_column').find('h3.product_title').text();
+            $('#video_modal #video_modalLabel').text(title);
+            $('.video_modal').click();
+        });
+        $('img.play_button').click(replaceThumbnailWithIframe);
+        $('img.play_button').click(function(){
+            $(this).hide()
+        })
 
-            $('div#video_modal button.btn.btn-secondary').click(function(){
-                $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
-                $('img.play_button').show()
-            })
+        $('div#video_modal button.btn.btn-secondary').click(function(){
+            $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
+            $('img.play_button').show()
+        })
 
 
         var next = $('<img>', {
@@ -375,14 +375,20 @@
 <?php elseif(is_archive() || is_page()):?>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#price input').on('input',function(){
-                $('section.product_main ul.products product_column').each(function(){
-                    var price = $(this).find('p.price bdi').text()
-                    if(price > $('input.max').val()){
-                        $(this).toggleClass('d-none')
-                    }
-                })
-            })
+            $('#min-price, #max-price').on('input change', function(){
+                setTimeout(() => {
+                    var next = $('<img>', {
+                        src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/next.png', // Replace with the actual image URL
+                        alt: 'Next Image' // Add an alt attribute for accessibility
+                    });
+                    $('a.next.page-numbers').html(next);
+                    var prev = $('<img>', {
+                        src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/prev.png', // Replace with the actual image URL
+                        alt: 'Next Image' // Add an alt attribute for accessibility
+                    });
+                    $('a.prev.page-numbers').html(prev);
+                }, 2000);
+            });
         });
     </script>
 <?php elseif(is_page('contact-us')):?>

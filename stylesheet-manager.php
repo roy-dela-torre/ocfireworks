@@ -87,7 +87,7 @@
 <?php elseif(is_page('Special Deals & Prices for Firework')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>special_deals.css">
 
-<?php elseif(is_page('Novelties') || is_page(69)):?>
+<?php elseif(is_page('Novelty Fireworks for Sale') || is_page(306)):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>novelty.css">
 
 <?php elseif(is_page('Fireworks Supply Store')):?>

@@ -9,7 +9,7 @@ section.single_product .summary.entry-summary {
 }
 
 section.single_product h1 {
-    color: #FF0000;
+    color: #BF2126;
     margin-bottom: 15px;
 }
 
@@ -810,6 +810,17 @@ section.related_products div#yith-wcwl-popup-message {
     }
 }
 
+@media (max-width:767px) {
+    div#carouselExampleCaptions {
+        flex-direction: column-reverse;
+        gap: 20px 0;
+    }
+    div#carouselExampleCaptions .carousel-indicators{
+        flex-direction: row;
+        gap: 0 10px;
+    }
+}
+
 @media (max-width: 575px) {
 
     section.single_product .group_content,
@@ -826,11 +837,6 @@ section.related_products div#yith-wcwl-popup-message {
 
     .woocommerce div.product form.cart div.quantity {
         margin: 0 !important;
-    }
-
-    div#carouselExampleCaptions {
-        flex-direction: column-reverse;
-        gap: 20px 0;
     }
 
     section.product_reviews .woocommerce-tabs.wc-tabs-wrapper ul.tabs.wc-tabs {

@@ -1,0 +1,332 @@
+section img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+section .categories {
+    display: flex;
+    align-items: center;
+    gap: 0 12px;
+    margin-bottom: 12px;
+}
+
+section .categories a {
+    color: var(--PDAX-Blue, #08295C);
+    text-align: center;
+    font-family: "TT Commons", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+section p.description {
+    color: rgba(8, 41, 92, 0.80);
+    margin-bottom: 12px;
+}
+
+section p.author {
+    color: var(--PDAX-Blue, #08295C);
+    font-family: "TT Commons", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+section p.description a {
+    color: var(--PDAX-New-Green, #79D862);
+    font-family: "TT Commons";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    text-decoration: none;
+}
+
+
+
+section.banner .header {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+section.banner h1 {
+    color: var(--PDAX-Blue, #08295C);
+    margin-bottom: 100px;
+}
+
+section.banner .today_topic_header,
+section.banner .recent_header,
+section.template_blog .header,
+section.exlplore_more_topics .main_content_header {
+    border-top: 1px solid #0053FF;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+section.banner .today_topic_button,
+section.banner .recent_header_button,
+section.template_blog .header_button,
+section.exlplore_more_topics .main_content_button {
+    padding: 12px;
+    border-radius: 0px 0px 4px 4px;
+    background: var(--PDAX-Light-Blue, #0053FF);
+    color: #FFF;
+    font-family: "TT Commons", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 16.8px */
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+section.banner .today_topic_main_content {
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: 318px calc(100% - 362px);
+    grid-template-rows: minmax(auto, auto);
+    gap: 24px 40px;
+    grid-auto-flow: column;
+}
+
+section.banner .today_topic_small_content {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+section.banner .today_topic_small_content:first-child {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #0053FF;
+}
+
+section.banner .today_topic_large_content {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+section.banner .today_topic_small_content img {
+    max-height: 112px;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+section.banner .image {
+    margin-bottom: 24px;
+}
+
+
+
+section.banner h3.title {
+    color: var(--PDAX-Blue, #08295C);
+    margin-bottom: 12px;
+}
+
+
+
+section.banner .today_topic_main_content>div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+section.banner .today_topic_large_content img,
+section.banner .today_topic_large_content .image {
+    height: 100%;
+}
+
+section.banner .recent {
+    width: 329px;
+}
+
+section.banner .today_topic {
+    width: calc(100% - 345px);
+}
+
+section.banner .row {
+    gap: 0 16px;
+}
+
+section.banner .recent .content {
+    display: flex;
+    gap: 0 20px;
+    padding: 24px 0;
+    align-items: center;
+}
+
+section.banner .recent .content:not(:last-child) {
+    border-bottom: 1px solid #0053FF;
+}
+
+section.banner .recent .content img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+}
+
+section.banner .recent .content .image {
+    margin-bottom: 0;
+}
+
+section.banner h4.title {
+    color: var(--PDAX-Blue, #08295C);
+    font-family: "TT Commons", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 24px */
+    margin-bottom: 0;
+}
+
+
+
+section.banner .recent_content {
+    width: calc(100% - 110px);
+}
+
+
+section.banner img {
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+section.template_blog:not(.intermediate_blog) {
+    background-color: #F1F6FF;
+}
+
+section.template_blog .row:first-child img {
+    min-height: 500px;
+}
+
+section.template_blog .row:first-child {
+    margin-bottom: 40px;
+}
+
+section.template_blog .row:last-child {
+    gap: 24px 0;
+}
+
+section.template_blog .row:last-child img {
+    min-height: 220px;
+}
+
+section.template_blog .row:last-child .image {
+    margin-bottom: 24px;
+}
+
+section.template_blog h3,
+section.template_blog h2 {
+    color: #08295C;
+    margin-bottom: 12px;
+}
+
+section.template_blog img {
+    object-fit: cover;
+}
+
+section.template_blog h2+img {
+    margin-bottom: 24px;
+}
+
+
+
+
+
+
+section.exlplore_more_topics .small_content .content {
+    display: flex;
+    gap: 0 20px;
+    border-top: 1px solid #0053FF;
+    padding: 24px 0;
+    align-items: center;
+}
+
+section.exlplore_more_topics .small_content img{
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+}
+section.exlplore_more_topics h4.title{
+    color: var(--PDAX-Blue, #08295C);
+    font-family: "TT Commons",sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 24px */
+    margin-bottom: 0;
+}
+section.exlplore_more_topics .main_content{
+    margin-bottom: 24px;
+}
+section.exlplore_more_topics .small_content .recent_content{
+    width: calc(100% - 110px);
+}
+
+section.exlplore_more_topics .image{
+    margin-bottom: 24px;
+}
+section.exlplore_more_topics h3.title{
+    color: #08295C;
+    margin-bottom: 12px;
+}
+@media (max-width:1200px) {
+    section.banner .row>div {
+        width: 100%;
+    }
+
+    section.banner .row {
+        gap: 50px 0;
+    }
+
+    section.banner .recent .content img {
+        width: 400px;
+        height: 200px;
+    }
+}
+
+@media (max-width:991px) {
+    section.banner h1 {
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width:767px) {
+    section.banner .recent .content {
+        flex-direction: column;
+        gap: 24px 0;
+        align-items: start;
+    }
+
+    section.banner .recent .content img {
+        width: 100%;
+        height: auto;
+    }
+
+    section.banner .today_topic_main_content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    section.banner img,
+    section.banner .today_topic_small_content img {
+        height: 300px;
+        height: 100%;
+        width: 100%;
+        max-height: 100%;
+    }
+}

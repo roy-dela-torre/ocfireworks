@@ -1,7 +1,7 @@
 <section class="related_products">
     <div class="wrapper">
         <div class="container-fluid">
-            <h2 class="text-center">Related Products</h2>
+            <h2 class="text-center">Other Products</h2>
             <div class="row">
                 <?php
                 global $paged;

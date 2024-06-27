@@ -38,12 +38,12 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 					<?php if ( is_page() ) : ?>
 						<!-- Display the page title for regular pages -->
 						<h1 class="text-center text-white"><?php the_field('header'); ?></h1>
-						<?php the_field('banner_content'); ?>
+						<p class="text-white text-center"><?php the_field('banner_content'); ?></p>
 					<?php else : ?>
 						<!-- Display the WooCommerce page title for archive pages -->
 						<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 							<h1 class="text-center text-white"><?php woocommerce_page_title(); ?></h1>
-							<?php woocommerce_taxonomy_archive_description()?>
+							<p class="text-white text-center"><?php woocommerce_taxonomy_archive_description()?></p>
 						<?php endif; ?>
 					<?php endif; ?>
 				</div>
@@ -59,7 +59,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 					<h2 class="red_text text-center"><?php the_title(); ?></h2>
 				</div>
 				<div class="col-xl-3 col-lg-4 d-none d-lg-block">
-					<div class="sidebar_filter">
+					<div class="sidebar_filter sticky-top">
 						<span class="filter">Filters</span>
 						<div class="accordion" id="accordionExample">
                             <div class="accordion-item">
@@ -151,11 +151,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 								</h2>
 								<div id="price" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 									<div class="accordion-body">
-										<p class="text-center">$500 is the maximum amount.</p>
-										<form action="">
-											<input value="0" min="0" max="50" step="1" type="range" class="min">
-											<input value="50" min="0" max="500" step="1" type="range" class="max">
-										</form>
+										<?php echo do_shortcode('[price_filter]')?>
 									</div>
 								</div>
 							</div>
@@ -265,14 +261,9 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 											Price
 										</button>
 									</h2>
-									<div id="price_mobile" class="accordion-collapse collapse rounded-0" data-bs-parent="#accordionExample">
+									<div id="price_mobile" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 										<div class="accordion-body">
-											<p class="text-center">$500 is the maximum amount.</p>
-											<div class="range-slider">
-												<input value="0" min="0" max="50" step="1" type="range">
-												<input value="50" min="0" max="50" step="1" type="range">
-												<span class="rangeValues"></span>
-											</div>
+											<?php echo do_shortcode('[price_filter]')?>
 										</div>
 									</div>
 								</div>

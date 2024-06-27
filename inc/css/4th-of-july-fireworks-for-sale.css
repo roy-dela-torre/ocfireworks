@@ -141,7 +141,8 @@ section.related_products .paging span.page-numbers.current {
 @media (max-width:767px) {
 
     section.best_fire_word .content.box,
-    section.how_to_plan_you_4th_of_july .row:last-child .content {
+    section.how_to_plan_you_4th_of_july .row:last-child .content,
+    section.what_do_you_need .content {
         padding: 30px;
     }
 

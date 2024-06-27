@@ -55,7 +55,7 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/fourth_of_july';
                     <div class="content box d-flex align-items-center flex-column h-100">
                         <img src="<?php echo $img_path; ?>/Wholesale Fireworks.png" alt="Wholesale Fireworks 36 Shot OMG Happy Case 24/1">
                         <h3 class="text-center text-white mb-0">Wholesale Fireworks 36 Shot OMG Happy Case 24/1</h3>
-                        <p class="text-center text-white">Get ready to light up your 4th of July festivities with the OMG Happy Case 24/1! With 864 vibrant shells in 24 pieces, it's a spectacular choice for any celebration. Featuring dazzling colors, these fireworks are a must-have for your 4th of July fireworks for sale at our store. Order now and make your Independence Day party unforgettable!</p>
+                        <p class="text-center text-white">Get ready to light up your 4th of July festivities with the <a href="https://ocfireworks.com/wholesale-fireworks-36-shot-omg-happy-case-24-1/" target="_blank" rel="noopener noreferrer">OMG Happy Case 24/1</a>! With 864 vibrant shells in 24 pieces, it's a spectacular choice for any celebration. Featuring dazzling colors, these fireworks are a must-have for your 4th of July fireworks for sale at our store. Order now and make your Independence Day party unforgettable!</p>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6">

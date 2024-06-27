@@ -28,7 +28,7 @@ $col = "";
 if (is_page('recently-viewed') || is_archive()) {
     $col = "col-xl-4 col-sm-6 col-12";
 }
-else if (is_page()) {
+else if (is_page() || is_archive() || is_tax()) {
     $col = "col-xl-4 col-sm-6 col-12";
 }
 elseif(is_account_page() && !is_page('recently-viewed')){

@@ -1009,6 +1009,7 @@ header .product_summary {
     flex-direction: column;
     max-height: 500px;
     overflow-y: scroll;
+    min-width: 400px;
 }
 
 header .product_summary span.your_cart {
@@ -1081,6 +1082,9 @@ header .middle_nav span.woocommerce-Price-currencySymbol {
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
+}
+span.woocommerce-Price-currencySymbol{
+
 }
 
 header p.qty {
