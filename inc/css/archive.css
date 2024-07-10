@@ -4,6 +4,8 @@ section.banner {
     max-height: 700px;
     display: flex;
     align-items: center;
+    background-color: #F8F8F8 !important;
+    background-blend-mode: darken;
 }
 
 section.banner .content {
@@ -19,8 +21,6 @@ section.banner p {
 section.banner h1 {
     margin-bottom: 20px;
 }
-
-
 
 
 
@@ -353,9 +353,20 @@ section.product_main .accordion-item a {
     line-height: normal;
     text-transform: uppercase;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+section.product_main .accordion-item a img{
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-bottom: 0 !important;
 }
 
-div#categores ul {
+div#categores ul,
+div#categories {
     max-height: 600px;
     overflow-y: scroll;
 }
@@ -584,9 +595,10 @@ section.product_main .range_input input {
     border: none;
 }
 
-section.product_main .range_input input:focus {
+section.product_main .range_input input:focus-visible {
     border: none;
     box-shadow: none;
+    outline-offset: 0;
 }
 
 section.product_main .is-hide {

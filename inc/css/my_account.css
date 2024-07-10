@@ -604,6 +604,12 @@ section.my_account .om-messages-wrapper h4{
     margin-bottom: 0;
 }
 
+section.my_account td.woocommerce-orders-table__cell.woocommerce-orders-table__cell-order-actions{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 
 @media (max-width: 991px) {
     section.my_account .woocommerce {

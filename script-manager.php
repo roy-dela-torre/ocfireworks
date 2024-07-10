@@ -1,12 +1,12 @@
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/inc/js/jquery.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/inc/js/functions.js"></script>
-<?php $js_path = get_stylesheet_directory_uri().'/inc/js/'?>
+<?php $js_path = get_stylesheet_directory_uri() . '/inc/js/' ?>
 <script>
-     function setEqualHeightForSection(sectionSelector, secondSelector) {
+    function setEqualHeightForSection(sectionSelector, secondSelector) {
         var elementsToResize = $(sectionSelector).find(secondSelector);
         var tallestHeight = 0;
-        elementsToResize.each(function () {
+        elementsToResize.each(function() {
             var height = $(this).height();
             if (height > tallestHeight) {
                 tallestHeight = height;
@@ -14,6 +14,7 @@
         });
         elementsToResize.css('height', tallestHeight);
     }
+
     function handleProductColumns(columns) {
         // console.log('asdlsakdjasldkj')
         columns.each(function() {
@@ -23,6 +24,7 @@
             });
         });
     }
+
     function updateWishlistModal(button) {
         var contentContainer = button.closest('.product_content');
         var productName = contentContainer.find('h5.text-center').text();
@@ -32,15 +34,18 @@
         $('.product_added_to_wislist p.product_name').text(productName);
         $('.product_added_to_wislist p.price').html(productPrice);
     }
-    function popUpcartUpdate(selfUrl){
+
+    function popUpcartUpdate(selfUrl) {
         $.ajax({
             url: selfUrl, // Use the self URL
             method: 'GET', // Make a GET request
             beforeSend: function(xhr) {
+                $('#overlay').show()
             },
             success: function(response) {
-                $('.cart_button span.cart_count').text($(response).find('span.cart_count').text()); 
-                $('.product_summary').html($(response).find('.product_summary').html());
+                $('.cart_button span.cart_count').text($(response).find('span.cart_count').text());
+                $('.mini_cart_main_container').html($(response).find('.mini_cart_main_container').html());
+                $('#overlay').hide()
             },
             error: function(xhr, status, error) {
                 // Handle error, e.g., display an error message
@@ -48,6 +53,7 @@
             }
         });
     }
+
     function replaceThumbnailWithIframe() {
         if (typeof iframeHTML !== 'undefined') {
             $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
@@ -60,11 +66,12 @@
         var currentUrl = window.location.href;
         $('ul#menu-ocfireworksnavmenu a').each(function() {
             var navUrl = $(this).attr('href');
-            if(currentUrl === navUrl) {
+            if (currentUrl === navUrl) {
                 $(this).parent('li').addClass('active');
             }
         });
-        
+
+
         $('img[loading="lazy"]').each(function() {
             var $img = $(this);
             var originalSrc = $img.attr('data-src') || $img.attr('src');
@@ -114,8 +121,8 @@
         // }).remove();
 
 
-        $('.product_column').each(function(){
-            $(this).find('.yith-wcwl-add-button img').click(function(){
+        $('.product_column').each(function() {
+            $(this).find('.yith-wcwl-add-button img').click(function() {
                 console.log('wishlist image click')
                 $('.wishlist_modal_btn').trigger('click');
                 updateWishlistModal($(this));
@@ -126,18 +133,18 @@
 
 
         // show hide mini cart on nav
-        $('.add_to_cart p.product.woocommerce.add_to_cart_inline').click(function(){
+        $('.add_to_cart p.product.woocommerce.add_to_cart_inline').click(function() {
             var selfUrl = window.location.href; // Get the current page URL
             popUpcartUpdate(selfUrl)
             popUpcartUpdate(selfUrl)
             setTimeout(() => {
-                $('.pop_up_cart').show();
+                $('.mini_cart_main_container').show();
                 $('span.close').show();
             }, 3000);
         });
 
-        $('span.close').click(function () {
-            $('.pop_up_cart').hide()
+        $('span.close').click(function() {
+            $('.mini_cart_main_container').hide()
         });
 
         // sticky nav
@@ -149,13 +156,13 @@
             }
         });
 
-        
+
 
         // submenu layout
-        $('header .main_nav li.menu-item-has-children').each(function(){
-           var li_submenue_html = $(this).find('ul.sub-menu').prop('outerHTML')
-           var last_child_html = $(this).find('ul.sub-menu li:last-child').prop('outerHTML');
-           $(this).find('ul.sub-menu').html(`<div class="main_sub_menu">
+        $('header .main_nav li.menu-item-has-children').each(function() {
+            var li_submenue_html = $(this).find('ul.sub-menu').prop('outerHTML')
+            var last_child_html = $(this).find('ul.sub-menu li:last-child').prop('outerHTML');
+            $(this).find('ul.sub-menu').html(`<div class="main_sub_menu">
                 <ul class="child_sub_menu">
                     ${$(this).find('ul.sub-menu').html()}
                 </ul>
@@ -167,7 +174,7 @@
         $('ul.child_sub_menu li:last-child').addClass('last-child').remove();
 
         // search button tabletform.mb-0
-        $('form.mb-0 svg').click(function(){
+        $('form.mb-0 svg').click(function() {
             $('form.mb-0').submit()
         })
         $('header .main_nav li>a').each(function() {
@@ -181,6 +188,7 @@
             </svg>`);
 
         var iframeHTML;
+
         function replaceThumbnailWithIframe() {
             if (typeof iframeHTML !== 'undefined') {
                 $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
@@ -196,23 +204,23 @@
             $('.video_modal').click();
         });
         $('img.play_button').click(replaceThumbnailWithIframe);
-        $('img.play_button').click(function(){
+        $('img.play_button').click(function() {
             $(this).hide()
         })
 
-        $('div#video_modal button.btn.btn-secondary').click(function(){
+        $('div#video_modal button.btn.btn-secondary').click(function() {
             $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
             $('img.play_button').show()
         })
 
 
         var next = $('<img>', {
-            src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/next.png', // Replace with the actual image URL
+            src: '<?php echo get_stylesheet_directory_uri(); ?>/assets/img/search/next.png', // Replace with the actual image URL
             alt: 'Next Image' // Add an alt attribute for accessibility
         });
         $('a.next.page-numbers').html(next);
         var prev = $('<img>', {
-            src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/prev.png', // Replace with the actual image URL
+            src: '<?php echo get_stylesheet_directory_uri(); ?>/assets/img/search/prev.png', // Replace with the actual image URL
             alt: 'Next Image' // Add an alt attribute for accessibility
         });
         $('a.prev.page-numbers').html(prev);
@@ -233,15 +241,18 @@
             }
         });
 
+        $('.cart_button a').click(function() {
+            $('.mini_cart_main_container').toggle();
+        });
+
+
     });
-
-
 </script>
-<?php if(is_front_page()):?>
-    <?php $img = get_stylesheet_directory_uri().'/assets/img/homepage'; ?>
+<?php if (is_front_page()) : ?>
+    <?php $img = get_stylesheet_directory_uri() . '/assets/img/homepage'; ?>
     <script src="<?php echo $js_path; ?>owl.carousel.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function() {
             $('div#brands').owlCarousel({
                 nav: false,
                 loop: true,
@@ -257,65 +268,65 @@
                 mouseDrag: false,
                 responsive: {
                     0: {
-                        items:3
+                        items: 3
                     },
                     576: {
-                        items:4
+                        items: 4
                     },
                     768: {
-                        items:5
+                        items: 5
                     },
                     992: {
-                        items:6
+                        items: 6
                     },
-                    1366:{
-                        items:7
+                    1366: {
+                        items: 7
                     },
-                    1440:{
-                        items:8
+                    1440: {
+                        items: 8
                     },
-                    1920:{
-                        items:10
+                    1920: {
+                        items: 10
                     }
                 }
             });
 
             $('#about_us').owlCarousel({
-                loop:true,
-                margin:10,
-                nav:false,
+                loop: true,
+                margin: 10,
+                nav: false,
                 autoplay: true,
                 autoplaySpeed: 30000,
-                autoplayTimeout: 30000, 
-                responsive:{
-                    0:{
-                        items:1
+                autoplayTimeout: 30000,
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:2
+                    600: {
+                        items: 2
                     },
-                    1000:{
-                        items:3
+                    1000: {
+                        items: 3
                     }
                 }
             })
-            
+
 
             handleProductColumns($('section.featured_product .row .product_column'));
             handleProductColumns($('section.special_product .row .product_column'));
-        
-            
+
+
             // banner hover function change banner to gif
-            $(document).on('click scroll', function (e) { 
-                $('section.banner').addClass('hover');  
-                $('section.banner').css('background', 'url("<?php echo get_stylesheet_directory_uri(); ?>/assets/img/homepage/banner.gif") no-repeat bottom center/cover');          
+            $(document).on('click scroll', function(e) {
+                $('section.banner').addClass('hover');
+                $('section.banner').css('background', 'url("<?php echo get_stylesheet_directory_uri(); ?>/assets/img/homepage/banner.gif") no-repeat bottom center/cover');
             });
         })
     </script>
-<?php elseif(is_page('about-us')):?>
+<?php elseif (is_page('about-us')) : ?>
     <script src="<?php echo $js_path; ?>owl.carousel.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('div#brands').owlCarousel({
                 nav: false,
                 loop: true,
@@ -325,65 +336,65 @@
                 autoWidth: true,
                 center: true,
                 autoplaySpeed: 4200,
-                autoplayTimeout: 4200, 
+                autoplayTimeout: 4200,
                 slideTransition: 'linear',
                 items: 13,
                 mouseDrag: false,
                 responsive: {
                     0: {
-                        items:3
+                        items: 3
                     },
                     576: {
-                        items:4
+                        items: 4
                     },
                     768: {
-                        items:5
+                        items: 5
                     },
                     992: {
-                        items:6
+                        items: 6
                     },
-                    1366:{
-                        items:7
+                    1366: {
+                        items: 7
                     },
-                    1440:{
-                        items:8
+                    1440: {
+                        items: 8
                     },
-                    1920:{
-                        items:10
+                    1920: {
+                        items: 10
                     }
                 }
             });
-            $('.maps img').hover(function(){
-               $(this).replaceWith(`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2979.830235591817!2d-86.12994982392547!3d41.68100967126406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8816cfced2f51055%3A0x31b6dc1f1e028037!2sOCFireworks.com!5e0!3m2!1sen!2sph!4v1715232345741!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`);
-            })
-        });
-    </script>
-<?php elseif(is_page('curbside-pickup')):?>
-    <script>
-        $(document).ready(function () {
-            $('.maps img,.content img.maps').hover(function(){
+            $('.maps img').hover(function() {
                 $(this).replaceWith(`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2979.830235591817!2d-86.12994982392547!3d41.68100967126406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8816cfced2f51055%3A0x31b6dc1f1e028037!2sOCFireworks.com!5e0!3m2!1sen!2sph!4v1715232345741!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`);
             })
         });
     </script>
-<?php elseif(is_cart()):?>
-    <script type="text/javascript">
-        $(document).ready(function(){
-           
-        })
+<?php elseif (is_page('curbside-pickup')) : ?>
+    <script>
+        $(document).ready(function() {
+            $('.maps img,.content img.maps').hover(function() {
+                $(this).replaceWith(`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2979.830235591817!2d-86.12994982392547!3d41.68100967126406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8816cfced2f51055%3A0x31b6dc1f1e028037!2sOCFireworks.com!5e0!3m2!1sen!2sph!4v1715232345741!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`);
+            })
+        });
     </script>
-<?php elseif(is_archive() || is_page()):?>
+<?php elseif (is_cart()) : ?>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#min-price, #max-price').on('input change', function(){
+
+        })
+    </script>
+<?php elseif (is_archive() || is_page()) : ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#min-price, #max-price').on('input change', function() {
                 setTimeout(() => {
                     var next = $('<img>', {
-                        src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/next.png', // Replace with the actual image URL
+                        src: '<?php echo get_stylesheet_directory_uri(); ?>/assets/img/search/next.png', // Replace with the actual image URL
                         alt: 'Next Image' // Add an alt attribute for accessibility
                     });
                     $('a.next.page-numbers').html(next);
                     var prev = $('<img>', {
-                        src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/prev.png', // Replace with the actual image URL
+                        src: '<?php echo get_stylesheet_directory_uri(); ?>/assets/img/search/prev.png', // Replace with the actual image URL
                         alt: 'Next Image' // Add an alt attribute for accessibility
                     });
                     $('a.prev.page-numbers').html(prev);
@@ -391,27 +402,27 @@
             });
         });
     </script>
-<?php elseif(is_page('contact-us')):?>
+<?php elseif (is_page('contact-us')) : ?>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('.map img').click(function(){
+        $(document).ready(function() {
+            $('.map img').click(function() {
                 $(this).replaceWith(`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2979.81454097319!2d-86.12738829999999!3d41.6813486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8816cfced1933acd%3A0xdf1e5c9119ca9b1e!2s13421%20McKinley%20Hwy%2C%20Mishawaka%2C%20IN%2046545%2C%20USA!5e0!3m2!1sen!2sph!4v1713774385763!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`)
             })
         })
     </script>
 
-<?php elseif(is_page('shipping-info')):?>
+<?php elseif (is_page('shipping-info')) : ?>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('section.video img').click(function(){
+        $(document).ready(function() {
+            $('section.video img').click(function() {
                 $(this).replaceWith(`<iframe width="960" height="315" src="https://www.youtube.com/embed/8Ziw73eZBl4" title="OCF SHIPPING VIDEO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> `)
             })
         })
     </script>
 
-<?php elseif(is_single()):?>
+<?php elseif (is_single()) : ?>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // $('div#review_form_wrapper div#review_form').hide()
             // $('div#write_a_review .modal-content').html($('div#review_form_wrapper div#review_form').html())
             // $('button.write_review').click(function(){
@@ -425,7 +436,7 @@
                     $(this).hide();
                 }
             });
-            if(comments.length == 0){
+            if (comments.length == 0) {
                 $('.load_more').hide()
             }
             $('.load_more').click(function() {
@@ -440,53 +451,55 @@
         });
     </script>
 
-<?php elseif(is_cart() || is_page(9)):?>
+<?php elseif (is_cart() || is_page(9)) : ?>
     <script>
-        $(document).ready(function () {
-            
+        $(document).ready(function() {
+
         });
     </script>
 
-<?php elseif(is_page(11) || is_page('my-account')): ?>
+<?php elseif (is_page(11) || is_account_page()) : ?>
     <script type="text/javascript">
-        $(document).ready(function () {
-            var iframeHTML;
-            function replaceThumbnailWithIframe() {
-                console.log('click')
-                if (typeof iframeHTML !== 'undefined') {
-                    $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
-                } else {
-                    console.error('iframeHTML is not defined');
-                }
-            }
-            $('section.my_account .product_column .play').click(function() {
-                console.log('click')
-                iframeHTML = $(this).closest('.product_column').find('.iframe').html();
-                console.log(iframeHTML)
-                var title = $(this).closest('.product_column').find('h3.product_title').text();
-                $('#video_modal #video_modalLabel').text(title);
-                $('.video_modal').click();
-            });
-            $('img.play_button').click(replaceThumbnailWithIframe);
-            $('img.play_button').click(function(){
-                $(this).hide()
-                console.log('click')
-            })
+        $(document).ready(function() {
+            // var iframeHTML;
+            // function replaceThumbnailWithIframe() {
+            //     console.log('click')
+            //     if (typeof iframeHTML !== 'undefined') {
+            //         $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+            //     } else {
+            //         console.error('iframeHTML is not defined');
+            //     }
+            // }
+            // $('section.my_account .product_column .play').click(function() {
+            //     console.log('click')
+            //     iframeHTML = $(this).closest('.product_column').find('.iframe').html();
+            //     console.log(iframeHTML)
+            //     var title = $(this).closest('.product_column').find('h3.product_title').text();
+            //     $('#video_modal #video_modalLabel').text(title);
+            //     $('.video_modal').click();
+            // });
+            // $('img.play_button').click(replaceThumbnailWithIframe);
+            // $('img.play_button').click(function(){
+            //     $(this).hide()
+            //     console.log('click')
+            // })
 
-            $('div#video_modal button.btn.btn-secondary').click(function(){
-                $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
-                $('img.play_button').show()
-            })
+            // $('div#video_modal button.btn.btn-secondary').click(function(){
+            //     $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
+            //     $('img.play_button').show()
+            // })
+
         });
     </script>
 
-<?php elseif(is_page(221) || is_page('recently-viewed')): ?>
-    <?php $img = get_stylesheet_directory_uri().'/assets/img/homepage'; ?>
+<?php elseif (is_page(221) || is_page('recently-viewed')) : ?>
+    <?php $img = get_stylesheet_directory_uri() . '/assets/img/homepage'; ?>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             handleProductColumns($('section.my_account .row .product_column'));
 
             var iframeHTML;
+
             function replaceThumbnailWithIframe() {
                 console.log('click')
                 if (typeof iframeHTML !== 'undefined') {
@@ -504,44 +517,46 @@
                 $('.video_modal').click();
             });
             $('img.play_button').click(replaceThumbnailWithIframe);
-            $('img.play_button').click(function(){
+            $('img.play_button').click(function() {
                 $(this).hide()
                 console.log('click')
             })
 
-            $('div#video_modal button.btn.btn-secondary').click(function(){
+            $('div#video_modal button.btn.btn-secondary').click(function() {
                 $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
                 $('img.play_button').show()
             })
         });
     </script>
-<?php elseif(is_page('4th-of-july-fireworks-for-sale') || is_page(257)):?>
+<?php elseif (is_page('4th-of-july-fireworks-for-sale') || is_page(257)) : ?>
     <script>
-        $(document).ready(function () {
-            setEqualHeightForSection('section.best_fire_word','h3')
-            setEqualHeightForSection('section.how_to_plan_you_4th_of_july','h3')
-            setEqualHeightForSection('section.how_to_use_4th_of_july','h3')
+        $(document).ready(function() {
+            setEqualHeightForSection('section.best_fire_word', 'h3')
+            setEqualHeightForSection('section.how_to_plan_you_4th_of_july', 'h3')
+            setEqualHeightForSection('section.how_to_use_4th_of_july', 'h3')
         });
     </script>
 
-<?php elseif(is_page('After you order')):?>
+<?php elseif (is_page('After you order')) : ?>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('section.banner .video img,section.banner .content img').click(function(){
+        $(document).ready(function() {
+            $('section.banner .video img,section.banner .content img').click(function() {
                 $(this).replaceWith(`<iframe width="560" height="315" src="https://www.youtube.com/embed/8Ziw73eZBl4?si=LrYGT--kw-wd7UQH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
             })
         })
     </script>
 
-<?php elseif(is_page('Product Demos')):?>
+<?php elseif (is_page('Product Demos')) : ?>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('section.product_demos .content2020 img').click(function(){
+        $(document).ready(function() {
+            $('section.product_demos .content2020 img').click(function() {
                 $(this).replaceWith(`<iframe width="560" height="315" src="https://www.youtube.com/embed/U63bT6HuvKk?si=yD0XMxXNLCyLlHlh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
             })
-            $('section.product_demos .content2019 img').click(function(){
+            $('section.product_demos .content2019 img').click(function() {
                 $(this).replaceWith(`<iframe width="560" height="315" src="https://www.youtube.com/embed/i0px8Or4d_M?si=WK6QdbgHQv8BYca2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
             })
         })
     </script>
-<?php endif;?>
+<?php elseif (is_checkout()) : ?>
+
+<?php endif; ?>

@@ -26,11 +26,16 @@
                         }
                         $category_url = get_term_link($category);
                         if (!is_wp_error($category_url)) {
+                            // Get the ACF field value
+                            $featured_image = get_field('featured_image', 'brands_' . $category->term_id);
                             ?>
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                                 <div class="content position-relative d-flex flex-column align-items-center">
-                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/brands/barnds.png" alt="" class="mb-4">
-                                    <h5 class="text-center"><a href="<?php echo esc_url($category_url); ?>" rel="noopener noreferrer" class="stretched-link "></a><?php echo esc_html($category->name); ?></h5>
+                                    <img src="<?php echo $featured_image ? esc_url($featured_image) : get_stylesheet_directory_uri() . '/assets/img/brands/barnds.png'; ?>" alt="<?php echo esc_html($category->name); ?>" class="mb-4">
+                                    <h5 class="text-center"><?php echo esc_html($category->name); ?>
+                                        <a href="<?php echo esc_url($category_url); ?>" rel="noopener noreferrer" class="stretched-link">
+                                        </a>
+                                    </h5>
                                 </div>
                             </div>
                             <?php

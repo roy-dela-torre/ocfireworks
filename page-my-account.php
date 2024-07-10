@@ -22,3 +22,12 @@ $imgPath = get_stylesheet_directory_uri().'/assets/img/homepage/'; ?>
   <?php echo do_shortcode('[woocommerce_my_account]'); ?>
 <?php endif;?>
 <?php get_footer(); ?>
+<script>
+  $(document).ready(function(){
+    $('button.clear_message').click(function(event){
+          console.log('hahahah')
+          event.preventDefault()
+          $('form.om-messenger-sending-form textarea').val('').change()
+      })
+  })
+</script>

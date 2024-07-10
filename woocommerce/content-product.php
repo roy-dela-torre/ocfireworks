@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying product content within loops
  *
@@ -9,12 +10,12 @@
  * @version 3.6.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 global $product;
 
 // Ensure visibility.
-if ( empty( $product ) || ! $product->is_visible() ) {
+if (empty($product) || !$product->is_visible()) {
     return;
 }
 
@@ -27,14 +28,11 @@ $product_price = $product->get_price_html();
 $col = "";
 if (is_page('recently-viewed') || is_archive()) {
     $col = "col-xl-4 col-sm-6 col-12";
-}
-else if (is_page() || is_archive() || is_tax()) {
+} else if (is_page() || is_archive() || is_tax()) {
     $col = "col-xl-4 col-sm-6 col-12";
-}
-elseif(is_account_page() && !is_page('recently-viewed')){
+} elseif (is_account_page() && !is_page('recently-viewed')) {
     $col = "col-xl-4 col-sm-6 col-12";
-}
-else {
+} else {
     $col = "col-lg-3 col-md-4 col-sm-6 col-12";
 }
 
@@ -50,14 +48,14 @@ $data = array(
 
 // Load the template
 ob_start();
-if(is_page('4th of July Fireworks for Sale | OC Fireworks') || is_page(281)): ?>
+if (is_page('4th of July Fireworks for Sale | OC Fireworks') || is_page(281)) : ?>
     <div class="<?php echo $col; ?> product_column">
         <?php echo wc_get_template('template/product_content.php', $data); ?>
     </div>
-<?php else: ?>
-<div class="<?php echo $col; ?> product_column">
-    <?php echo wc_get_template('template/product_content.php', $data); ?>
-</div>
+<?php else : ?>
+    <div class="<?php echo $col; ?> product_column">
+        <?php echo wc_get_template('template/product_content.php', $data); ?>
+    </div>
 <?php endif;
 $content = ob_get_clean();
 // Output the content

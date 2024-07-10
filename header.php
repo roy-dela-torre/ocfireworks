@@ -1,190 +1,198 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="uoVUFD_osDNOnE_y3kkfMsHP4EFWD1wXbIilGyizDPo" />	
-    <title><?php wp_title();?></title>
-    <?php include('stylesheet-manager.php')?>
+    <meta name="google-site-verification" content="uoVUFD_osDNOnE_y3kkfMsHP4EFWD1wXbIilGyizDPo" />
+    <title><?php wp_title(); ?></title>
+    <?php include('stylesheet-manager.php') ?>
     <?php wp_head(); ?>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XD9KCVMXG"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-1XD9KCVMXG');
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-1XD9KCVMXG');
     </script>
     <!-- Google tag (gtag.js) end -->
 </head>
+
 <body <?php body_class(); ?>>
-<?php $img = get_stylesheet_directory_uri().'/assets/img/global';
-$home = get_home_url();
-?>
-<header>
-    <div class="top_nav">
-        <div class="wrapper">
-            <div class="container-fluid">
-                <div class="row justify-content-between">
-                    <div class="contact d-flex align-items-center">
-                        <?php
-                            echo file_get_contents($img.'/contact.svg');
-                        ?>
-                        <span>Contact Us: <a href="tel:+574-742-8164">574-742-8164</a></span>
-                    </div>
-                    <div class="promocode">
-                        <span><a href="<?php echo get_home_url(); ?>/sign-up-to-save/" target="_blank" rel="noopener noreferrer">Get Up to 5% percent discount sign up here</a></span>
-                    </div>
-                    <div class="connect_with_us d-flex align-items-center">
-                        <span>Connect with Us:</span>
-                        <div class="socmed">
-                            <a href="https://www.facebook.com/ocfireworksdotcom/" target="_blank" rel="noopener noreferrer">
-                            <?php
-                                echo file_get_contents($img.'/facebook.svg');
-                            ?>
-                            </a>
-                            <a href="https://www.instagram.com/ocfireworks/" target="_blank" rel="noopener noreferrer">
-                                <?php
-                                    echo file_get_contents($img.'/instagram.svg');
-                                ?>
-                            </a>
-                            <a href="https://x.com/ocfireworks" target="_blank" rel="noopener noreferrer">
-                                <?php
-                                    echo file_get_contents($img.'/twitter.svg');
-                                ?>
-                            </a>
-                            <a href="https://www.youtube.com/channel/UC1rvJpD3HrPRNNedJxNMjMQ" target="_blank" rel="noopener noreferrer">
-                                <?php
-                                    echo file_get_contents($img.'/youtube.svg');
-                                ?>
-                            </a>
-                            <a href="https://www.pinterest.com/buyfireworksonline/" target="_blank" rel="noopener noreferrer">
-                                <?php
-                                    echo file_get_contents($img.'/pinterest.svg');
-                                ?>
-                            </a>
-                            <a href="https://www.linkedin.com/company/overstock-central-fireworks" target="_blank" rel="noopener noreferrer">
-                                <?php
-                                    echo file_get_contents($img.'/linkedn.svg');
-                                ?>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="sticky-header">
-        <div class="middle_nav">
+    <?php $img = get_stylesheet_directory_uri() . '/assets/img/global';
+    $home = get_home_url();
+    ?>
+    <header>
+        <div class="top_nav">
             <div class="wrapper">
                 <div class="container-fluid">
                     <div class="row justify-content-between">
-                        <div class="col-xxl-2 d-none d-xxl-block">
-                            <div class="logo">
-                                <a href="<?php echo $home; ?>"  rel="noopener noreferrer">
-                                    <img src="<?php echo $img; ?>/logo.png" alt="">
+                        <div class="contact d-flex align-items-center">
+                            <?php
+                            echo file_get_contents($img . '/contact.svg');
+                            ?>
+                            <span>Contact Us: <a href="tel:+574-742-8164">574-742-8164</a></span>
+                        </div>
+                        <div class="promocode">
+                            <span><a href="<?php echo get_home_url(); ?>/sign-up-to-save/" target="_blank" rel="noopener noreferrer">Get Up to 5% percent discount sign up here</a></span>
+                        </div>
+                        <div class="connect_with_us d-flex align-items-center">
+                            <span>Connect with Us:</span>
+                            <div class="socmed">
+                                <a href="https://www.facebook.com/ocfireworksdotcom/" target="_blank" rel="noopener noreferrer">
+                                    <?php
+                                    echo file_get_contents($img . '/facebook.svg');
+                                    ?>
+                                </a>
+                                <a href="https://www.instagram.com/ocfireworks/" target="_blank" rel="noopener noreferrer">
+                                    <?php
+                                    echo file_get_contents($img . '/instagram.svg');
+                                    ?>
+                                </a>
+                                <a href="https://x.com/ocfireworks" target="_blank" rel="noopener noreferrer">
+                                    <?php
+                                    echo file_get_contents($img . '/twitter.svg');
+                                    ?>
+                                </a>
+                                <a href="https://www.youtube.com/channel/UC1rvJpD3HrPRNNedJxNMjMQ" target="_blank" rel="noopener noreferrer">
+                                    <?php
+                                    echo file_get_contents($img . '/youtube.svg');
+                                    ?>
+                                </a>
+                                <a href="https://www.pinterest.com/buyfireworksonline/" target="_blank" rel="noopener noreferrer">
+                                    <?php
+                                    echo file_get_contents($img . '/pinterest.svg');
+                                    ?>
+                                </a>
+                                <a href="https://www.linkedin.com/company/overstock-central-fireworks" target="_blank" rel="noopener noreferrer">
+                                    <?php
+                                    echo file_get_contents($img . '/linkedn.svg');
+                                    ?>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xxl-10 col-xl-12 p-xxl-0">
-                            <div class="left_menu d-flex">
-                                <div class="d-flex d-lg-none col">
-                                    <button class="search_button">
-                                        <img src="<?php echo $img; ?>/search.png" alt="">
-                                    </button>
-                                </div>
-                                <div class="search d-none d-lg-block">
-                                    <form role="search" method="get" class="mb-0" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                                        <div class="search_field d-flex align-items-center">
-                                            <input type="search" placeholder="Search..." class="w-100" value="<?php echo get_search_query(); ?>" name="s" id="s">
-                                            <?php
-                                                echo file_get_contents($img.'/search.svg');
-                                            ?>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="group_icon_button d-flex align-items-center">
-                                    <a href="<?php echo $home; ?>/wishlist/" target="_blank" rel="noopener noreferrer">
-                                        <?php
-                                            echo file_get_contents($img.'/wishlist.svg');
-                                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-header">
+            <div class="middle_nav">
+                <div class="wrapper">
+                    <div class="container-fluid">
+                        <div class="row justify-content-between">
+                            <div class="col-xxl-2 d-none d-xxl-block">
+                                <div class="logo">
+                                    <a href="<?php echo $home; ?>" rel="noopener noreferrer">
+                                        <img src="<?php echo $img; ?>/logo.png" alt="Ocfireworks">
                                     </a>
-                                    <div class="cart_button">
-                                        <a href="<?php echo $home; ?>/cart/" target="_blank" rel="noopener noreferrer" class="cart">
-                                            <span class="cart_count"><?php echo WC()->cart->get_cart_contents_count();?></span>
+                                </div>
+                            </div>
+                            <div class="col-xxl-10 col-xl-12 p-xxl-0">
+                                <div class="left_menu d-flex">
+                                    <div class="d-flex d-lg-none col">
+                                        <button class="search_button">
+                                            <img src="<?php echo $img; ?>/search.png" alt="Search">
+                                        </button>
+                                    </div>
+                                    <div class="search d-none d-lg-block">
+                                        <form role="search" method="get" class="mb-0" role="search" action="<?php echo esc_url(home_url('/')); ?>">
+                                            <div class="search_field d-flex align-items-center">
+                                                <input type="search" placeholder="Search..." class="w-100" value="<?php echo get_search_query(); ?>" name="s" id="s">
+                                                <?php
+                                                echo file_get_contents($img . '/search.svg');
+                                                ?>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="group_icon_button d-flex align-items-center">
+                                        <a href="<?php echo $home; ?>/wishlist/" target="_blank" rel="noopener noreferrer">
                                             <?php
-                                                echo file_get_contents($img.'/cart.svg');
+                                            echo file_get_contents($img . '/wishlist.svg');
                                             ?>
                                         </a>
-                                        <div class="pop_up_cart">
-                                            <div class="cart_main_content">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="82" height="39" viewBox="0 0 82 39" fill="none">
-                                                    <path d="M41 0L81.7032 39H0.296806L41 0Z" fill="white"/>
-                                                </svg>
-                                                <span class="close" style="display: none;">
-                                                    <img src="<?php echo $img; ?>/close.png" alt="">
-                                                </span>
-                                                <div class="product_summary">
-                                                    <div class="header_cart d-flex align-items-center justify-content-between">
-                                                        <span class="your_cart">Your Cart</span>
-                                                    </div>
-                                                    <?php
-                                                    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-                                                        $_product   = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-                                                        $product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
-                                                        if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 ) {
-                                                            ?>
-                                                            <div class="product d-flex align-items-md-center">
-                                                                <?php echo $_product->get_image(); ?>
-                                                                <div class="product_name_price">
-                                                                    <p class="product_name"><?php echo $_product->get_name(); ?></p>
-                                                                    <p class="price mb-0"><?php echo wc_price( $_product->get_price() ); ?></p>
+                                        <div class="cart_button">
+                                            <a href="javascript:void()" rel="noopener noreferrer" class="cart">
+                                                <span class="cart_count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+                                                <?php
+                                                echo file_get_contents($img . '/cart.svg');
+                                                ?>
+                                            </a>
+                                            <div class="pop_up_cart d-none">
+                                                <div class="cart_main_content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="82" height="39" viewBox="0 0 82 39" fill="none">
+                                                        <path d="M41 0L81.7032 39H0.296806L41 0Z" fill="white" />
+                                                    </svg>
+                                                    <span class="close" style="display: none;">
+                                                        <img src="<?php echo $img; ?>/close.png" alt="Close">
+                                                    </span>
+                                                    <div class="product_summary">
+                                                        <div class="header_cart d-flex align-items-center justify-content-between">
+                                                            <span class="your_cart">Your Cart</span>
+                                                        </div>
+                                                        <?php
+                                                        foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+                                                            $_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
+                                                            $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
+                                                            if ($_product && $_product->exists() && $cart_item['quantity'] > 0) {
+                                                        ?>
+                                                                <div class="product d-flex align-items-md-center">
+                                                                    <?php echo $_product->get_image(); ?>
+                                                                    <div class="product_name_price">
+                                                                        <p class="product_name"><?php echo $_product->get_name(); ?></p>
+                                                                        <p class="price mb-0"><?php echo wc_price($_product->get_price()); ?></p>
+                                                                    </div>
+                                                                    <p class="qty mb-0">x<?php echo $cart_item['quantity']; ?></p>
                                                                 </div>
-                                                                <p class="qty mb-0">x<?php echo $cart_item['quantity']; ?></p>
-                                                            </div>
-                                                            <?php
+                                                        <?php
+                                                            }
                                                         }
-                                                    }
-                                                    ?>
-                                                    <div class="order-total d-flex aling-items-center justify-content-between">
-                                                        <p class="total-label mb-0"><?php esc_html_e( 'Total:', 'woocommerce' ); ?></p>
-                                                        <p class="total-value d-flex align-items-center" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></p>
-                                                    </div>
-                                                    <div class="group_button d-flex flex-column">
-                                                        <a href="<?php echo get_home_url(); ?>/cart/" target="_blank" rel="noopener noreferrer" class="red_button text-center w-100">View Cart</a>
-                                                        <a href="<?php echo get_home_url(); ?>/checkout/" target="_blank" rel="noopener noreferrer" class="orange_button w-100 text-center">Check out</a>
+                                                        ?>
+                                                        <div class="order-total d-flex aling-items-center justify-content-between">
+                                                            <p class="total-label mb-0"><?php esc_html_e('Total:', 'woocommerce'); ?></p>
+                                                            <p class="total-value d-flex align-items-center" data-title="<?php esc_attr_e('Total', 'woocommerce'); ?>"><?php wc_cart_totals_order_total_html(); ?></p>
+                                                        </div>
+                                                        <div class="group_button d-flex flex-column">
+                                                            <a href="<?php echo get_home_url(); ?>/cart/" target="_blank" rel="noopener noreferrer" class="red_button text-center w-100">View Cart</a>
+                                                            <a href="<?php echo get_home_url(); ?>/checkout/" target="_blank" rel="noopener noreferrer" class="orange_button w-100 text-center">Check out</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="mini_cart_main_container" style="display: none;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="82" height="39" viewBox="0 0 82 39" fill="none">
+                                                    <path d="M41 0L81.7032 39H0.296806L41 0Z" fill="white" />
+                                                </svg>
+                                                <div class="mini_cart d-block position-relative">
+                                                    <?php echo woocommerce_mini_cart(); ?>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="account d-flex">
-                                        <a href="<?php echo is_user_logged_in() ? get_home_url().'/my-account/' : get_home_url().'/login/'?>" target="_blank" rel="noopener noreferrer">
-                                            <?php
-                                                echo file_get_contents($img.'/profile.svg');
-                                            ?>
-                                        </a>
+                                        <div class="account d-flex">
+                                            <a href="<?php echo is_user_logged_in() ? get_home_url() . '/my-account/' : get_home_url() . '/login/' ?>" target="_blank" rel="noopener noreferrer">
+                                                <?php
+                                                echo file_get_contents($img . '/profile.svg');
+                                                ?>
+                                            </a>
 
-                                        <?php if (is_user_logged_in()): ?>
-                                            <a href="<?php echo wp_logout_url( get_home_url() ); ?>" target="_blank" rel="noopener noreferrer">
-                                                LOGOUT
-                                            </a>
-                                        <?php else: ?>
-                                            <a href="<?php echo $home;?>/login/" target="_blank" rel="noopener noreferrer">
-                                                LOGIN
-                                            </a>
-                                        <?php endif; ?>
-                                        <span>|</span>
-                                        <a href="<?php echo $home;?>/sign-up/" target="_blank" rel="noopener noreferrer">
-                                                SIG NUP
-                                        </a>
-                                    </div>
-                                    <div class="shipping d-flex align-items-center mw-md-100 position-relative">
-                                        <div class="shipping_car" style="width: 38px; height: 38px">
-                                            <?php
-                                                echo file_get_contents($img.'/shipping.svg');
-                                            ?>
+                                            <?php if (is_user_logged_in()) : ?>
+                                                <a href="<?php echo wp_logout_url(get_home_url()); ?>" target="_blank" rel="noopener noreferrer">LOGOUT</a>
+                                            <?php else : ?>
+                                                <a href="<?php echo $home; ?>/login/" target="_blank" rel="noopener noreferrer">LOGIN</a>
+                                            <?php endif; ?>
+                                            <span>|</span>
+                                            <a href="<?php echo $home; ?>/sign-up/" target="_blank" rel="noopener noreferrer">SIGN UP</a>
                                         </div>
-                                        <a href="<?php echo $home; ?>/shiping-info/" target="_blank" rel="noopener noreferrer" class="">free shipping for orders over $499.99</a>
+                                        <div class="shipping d-flex align-items-center mw-md-100 position-relative">
+                                            <div class="shipping_car" style="width: 38px; height: 38px">
+                                                <?php
+                                                echo file_get_contents($img . '/shipping.svg');
+                                                ?>
+                                            </div>
+                                            <a href="<?php echo $home; ?>/shiping-info/" target="_blank" rel="noopener noreferrer" class="">free shipping for orders over $499.99</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -192,37 +200,41 @@ $home = get_home_url();
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="main_nav">
-            <nav class="navbar navbar-expand-xxl p-0">
-                <div class="container-fluid">
-                    <a class="navbar-brand d-block d-xxl-none" href="<?php echo $home;?>">
-                        <img src="<?php echo $img; ?>/logo.png" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <?php
-                            wp_nav_menu( array(
+            <div class="main_nav">
+                <nav class="navbar navbar-expand-xxl p-0">
+                    <div class="container-fluid">
+                        <a class="navbar-brand d-block d-xxl-none" href="<?php echo $home; ?>">
+                            <img src="<?php echo $img; ?>/logo.png" alt="Ocfireworks">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <?php
+                            wp_nav_menu(array(
                                 'theme_location' => 'primary',   // This should match the location registered in functions.php
                                 'menu_class'     => 'navMenu navbar-nav me-auto mb-2 mb-lg-0',
                                 'container'      => false,
-                            ) );
-                        ?>
+                            ));
+                            ?>
 
-                        <div class="group_top_nav d-flex d-lg-none justify-content-between">
-                            <div class="contact d-flex align-items-center">
-                                <img src="<?php echo $img; ?>/phone.png" alt="">
-                                <span>Contact Us: <a href="tel:+574-742-8164">574-742-8164</a></span>
-                            </div>
-                            <div class="promocode">
-                                <span><a href="<?php get_home_url(); ?>/register-discount/" target="_blank" rel="noopener noreferrer">Get Up to 5% percent discount sign up here</a></span>
+                            <div class="group_top_nav d-flex d-lg-none justify-content-between">
+                                <div class="contact d-flex align-items-center">
+                                    <img src="<?php echo $img; ?>/phone.png" alt="Phone">
+                                    <span>Contact Us: <a href="tel:+574-742-8164">574-742-8164</a></span>
+                                </div>
+                                <div class="promocode">
+                                    <span><a href="<?php get_home_url(); ?>/register-discount/" target="_blank" rel="noopener noreferrer">Get Up to 5% percent discount sign up here</a></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
         </div>
     </div>
-</header>

@@ -46,7 +46,7 @@
         color: var(--primay_font_color);
         text-align: center;
         font-family: "Roboto Condensed", sans-serif;
-    font-stretch: condensed;
+        font-stretch: condensed;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -95,6 +95,7 @@
     footer {
         padding: 50px 8px;
     }
+
     .copy_right {
         padding: 50px 20px;
     }
@@ -135,7 +136,7 @@
     footer .my_account {
         flex-direction: column;
     }
-    
+
 }
 
 @media (max-width:575px) {
@@ -168,32 +169,39 @@
     header .middle_nav .group_icon_button {
         gap: 0 12px;
     }
-    header .product_summary{
+
+    header .product_summary {
         padding: 20px;
         min-width: 320px;
     }
+
     header div.top_nav,
-    header .middle_nav{
+    header .middle_nav {
         padding: 10px 0;
     }
-    header .middle_nav svg{
+
+    header .middle_nav svg {
         width: 20px;
         height: 20px;
     }
+
     header .middle_nav .left_menu>div {
         flex-wrap: wrap;
         gap: 15px;
     }
-    header .middle_nav .search{
+
+    header .middle_nav .search {
         padding-top: 10px !important;
     }
-    header .middle_nav .left_menu{
+
+    header .middle_nav .left_menu {
         gap: 10px 0;
     }
+
 }
 
 @media (max-width: 390px) {
-   
+
 
     header .main_nav .navbar-brand img {
         max-width: 200px;

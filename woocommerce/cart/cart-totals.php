@@ -43,6 +43,8 @@ defined( 'ABSPATH' ) || exit;
 	?>
 </div>
 
+<?php echo do_shortcode('[order_notes]'); ?>
+
 <div class="cart-totals-container">
 	<div class="cart-subtotal d-flex align-items-center justify-content-between">
 		<p class="subtotal-label mb-0"><?php esc_html_e( 'Subtotal:', 'woocommerce' ); ?></p>

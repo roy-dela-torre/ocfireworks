@@ -39,9 +39,9 @@ $img = get_stylesheet_directory_uri().'/assets/img/sky_show';
                                     <?php
                                     $image_url = get_field('featured_image', 'term_' . $category->term_id);
                                     if ($image_url) {
-                                        echo '<img class="w-100 img-fluid h-100 object-fit-cover" src="' . esc_url($image_url) . '" alt="Fourth of July Fireworks">';
+                                        echo '<img class="w-100 img-fluid h-100 object-fit-cover" src="' . esc_url($image_url) . '" alt="'.esc_html($category->name).'">';
                                     } else {
-                                        echo '<img class="w-100 img-fluid h-100 object-fit-cover" src="' . esc_url(get_template_directory_uri() . '/fallback-image.jpg') . '" alt="Fallback Image">';
+                                        echo '<img class="w-100 img-fluid h-100 object-fit-cover" src="' . esc_url(get_template_directory_uri() . '/fallback-image.jpg') . '" alt="'.esc_html($category->name).'">';
                                     }
                                     ?>
                                     <h2 class="text-white mb-0 position-absolute text-center"><?php echo esc_html($category->name); ?></h2>

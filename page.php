@@ -14,7 +14,7 @@ foreach ($taxonomies as $taxonomy) {
     }
 }
 
-if ($found_taxonomy == 'sky-show' || $found_taxonomy == "ground-effects") {
+if ($found_taxonomy) {
     // Get the URL of the featured image
     $featured_image_url = get_the_post_thumbnail_url($current_page_id, 'full');
     ?>

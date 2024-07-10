@@ -78,9 +78,9 @@
 <?php elseif(is_order_received_page()):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>is_order_received_page.css">
 
-<?php elseif(is_page('events') || is_page(62)):?>
+<?php elseif(is_page('events') || is_page(62) || is_category()):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>events.css">
-
+    <link rel="stylesheet" href="<?php echo $css_path; ?>category.css">
 <?php elseif(is_page('Fireworks Supply Store') || is_page(72)):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>supply.css">
 
@@ -99,24 +99,24 @@
 <?php elseif(is_page('Ground Effects')):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>ground_effect.css">
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?php elseif(is_checkout()):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>checkout.css">
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?//php elseif(is_page('')):?>
+    <!-- <link rel="stylesheet" href="<?//php echo $css_path; ?>.css"> -->
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?//php elseif(is_page('')):?>
+    <!-- <link rel="stylesheet" href="<?//php echo $css_path; ?>.css"> -->
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?//php elseif(is_page('')):?>
+    <!-- <link rel="stylesheet" href="<?//php echo $css_path; ?>.css"> -->
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?//php elseif(is_page('')):?>
+    <!-- <link rel="stylesheet" href="<?//php echo $css_path; ?>.css"> -->
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?//php elseif(is_page('')):?>
+    <!-- <link rel="stylesheet" href="<?//php echo $css_path; ?>.css"> -->
 
-<?php elseif(is_page('')):?>
-    <link rel="stylesheet" href="<?php echo $css_path; ?>.css">
+<?//php elseif(is_page('')):?>
+    <!-- <link rel="stylesheet" href="<?//php echo $css_path; ?>.css"> -->
 <?php endif;?>

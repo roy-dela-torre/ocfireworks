@@ -45,9 +45,9 @@ use U2Code\OrderMessenger\Entity\Message;
             <p>
 				<input type="text" id="order_id" name="order_id" value="Order: Order #<?php echo esc_attr( $orderId ); ?> - Placed on 18th Apr 2024 for $390.86" readonly />
             </p>
-            <p>
+            <!-- <p>
                 <input type="text" id="subject" name="subject" required placeholder="Subject"/>
-            </p>
+            </p> -->
             <p>
                 <textarea maxlength="<?php echo esc_attr( Message::MAX_LENGTH ); ?>" required data-message-textarea
                           cols="30" rows="10" placeholder="Message"></textarea>

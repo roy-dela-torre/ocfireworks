@@ -41,6 +41,50 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
         </div>
     </div>
 </section>
+
+<section class="brands d-none">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row algn-items-center justify-content-center">
+                <div class="header">
+                    <h2 class="text-center">Brand Blast Off</h2>
+                </div>
+                <?php
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                $posts_per_page = 12;
+
+                $product_categories = get_terms(array(
+                    'taxonomy' => 'brands',
+                    'hide_empty' => false,
+                    'paged' => $paged,
+                    'number' => $posts_per_page
+                )); ?>
+                <div class="owl-carousel owl-theme p-0" id="brands">
+                    <?php if ($product_categories && !is_wp_error($product_categories)) {
+                        foreach ($product_categories as $category) {
+                            if (esc_html($category->name) === "Uncategorized") {
+                                continue;
+                            }
+                            $category_url = get_term_link($category);
+                            if (!is_wp_error($category_url)) {
+                                // Get the ACF field value
+                                $featured_image = get_field('featured_image', 'brands_' . $category->term_id);
+                                ?>
+                                <img src="<?php echo $featured_image ? esc_url($featured_image) : get_stylesheet_directory_uri() . '/assets/img/brands/barnds.png'; ?>" alt="<?php echo esc_html($category->name); ?>" width="186" height="186">
+                                <?php
+                            }
+                        }
+                    } else {
+                        echo 'No product categories found';
+                    }
+                    ?>
+                </div>
+                <a href="<?php echo get_home_url(); ?>/brands/" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <?php
     // $title = "BRAND BLAST OFF";
     // $data = array(
@@ -48,7 +92,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
     // );
     // ob_start();
 ?>
-<?php //echo wc_get_template('template/brand.php', $data);?>
+<?php //echo wc_
+//get_template('template/brand.php', $data);?>
 <?php
     // $content = ob_get_clean();
     // // Output the content
@@ -401,6 +446,81 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
     </div>
 </section>
 
+<section class="testemonial d-none">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="header">
+                    <div class="header_content">
+                        <h2 class="text-center">What Our Customers Are Saying About OC Fireworks!</h2>
+                        <p class="text-center">Here at OC Fireworks, we're passionate about helping you create unforgettable memories with dazzling fireworks displays. But don't just take our word for it! See what some of our happy customers are saying:</p>
+                    </div>
+                </div>
+                <div class="main_content">
+                    <?php
+                    $args = array(
+                        'status' => 'approve', // Only approved comments
+                        'post_type' => 'product', // WooCommerce product reviews
+                        'number' => 3, // Get up to three reviews
+                        'orderby' => 'meta_value_num',
+                        'meta_key' => 'rating', // Order by rating
+                        'order' => 'DESC'
+                    );
+
+                    $comments = get_comments($args);
+
+                    $count = 0;
+                    foreach ($comments as $comment) :
+                        $count++;
+                        if ($count == 1) :
+                    ?>
+                    <div class="large_content d-flex align-items-center justify-content-center position-relative flex-column">
+                        <div class="review d-flex justify-content-center">
+                            <?php for ($i = 0; $i < intval(get_comment_meta($comment->comment_ID, 'rating', true)); $i++) { ?>
+                                <img loading="lazy" src="<?php echo $img; ?>/star.png" alt="">
+                            <?php } ?>
+                        </div>
+                        <div class="content">
+                            <p class="text-center"><?php echo esc_html($comment->comment_content); ?></p>
+                            <!-- Add additional content fields here if needed -->
+                        </div>
+                        <div class="author d-flex align-items-center">
+                            <img loading="lazy" src="<?php echo $img; ?>/author.png" alt="">
+                            <div class="name">
+                                <p class="name"><?php echo esc_html($comment->comment_author); ?></p>
+                                <p class="position"><?php echo get_comment_meta($comment->comment_ID, 'title', true); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php else : ?>
+                    <div class="small_content d-flex flex-column">
+                        <div class="review d-flex justify-content-center">
+                            <?php for ($i = 0; $i < intval(get_comment_meta($comment->comment_ID, 'rating', true)); $i++) { ?>
+                                <img loading="lazy" src="<?php echo $img; ?>/star.png" alt="">
+                            <?php } ?>
+                        </div>
+                        <div class="content">
+                            <p class="text-center"><?php echo esc_html($comment->comment_content); ?></p>
+                            <!-- Add additional content fields here if needed -->
+                        </div>
+                        <div class="author d-flex align-items-center">
+                            <img loading="lazy" src="<?php echo $img; ?>/author.png" alt="">
+                            <div class="name">
+                                <p class="name"><?php echo esc_html($comment->comment_author); ?></p>
+                                <p class="position"><?php echo get_comment_meta($comment->comment_ID, 'title', true); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                        endif;
+                    endforeach;
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="testemonial">
     <div class="wrapper">
         <div class="container-fluid">
@@ -469,6 +589,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
         </div>
     </div>
 </section>
+
 
 <section class="news_letter">
     <div class="wrapper">

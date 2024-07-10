@@ -30,7 +30,7 @@ do_action( 'woocommerce_before_main_content' );
 $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 ?>
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/css/archive.css">
-<section class="banner">
+<section class="banner"<?php if (is_tax('brands')) : ?> style="background: url('<?php echo get_stylesheet_directory_uri(); ?>/assets/img/brands/banner.png')no-repeat center center/cover	"<?php endif; ?>>
 	<div class="wrapper">
 		<div class="container-fluid">
 			<div class="row">
@@ -39,6 +39,9 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 						<!-- Display the page title for regular pages -->
 						<h1 class="text-center text-white"><?php the_field('header'); ?></h1>
 						<p class="text-white text-center"><?php the_field('banner_content'); ?></p>
+					<?php elseif(is_tax('brands')):?>
+						<h1 class="text-center text-white brands"><?php the_field('header'); ?>Borem ipsum dolor sit amet consectetur adipiscing elit</h1>
+						<p class="text-white text-center"><?php the_field('banner_content'); ?>Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis.</p>
 					<?php else : ?>
 						<!-- Display the WooCommerce page title for archive pages -->
 						<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
@@ -56,7 +59,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 		<div class="container-fluid">
 			<div class="row">
 				<div class="header">
-					<h2 class="red_text text-center"><?php the_title(); ?></h2>
+					<h2 class="red_text text-center"><?php echo is_page() ? the_title() :  woocommerce_page_title() ?></h2>
 				</div>
 				<div class="col-xl-3 col-lg-4 d-none d-lg-block">
 					<div class="sidebar_filter sticky-top">
@@ -68,7 +71,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 										Brands
 									</button>
                                 </h5>
-                                <div id="categores" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+								<div id="categores" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
 									<div class="accordion-body p-0">
 										<?php
 										// Function to get the current page URL
@@ -81,7 +84,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 
 										// Fetch WooCommerce product categories
 										$product_categories = get_terms(array(
-											'taxonomy' => 'brands', // assuming 'product_cat' is the taxonomy for WooCommerce product categories
+											'taxonomy' => 'brands', // assuming 'brands' is the taxonomy for WooCommerce product categories
 											'hide_empty' => false, // set to true if you want to hide empty categories
 										));
 
@@ -115,9 +118,9 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 													// Determine whether to add the checked attribute based on the current URL
 													$checked = ($current_url === $category_url) ? 'checked' : '';
 
-													// Get the category thumbnail ID and image HTML
-													$thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true);
-													$image = wp_get_attachment_image($thumbnail_id, 'thumbnail');
+													// Get the ACF field value for the featured image
+													$featured_image = get_field('featured_image', 'brands_' . $category->term_id);
+													$image_url = $featured_image ? esc_url($featured_image) : get_stylesheet_directory_uri() . '/assets/img/brands/barnds.png';
 
 													?>
 													<li class="position-relative">
@@ -126,7 +129,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 														<!-- Add the URL to the href attribute of the anchor tag -->
 														<a href="<?php echo esc_url($category_url); ?>" rel="noopener noreferrer" class="stretched-link">
 															<span class="name"><?php echo esc_html($category->name); ?></span>
-															<?php echo $image; // Display the category image ?>
+															<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_html($category->name); ?>" class="mb-4">
 														</a>
 													</li>
 													<?php
@@ -139,8 +142,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 										}
 										?>
 									</div>
+								</div>
 
-                                </div>
                             </div>
 							
 							<div class="accordion-item">
@@ -159,17 +162,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 					</div>
 				</div>
 				<div class="d-block d-lg-none">
-					<a class="btn btn-primary red_button d-flex align-items-center" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Menu<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-						<g clip-path="url(#clip0_2187_65939)">
-							<path d="M17.1654 15.0833C17.4864 15.0835 17.795 15.2071 18.0274 15.4287C18.2597 15.6502 18.3979 15.9526 18.4133 16.2733C18.4287 16.5939 18.3202 16.9082 18.1102 17.151C17.9002 17.3938 17.6049 17.5465 17.2854 17.5775L17.1654 17.5833H3.83203C3.51102 17.5832 3.20237 17.4595 2.97004 17.238C2.73772 17.0165 2.59952 16.714 2.58409 16.3934C2.56867 16.0728 2.67719 15.7585 2.88718 15.5157C3.09716 15.2728 3.39252 15.1201 3.71203 15.0892L3.83203 15.0833H17.1654ZM17.1654 9.24999C17.4969 9.24999 17.8148 9.38169 18.0492 9.61611C18.2837 9.85053 18.4154 10.1685 18.4154 10.5C18.4154 10.8315 18.2837 11.1495 18.0492 11.3839C17.8148 11.6183 17.4969 11.75 17.1654 11.75H3.83203C3.50051 11.75 3.18257 11.6183 2.94815 11.3839C2.71373 11.1495 2.58203 10.8315 2.58203 10.5C2.58203 10.1685 2.71373 9.85053 2.94815 9.61611C3.18257 9.38169 3.50051 9.24999 3.83203 9.24999H17.1654ZM17.1654 3.41666C17.4969 3.41666 17.8148 3.54835 18.0492 3.78277C18.2837 4.01719 18.4154 4.33514 18.4154 4.66666C18.4154 4.99818 18.2837 5.31612 18.0492 5.55054C17.8148 5.78496 17.4969 5.91666 17.1654 5.91666H3.83203C3.50051 5.91666 3.18257 5.78496 2.94815 5.55054C2.71373 5.31612 2.58203 4.99818 2.58203 4.66666C2.58203 4.33514 2.71373 4.01719 2.94815 3.78277C3.18257 3.54835 3.50051 3.41666 3.83203 3.41666H17.1654Z" fill="white"></path>
-						</g>
-						<defs>
-							<clipPath id="clip0_2187_65939">
-							<rect width="20" height="20" fill="white" transform="translate(0.5 0.5)"></rect>
-							</clipPath>
-						</defs>
-						</svg>
-					</a>
+					<a class="btn btn-primary red_button d-flex align-items-center" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Filters</a>
 					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="top: 32px;">
 						<div class="offcanvas-header align-items-center justify-content-between top-0">
 							<h5 class="offcanvas-title red_text" id="offcanvasExampleLabel"><?php the_field('header'); ?></h5>
@@ -179,95 +172,83 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
 						</div>
 						<div class="sidebar_filter rounded-0">
 							<span class="filter">Filters</span>
-							<div class="accordion" id="accordionExample">
+							<div class="accordion" id="accordionExample_mobile">
 								<div class="accordion-item">
 									<h5 class="accordion-header">
-										<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#categores" aria-expanded="true" aria-controls="categores">
+										<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#categories" aria-expanded="true" aria-controls="categories">
 											Brands
 										</button>
 									</h5>
-									<div id="categores" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+									<div id="categories" class="accordion-collapse collapse show" data-bs-parent="#accordionExample_mobile">
 										<div class="accordion-body p-0">
-										<?php
-											// Function to get the current page URL
-											function getCurrentUrlarchive1() {
-												$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-												$host = $_SERVER['HTTP_HOST'];
-												$requestUri = $_SERVER['REQUEST_URI'];
-												return $scheme . '://' . $host . $requestUri;
-											}
-
-											// Fetch WooCommerce product categories
-											$product_categories = get_terms(array(
-												'taxonomy' => 'brands', // assuming 'product_cat' is the taxonomy for WooCommerce product categories
-												'hide_empty' => false, // set to true if you want to hide empty categories
-											));
-
-											$counter = 1;
-
-											// Get the current URL
-											$current_url = getCurrentUrlarchive1();
-											
-											// Check if categories are found and no errors occurred
-											if ($product_categories && !is_wp_error($product_categories)) {
-												echo '<ul class="ps-0 mb-0">';
-												?>
-												<li class="position-relative">
-													<input type="radio" name="" id="showAll" <?php echo is_shop() ? "checked" : "" ?>>
-													<a href="<?php echo get_home_url(); ?>/shop/" rel="noopener noreferrer" class="stretched-link">
-														<span class="name">Show ALl</span>
-													</a>
-												</li><?php 
-												foreach ($product_categories as $category) {
-													// Skip the "Uncategorized" category and move to the next iteration
-													if (esc_html($category->name) === "Uncategorized") {
-														continue;
-													}
-
-													// Get the URL of the current category
-													$category_url = get_term_link($category);
-
-													// Check if the URL was successfully retrieved
-													if (!is_wp_error($category_url)) {
-														// Determine whether to add the checked attribute based on the current URL
-														$checked = ($current_url === $category_url) ? 'checked' : '';
-
-														?>
-														<li class="position-relative">
-															<!-- Use the category slug as the ID for the radio button -->
-															<input type="radio" name="" id="<?php echo str_replace(' ', '-', strtolower(esc_html($category->name))); ?>" <?php echo $checked; ?>>
-															<!-- Add the URL to the href attribute of the anchor tag -->
-															<a href="<?php echo esc_url($category_url); ?>" rel="noopener noreferrer" class="stretched-link">
-																<span class="name"><?php echo esc_html($category->name); ?></span>
-															</a>
-														</li>
-														<?php
-													}
-													$counter += 1;
+											<?php
+												function getCurrentUrlarchive1() {
+													$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+													$host = $_SERVER['HTTP_HOST'];
+													$requestUri = $_SERVER['REQUEST_URI'];
+													return $scheme . '://' . $host . $requestUri;
 												}
-												echo '</ul>';
-											} else {
-												echo '<li>No product categories found</li>';
-											}
-											?>
 
+												$product_categories = get_terms(array(
+													'taxonomy' => 'brands',
+													'hide_empty' => false,
+												));
+
+												$counter = 1;
+												$current_url = getCurrentUrlarchive1();
+
+												if ($product_categories && !is_wp_error($product_categories)) {
+													echo '<ul class="ps-0 mb-0">';
+													?>
+													<li class="position-relative">
+														<input type="radio" name="category" id="showAll" <?php echo is_shop() ? "checked" : "" ?>>
+														<a href="<?php echo get_home_url(); ?>/shop/" rel="noopener noreferrer" class="stretched-link">
+															<span class="name">Show All</span>
+														</a>
+													</li><?php 
+													foreach ($product_categories as $category) {
+														if (esc_html($category->name) === "Uncategorized") {
+															continue;
+														}
+
+														$category_url = get_term_link($category);
+
+														if (!is_wp_error($category_url)) {
+															$checked = ($current_url === $category_url) ? 'checked' : '';
+															?>
+															<li class="position-relative">
+																<input type="radio" name="category" id="<?php echo str_replace(' ', '-', strtolower(esc_html($category->name))); ?>" <?php echo $checked; ?>>
+																<a href="<?php echo esc_url($category_url); ?>" rel="noopener noreferrer" class="stretched-link">
+																	<span class="name"><?php echo esc_html($category->name); ?></span>
+																</a>
+															</li>
+															<?php
+														}
+														$counter += 1;
+													}
+													echo '</ul>';
+												} else {
+													echo '<li>No product categories found</li>';
+												}
+											?>
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="accordion-item">
 									<h2 class="accordion-header">
 										<button class="accordion-button collapsed rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#price" aria-expanded="false" aria-controls="price">
 											Price
 										</button>
 									</h2>
-									<div id="price_mobile" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+									<div id="price" class="accordion-collapse collapse" data-bs-parent="#accordionExample_mobile">
 										<div class="accordion-body">
-											<?php echo do_shortcode('[price_filter]')?>
+											<?php echo do_shortcode('[price_filter]') ?>
 										</div>
 									</div>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
