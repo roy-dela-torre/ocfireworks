@@ -401,12 +401,6 @@ function add_custom_my_account_endpoint() {
 }
 add_action( 'init', 'add_custom_my_account_endpoint' );
 
-// Add the Recently Viewed tab to My Account navigation
-function add_recently_viewed_tab( $items ) {
-    $items['recently-viewed'] = __( 'Recently Viewed Products', 'woocommerce' );
-    return $items;
-}
-add_filter( 'woocommerce_account_menu_items', 'add_recently_viewed_tab', 99 );
 
 // Display content for the Recently Viewed endpoint
 function display_recently_viewed_products() {
@@ -414,6 +408,21 @@ function display_recently_viewed_products() {
 }
 add_action( 'woocommerce_account_recently-viewed_endpoint', 'display_recently_viewed_products' );
 
+
+function add_custom_my_account_endpoint_news_letter() {
+    add_rewrite_endpoint( 'news-letter', EP_ROOT | EP_PAGES );
+}
+add_action( 'init', 'add_custom_my_account_endpoint_news_letter' );
+
+function add_custom_query_vars_news_letter( $vars ) {
+    $vars[] = 'news-letter';
+    return $vars;
+}
+add_filter( 'query_vars', 'add_custom_query_vars_news_letter' );
+function custom_my_account_endpoint_news_letter_content() {
+    wc_get_template_part( 'woocommerce/myaccount/news-letter' );
+}
+add_action( 'woocommerce_account_news-letter_endpoint', 'custom_my_account_endpoint_news_letter_content' );
 
 
 
@@ -642,4 +651,12 @@ function ic_qty_update()
     echo json_encode($cart);
     wp_die();
 }
+
+
+// add_action('woocommerce_account_payment-methods_endpoint', 'add_payment_method_button');
+
+// function add_payment_method_button() {
+//     echo '<a href="' . wc_get_endpoint_url('add-payment-method', '', wc_get_page_permalink('checkout')) . '" class="button">Add Payment Method</a>';
+// }
+
 

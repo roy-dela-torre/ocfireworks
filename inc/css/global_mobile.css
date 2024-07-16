@@ -188,6 +188,7 @@
     header .middle_nav .left_menu>div {
         flex-wrap: wrap;
         gap: 15px;
+        position: relative;
     }
 
     header .middle_nav .search {
@@ -196,6 +197,10 @@
 
     header .middle_nav .left_menu {
         gap: 10px 0;
+    }
+    header .middle_nav .shipping_car{
+        width: auto !important;
+        height: auto !important;
     }
 
 }

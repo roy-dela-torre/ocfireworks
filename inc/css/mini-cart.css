@@ -4,6 +4,12 @@
     gap: 0 20px;
     width: 100%;
     justify-content: space-between;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.mini_cart .test.woocommerce-mini-cart-item.mini_cart_item:last-child {
+    margin-bottom: 0;
 }
 
 .mini_cart_main_container {
@@ -38,7 +44,7 @@
     object-fit: contain;
 }
 
-.mini_cart .product_name {
+.mini_cart .product_name p.product_title {
     color: var(--Alternate-Black, #212121);
     font-family: "Roboto Condensed", sans-serif;
     font-stretch: condensed;
@@ -49,9 +55,15 @@
     text-transform: uppercase;
     margin-bottom: 5px;
     max-width: 120px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
 }
 
-.mini_cart .price bdi {
+.mini_cart .price bdi,
+.mini_cart .price span.woocommerce-Price-currencySymbol {
     color: var(--Red, #BF2126);
     font-family: "Roboto Condensed", sans-serif;
     font-stretch: condensed;
@@ -87,13 +99,8 @@
     align-items: center;
 }
 
-.mini_cart .test.woocommerce-mini-cart-item.mini_cart_item {
-    padding: 15px 0;
-}
-
 .mini_cart .test.woocommerce-mini-cart-item.mini_cart_item:last-child {
     padding-bottom: 33px;
-    border-bottom: 2px solid var(--Red, #BF2126);
 }
 
 .mini_cart ::-webkit-inner-spin-button {
@@ -102,7 +109,7 @@
 
 .mini_cart ul.woocommerce-mini-cart.cart_list.product_list_widget {
     padding-left: 0;
-    max-height: 300px;
+    max-height: 360px;
     overflow-y: scroll;
 }
 
@@ -178,6 +185,9 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 33px;
+    padding: 10px;
+    border-top: 2px solid var(--Red, #BF2126);
+    margin-top: 33px;
 }
 
 .mini_cart p.woocommerce-mini-cart__total.total bdi,
@@ -228,6 +238,10 @@
     margin-bottom: 10px;
 }
 
+.mini_cart_main_container .header span.close {
+    cursor: pointer;
+}
+
 @media (max-width: 1040px) {
     .mini_cart_main_container {
         left: -30px;
@@ -248,12 +262,26 @@
         width: 50px;
     }
 
-    .mini_cart_main_container>svg{
-        display: none;
+    .mini_cart_main_container {
+        top: 16px;
+        left: 0;
     }
 
-    .mini_cart_main_container{
-        top: 0;
-        left: 0;
+    .mini_cart_main_container>svg {
+        width: unset !important;
+        height: unset !important;
+        left: 30px;
+    }
+
+    header .cart_button {
+        position: unset;
+    }
+
+    .mini_cart {
+        max-width: 100%;
+    }
+
+    .mini_cart_main_container {
+        width: 100%;
     }
 }

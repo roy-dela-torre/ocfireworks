@@ -38,6 +38,7 @@ $gravatar_url = get_avatar_url( $current_user->user_email, array( 'size' => 150 
                 'recently-viewed'   => __( 'Recently Viewed Products', 'woocommerce' ), // Added recently viewed products tab
                 'orders'            => __( 'Order History', 'woocommerce' ),
                 'payment-methods'   => __( 'Payment Methods', 'woocommerce' ),
+                'news-letter'       => __( 'News Letter', 'woocommerce' ),
                 'customer-logout'   => __( 'Log Out', 'woocommerce' ),
             );
 
@@ -83,12 +84,13 @@ $gravatar_url = get_avatar_url( $current_user->user_email, array( 'size' => 150 
                     <?php
                     // Define the desired order of menu items
                     $menu_order = array(
+                        'dashboard'         => __( 'Dashboard', 'woocommerce' ),
                         'edit-account'      => __( 'My Account Page', 'woocommerce' ),
                         'edit-address'      => __( 'Shipping and Billing address', 'woocommerce' ),
                         'recently-viewed'   => __( 'Recently Viewed Products', 'woocommerce' ), // Added recently viewed products tab
-                        'dashboard'         => __( 'Dashboard', 'woocommerce' ),
                         'orders'            => __( 'Order History', 'woocommerce' ),
-                        'downloads'         => __( 'Downloads', 'woocommerce' ),
+                        'payment-methods'   => __( 'Payment Methods', 'woocommerce' ),
+                        'news-letter'       => __( 'News Letter', 'woocommerce' ),
                         'customer-logout'   => __( 'Log Out', 'woocommerce' ),
                     );
 

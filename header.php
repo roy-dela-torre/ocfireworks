@@ -120,47 +120,6 @@
                                                 echo file_get_contents($img . '/cart.svg');
                                                 ?>
                                             </a>
-                                            <div class="pop_up_cart d-none">
-                                                <div class="cart_main_content">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="82" height="39" viewBox="0 0 82 39" fill="none">
-                                                        <path d="M41 0L81.7032 39H0.296806L41 0Z" fill="white" />
-                                                    </svg>
-                                                    <span class="close" style="display: none;">
-                                                        <img src="<?php echo $img; ?>/close.png" alt="Close">
-                                                    </span>
-                                                    <div class="product_summary">
-                                                        <div class="header_cart d-flex align-items-center justify-content-between">
-                                                            <span class="your_cart">Your Cart</span>
-                                                        </div>
-                                                        <?php
-                                                        foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
-                                                            $_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
-                                                            $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
-                                                            if ($_product && $_product->exists() && $cart_item['quantity'] > 0) {
-                                                        ?>
-                                                                <div class="product d-flex align-items-md-center">
-                                                                    <?php echo $_product->get_image(); ?>
-                                                                    <div class="product_name_price">
-                                                                        <p class="product_name"><?php echo $_product->get_name(); ?></p>
-                                                                        <p class="price mb-0"><?php echo wc_price($_product->get_price()); ?></p>
-                                                                    </div>
-                                                                    <p class="qty mb-0">x<?php echo $cart_item['quantity']; ?></p>
-                                                                </div>
-                                                        <?php
-                                                            }
-                                                        }
-                                                        ?>
-                                                        <div class="order-total d-flex aling-items-center justify-content-between">
-                                                            <p class="total-label mb-0"><?php esc_html_e('Total:', 'woocommerce'); ?></p>
-                                                            <p class="total-value d-flex align-items-center" data-title="<?php esc_attr_e('Total', 'woocommerce'); ?>"><?php wc_cart_totals_order_total_html(); ?></p>
-                                                        </div>
-                                                        <div class="group_button d-flex flex-column">
-                                                            <a href="<?php echo get_home_url(); ?>/cart/" target="_blank" rel="noopener noreferrer" class="red_button text-center w-100">View Cart</a>
-                                                            <a href="<?php echo get_home_url(); ?>/checkout/" target="_blank" rel="noopener noreferrer" class="orange_button w-100 text-center">Check out</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="mini_cart_main_container" style="display: none;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="82" height="39" viewBox="0 0 82 39" fill="none">
                                                     <path d="M41 0L81.7032 39H0.296806L41 0Z" fill="white" />

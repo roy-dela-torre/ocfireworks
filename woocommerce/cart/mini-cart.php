@@ -52,9 +52,7 @@ do_action('woocommerce_before_mini_cart'); ?>
 				$product_name      = apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key);
 				$thumbnail         = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key);
 				$product_price     = apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key);
-				$product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
-
-		?>
+				$product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key); ?>
 				<div data-ic_product_id="<?php echo esc_attr($product_id); ?>" data-key="<?php echo $cart_item_key; ?>" class="test woocommerce-mini-cart-item <?php echo esc_attr(apply_filters('woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key)); ?>">
 
 					<div class="main_product">
@@ -69,7 +67,7 @@ do_action('woocommerce_before_mini_cart'); ?>
 						</div>
 
 						<div class="product_name">
-							<?php echo wp_kses_post($product_name); ?>
+							<p class="product_title"><?php echo wp_kses_post($product_name); ?></p>
 							<p class="price">
 								<?php
 								$product_price = apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($cart_item['data']), $cart_item, $cart_item_key);
@@ -100,20 +98,20 @@ do_action('woocommerce_before_mini_cart'); ?>
 						</div>
 
 						<?php echo wc_get_formatted_cart_item_data($cart_item); ?>
-
+							<!-- for removing product -->
 						<?php
-						echo apply_filters(
-							'woocommerce_cart_item_remove_link',
-							sprintf(
-								'<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s">remove</a>',
-								esc_url(wc_get_cart_remove_url($cart_item_key)),
-								esc_attr__('Remove this item', 'woocommerce'),
-								esc_attr($product_id),
-								esc_attr($cart_item_key),
-								esc_attr($_product->get_sku())
-							),
-							$cart_item_key
-						);
+						// echo apply_filters(
+						// 	'woocommerce_cart_item_remove_link',
+						// 	sprintf(
+						// 		'<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s">remove</a>',
+						// 		esc_url(wc_get_cart_remove_url($cart_item_key)),
+						// 		esc_attr__('Remove this item', 'woocommerce'),
+						// 		esc_attr($product_id),
+						// 		esc_attr($cart_item_key),
+						// 		esc_attr($_product->get_sku())
+						// 	),
+						// 	$cart_item_key
+						// );
 						?>
 					</div>
 				</div>

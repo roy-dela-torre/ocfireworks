@@ -102,8 +102,8 @@
 <?php elseif(is_checkout()):?>
     <link rel="stylesheet" href="<?php echo $css_path; ?>checkout.css">
 
-<?//php elseif(is_page('')):?>
-    <!-- <link rel="stylesheet" href="<?//php echo $css_path; ?>.css"> -->
+<?php elseif(is_page('Store Hours') || is_page(806)):?>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>store-hours.css">
 
 <?//php elseif(is_page('')):?>
     <!-- <link rel="stylesheet" href="<?//php echo $css_path; ?>.css"> -->
