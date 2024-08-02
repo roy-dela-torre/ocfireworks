@@ -25,14 +25,14 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_account_navigation' ); ?>
 
 <div class="col-lg-9 col-md-12 ps-lg-5">
-	<div class="woocommerce-MyAccount-content">
-		<?php
-			/**
-			 * My Account content.
-			 *
-			 * @since 2.6.0
-			 */
-			do_action( 'woocommerce_account_content' );
-		?>
-	</div>
+    <div class="woocommerce-MyAccount-content <?php echo sanitize_html_class(WC()->query->get_current_endpoint()); ?>">
+        <?php
+            /**
+             * My Account content.
+             *
+             * @since 2.6.0
+             */
+            do_action( 'woocommerce_account_content' );
+        ?>
+    </div>
 </div>

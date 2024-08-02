@@ -34,11 +34,11 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
                 <?php do_action('woocommerce_checkout_before_customer_details'); ?>
 
                 <div class="col2-set" id="customer_details">
-                    <div class="col-1">
+                    <div class="woocommerce_checkout_billing">
                         <?php do_action('woocommerce_checkout_billing'); ?>
                     </div>
 
-                    <div class="col-2">
+                    <div class="woocommerce_checkout_shipping">
                         <?php do_action('woocommerce_checkout_shipping'); ?>
                     </div>
                 </div>
@@ -57,7 +57,7 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
     <div class="col-lg-4">
         <div class="order_summary">
             <?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
-            <h3 id="order_review_heading"><?php esc_html_e('Subtotal:', 'woocommerce'); ?></h3>
+            <h3 id="order_review_heading" class="red_text"><?php esc_html_e('Cart total:', 'woocommerce'); ?></h3>
             <?php do_action('woocommerce_checkout_before_order_review'); ?>
             <div id="order_review" class="woocommerce-checkout-review-order">
                 <?php do_action('woocommerce_checkout_order_review'); ?>

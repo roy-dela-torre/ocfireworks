@@ -1,4 +1,4 @@
-<?php get_header();
+    <?php get_header();
 /*Template Name: Supply*/
 $img_path = get_stylesheet_directory_uri().'/assets/img/supply/';
 ?>

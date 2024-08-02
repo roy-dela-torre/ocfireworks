@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="uoVUFD_osDNOnE_y3kkfMsHP4EFWD1wXbIilGyizDPo" />
+    <!-- <meta name="google-site-verification" content="uoVUFD_osDNOnE_y3kkfMsHP4EFWD1wXbIilGyizDPo" /> -->
     <title><?php wp_title(); ?></title>
     <?php include('stylesheet-manager.php') ?>
     <?php wp_head(); ?>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XD9KCVMXG"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XD9KCVMXG"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -17,7 +17,7 @@
         }
         gtag('js', new Date());
         gtag('config', 'G-1XD9KCVMXG');
-    </script>
+    </script> -->
     <!-- Google tag (gtag.js) end -->
 </head>
 
@@ -130,7 +130,7 @@
                                             </div>
                                         </div>
                                         <div class="account d-flex">
-                                            <a href="<?php echo is_user_logged_in() ? get_home_url() . '/my-account/' : get_home_url() . '/login/' ?>" target="_blank" rel="noopener noreferrer">
+                                            <a href="<?php echo is_user_logged_in() ? get_home_url() . '/account/' : get_home_url() . '/login/' ?>" target="_blank" rel="noopener noreferrer">
                                                 <?php
                                                 echo file_get_contents($img . '/profile.svg');
                                                 ?>

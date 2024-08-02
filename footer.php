@@ -62,7 +62,7 @@ $home_url = get_home_url();
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/visa.png" alt="visa">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/discover.png" alt="discover">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/mastercard.png" alt="mastercard">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/american  _express.png" alt="american express">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/american_express.png" alt="american express">
             </div>
         </div>
     </div>

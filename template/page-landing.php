@@ -10,4 +10,7 @@ elseif (is_page('Gender Reveal Fireworks')) :
 
 elseif (is_page('Wedding  Fireworks')) :
     get_template_part('categories_landing_page/fireworks-for-wedding');
+
+elseif (is_page('GRAND FINALE')) :
+    get_template_part('categories_landing_page/grand-finale');
 endif;

@@ -419,10 +419,31 @@ function add_custom_query_vars_news_letter( $vars ) {
     return $vars;
 }
 add_filter( 'query_vars', 'add_custom_query_vars_news_letter' );
+
 function custom_my_account_endpoint_news_letter_content() {
-    wc_get_template_part( 'woocommerce/myaccount/news-letter' );
+    wc_get_template_part( 'myaccount/news-letter' );
 }
 add_action( 'woocommerce_account_news-letter_endpoint', 'custom_my_account_endpoint_news_letter_content' );
+
+
+
+
+function add_custom_my_account_endpoint_order_status() {
+    add_rewrite_endpoint( 'order-status', EP_ROOT | EP_PAGES );
+}
+add_action( 'init', 'add_custom_my_account_endpoint_order_status' );
+
+function add_custom_query_vars_order_status( $vars ) {
+    $vars[] = 'order-status';
+    return $vars;
+}
+add_filter( 'query_vars', 'add_custom_query_vars_order_status' );
+
+function custom_my_account_endpoint_order_status_content() {
+    wc_get_template_part( 'myaccount/order-status' );
+}
+add_action( 'woocommerce_account_order-status_endpoint', 'custom_my_account_endpoint_order_status_content' );
+
 
 
 
@@ -659,4 +680,12 @@ function ic_qty_update()
 //     echo '<a href="' . wc_get_endpoint_url('add-payment-method', '', wc_get_page_permalink('checkout')) . '" class="button">Add Payment Method</a>';
 // }
 
+
+
+
+function add_custom_state_mappings( $states ) {
+    $states['PH']['00'] = 'Metro Manila'; // Custom mapping for Metro Manila
+    return $states;
+}
+add_filter( 'woocommerce_states', 'add_custom_state_mappings' );
 

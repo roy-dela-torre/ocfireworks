@@ -1,4 +1,4 @@
-<?php get_header(); 
+<?php get_header();
 /*Template Name: Checkout*/
 ?>
 <?php if (!is_user_logged_in()) { ?>
@@ -14,22 +14,24 @@
                     <h1 class="red_text">Checkout</h1>
                     <p>Vorem ipsum dolor sit amet consectetur adipiscing elit.</p>
                 </div>
-                <?php echo do_shortcode('[woocommerce_checkout]')?>
+                <?php echo do_shortcode('[woocommerce_checkout]') ?>
             </div>
         </div>
     </div>
 </section>
 <?php get_footer(); ?>
 <script type="text/javascript">
-    $(document).ready(function(){   
-        $('button.use_different_address').click(function(event){
+    $(document).ready(function() {
+        $('button.use_different_address').click(function(event) {
             event.preventDefault();
-           $('h3#ship-to-different-address span').click()
+            $('h3#ship-to-different-address span').click()
         });
 
         // $('#save_changes').click(function(){
         //     $('button#place_order').click()
         // })
+
+
 
     })
 </script>
