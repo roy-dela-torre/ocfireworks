@@ -1,0 +1,11 @@
+section.why_buy_from_us p {
+    line-height: 140%
+}
+
+section.why_buy_from_us {
+    background: url('../../assets/img/homepage/banner_bg/Why Buy from Us.jpg')no-repeat center center/cover;
+}
+
+section.why_buy_from_us h1 {
+    margin-bottom: 20px;
+}

@@ -165,12 +165,17 @@ section.product_main ul.products {
 }
 
 
-section.product_main li {
+section.product_main .sidebar_filter.sticky-top li {
     list-style: none;
     padding: 15px 30px;
     display: flex;
     align-items: center;
     gap: 0 5px;
+}
+
+
+section.product_main li{
+    list-style: none;
 }
 
 section.product_main li span.name {
@@ -602,6 +607,10 @@ section.product_main .range_input input:focus-visible {
 }
 
 section.product_main .is-hide {
+    display: none;
+}
+
+p.woocommerce-result-count{
     display: none;
 }
 

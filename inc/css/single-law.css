@@ -42,10 +42,22 @@ section.laws_content figure.wp-block-table:not(:last-child){
     margin-bottom: 100px;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 991px) {
+    section.laws_content h1,
+    section.laws_content .back_to_laws{
+        margin-bottom: 70px;
+    }
+}
+
+@media (max-width: 767px) {
     section.laws_content tr{
         display: flex;
         flex-direction: column;
+    }
+
+    section.laws_content h1,
+    section.laws_content .back_to_laws{
+        margin-bottom: 50px;
     }
 
     section.laws_content tr td:first-child{

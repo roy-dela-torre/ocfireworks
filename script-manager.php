@@ -400,6 +400,20 @@
                     $('a.prev.page-numbers').html(prev);
                 }, 2000);
             });
+
+            function checkWindowWidth() {
+                if ($(window).width() <= 991) {
+                    $('.sidebar_filter.sticky-top').remove();
+                }
+            }
+
+            // Check window width on page load
+            checkWindowWidth();
+
+            // Check window width on window resize
+            $(window).resize(function() {
+                checkWindowWidth();
+            });
         });
     </script>
 <?php elseif (is_page('contact-us')) : ?>

@@ -45,5 +45,6 @@ section.special_deals .content:hover::before {
     opacity: 1
 }
 section.special_deals .content:hover h2 {
+    transition: .5s ease all;
     color: var(--secondary_font_color) !important;
 }

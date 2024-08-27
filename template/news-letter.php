@@ -7,7 +7,7 @@
                     <div class="new_letter_form_content">
                         <div class="content">
                             <h2 class="text-white">Explosive Fun: Your Guide to State Firework Laws</h2>
-                            <p class="text-white">Discover the do's and don'ts of fireworks in your state to ensure a safe and spectacular celebration.</p>
+                            <p class="text-white">Discover the dos and don'ts of fireworks in your state to ensure a safe and spectacular celebration.</p>
                             <?php echo do_shortcode('[contact-form-7 id="45c6cd8" title="Homepage News Letter"]') ?>
                         </div>
                         <div class="image">

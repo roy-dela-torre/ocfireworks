@@ -20,6 +20,7 @@
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8 col-md-12">
+                    <h1>Privacy Policy</h1>
                     <div class="content">
                         <div id="button2">
                             <h2>What information do we collect?</h2>
@@ -65,7 +66,7 @@
                         </div>
                         <div id="button9">
                             <h3>Terms and Conditions</h3>
-                            <p>Please also visit our Terms and Conditions section establishing the use, disclaimers, and limitations of liability governing the use of our website at <a href="http://www.ocfireworks.com" target="_blank" rel="noopener noreferrer">http://www.ocfireworks.com</a></p>
+                            <p>Please also visit our Terms and Conditions section establishing the use, disclaimers, and limitations of liability governing the use of our website at <a href="http://www.ocfireworks.com" target="_blank" rel="noopener noreferrer" class="red_text text-lowecase">http://www.ocfireworks.com</a></p>
                         </div>
                         <div id="button10">
                             <h3>Your Consent</h3>

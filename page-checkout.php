@@ -31,6 +31,8 @@
         //     $('button#place_order').click()
         // })
 
+        $('span.view a').click()
+
 
 
     })

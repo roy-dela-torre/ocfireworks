@@ -20,7 +20,6 @@ section.term_and_condition a {
     text-transform: uppercase;
 }
 
-section.term_and_condition a.active,
 section.term_and_condition a:hover {
     transition: .5 ease all;
     border-radius: 7px;
@@ -32,7 +31,7 @@ section.term_and_condition a:hover {
 }
 
 section.term_and_condition .content>div {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 section.term_and_condition .content>div:last-child {
@@ -51,6 +50,16 @@ section.term_and_condition{
 
 section.term_and_condition h3{
     font-size: clamp(1.875rem, 1.7157rem + 0.6536vw, 2.5rem);
+}
+
+section.term_and_condition h2,
+section.term_and_condition h3,
+section.term_and_condition h1{
+    margin-bottom: 20px;
+}
+
+section.term_and_condition div#button15 p:nth-child(2){
+    margin-bottom: 60px;
 }
 
 

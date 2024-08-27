@@ -36,7 +36,7 @@ if ( $customer_orders ) : ?>
 
 	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', esc_html__( 'Recent orders', 'woocommerce' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h2>
 
-	<table class="shop_table shop_table_responsive my_account_orders">
+	<table class="shop_table shop_table_responsive my_account_orders table table-hover">
 
 		<thead>
 			<tr>

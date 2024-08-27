@@ -689,3 +689,12 @@ function add_custom_state_mappings( $states ) {
 }
 add_filter( 'woocommerce_states', 'add_custom_state_mappings' );
 
+function dequeue_woocommerce_styles() {
+    if(is_front_page()){
+        wp_dequeue_style( 'woocommerce-general' );   
+        wp_dequeue_style( 'woocommerce-layout' );    
+        wp_dequeue_style( 'woocommerce-smallscreen' ); 
+        wp_dequeue_style( 'select2' ); 
+    }
+}
+add_action( 'wp_enqueue_scripts', 'dequeue_woocommerce_styles', 20 );

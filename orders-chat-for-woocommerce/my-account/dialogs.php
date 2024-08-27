@@ -14,7 +14,7 @@ use U2Code\OrderMessenger\Services\TextPreprocessor;
  */
 ?>
 
-<table class="om-dialogs-table shop_table shop_table_responsive my_account_orders">
+<table class="om-dialogs-table shop_table shop_table_responsive my_account_orders table table-hover">
 	<thead>
 	<tr>
 		<th class="om-dialogs-table__header om-dialogs-table__header-order-number">

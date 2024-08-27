@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
     <div class="content">
         <h3>Subscribe to our newsletter</h3>
-        <p>Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        <p>Be the first to know about our dazzling new products, exclusive discounts, and thrilling events. Subscribe to our newsletter and ignite your inbox with fireworks excitement! Join our pyrotechnic family today and let the sparks fly.</p>
         <?php echo do_shortcode('[contact-form-7 id="253a8fa" title="News Letter My Account"]'); ?>
     </div>
 </div>

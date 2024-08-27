@@ -29,6 +29,7 @@ section.cart .woocommerce table.shop_table {
     -o-border-radius: 10px;
     overflow: hidden;
     border: none;
+    width: 100%;
 }
 
 section.cart .woocommerce table.shop_table td {
@@ -362,6 +363,7 @@ section.cart .wc-proceed-to-checkout {
 
 section.cart a.checkout-button.button.alt.wc-forward {
     margin-bottom: 0;
+    text-align: center;
 }
 
 section.cart .order-total .total-label {
@@ -408,6 +410,9 @@ section.cart .cart-totals-container .cart-subtotal {
 
 section.cart button.update_cart.button {
     color: #FFFFFF !important;
+    justify-content: center;
+    margin: 0;
+    border: 0;
 }
 
 

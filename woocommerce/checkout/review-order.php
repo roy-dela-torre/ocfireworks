@@ -37,20 +37,9 @@ defined('ABSPATH') || exit;
         do_action('woocommerce_review_order_after_cart_contents');
         ?>
     </div>
-    <form class="checkout_coupon woocommerce-form-coupon" method="post" >
-
-        <p><?php esc_html_e('If you have a coupon code, please apply it below.', 'woocommerce'); ?></p>
-
-        <p class="form-row form-row-first">
-            <label for="coupon_code" class="screen-reader-text"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
-            <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" id="coupon_code" value="" />
-        </p>
-
-        <p class="form-row form-row-last">
-            <button type="submit" class="button<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_html_e('Apply coupon', 'woocommerce'); ?></button>
-        </p>
-
-        <div class="clear"></div>
+    <form class="checkout_coupon woocommerce-form-coupon" method="post">
+        <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" id="coupon_code" value="" />
+        <button type="submit" class="red_button <?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_html_e('Apply coupon', 'woocommerce'); ?></button>
     </form>
     <div class="table-footer">
         <div class="d-flex align-items-center justify-content-between">

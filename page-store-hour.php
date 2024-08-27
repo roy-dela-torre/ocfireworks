@@ -128,7 +128,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="location_info_and_contact">
-                        <h5>Worem ipsum dolor sit amet consectetur adipiscing elit</h5>
+                        <h5>Feel Free to Visit or Contact us!</h5>
                         <div class="location">
                             <div class="d-flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">

@@ -113,6 +113,24 @@
     overflow-y: scroll;
 }
 
+.mini_cart ul.woocommerce-mini-cart.cart_list.product_list_widget {
+    overflow: hidden;
+}
+
+.mini_cart ul.woocommerce-mini-cart.cart_list.product_list_widget:hover {
+    overflow-y: auto;
+}
+
+.mini_cart ul.woocommerce-mini-cart.cart_list.product_list_widget::-webkit-scrollbar {
+    display: none;
+}
+
+.mini_cart ul.woocommerce-mini-cart.cart_list.product_list_widget {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+
 .mini_cart p.woocommerce-mini-cart__buttons.buttons {
     display: flex;
     justify-content: center;
@@ -240,6 +258,10 @@
 
 .mini_cart_main_container .header span.close {
     cursor: pointer;
+}
+
+.mini_cart p.woocommerce-mini-cart__empty-message{
+    width: 300px;
 }
 
 @media (max-width: 1040px) {

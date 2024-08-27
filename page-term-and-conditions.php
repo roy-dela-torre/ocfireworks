@@ -26,7 +26,7 @@
                 <div class="col-xl-9 col-lg-8 col-md-12">
                     <div class="content">
                         <div id="button1">
-                            <h2>Terms & Conditions</h2>
+                            <h1>Terms & Conditions</h1>
                             <p>The terms and conditions stated herein (“Terms of Use”) constitute a legally binding agreement between you, whether personally or on behalf of an entity (“you”) and Overstock Central LLC ("Company", “we”, “us”, or “our”) concerning your access to and use of the OCfireworks.com website as well as any other media form, media channel, mobile website, or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”). You agree that by accessing the Site, you have read, understand, and agree to be bound by these Terms of Use.</p>
                         </div>
                         <div id="button2">

@@ -12,18 +12,18 @@ $home_url = get_home_url();
                     <div class="col">
                         <h5>Information</h5>
                         <a href="<?php echo $home_url; ?>/about-us/" target="_blank" rel="noopener noreferrer">About </a>
-                        <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">Why Buy From Us?</a>
+                        <a href="<?php echo $home_url; ?>/why-buy-from-us/" target="_blank" rel="noopener noreferrer">Why Buy From Us?</a>
                         <a href="<?php echo $home_url; ?>/blogs/" target="_blank" rel="noopener noreferrer">Blogs</a>
                         <a href="<?php echo $home_url; ?>/product-demos/" target="_blank" rel="noopener noreferrer">Product Demos</a>
-                        <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">Store Hours</a>
+                        <a href="<?php echo $home_url; ?>/store-hours/" target="_blank" rel="noopener noreferrer">Store Hours</a>
                     </div>
                     <div class="col">
                         <h5>Legal</h5>
-                        <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
-                        <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">Copyright Policy</a>
-                        <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-                        <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">Disclaimer</a>
-                        <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">State Firework Laws</a>
+                        <a href="<?php echo $home_url; ?>/terms-conditions/" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+                        <a href="<?php echo $home_url; ?>/copyright-policy/" target="_blank" rel="noopener noreferrer">Copyright Policy</a>
+                        <a href="<?php echo $home_url; ?>/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                        <a href="<?php echo $home_url; ?>/disclaimer/" target="_blank" rel="noopener noreferrer">Disclaimer</a>
+                        <a href="<?php echo $home_url; ?>/state-firework-laws/" target="_blank" rel="noopener noreferrer">State Firework Laws</a>
                     </div>
                     <div class="col">
                         <h5>Customer Service</h5>
@@ -36,19 +36,19 @@ $home_url = get_home_url();
                     <div class="col">
                         <h5>Extras</h5>
                         <a href="<?php echo $home_url; ?>/brands/" target="_blank" rel="noopener noreferrer">Brands</a>
-                        <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">Specials</a>
+                        <a href="<?php echo $home_url; ?>/special-fireworks/" target="_blank" rel="noopener noreferrer">Specials</a>
                         <a href="<?php echo $home_url; ?>/proline-1-4g/" target="_blank" rel="noopener noreferrer">Professional Fireworks</a>
-                        <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">Firework Clubs</a>
+                        <a href="<?php echo $home_url; ?>/firework-clubs/" target="_blank" rel="noopener noreferrer">Firework Clubs</a>
                     </div>
                     <div class="col">
                         <h5>My Account</h5>
                         <div class="my_account">
-                            <a href="<?php echo $home_url; ?>/my-account/" target="_blank" rel="noopener noreferrer">My Account</a>
-                            <a href="<?php echo $home_url; ?>/my-account/orders/" target="_blank" rel="noopener noreferrer">Order History</a>
-                            <a href="<?php echo $home_url; ?>//" target="_blank" rel="noopener noreferrer">Newsletter</a>
-                            <a href="<?php echo $home_url; ?>/my-account/recently-viewed/" target="_blank" rel="noopener noreferrer">Recently viewed</a>
-                            <a href="<?php echo $home_url; ?>/my-account/payment-methods/" target="_blank" rel="noopener noreferrer">Payment methods</a>
-                            <a href="<?php echo $home_url; ?>/my-account/edit-address/" target="_blank" rel="noopener noreferrer">Shipping and Billing addre</a>
+                            <a href="<?php echo $home_url; ?>/account/" target="_blank" rel="noopener noreferrer">My Account</a>
+                            <a href="<?php echo $home_url; ?>/account/orders/" target="_blank" rel="noopener noreferrer">Order History</a>
+                            <a href="<?php echo $home_url; ?>/account/news-letter/" target="_blank" rel="noopener noreferrer">Newsletter</a>
+                            <a href="<?php echo $home_url; ?>/account/recently-viewed/" target="_blank" rel="noopener noreferrer">Recently viewed</a>
+                            <a href="<?php echo $home_url; ?>/account/payment-methods/" target="_blank" rel="noopener noreferrer">Payment methods</a>
+                            <a href="<?php echo $home_url; ?>/account/edit-address/" target="_blank" rel="noopener noreferrer">Shipping and Billing addre</a>
                         </div>
                     </div>
                 </div>

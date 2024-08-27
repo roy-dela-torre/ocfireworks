@@ -6,7 +6,7 @@
         </div>
     <?php endif; ?>
     <div class="product_image position-relative">
-        <img src="<?php echo $img_url ?>" alt="<?php echo $title; ?>" class="featured_img w-100">
+        <img loading="lazy" src="<?php echo $img_url ?>" alt="<?php echo $title; ?>" class="featured_img w-100">
         <div class="absolute_button position-absolute justify-content-end">
             <?php if (is_page('wishlist')) : ?>
                 <?php if ($show_remove_product) : ?>

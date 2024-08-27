@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$order = wc_get_order( $order_id ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+$order = wc_get_order( $order_id ); // Make sure $order_id is set before this line
 
 if ( ! $order ) {
     return;
@@ -47,54 +47,38 @@ else if(!is_order_received_page()): ?>
 		<div class="order-items">
 			<div class="row">
 				<?php
-				// Get current user
-				$current_user = wp_get_current_user();
-				$orders = wc_get_orders(array(
-					'customer' => $current_user->ID,
-					'status'   => array_keys(wc_get_order_statuses()), // Fetch all orders regardless of status
-					'posts_per_page' => -1,
-				));
-				
-				foreach ($orders as $order) {
-					$items = $order->get_items();
-					foreach ($items as $item) {
-						$product = $item->get_product();
-						$img_url = get_the_post_thumbnail_url($product->get_id(), 'large');
-						$video_iframe = get_field('video_iframe', $product->get_id());
-						$price = $product->get_price_html();
-						$title = get_the_title();
-						$product_url = get_the_permalink();
-						$product_id =  $product->get_id();
-						$add_to_cart = '<a href="' . ($product->get_stock_status() === 'outofstock' ? 'javascript:void(0);' : esc_url(wc_get_cart_url() . '?add-to-cart=' . esc_attr($product_id))) . '" target="_blank" class="red_button w-100 text-center">Add to cart</a>';
+				// Display the items in this order
+				foreach ($order_items as $item_id => $item) {
+					$product = $item->get_product();
+					$img_url = get_the_post_thumbnail_url($product->get_id(), 'large');
+					$price = $product->get_price_html();
+					$title = $item->get_name(); // Get the title of the product
+					$product_url = get_permalink($product->get_id());
+					$product_id =  $product->get_id();
+					$add_to_cart = '<a href="' . ($product->get_stock_status() === 'outofstock' ? 'javascript:void(0);' : esc_url(wc_get_cart_url() . '?add-to-cart=' . esc_attr($product_id))) . '" target="_blank" class="red_button w-100 text-center">Add to cart</a>';
+					?>
+					<div class="col-md-6 col-sm-12 product_column">
+						<?php
+						// Set up data to pass to the template
+						$data = array(
+							'img_url' => $img_url,     // Image URL
+							'title' => $title, // Product title
+							'price' => $price, // Product price
+							'product_url' => $product_url,
+							'product' => $product,
+							'product_id' => $product_id
+						);
+						// Load the template
+						echo wc_get_template('template/product_content.php', $data);
 						?>
-						<?php
-							// Set up data to pass to the template
-							$data = array(
-								'img_url' => $img_url,     // Image URL
-								'title' => $title, // Product title
-								'price' => $price, // Product price
-								'product_url' => $product_url,
-								'product' => $product,
-								'product_id' => $product_id
-							);
-							// Load the template
-							ob_start();
-							?>
-							<div class="<?php echo is_order_received_page() ? 'col-xl-3 col-lg-4 col-md-6' : 'col-md-6 col-sm-12'; ?> product_column">
-								<?php echo wc_get_template('template/product_content.php', $data);?>
-							</div>
-							<?php
-								$content = ob_get_clean();
-								// Output the content
-								echo $content; 
-							?>
-						<?php
-					}
+					</div>
+					<?php
 				}
 				?>
 			</div>
 		</div>
-		<div class="order-totals d-none">
+
+		<div class="order-totals">
 			<?php foreach ( $order->get_order_item_totals() as $key => $total ) : ?>
 				<div class="order-total">
 					<span class="total-label"><?php echo esc_html( $total['label'] ); ?></span>
@@ -125,4 +109,5 @@ else if(!is_order_received_page()): ?>
 	if ( $show_customer_details ) {
 		wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
 	}
-endif; ?>
+endif;
+?>

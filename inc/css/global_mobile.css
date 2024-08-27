@@ -58,6 +58,10 @@
     footer .my_account a {
         width: 100%;
     }
+
+    footer .my_account{
+        flex-direction: column;
+    }
 }
 
 @media (max-width:767px) {

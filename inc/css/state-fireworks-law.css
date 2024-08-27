@@ -25,3 +25,23 @@ section.state_fireworks_law h2,
 section.state_fireworks_law h1{
     margin-bottom: 20px;
 }
+
+@media (max-width: 1200px) {
+    section.state_fireworks_law .top_content{
+        margin-bottom: 70px;
+    }
+
+    section.state_fireworks_law .bottom_content{
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 767px) {
+    section.state_fireworks_law .top_content{
+        margin-bottom: 50px;
+    }
+
+    section.state_fireworks_law .bottom_content{
+        padding-top: 50px;
+    }
+}
