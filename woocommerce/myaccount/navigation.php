@@ -4,12 +4,6 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/navigation.php.
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
  * @see     https://woo.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 2.6.0
@@ -20,23 +14,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 do_action( 'woocommerce_before_account_navigation' );
+
+$current_user = wp_get_current_user();
+$gravatar_url = get_avatar_url( $current_user->user_email, array( 'size' => 150 ) );
 ?>
 
 <div class="col-lg-3">
-    <nav class="woocommerce-MyAccount-navigation d-none d-lg-block">
+    <nav class="woocommerce-MyAccount-navigation d-none d-lg-block sticky-top">
+        <div class="profile">
+            <div class="image d-flex flex-column align-items-center position-relative">
+                <img loading="lazy" src="<?php echo esc_url( $gravatar_url ); ?>" alt="Profile Image" class="mb-3 profile-image rounded-circle img-fluid" width="100" height="100">
+                <p class="name text-center">Hi <?php echo esc_attr( $current_user->first_name ); ?> <?php echo esc_attr( $current_user->last_name ); ?></p>
+                <a href="https://en.gravatar.com/" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
+            </div>
+        </div>
         <ul class="mb-0">
             <?php
             // Define the desired order of menu items
             $menu_order = array(
+                'dashboard'         => __( 'Dashboard', 'woocommerce' ),
                 'edit-account'      => __( 'My Account Page', 'woocommerce' ),
                 'edit-address'      => __( 'Shipping and Billing address', 'woocommerce' ),
                 'recently-viewed'   => __( 'Recently Viewed Products', 'woocommerce' ), // Added recently viewed products tab
-                'dashboard'         => __( 'Dashboard', 'woocommerce' ),
                 'orders'            => __( 'Order History', 'woocommerce' ),
-                'payment-methods'         => __( 'Payment Methods', 'woocommerce' ),
+                'order-status'   => __( 'Order Status', 'woocommerce' ),
+                'payment-methods'   => __( 'Payment Methods', 'woocommerce' ),
+                'news-letter'       => __( 'News Letter', 'woocommerce' ),
                 'customer-logout'   => __( 'Log Out', 'woocommerce' ),
             );
-            
+
 
             // Loop through the menu items in the desired order
             foreach ( $menu_order as $endpoint => $label ) :
@@ -79,15 +85,16 @@ do_action( 'woocommerce_before_account_navigation' );
                     <?php
                     // Define the desired order of menu items
                     $menu_order = array(
+                        'dashboard'         => __( 'Dashboard', 'woocommerce' ),
                         'edit-account'      => __( 'My Account Page', 'woocommerce' ),
                         'edit-address'      => __( 'Shipping and Billing address', 'woocommerce' ),
                         'recently-viewed'   => __( 'Recently Viewed Products', 'woocommerce' ), // Added recently viewed products tab
-                        'dashboard'         => __( 'Dashboard', 'woocommerce' ),
                         'orders'            => __( 'Order History', 'woocommerce' ),
-                        'downloads'         => __( 'Downloads', 'woocommerce' ),
+                        'payment-methods'   => __( 'Payment Methods', 'woocommerce' ),
+                        'news-letter'       => __( 'News Letter', 'woocommerce' ),
                         'customer-logout'   => __( 'Log Out', 'woocommerce' ),
                     );
-                    
+
 
                     // Loop through the menu items in the desired order
                     foreach ( $menu_order as $endpoint => $label ) :

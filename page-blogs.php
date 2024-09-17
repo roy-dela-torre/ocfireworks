@@ -1,14 +1,14 @@
 <?php get_header();
 /*Template Name: Blogs*/
 ?>
-<section class="blogs bg-white">
+<section class="blogs">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="header">
                     <div class="header_content">
-                        <h1 class="text-white text-lg-center text-uppercase">Lorem ipsum dolor sit amet consectetur.</h1>
-                        <p class="text-lg-center text-white">Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                        <h1 class="text-white text-lg-center text-uppercase">Blogs</h1>
+                        <p class="text-lg-center text-white">Light the fuse on your next celebration! Uncover dazzling ideas, spark creativity, and become a fireworks fiesta master. Let's get explosive!</p>
                     </div>
                 </div>
                 <div class="main_content">
@@ -79,7 +79,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="header">
-                    <h2 class="text-uppercase">Lorem ipsum dolor sit amet </h2>
+                    <h2 class="text-uppercase">Spark even more ideas!</h2>
                 </div>
                 <?php
                     global $paged;
@@ -133,17 +133,3 @@
 
 
 <?php get_footer();?>
-<script>
-    $(document).ready(function(){
-        var next = $('<img>', {
-            src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/next.png', // Replace with the actual image URL
-            alt: 'Next Image' // Add an alt attribute for accessibility
-        });
-        $('a.next.page-numbers').html(next);
-        var prev = $('<img>', {
-            src: '<?php echo get_stylesheet_directory_uri();?>/assets/img/search/prev.png', // Replace with the actual image URL
-            alt: 'Next Image' // Add an alt attribute for accessibility
-        });
-        $('a.prev.page-numbers').html(prev);
-    })
-</script>

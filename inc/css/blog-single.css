@@ -2,7 +2,9 @@ section.blog-single h1,
 section.blog-single .featureImage {
     margin-bottom: 30px;
 }
-
+body{
+    background-color: transparent !important;
+}
 section.blog-single img {
     border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -14,10 +16,27 @@ section.blog-single img {
 section.blog-single blockquote {
     padding-left: 30px;
     margin: 60px 0;
+    border-left: 5px solid var(--Red, #BF2126);
+}
+section.blog-single blockquote h2{
+    margin-bottom: 20px;
 }
 
 section.blog-single blockquote ul {
-    margin-bottom: 60px;
+    padding-left: 20px;
+}
+
+section.blog-single blockquote ul li{
+    color: var(--P, #212121);
+    font-family: 'Inter',sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px; /* 138.889% */
+    margin-bottom: 5px;
+}
+section.blog-single blockquote ul li:last-child{
+    margin-bottom: 20px;
 }
 
 section br {
@@ -30,6 +49,10 @@ section.blog-single p:has(> img) {
 
 section.blog-single h3 + p{
     margin-bottom: 60px !important;
+}
+
+section.blog-single h3 + p:last-child{
+    margin-bottom: 30px !important;
 }
 
 section.blog-single p>img{
@@ -55,7 +78,7 @@ section.blog-single .share{
     margin-top: 30px;
 }
 section.blog-single .share span.share{
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: "Roboto Condensed",sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -113,9 +136,10 @@ section.more_blogs .content{
 
 section.more_blogs .main_content{
     padding: 20px 25px;
+    background-color: #F8F8F8;
 }
 section.more_blogs span.date{
-    color: #212121;
+    color: var(--primay_font_color);
     font-family: 'Inter',sans-serif;
     font-size: 18px;
     font-style: normal;

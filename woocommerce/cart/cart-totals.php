@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 
 <?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-<h2><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h2>
+<h3><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h3>
 
 <div class="product_summary">
 	<?php
@@ -43,9 +43,10 @@ defined( 'ABSPATH' ) || exit;
 	?>
 </div>
 
+
 <div class="cart-totals-container">
 	<div class="cart-subtotal d-flex align-items-center justify-content-between">
-		<p class="subtotal-label mb-0"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></p>
+		<p class="subtotal-label mb-0"><?php esc_html_e( 'Subtotal:', 'woocommerce' ); ?></p>
 		<p class="subtotal-value" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></p>
 	</div>
 
@@ -107,22 +108,16 @@ defined( 'ABSPATH' ) || exit;
 	<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
 
 	<div class="order-total d-flex aling-items-center justify-content-between">
-		<p class="total-label mb-0"><?php esc_html_e( 'Total', 'woocommerce' ); ?></p>
+		<p class="total-label mb-0"><?php esc_html_e( 'Total:', 'woocommerce' ); ?></p>
 		<p class="total-value d-flex align-items-center" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></p>
 	</div>
 
 	<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
 </div>
-<?php if ( wc_coupons_enabled() ) { ?>
-	<div class="coupon">
-		<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="red_button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
-		<?php do_action( 'woocommerce_cart_coupon' ); ?>
-	</div>
-<?php } ?>
 <div class="wc-proceed-to-checkout">
 	<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
+	<button class="continue_shopping"><a href="<?php echo get_home_url(); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link">Continue shopping</a></button>
 </div>
 
 <?php do_action( 'woocommerce_after_cart_totals' ); ?>
 </div>
-

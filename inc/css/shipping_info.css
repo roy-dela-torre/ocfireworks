@@ -1,12 +1,16 @@
 section.banner {
-    background: url('../../assets/img/homepage/banner.png')no-repeat bottom center/cover;
+    background: url('../../assets/img/shipping_info/banner.png  ')no-repeat bottom center/cover;
     position: relative;
-    clip-path: ellipse(80% 100% at 50% 0%);
-    padding-bottom: 150px;
+    height: 100%;
+    max-height: 864px;
+    display: flex;
+    align-items: center;
 }
-section.banner .content{
+
+section.banner .content {
     max-width: 750px;
 }
+
 section.banner .row {
     position: relative;
     z-index: 1;
@@ -17,28 +21,38 @@ section.banner p {
     margin-bottom: 20px;
 }
 
+section.banner .image img{
+    max-width: 550px;
+}
 
-section.video h2{
+
+section.video h2 {
     margin-bottom: 30px;
 }
-section.video .image img{
+
+section.video .image img,
+section.video .image iframe {
     width: 100%;
     margin-bottom: 30px;
+    min-height: 410px;
 }
-section.video .header{
+
+section.video .header {
     max-width: 1270px;
     margin: 0 auto;
 }
-section.video .content{
+
+section.video .content {
     max-width: 1270px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-section.video span{
+
+section.video span {
     color: var(--Red, #BF2126);
-    font-family: 'Inter',sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
@@ -48,53 +62,65 @@ section.video span{
 
 
 
-section.accordion div#accordionPanelsStayOpenExample{
+section.accordion div#accordionPanelsStayOpenExample {
     display: flex;
     flex-direction: column;
     gap: 30px 0;
 }
-section.accordion div#accordionPanelsStayOpenExample .accordion-item{
+
+section.accordion div#accordionPanelsStayOpenExample .accordion-item {
     border-radius: 5px;
-    background: #FFF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
-section.accordion div#accordionPanelsStayOpenExample .accordion-button{
+
+section.accordion div#accordionPanelsStayOpenExample .accordion-button {
     padding: 30px;
     color: var(--Red, #BF2126);
-    font-family: 'Inter',sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
     border: none !important;
     line-height: normal;
-    border-radius: 0 !important;
     background-color: transparent;
-    box-shadow: none;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
 }
-section.accordion div#accordionPanelsStayOpenExample .accordion-button::after{
+
+section.accordion div#accordionPanelsStayOpenExample .accordion-button::after {
     background-image: url('../../assets/img/shipping_info/accordion_dropdown.png');
 }
-section.accordion div#accordionPanelsStayOpenExample {}
-section.accordion div#accordionPanelsStayOpenExample {}
-section.accordion div#accordionPanelsStayOpenExample {}
-section.accordion div#accordionPanelsStayOpenExample {}
+
+section.accordion div#accordionPanelsStayOpenExample .accordion-body {
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-top: 20px;
+}
 
 
 
 @media (max-width: 1200px) {
-    section.banner{
+    section.banner {
         padding: 70px 30px;
-        clip-path: ellipse(120% 100% at 50% 0%);
+        max-height: 600px;
     }
-    
+
 }
+
 @media (max-width: 991px) {
-    section.banner{
-        clip-path: ellipse(180% 100% at 50% 0%);
+    section.banner {
+        max-height: 100%;
+        height: auto;
     }
 }
+
 @media (max-width: 767px) {
-    section.banner{
+    section.banner {
         padding: 50px 20px;
     }
 }

@@ -7,8 +7,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="content">
-                        <h1 class="text-white">Let the Good Times Explode!</h1>
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100 d-block d-lg-none">
+                        <h1 class="text-white">OC Fireworks: Let the Good Times Explode!</h1>
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="OC Fireworks: Let the Good Times Explode" class="w-100 d-block d-lg-none">
                         <p class="text-white">Light up the fun! Shop OC Fireworks for dazzling displays and unforgettable memories.</p>
                         <a href="<?php echo get_home_url(); ?>/shop/" target="_blank" rel="noopener noreferrer" class="shop_now">
                             SHOP NOW
@@ -20,7 +20,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="image">
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100">
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="OC Fireworks: Let the Good Times Explode" class="w-100">
                     </div>
                 </div>
             </div>
@@ -32,55 +32,133 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
     <div class="container-fluid">
         <div class="row justify-content-center">
             <h2 class="text-center">Brand Blast Off</h2>
-            <div class="owl-carousel owl-theme p-0" id="brands">
+            <marquee behavior="scroll" direction="left" id="brands">
                 <?php for($i=1;$i<=10;$i++){ ?>
-                    <img src="<?php echo $img; ?>/logo<?php echo $i; ?>.png" alt="" width="186" height="186">
+                    <img src="<?php echo $img; ?>/logo<?php echo $i; ?>.png" alt="logo<?php echo $i; ?>" width="186" height="186">
                 <?php }?>
-            </div>
-            <a href="http://" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
+            </marquee>
+            <a href="<?php echo get_home_url(); ?>/brands/" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
         </div>
     </div>
 </section>
+
+<section class="brands d-none">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row algn-items-center justify-content-center">
+                <div class="header">
+                    <h2 class="text-center">Brand Blast Off</h2>
+                </div>
+                <?php
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                $posts_per_page = 12;
+
+                $product_categories = get_terms(array(
+                    'taxonomy' => 'brands',
+                    'hide_empty' => false,
+                    'paged' => $paged,
+                    'number' => $posts_per_page
+                )); ?>
+                <div class="owl-carousel owl-theme p-0" id="brands">
+                    <?php if ($product_categories && !is_wp_error($product_categories)) {
+                        foreach ($product_categories as $category) {
+                            if (esc_html($category->name) === "Uncategorized") {
+                                continue;
+                            }
+                            $category_url = get_term_link($category);
+                            if (!is_wp_error($category_url)) {
+                                // Get the ACF field value
+                                $featured_image = get_field('featured_image', 'brands_' . $category->term_id);
+                                ?>
+                                <img src="<?php echo $featured_image ? esc_url($featured_image) : get_stylesheet_directory_uri() . '/assets/img/brands/barnds.png'; ?>" alt="<?php echo esc_html($category->name); ?>" width="186" height="186">
+                                <?php
+                            }
+                        }
+                    } else {
+                        echo 'No product categories found';
+                    }
+                    ?>
+                </div>
+                <a href="<?php echo get_home_url(); ?>/brands/" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?php
+    // $title = "BRAND BLAST OFF";
+    // $data = array(
+    //     'title' => $title, // Product title
+    // );
+    // ob_start();
+?>
+<?php //echo wc_
+//get_template('template/brand.php', $data);?>
+<?php
+    // $content = ob_get_clean();
+    // // Output the content
+    // echo $content;
+?>
 
 <section class="shop_by_categories">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <h2 class="text-center text-uppercase text-white">Shop by Categories</h2>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Events.jpg" alt="Events">
-                        <h3 class="text-center text-white position-absolute">Events</h3>
+                
+                <?php
+                // Get category IDs for 'Uncategorized' and 'Special Offers'
+                $exclude_categories = array(
+                    get_cat_ID('Uncategorized'),
+                    get_cat_ID('Special Offers')
+                );
+
+                // Fetch all categories excluding 'Uncategorized' and 'Special Offers'
+                $categories = get_categories(array(
+                    'taxonomy'   => 'category',
+                    'orderby'    => 'name',
+                    'order'      => 'ASC',
+                    'hide_empty' => false,
+                    'exclude'    => $exclude_categories
+                ));
+
+                $counter = 0; // Initialize counter
+
+                // Loop through each category
+                foreach ($categories as $category) {
+                    // Get the category slug
+                    $category_slug = $category->slug;
+
+                    // Get the custom field for the category image (assuming using ACF)
+                    $category_image = get_field('category_image', 'category_' . $category->term_id);
+
+                    // Default image if no custom field is set
+                    if (!$category_image) {
+                        $category_image = 'path/to/default/image.jpg'; // Replace with your default image path
+                    }
+
+                    // Set column class based on counter
+                    $col_class = ($counter < 3) ? 'col-lg-4 col-md-6 col-sm-12' : 'col-md-6 col-sm-12';
+                    ?>
+
+                    <div class="<?php echo $col_class; ?>">
+                        <div class="content d-flex align-items-center justify-content-center position-relative">
+                            <img loading="lazy" src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr($category->name); ?>">
+                            <h3 class="text-center text-white position-absolute"><?php echo esc_html($category->name); ?></h3>
+                            <a href="<?php echo esc_url(home_url($category_slug)); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link"></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Sky Show.jpg" alt="Sky Show">
-                        <h3 class="text-center text-white position-absolute">Sky Show</h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Ground Effects.jpg" alt="Ground Effects">
-                        <h3 class="text-center text-white position-absolute">Ground Effects</h3>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Novelties.jpg" alt="Novelties">
-                        <h3 class="text-center text-white position-absolute">Novelties</h3>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="content d-flex align-items-center justify-content-center position-relative">
-                        <img loading="lazy" src="<?php echo $img; ?>/Supplies.jpg" alt="Supplies">
-                        <h3 class="text-center text-white position-absolute">Supplies</h3>
-                    </div>
-                </div>
+
+                    <?php
+                    $counter++; // Increment counter
+                }
+                ?>
             </div>
         </div>
     </div>
 </section>
+
+
 
 <section class="featured_product">
     <div class="wrapper">
@@ -109,7 +187,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 $productLoop = new WP_Query($args);
                 if ($productLoop->have_posts()):
                     while ($productLoop->have_posts()): $productLoop->the_post();
-                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                         $product = wc_get_product(get_the_ID());
                         $product_id = get_the_ID();
                         $video_iframe = get_field('video_iframe', $product_id);
@@ -135,7 +213,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             'price' => $price, // Product price
                             'product_url' => $product_url,
                             'product' => $product,
-                            'product_id' => $product_id
+                            'product_id' => $product_id,
+                            'video_iframe' => $video_iframe
                         );
                         // Load the template
                         ob_start();
@@ -182,7 +261,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 $productLoop = new WP_Query($args);
                 if ($productLoop->have_posts()):
                     while ($productLoop->have_posts()): $productLoop->the_post();
-                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        $img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                         $product = wc_get_product(get_the_ID());
                         $product_id = get_the_ID();
                         $video_iframe = get_field('video_iframe', $product_id);
@@ -208,7 +287,8 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             'price' => $price, // Product price
                             'product_url' => $product_url,
                             'product' => $product,
-                            'product_id' => $product_id
+                            'product_id' => $product_id,
+                            'video_iframe' => $video_iframe
                         );
                         // Load the template
                         ob_start();
@@ -247,22 +327,28 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                 </div>
                 <div class="owl-carousel owl-theme" id="about_us">
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/Large Selection.png" alt=""><h3 class="mb-0 text-uppercase">Large Selection</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/Large Selection.png" alt="Large Selection">
+                        <h3 class="mb-0 text-uppercase">Large Selection</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/Great Prices.png" alt=""><h3 class="mb-0 text-uppercase">Great Prices</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/Great Prices.png" alt="Great Prices">
+                        <h3 class="mb-0 text-uppercase">Great Prices</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/high quality.png" alt=""><h3 class="mb-0 text-uppercase">high quality</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/high quality.png" alt="High quality">
+                        <h3 class="mb-0 text-uppercase">High quality</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/Free shipping.png" alt=""><h3 class="mb-0 text-uppercase">Free shipping</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/Free shipping.png" alt="Free shipping">
+                        <h3 class="mb-0 text-uppercase">Free shipping</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/retail.png" alt=""><h3 class="mb-0 text-uppercase">retail</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/retail.png" alt="Retail">
+                        <h3 class="mb-0 text-uppercase">Retail</h3>
                     </div>
                     <div class="item d-flex align-items-center justify-content-center">
-                        <img loading="lazy" src="<?php echo $img; ?>/whole sale.png" alt=""><h3 class="mb-0 text-uppercase">whole sale</h3>
+                        <img loading="lazy" src="<?php echo $img; ?>/whole sale.png" alt="Whole sale">
+                        <h3 class="mb-0 text-uppercase">Whole sale</h3>
                     </div>
                 </div>
             </div>
@@ -276,7 +362,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <div class="row">
                 <div class="header d-flex align-sm-items-center justify-content-between">
                     <h2 class="text-white text-uppercase mb-0">Sparking Joy with Fireworks</h2>
-                    <a href="http://" target="_blank" rel="noopener noreferrer" class="view_all_blogs white_button text-uppercase">View All Blogs</a>
+                    <a href="<?php echo get_home_url();?>/blogs" target="_blank" rel="noopener noreferrer" class="view_all_blogs white_button text-uppercase">View All Blogs</a>
                 </div>
                 <div class="main_content">
                     <?php
@@ -298,10 +384,11 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                                 $title = get_the_title();
                                 $description = get_the_excerpt();
                                 $link = get_permalink(); 
+                                $img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                                 if($large_content == true):?>
                                     <div class="large_content d-flex flex-column" onclick="window.open('<?php echo $link; ?>', '_blank')">
                                         <div class="blog_image">
-                                            <img loading="lazy" src="<?php echo $img; ?>/larg_content.jpg" alt="">
+                                            <img loading="lazy" src="<?php echo $img_url; ?>" alt="<?php echo $title; ?>">
                                         </div>
                                         <div class="content">
                                             <span class="date"><?php echo $date; ?></span>
@@ -317,7 +404,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                                 <?php else: ?>
                                     <div class="small_content d-flex" onclick="window.open('<?php echo $link; ?>', '_blank')">
                                         <div class="blog_image">
-                                            <img loading="lazy" src="<?php echo $img; ?>/small_content.jpg" alt="">
+                                            <img loading="lazy" src="<?php echo $img_url; ?>" alt="<?php echo $title; ?>">
                                         </div>
                                         <div class="content">
                                             <span class="date"><?php echo $date; ?></span>
@@ -346,13 +433,88 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
             <div class="row">
                 <div class="content">
                     <div class="main_content">
-                        <img loading="lazy" src="<?php echo $img; ?>/form_image.jpg" alt="">
+                        <img loading="lazy" src="<?php echo $img; ?>/form_image.jpg" alt="Reach Out to Us">
                         <div class="form_content">
                             <h2 class="text-white">Reach Out to Us</h2>
                             <p class="text-white">At OC Fireworks, we're here to help you make your next celebration unforgettable.  Whether you have questions about our products, need help planning your fireworks display, or just want to chat about pyrotechnics, we'd love to hear from you!</p>
                             <?php echo do_shortcode('[contact-form-7 id="0405eec" title="Homepage Contact Form"]')?>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testemonial d-none">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="header">
+                    <div class="header_content">
+                        <h2 class="text-center">What Our Customers Are Saying About OC Fireworks!</h2>
+                        <p class="text-center">Here at OC Fireworks, we're passionate about helping you create unforgettable memories with dazzling fireworks displays. But don't just take our word for it! See what some of our happy customers are saying:</p>
+                    </div>
+                </div>
+                <div class="main_content">
+                    <?php
+                    $args = array(
+                        'status' => 'approve', // Only approved comments
+                        'post_type' => 'product', // WooCommerce product reviews
+                        'number' => 3, // Get up to three reviews
+                        'orderby' => 'meta_value_num',
+                        'meta_key' => 'rating', // Order by rating
+                        'order' => 'DESC'
+                    );
+
+                    $comments = get_comments($args);
+
+                    $count = 0;
+                    foreach ($comments as $comment) :
+                        $count++;
+                        if ($count == 1) :
+                    ?>
+                    <div class="large_content d-flex align-items-center justify-content-center position-relative flex-column">
+                        <div class="review d-flex justify-content-center">
+                            <?php for ($i = 0; $i < intval(get_comment_meta($comment->comment_ID, 'rating', true)); $i++) { ?>
+                                <img loading="lazy" src="<?php echo $img; ?>/star.png" alt="">
+                            <?php } ?>
+                        </div>
+                        <div class="content">
+                            <p class="text-center"><?php echo esc_html($comment->comment_content); ?></p>
+                            <!-- Add additional content fields here if needed -->
+                        </div>
+                        <div class="author d-flex align-items-center">
+                            <img loading="lazy" src="<?php echo $img; ?>/author.png" alt="">
+                            <div class="name">
+                                <p class="name"><?php echo esc_html($comment->comment_author); ?></p>
+                                <p class="position"><?php echo get_comment_meta($comment->comment_ID, 'title', true); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php else : ?>
+                    <div class="small_content d-flex flex-column">
+                        <div class="review d-flex justify-content-center">
+                            <?php for ($i = 0; $i < intval(get_comment_meta($comment->comment_ID, 'rating', true)); $i++) { ?>
+                                <img loading="lazy" src="<?php echo $img; ?>/star.png" alt="">
+                            <?php } ?>
+                        </div>
+                        <div class="content">
+                            <p class="text-center"><?php echo esc_html($comment->comment_content); ?></p>
+                            <!-- Add additional content fields here if needed -->
+                        </div>
+                        <div class="author d-flex align-items-center">
+                            <img loading="lazy" src="<?php echo $img; ?>/author.png" alt="">
+                            <div class="name">
+                                <p class="name"><?php echo esc_html($comment->comment_author); ?></p>
+                                <p class="position"><?php echo get_comment_meta($comment->comment_ID, 'title', true); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                        endif;
+                    endforeach;
+                    ?>
                 </div>
             </div>
         </div>
@@ -428,6 +590,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
     </div>
 </section>
 
+
 <section class="news_letter">
     <div class="wrapper">
         <div class="container-fluid">
@@ -440,7 +603,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
                             <?php echo do_shortcode('[contact-form-7 id="45c6cd8" title="Homepage News Letter"]')?>
                         </div>
                         <div class="image">
-                            <img loading="lazy" src="<?php echo $img; ?>/news_letter.jpg" alt="">
+                            <img loading="lazy" src="<?php echo $img; ?>/news_letter.jpg" alt="Ignite Your Inbox: Sign Up for the OC Fireworks Newsletter!">
                         </div>
                     </div>
                 </div>
@@ -448,35 +611,4 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
         </div>
     </div>
 </section>
-
-<?php echo get_template_part('wishlist_pop_up'); ?>
-<?php echo get_template_part('video_pop_up'); ?>
 <?php get_footer();?>
-<script>
-    $(document).ready(function () {
-        var iframeHTML;
-        function replaceThumbnailWithIframe() {
-            if (typeof iframeHTML !== 'undefined') {
-                $('.modal-body .video_thumbnail').replaceWith(`<iframe width="560" height="315" src="${iframeHTML}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
-            } else {
-                console.error('iframeHTML is not defined');
-            }
-        }
-        $('section.special_product .product_column .play, section.featured_product .product_column .play').click(function() {
-            iframeHTML = $(this).closest('.product_column').find('.iframe').html();
-            console.log(iframeHTML)
-            var title = $(this).closest('.product_column').find('h3.product_title').text();
-            $('#video_modal #video_modalLabel').text(title);
-            $('.video_modal').click();
-        });
-        $('img.play_button').click(replaceThumbnailWithIframe);
-        $('img.play_button').click(function(){
-            $(this).hide()
-        })
-
-        $('div#video_modal button.btn.btn-secondary').click(function(){
-            $('.modal-body iframe').replaceWith(`<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/global/video_thumbnail.jpg" alt="" class="video_thumbnail">`);
-            $('img.play_button').show()
-        })
-    });
-</script>

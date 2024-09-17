@@ -1,58 +1,75 @@
-section.login .login_form{
+section.login .login_form {
     background: url('../../assets/img/global/login_form_bg.jpg')no-repeat center center/cover;
     padding: 50px 40px;
     border-radius: 10px;
     height: 100%;
 }
+
 section.login .login_form h1,
-section.login .login_form p{
+section.login .login_form p {
     color: white;
 }
-section.login input:not([type="submit"]):not([name="rememberme"]){
+
+section.login input:not([type="submit"]):not([name="rememberme"]) {
     width: 100%;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     background: #EFEFEF;
     color: #000000;
-    font-family: 'Inter',sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 300;
-    line-height: 25px; /* 138.889% */
+    line-height: 25px;
+    /* 138.889% */
 
 }
-section.login input:not([type="submit"])::placeholder{
+
+section.login input:not([type="submit"])::placeholder {
     color: #848484;
-    font-family: 'Inter',sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 300;
-    line-height: 25px; /* 138.889% */
+    line-height: 25px;
+    /* 138.889% */
 }
-section.login p.login-remember{
+
+section.login p.login-remember {
     display: flex;
 }
-section.login p.login-remember label{
+
+section.login p.login-remember label {
     display: flex;
     align-items: center;
     gap: 0 5px;
 }
-section.login p.login-remember label span{
+
+section.login p.login-remember label span {
     color: #FFF;
-    font-family: "Roboto Condensed",sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
 }
-section.login .image{
+
+section.login .image {
     padding-left: 5%;
     height: 100%;
 }
-section.login .image img{
+
+section.login .image img {
     height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 section.login input#rememberme {
@@ -98,31 +115,43 @@ section.login input#rememberme:checked:before {
     -o-transform: rotate(45deg) translate(-50%, -50%);
 }
 
-section.login .black_button:hover{
-    border-radius: 5px;
-    background: var(--Linear, linear-gradient(180deg, ));
-}
 
-form.custom-login-form p,
-form.woocommerce-ResetPassword.lost_reset_password p{
+form.custom-login-form p {
     margin-bottom: 0;
 }
-form.custom-login-form,
-form.woocommerce-ResetPassword.lost_reset_password{
+
+form.custom-login-form{
     display: flex;
     flex-direction: column;
     gap: 15px 0;
     margin-bottom: 0;
 }
-section.login .group{
+form.custom-login-form  input#wp-submit{
+    margin-top: 15px;
+}
+section.login .login_form>p:nth-child(2){
+    margin-bottom: 30px;
+}
+
+section.login button.black_button{
+    width: 100%;
+    border: none;
+    justify-content: center;
+}
+
+
+
+section.login .group {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin: 15px 0 30px;
 }
-section.login .group a{
+
+section.login .group a {
     color: #FFF;
-    font-family: "Roboto Condensed",sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -130,15 +159,110 @@ section.login .group a{
     text-transform: uppercase;
 }
 
+.woocommerce form .form-row {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+}
+
+.woocommerce form.checkout_coupon,
+.woocommerce form.login,
+.woocommerce form.register {
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: unset;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: var(--Linear, linear-gradient(180deg, #626262 0%, #000 100%));
+    color: #FFF;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 100%;
+    white-space: pre;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button:hover {
+    transition: 1s ease all;
+    -webkit-transition: 1s ease all;
+    -moz-transition: 1s ease all;
+    -ms-transition: 1s ease all;
+    -o-transition: 1s ease all;
+    background: var(--Linear, linear-gradient(180deg, #FFFFFF 0%, #BDBDBD 100%));
+    color: var(--secondary_font_color);
+}
+
+.woocommerce form .form-row::after,
+.woocommerce form .form-row::before,
+.woocommerce-page form .form-row::after,
+.woocommerce-page form .form-row::before {
+    display: none;
+}
+
+form.woocommerce-form.woocommerce-form-login.login {
+    display: flex;
+    flex-direction: column;
+    gap: 15px 0;
+    margin-top: 14px;
+}
+
+section.login h2 {
+    margin-bottom: 15px;
+}
+
+section.login a {
+    color: #FFF;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.woocommerce form .show-password-input::after,
+.woocommerce-page form .show-password-input::after {
+    color: #000;
+}
 
 @media (max-width: 991px) {
-    section.login .image{
+    section.login .image {
         padding-left: 0;
     }
-    section.login .row{
-        gap: 50px 0;
+
+    section.login .row {
+        gap: 30px 0;
     }
-    section.login .image img{
+
+    section.login .image img {
         width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    section.login .login_form{
+        padding: 30px;
+    }
+    section.login .group{
+        flex-direction: column;
+        gap: 20px 0;
+        align-items: start;
     }
 }

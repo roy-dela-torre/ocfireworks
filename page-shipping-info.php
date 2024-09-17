@@ -8,14 +8,14 @@ $img = get_stylesheet_directory_uri().'/assets/img/shipping_info';
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-7 col-md-12">
                     <div class="content mw-lg-100">
-                        <h1 class="text-white">Yorem ipsum dolor sit amet Lorem isa consectetur </h1>
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100 d-block d-lg-none">
-                        <p class="text-white">Lorem ipsum dolor sit amet consectetur. Volutpat urna in ipsum nisi sit vitae risus. Dolor diam volutpat nulla nulla. Vitae malesuada odio et dictum senectus natoque in diam vitae. Mattis eu nunc ullamcorper eu ornare feugiat ante vel. Vitae phasellus nisi et semper pharetra. Bibendum suscipit lectus arcu et a. </p>
+                        <h1 class="text-white">Boom! Delivered to Your Doorstep!</h1>
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="Boom! Delivered to Your Doorstep!" class="w-100 d-block d-lg-none">
+                        <p class="text-white">No more scrambling to find a tent and pick-up truck. This page is your one-stop shop for all things fireworks delivery! We'll answer your burning questions about shipping times, costs, and anything else to keep your grand finale smooth and explosive.</p>
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block">
                     <div class="image">
-                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="" class="w-100">
+                        <img loading="lazy" src="<?php echo $img?>/banner_image.png" alt="Boom! Delivered to Your Doorstep!" class="w-100">
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/shipping_info';
                     <h2 class="text-center">ALL ORDERS CONTAINING EXPLOSIVE FIREWORKS MUST BE TRANSPORTED BY COMMONCARRIER FREIGHT (AKA TRACTOR TRAILER.)</h2>
                 </div>
                 <div class="content">
-                    <div class="image">
+                    <div class="image w-100">
                         <img src="<?php echo $img; ?>/video_thumbnail.jpg" alt="">
                     </div>
                     <span class="red">UPS, FEDEX, USPS, DHL WILL NOT TRANSPORT FIREWORKS</span>
@@ -52,7 +52,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/shipping_info';
                         </h2>
                         <div id="panelsStayOpen-collapse1" class="accordion-collapse collapse">
                             <div class="accordion-body">
-                                <p>A: Shipping Fireworks is delicate and highly regulated. Zones 1, 2, and 3 should expect a minimum of 7-10 business days. Zones 4 and 5 should expect 10-15 business days. We always recommend curbside-pickup for those within a reasonable driving distance from our location in Indiana. Non-hazmat items generally take 3-7 business days for all Zones.</p>
+                                <p>A: Shipping Fireworks is delicate and highly regulated. Zones 1, 2, and 3 should expect a minimum of 7-10 business days. Zones 4 and 5 should expect 10-15 business days. We always recommend curbside-pickup for those within a reasonable driving distance from our location in Indiana. Non-hazmat items generally take 3-7 business days for all Zones.</p>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/shipping_info';
                         </h2>
                         <div id="panelsStayOpen-collapse5" class="accordion-collapse collapse">
                             <div class="accordion-body">
-                                <p>A: We ship fireworks to all states except the following... CA, DE, NV, AK, HI, NJ, NY, OR, RI, VT, MA, TN, OH and Washington D.C. For those of you that are located in the above states we can only ship items from this category to you >>>><a href="https://ocfireworks.com/low-cost-shipping/" target="_blank" rel="noopener noreferrer">https://ocfireworks.com/low-cost-shipping/</a>-We cannot ship to APO/FPO or P.O. Boxes.-We do not ship outside the USA.</p>
+                                <p>A: We ship fireworks to all states except the following... CA, DE, NV, AK, HI, NJ, NY, OR, RI, VT, MA, TN, OH and Washington D.C. For those of you that are located in the above states we can only ship items from this category to you >>>><a href="https://ocfireworks.com/low-cost-shipping/" target="_blank" rel="noopener noreferrer">https://ocfireworks.com/low-cost-shipping/</a>-We cannot ship to APO/FPO or P.O. Boxes.-We do not ship outside the USA.</p>
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@ $img = get_stylesheet_directory_uri().'/assets/img/shipping_info';
                         </h2>
                         <div id="panelsStayOpen-collapse13" class="accordion-collapse collapse">
                             <div class="accordion-body">
-                                <p>A: We are not responsible for the use, misuse, confiscation or malfunction of our merchandise. Any injuries or such that may occur are not our responsibility. We recommend a distance of at least 125' to 150' radius clear of people and property when using fireworks. Please remember that fireworks are fun, but they are not toys. If you are in doubt or have a question about the use or function of any of our products, please contact us before use. We are very knowledgeable of the use of our products. Please do not assume anything and remember safety comes first and then have fun. By purchasing from our site you are agreeing to the terms and conditions. https://ocfireworks.com/terms-conditions/ For More Information: see After You Place An Order</p>
+                                <p>A: We are not responsible for the use, misuse, confiscation or malfunction of our merchandise. Any injuries or such that may occur are not our responsibility. We recommend a distance of at least 125' to 150' radius clear of people and property when using fireworks. Please remember that fireworks are fun, but they are not toys. If you are in doubt or have a question about the use or function of any of our products, please contact us before use. We are very knowledgeable of the use of our products. Please do not assume anything and remember safety comes first and then have fun. By purchasing from our site you are agreeing to the terms and conditions. <a href="https://ocfireworks.com/terms-conditions/" target="_blank" rel="noopener noreferrer" class="red_text">https://ocfireworks.com/terms-conditions/</a> For More Information: see After <a href="https://ocfireworks.com/after-you-place-an-order/" target="_blank" rel="noopener noreferrer" class="red_text">You Place An Order</a></p>
                             </div>
                         </div>
                     </div>

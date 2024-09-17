@@ -10,7 +10,8 @@
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 25px;
+    font-stretch: condensed;
+    font-size: clamp(1.125rem, 1.0135rem + 0.4575vw, 1.5625rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -21,7 +22,8 @@
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 25px;
+    font-stretch: condensed;
+    font-size: clamp(1.125rem, 1.0135rem + 0.4575vw, 1.5625rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -71,7 +73,26 @@
     z-index: 2;
 }
 
+.product_content .absolute_button p.sale{
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: #A11012;
+    color: #FFF;
+    text-align: center;
+    font-family: "Roboto Condensed",sans-serif;
+    font-stretch: condensed;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
 
+.product_content span.price{
+    display: flex;
+    align-items: center;
+}
 
 .product_content .product_image {
     margin-bottom: 30px;
@@ -84,7 +105,7 @@
 }
 
 .product_content h3 {
-    color: #BF2126;
+    color: var(--secondary_font_color);
     margin-bottom: 16px;
 }
 
@@ -103,30 +124,44 @@
     color: #A9A9A9;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 20px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
 }
 
-.product_content p.price {
-    color: #BF2126;
+.product_content span.woocommerce-Price-amount.amount bdi  {
+    color: var(--primay_font_color);
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 25px;
+    font-stretch: condensed;
+    font-size: clamp(1.125rem, 1.0135rem + 0.4575vw, 1.5625rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
-    margin-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0 5px;
 }
 
-.product_content p.price del bdi {
-    color: var(--Alternate-Black, #212121);
+.product_content p.price{
+    display: flex;
+    align-items: center;
+    gap: 0 5px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.product_content p.price.sale del span.woocommerce-Price-amount.amount bdi{
+    color: var(--primay_font_color);
+}
+.product_content p.price.sale ins span.woocommerce-Price-amount.amount bdi{
+    color: var(--secondary_font_color);
+}
+
+.product_content del span.woocommerce-Price-amount.amount bdi {
+    color: var(--secondary_font_color);
 }
 .product_content p.price del{
     color: #000;
@@ -140,6 +175,7 @@
     padding: 10px 20px;
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;

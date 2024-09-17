@@ -8,13 +8,13 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <h5 class="text-uppercase">Added to wish list</h5>
                 <div class="product">
                     <img src="" alt="">
                     <div class="product_info">
+                        <h5 class="text-uppercase">Added to wish list</h5>
                         <p class="product_name"></p>
                         <p class="price"></p>
-                        <a href="<?php echo get_home_url(); ?>/wishlist/" class="view_wishlist">View wish List</a>
+                        <a href="<?php echo get_home_url(); ?>/wishlist/" class="view_wishlist" target="_blank">View wish List</a>
                     </div>
                 </div>
                 <div class="group_button">

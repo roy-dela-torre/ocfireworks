@@ -9,7 +9,7 @@ section.single_product .summary.entry-summary {
 }
 
 section.single_product h1 {
-    color: #FF0000;
+    color: #BF2126;
     margin-bottom: 15px;
 }
 
@@ -25,7 +25,7 @@ section.single_product del bdi {
 }
 
 section.single_product ins bdi {
-    color: #BF2126;
+    color: var(--secondary_font_color);
     font-family: "Roboto Condensed";
     font-size: clamp(1.5625rem, 1.3235rem + 0.9804vw, 2.5rem);
     font-style: normal;
@@ -56,25 +56,32 @@ section.single_product .info {
     margin-bottom: 60px;
 }
 
-section.single_product .product_reviews {
-    margin-bottom: 20px;
+section.single_product .info>div {
+    gap: 0 15px;
 }
 
-section.single_product span.woocommerce-Price-amount.amount bdi {
-    color: var(--Alternate-Black, #212121);
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: clamp(1.25rem, 0.9314rem + 1.3072vw, 2.5rem);
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: uppercase;
+section.single_product .product_reviews {
     margin-bottom: 20px;
-    display: block;
+    gap: 0 5px;
 }
+
+section.single_product .product_reviews span {
+    color: #A9A9A9;
+    text-align: center;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+
 
 section.single_product strong {
     color: var(--Alternate-Black, #212121);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -110,11 +117,14 @@ section.single_product form.cart button[name="add-to-cart"] {
     background: linear-gradient(180deg, #BF2126 0%, #3F0002 100%);
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
+    width: 100%;
+    max-width: 200px;
 }
 
 section.single_product form.cart button[name="add-to-cart"]:hover {
@@ -128,8 +138,68 @@ section.single_product form.cart button[name="add-to-cart"]:hover {
 
 section.single_product form.cart {
     display: flex;
+    align-items: start;
+    gap: 0 50px;
+    margin-bottom: 0 !important;
+}
+
+section.single_product form.cart .single_variation_wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+section.single_product .review_summary {
+    margin-left: 10px;
+}
+
+.woocommerce div.product form.cart div.quantity {
+    display: flex;
+    align-items: center;
+    float: none;
+}
+
+.woocommerce div.product form.cart div.quantity button.minus {
+    border-radius: 5px 0 0 5px;
+}
+
+.woocommerce div.product form.cart div.quantity button.plus {
+    border-radius: 0 5px 5px 0;
+}
+
+.woocommerce-variation-add-to-cart.variations_button {
+    display: flex;
     align-items: center;
     gap: 0 50px;
+    width: 100%;
+}
+
+section.single_product span.price ins bdi,
+section.single_product span.price.sale ins bdi section.single_product span.price span.woocommerce-Price-amount.amount:last-child bdi {
+    color: var(--Red, #BF2126);
+}
+
+section.single_product span.price del bdi
+
+{
+    color: var(--Alternate-Black, #212121);
+    /* text-decoration: line-through; */
+}
+
+section.single_product span.price {
+    gap: 0 5px;
+    margin-bottom: 20px;
+}
+
+section.single_product span.woocommerce-Price-amount.amount bdi {
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
+    font-size: clamp(1.25rem, 0.9314rem + 1.3072vw, 2.5rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    display: block;
 }
 
 .woocommerce div.product form.cart::after,
@@ -140,7 +210,11 @@ section.single_product form.cart {
 .woocommerce-page #content div.product .woocommerce-tabs ul.tabs::after,
 .woocommerce-page div.product .woocommerce-tabs ul.tabs::after,
 .woocommerce div.product .woocommerce-tabs ul.tabs li::after,
-.woocommerce div.product .woocommerce-tabs ul.tabs li::before {
+.woocommerce div.product .woocommerce-tabs ul.tabs li::before,
+.woocommerce .products ul::after,
+.woocommerce .products ul::before,
+.woocommerce ul.products::after,
+.woocommerce ul.products::before {
     display: none;
 }
 
@@ -150,6 +224,7 @@ section.single_product input.input-text.qty.text {
     text-align: center;
     color: var(--Alternate-Black, #212121);
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -157,19 +232,23 @@ section.single_product input.input-text.qty.text {
     text-transform: uppercase;
     width: 80px;
 }
-div#carouselExampleCaptions .carousel-indicators button img{
+
+div#carouselExampleCaptions .carousel-indicators button img {
     height: 100%;
     object-fit: contain;
 }
-.woocommerce img, .woocommerce-page img{
+
+.woocommerce-page .carousel-item img {
     height: 100%;
     object-fit: cover;
 }
+
 div#carouselExampleCaptions {
     display: flex;
     gap: 0 20px;
 }
-div#carouselExampleCaptions .carousel-indicators{
+
+div#carouselExampleCaptions .carousel-indicators {
     position: relative;
     display: flex;
     gap: 30px 0;
@@ -177,27 +256,26 @@ div#carouselExampleCaptions .carousel-indicators{
     flex-direction: column;
     margin: 0;
 }
-div#carouselExampleCaptions .carousel-indicators button{
+
+div#carouselExampleCaptions .carousel-indicators button {
     width: 100px;
     height: calc(100% / 5);
     border: none;
     padding: 0;
     margin: 0;
 }
-div#carouselExampleCaptions {}
-div#carouselExampleCaptions {}
-div#carouselExampleCaptions {}
-div#carouselExampleCaptions {}
-div#carouselExampleCaptions {}
-div#carouselExampleCaptions {}
-div#carouselExampleCaptions {}
+
+section.single_product .group_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 503px;
+}
 
 
-
-
-
-
-
+section.single_product .group_content .yith-wcwl-add-to-wishlist {
+    margin-top: 0;
+}
 
 
 
@@ -216,11 +294,13 @@ section.product_reviews .woocommerce-tabs.wc-tabs-wrapper ul.tabs.wc-tabs {
     border: none;
     width: 100%;
     margin-bottom: 60px;
+    padding-left: 0 !important;
 }
 
 section.product_reviews .woocommerce-tabs.wc-tabs-wrapper ul.tabs.wc-tabs li a {
     color: var(--Alternate-Black, #212121) !important;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700 !important;
@@ -242,49 +322,94 @@ section.product_reviews .woocommerce-tabs.wc-tabs-wrapper ul.tabs.wc-tabs li {
 
 section.product_reviews .woocommerce-tabs.wc-tabs-wrapper ul.tabs.wc-tabs li.active a {
     border-bottom: 2px solid var(--Red, #BF2126);
-    color: #BF2126 !important;
+    color: var(--secondary_font_color) !important;
 }
 
 section.product_reviews .woocommerce-tabs.wc-tabs-wrapper .left_content_reviews {
-    gap: 0 30px;
+    gap: 30px 0;
+    flex-wrap: wrap;
 }
-section.product_reviews .woocommerce-tabs.wc-tabs-wrapper .review_summary span{
+
+section.product_reviews .woocommerce-tabs.wc-tabs-wrapper .left_content_reviews section.product_reviews .woocommerce-tabs.wc-tabs-wrapper .review_summary span {
     color: var(--Alternate-Black, #212121);
-    font-family: "Roboto Condensed",sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
 }
-section.product_reviews .woocommerce-tabs.wc-tabs-wrapper .product_reviews p{
+
+section.product_reviews .woocommerce-tabs.wc-tabs-wrapper .product_reviews p {
     margin-bottom: 20px;
 }
-section.product_reviews .woocommerce-tabs.wc-tabs-wrapper 
-section.product_reviews .woocommerce-tabs.wc-tabs-wrapper 
-section.product_reviews .woocommerce-tabs.wc-tabs-wrapper 
-section.product_reviews .woocommerce-tabs.wc-tabs-wrapper 
-section.product_reviews .woocommerce-tabs.wc-tabs-wrapper 
-section.product_reviews .woocommerce-tabs.wc-tabs-wrapper 
-section.product_reviews .woocommerce-tabs.wc-tabs-wrapper 
-section.related_products {
+
+section.product_reviews .woocommerce-tabs.wc-tabs-wrapper section.product_reviews .woocommerce-tabs.wc-tabs-wrapper section.product_reviews .woocommerce-tabs.wc-tabs-wrapper section.product_reviews .woocommerce-tabs.wc-tabs-wrapper section.product_reviews .woocommerce-tabs.wc-tabs-wrapper section.product_reviews .woocommerce-tabs.wc-tabs-wrapper section.product_reviews .woocommerce-tabs.wc-tabs-wrapper section.related_products {
     background: #F8F8F8;
 }
 
 
-section.product_reviews h2{
+section.product_reviews h3 {
     margin-bottom: 20px;
 }
 
-section.product_reviews div#reviews{
+section.product_reviews .iframe,
+section.product_reviews .thumbnail {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 694px;
+}
+
+section.product_reviews img.play_button {
+    position: absolute;
+}
+
+section.product_reviews div#reviews {
     max-width: 1086px;
     margin: 0 auto;
 }
+
 section.product_reviews .star-rating span:before {
-    color: #FFD600;; /* Change to your desired color */
+    color: #FFD600;
+    ;
+    /* Change to your desired color */
 }
 
-div#write_a_review .modal-dialog{
+section.product_reviews iframe {
+    width: 100%;
+}
+
+section.product_reviews .total_reviews .product_reviews {
+    flex-direction: column;
+    gap: 20px 0;
+}
+
+section.product_reviews .total_reviews .product_reviews .star {
+    display: flex;
+    align-items: center;
+    gap: 0 5px;
+}
+
+section.product_reviews .total_reviews {
+    gap: 0 30px;
+}
+
+section.product_reviews .total_reviews .review_summary span {
+    color: var(--Alternate-Black, #212121);
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+div#write_a_review .modal-dialog {
     height: 100%;
     display: flex;
     align-items: center;
@@ -292,47 +417,55 @@ div#write_a_review .modal-dialog{
     max-width: calc(750px + 40px);
     padding: 0 20px;
 }
-div#write_a_review .modal-content{
+
+div#write_a_review .modal-content {
     padding: 40px 50px;
     border-radius: 10px;
     background: url('../../assets/img/global/reviews_modal_bg.jpg')no-repeat center center/cover;
 }
-div#write_a_review form#commentform p.form-submit label{
+
+div#write_a_review form#commentform p.form-submit label {
     display: none;
 }
-div#write_a_review form#commentform p.form-submit label[for="wp-comment-cookies-consent"]{
+
+div#write_a_review form#commentform p.form-submit label[for="wp-comment-cookies-consent"] {
     display: block;
 }
+
 div#write_a_review input,
-div#write_a_review textarea{
+div#write_a_review textarea {
     width: 100%;
     border: none;
     padding: 10px;
     border-radius: 5px;
     background: #FFF;
 }
+
 div#write_a_review input::placeholder,
-div#write_a_review textarea::placeholder{
+div#write_a_review textarea::placeholder {
     color: #848484;
-    font-family: 'Inter',sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 300;
     line-height: 25px;
 }
-div#write_a_review input#submit{
+
+div#write_a_review input#submit {
     padding: 10px 20px;
     border-radius: 5px;
     background: linear-gradient(180deg, #BF2126 0%, #3F0002 100%);
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
 }
-div#write_a_review input#submit:hover{
+
+div#write_a_review input#submit:hover {
     transition: .5s ease all;
     -webkit-transition: .5s ease all;
     -moz-transition: .5s ease all;
@@ -340,60 +473,75 @@ div#write_a_review input#submit:hover{
     -o-transition: .5s ease all;
     background: var(--Linear, linear-gradient(180deg, #626262 0%, #000 100%));
 }
-div#write_a_review p.comment-form-comment{
+
+div#write_a_review p.comment-form-comment {
     order: 1;
 }
-div#write_a_review p.form-submit{
+
+div#write_a_review p.form-submit {
     order: 3;
 }
-div#write_a_review form#commentform{
+
+div#write_a_review form#commentform {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
 }
-div#write_a_review form#commentform p label{
+
+div#write_a_review form#commentform p label {
     display: none;
 }
+
 div#write_a_review form#commentform p.comment-form-first_name,
-div#write_a_review form#commentform p.comment-form-last_name{
+div#write_a_review form#commentform p.comment-form-last_name {
     width: calc(50% - 7.5px);
 }
+
 div#write_a_review .comment-form-rating,
-div#write_a_review form#commentform p{
+div#write_a_review form#commentform p {
     width: 100%;
     margin-bottom: 0;
 }
 
-div#write_a_review p.comment-form-cookies-consent{
+div#write_a_review p.comment-form-cookies-consent {
     display: flex;
     align-items: center;
     justify-content: space-between;
     order: 2;
 }
-div#write_a_review p.comment-form-cookies-consent input{
+
+div#write_a_review p.comment-form-cookies-consent input {
     width: fit-content;
 }
-div#write_a_review p.comment-form-cookies-consent label[for="wp-comment-cookies-consent"]{
+
+div#write_a_review p.comment-form-cookies-consent label[for="wp-comment-cookies-consent"] {
     display: block !important;
 }
+
 div#write_a_review .modal-content p,
-div#write_a_review .modal-content span{
+div#write_a_review .modal-content span {
     color: #FFF;
-    font-family: 'Inter',sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 300;
-    line-height: 25px; /* 138.889% */
+    line-height: 25px;
+    /* 138.889% */
     margin-bottom: 0;
 }
+
 div#write_a_review p.stars a {
-    color: #FFD600;; /* Change to your desired color */
+    color: #FFD600;
+    ;
+    /* Change to your desired color */
 }
+
 div#write_a_review form#commentform p.form-submit input#submit {
     border-radius: 5px !important;
     background: linear-gradient(180deg, #626262 0%, #000000 100%) !important;
     color: #FFF !important;
-    font-family: "Roboto Condensed",sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px !important;
     font-style: normal;
     font-weight: 700 !important;
@@ -404,25 +552,28 @@ div#write_a_review form#commentform p.form-submit input#submit {
     -ms-border-radius: 5px !important;
     -o-border-radius: 5px !important;
 }
-div#write_a_review form#commentform p.form-submit input#submit:hover{
+
+div#write_a_review form#commentform p.form-submit input#submit:hover {
     transition: .5s ease all;
     -webkit-transition: .5s ease all;
     -moz-transition: .5s ease all;
     -ms-transition: .5s ease all;
     -o-transition: .5s ease all;
     background: linear-gradient(180deg, #FFFFFF 0%, #BDBDBD 100%) !important;
-    color: #BF2126 !important;
+    color: var(--secondary_font_color) !important;
 }
 
 
-div#write_a_review .comment-form-rating{
+div#write_a_review .comment-form-rating {
     display: flex;
     align-items: center;
     gap: 0 15px;
 }
-div#write_a_review .comment-form-rating label[for="rating"]{
+
+div#write_a_review .comment-form-rating label[for="rating"] {
     color: #FFF;
-    font-family: "Roboto Condensed",sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -431,10 +582,23 @@ div#write_a_review .comment-form-rating label[for="rating"]{
     display: block;
     white-space: pre;
 }
-div#write_a_review form#commentform p{
+
+div#write_a_review form#commentform p {
     width: 100%;
 }
 
+.woocommerce #reviews #comments h2{
+    margin-bottom: 0 !important;
+}
+div#write_a_review .modal-content .header{
+    margin-bottom: 15px;
+}
+div#write_a_review .modal-content .header button.btn-close{
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 
 
 
@@ -447,6 +611,7 @@ section.related_products .group_button_on_hover a.view {
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 25px;
     font-style: normal;
     font-weight: 700;
@@ -458,6 +623,7 @@ section.related_products .group_button_on_hover span.play {
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 25px;
     font-style: normal;
     font-weight: 700;
@@ -515,6 +681,7 @@ section.related_products .absolute_button span {
     color: #FFF;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -533,7 +700,7 @@ section.related_products .product_image:hover::before {
 }
 
 section.related_products h3 {
-    color: #BF2126;
+    color: var(--secondary_font_color);
     margin-bottom: 16px;
 }
 
@@ -546,6 +713,7 @@ section.related_products .product_reviews span {
     color: #A9A9A9;
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 20px;
     font-style: normal;
     font-weight: 300;
@@ -556,6 +724,7 @@ section.related_products p.price {
     color: var(--Alternate-Black, #212121);
     text-align: center;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 25px;
     font-style: normal;
     font-weight: 700;
@@ -570,6 +739,7 @@ section.related_products .add_to_cart a {
     padding: 10px 20px;
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -614,17 +784,63 @@ section.related_products div#yith-wcwl-popup-message {
 
 
 
+
 @media (max-width:1200px) {
-    section.single_product .summary.entry-summary{
+    section.single_product .summary.entry-summary {
         padding-left: 0;
     }
-    section.single_product .row{
+
+    section.single_product .row,
+    section.product_reviews div#reviews div#comments .row {
         gap: 50px 0;
     }
 }
 
 @media (max-width: 991px) {
-    section.product_reviews div#reviews .row{
+    section.product_reviews div#reviews .row {
         gap: 50px 0;
+    }
+
+    section.product_reviews .iframe,
+    section.product_reviews .thumbnail {
+        max-width: 100%;
+    }
+    section.product_reviews .videos .row{
+        gap: 50px 0;
+    }
+}
+
+@media (max-width:767px) {
+    div#carouselExampleCaptions {
+        flex-direction: column-reverse;
+        gap: 20px 0;
+    }
+    div#carouselExampleCaptions .carousel-indicators{
+        flex-direction: row;
+        gap: 0 10px;
+    }
+}
+
+@media (max-width: 575px) {
+
+    section.single_product .group_content,
+    section.single_product form.cart {
+        flex-direction: column;
+        gap: 20px 0;
+    }
+
+    section.single_product input.input-text.qty.text,
+    section.single_product form.cart button[name="add-to-cart"] {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .woocommerce div.product form.cart div.quantity {
+        margin: 0 !important;
+    }
+
+    section.product_reviews .woocommerce-tabs.wc-tabs-wrapper ul.tabs.wc-tabs {
+        flex-direction: column;
+        align-items: center;
     }
 }

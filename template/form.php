@@ -1,9 +1,10 @@
 <div class="form_content">
-    <h1 class="text-white"><?php echo $header; ?></h1>
+    <<?php echo is_page('show-builder') ? 'h2' : 'h1'?> class="text-white"><?php echo $header; ?></<?php echo is_page('show-builder') ? 'h2' : 'h1'?>>
     <p class="text-white"><?php echo $p_text; ?></p>
     <?php echo do_shortcode($shortcode); ?>
 </div>
 <style>
+
 section.<?php echo $section; ?> form p{
     display: flex;
     flex-wrap: wrap;
@@ -43,7 +44,7 @@ section.<?php echo $section; ?> input[type="submit"]{
 section.<?php echo $section; ?> input[type="submit"]:hover{
     transition: .5 ease all;
     background: var(--Linear, linear-gradient(180deg, #FFF 0%, #BDBDBD 100%));
-    color: #BF2126;
+    color: var(--secondary_font_color);
     -webkit-transition: .5 ease all;
     -moz-transition: .5 ease all;
     -ms-transition: .5 ease all;
@@ -64,13 +65,17 @@ section.<?php echo $section; ?> textarea::placeholder{
 section.<?php echo $section; ?> .form_content{
     padding: 40px 50px;
     border-radius: 10px;
-    background: #A41014;
-    background-blend-mode: difference, normal;
+    background: url('<?php echo get_stylesheet_directory_uri(); ?>/assets/img/<?php echo $section; ?>/<?php echo $section; ?>_content_bg.jpg')no-repeat center center/cover;
 }
 section.<?php echo $section; ?> .wpcf7-form-control-wrap{
     width: 100%;
 }
 section.<?php echo $section; ?> .form_content p{
     margin-bottom: 30px;
+}
+@media (max-width: 767px) {
+    section.<?php echo $section; ?> .form_content{
+        padding: 30px;
+    }
 }
 </style>

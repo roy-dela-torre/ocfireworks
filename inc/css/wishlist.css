@@ -9,6 +9,7 @@ section.wishlist a.product_type_simple.add_to_cart.alt{
     padding: 10px 20px;
     color: #FFF;
     font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -46,7 +47,6 @@ section.wishlist .row{
 }
 section.wishlist h1{
     margin-bottom: 50px;
-    color: #BF2126;
 }
 nav.pagination-container {
     display: flex;
@@ -80,5 +80,9 @@ nav.pagination-container div#pagination-numbers {
 }
 
 nav.pagination-container button.pagination-number.active {
-    color: #BF2126;
+    color: var(--secondary_font_color);
+}
+
+section.wishlist .product_content p.price{
+    color: #212121;
 }

@@ -1,0 +1,31 @@
+section.checkout strong{
+    color: #212121;
+    font-family: "Roboto Condensed",sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+section.checkout .content,
+section.checkout .location{
+    padding: 50px;
+    background-color: white;
+    margin-bottom: 60px;
+}
+section.checkout .user_info{
+    padding: 50px;
+    background-color: white;
+    margin-bottom: 30px;
+}
+section.checkout {}
+section.checkout {}
+section.checkout {}
+section.checkout {}
+section.checkout {}
+section.checkout {}
+section.checkout {}
+section.checkout {}
+section.checkout {}
+section.checkout {}
+section.checkout {}

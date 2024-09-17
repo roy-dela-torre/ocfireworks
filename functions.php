@@ -1,18 +1,20 @@
 <?php
 if ( ! function_exists( 'ocfireworks' ) ) :
-    function ocfireworks() {
+    function ocfireworks_setup() {
         add_theme_support( 'post-thumbnails' );
-        add_theme_support( 'post-formats',  array ( 'aside', 'gallery', 'quote', 'image', 'video' ) );
-        register_nav_menus( array(
-            'primary'   => __( 'Primary Menu', 'ocfireworksNavMenu' )
-        ) );
+        add_theme_support( 'post-formats', array( 'aside', 'gallery', 'quote', 'image', 'video' ) );
         add_theme_support( 'woocommerce' );
         add_theme_support( 'wc-product-gallery-zoom' ); 
         add_theme_support( 'wc-product-gallery-lightbox' ); 
         add_theme_support( 'wc-product-gallery-slider' );
+    
+        register_nav_menus( array(
+            'primary' => __( 'Primary Menu', 'ocfireworks' ),
+            'secondary' => __( 'Secondary Menu', 'ocfireworks' ),
+        ) );
     }
+    add_action( 'after_setup_theme', 'ocfireworks_setup' );
     endif; 
-    add_action( 'after_setup_theme', 'ocfireworks' );
     function get_excerpt($limit, $source = null){
         $excerpt = $source == "content" ? get_the_content() : get_the_excerpt();
         $excerpt = preg_replace(" (\[.*?\])",'',$excerpt);
@@ -24,32 +26,163 @@ if ( ! function_exists( 'ocfireworks' ) ) :
         return $excerpt;
     }
 
-    function registration_form() {
-        ob_start();
-        ?>
-        <form method="post" class="woocommerce-form woocommerce-form-register register">
-            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" value="<?php if (!empty($_POST['username'])) echo esc_attr($_POST['username']); ?>" required placeholder="Full Name" />
+// Modify the registration form shortcode
+function registration_form() {
+    ob_start();
+    ?>
+    <form method="post" class="woocommerce-form woocommerce-form-register register">
+        <?php do_action('woocommerce_before_customer_login_form'); ?>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="first_name" id="reg_first_name" placeholder="First Name" value="<?php if (!empty($_POST['first_name'])) echo esc_attr($_POST['first_name']); ?>"/>
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="last_name" id="reg_last_name" placeholder="Last Name" value="<?php if (!empty($_POST['last_name'])) echo esc_attr($_POST['last_name']); ?>"/>
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" placeholder="Email Address" autocomplete="email" value="<?php if (!empty($_POST['email'])) echo esc_attr($_POST['email']); ?>"/>
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="number" class="woocommerce-Input woocommerce-Input--text input-text" name="billing_phone" id="billing_phone" placeholder="Phone Number" value="<?php if (!empty($_POST['billing_phone'])) echo esc_attr($_POST['billing_phone']); ?>"/>
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_1" id="password_1" autocomplete="off" placeholder="Password"/>
+            <span class="show-password-input"></span>
+        </p>
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_2" id="password_2" autocomplete="off" placeholder="Confirm Password"/>
+            <span class="show-password-input"></span>
+        </p>
+        <div class="group">
+            <p class="register-remember w-100">
+                <label>
+                    <input name="rememberme" type="checkbox" id="rememberme" value="forever" class=""/>
+                    <span>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="<?php echo get_home_url(); ?>/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></span>
+                </label>
             </p>
-            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" placeholder="Email Address" autocomplete="email" value="<?php if (!empty($_POST['email'])) echo esc_attr($_POST['email']); ?>" required />
-            </p>
-            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <span class="password-input"><input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" placeholder="Password" required /><span class="show-password-input"></span></span>
-            </p>
-            <!-- <div class="woocommerce-privacy-policy-text">
-                <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="<?php echo esc_url(get_privacy_policy_url()); ?>" class="woocommerce-privacy-policy-link" target="_blank">privacy policy</a>.</p>
-            </div> -->
-            <p class="woocommerce-form-row form-row">
-                <?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
-                <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="Register">create an account</button>
-            </p>
-        </form>
-        <?php
-        return ob_get_clean();
+        </div>
+        <p class="woocommerce-form-row form-row">
+            <?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
+            <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="Register"><?php echo is_page('sign-up') ? "Create Account" : "Submit"?></button>
+        </p>
+        <?php do_action('woocommerce_after_customer_login_form'); ?>
+    </form>
+
+    <?php
+    return ob_get_clean();
+}
+
+add_shortcode('registration_form', 'registration_form');
+
+function custom_process_registration() {
+    if ('POST' !== strtoupper($_SERVER['REQUEST_METHOD'])) {
+        return;
     }
-    
-    add_shortcode('registration_form', 'registration_form');
+
+    // Verify nonce
+    $nonce_value = isset($_POST['woocommerce-register-nonce']) ? $_POST['woocommerce-register-nonce'] : '';
+    if (!wp_verify_nonce($nonce_value, 'woocommerce-register')) {
+        // wc_add_notice(__('Invalid registration attempt. Please try again.', 'woocommerce'), 'error');
+        return;
+    }
+
+    // Validate input fields
+    $first_name = isset($_POST['first_name']) ? sanitize_text_field($_POST['first_name']) : '';
+    $last_name = isset($_POST['last_name']) ? sanitize_text_field($_POST['last_name']) : '';
+    $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+    $phone = isset($_POST['billing_phone']) ? sanitize_text_field($_POST['billing_phone']) : '';
+    $password = isset($_POST['password_1']) ? $_POST['password_1'] : '';
+    $password2 = isset($_POST['password_2']) ? $_POST['password_2'] : '';
+    $checkbox = isset($_POST['rememberme']) ? sanitize_text_field($_POST['rememberme']) : '';
+
+    // Debugging
+    echo '<script>console.log("Password 1: ' . $password . '");</script>';
+    echo '<script>console.log("Password 2: ' . $password2 . '");</script>';
+    echo '<script>console.log("Checkbox: ' . $checkbox . '");</script>';
+
+    if (empty($first_name)) {
+        wc_add_notice(__('First name is required.', 'woocommerce'), 'error');
+    }
+
+    if (empty($last_name)) {
+        wc_add_notice(__('Last name is required.', 'woocommerce'), 'error');
+    }
+
+    if (empty($email) || !is_email($email)) {
+        wc_add_notice(__('Please provide a valid email address.', 'woocommerce'), 'error');
+    }
+
+    if (empty($phone)) {
+        wc_add_notice(__('Phone number is required.', 'woocommerce'), 'error');
+    }
+
+    if (empty($password)) {
+        wc_add_notice(__('Password is required.', 'woocommerce'), 'error');
+    }
+
+    if (empty($password2)) {
+        wc_add_notice(__('Confirm password is required.', 'woocommerce'), 'error');
+    }
+
+    if (!empty($password) && !empty($password2) && $password !== $password2) {
+        wc_add_notice(__('Passwords do not match.', 'woocommerce'), 'error');
+    }
+
+    if (empty($checkbox)) {
+        wc_add_notice(__('You must agree to the terms and conditions.', 'woocommerce'), 'error');
+    }
+
+    if (wc_notice_count('error') > 0) {
+        return;
+    }
+
+    // Register the user
+    $user_data = array(
+        'user_login' => $email,
+        'user_email' => $email,
+        'user_pass' => $password,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+    );
+
+    $user_id = wp_insert_user($user_data);
+
+    if (is_wp_error($user_id)) {
+        wc_add_notice($user_id->get_error_message(), 'error');
+    } else {
+        // Save additional fields
+        if (!empty($phone)) {
+            update_user_meta($user_id, 'billing_phone', $phone);
+        }
+
+        // Log the user in
+        wc_set_customer_auth_cookie($user_id);
+
+        // Redirect to the My Account page
+        $redirect = wc_get_page_permalink('myaccount');
+        wp_redirect($redirect);
+        exit;
+    }
+}
+add_action('template_redirect', 'custom_process_registration');
+
+
+
+
+// Hook into user registration to save first name and last name
+function save_extra_user_fields($user_id) {
+    if (isset($_POST['first_name'])) {
+        update_user_meta($user_id, 'first_name', sanitize_text_field($_POST['first_name']));
+    }
+    if (isset($_POST['last_name'])) {
+        update_user_meta($user_id, 'last_name', sanitize_text_field($_POST['last_name']));
+    }
+    if (isset($_POST['billing_phone'])) {
+        update_user_meta($user_id, 'billing_phone', sanitize_text_field($_POST['billing_phone']));
+    }
+}
+add_action('user_register', 'save_extra_user_fields');
+
+
 
 
 //Log in Form
@@ -60,30 +193,44 @@ function custom_login_form_shortcode() {
     } else {
         // If the user is not logged in, display the custom login form with placeholders and "Remember Me" checkbox
         ob_start();
+        do_action( 'woocommerce_before_customer_login_form' );
         ?>
-        <form method="post" class="custom-login-form" action="<?php echo esc_url(site_url('wp-login.php', 'login_post')); ?>">
-            <p>
-                <input type="text" name="log" id="user_login" placeholder="Email" required />
+        
+        <form class="woocommerce-form woocommerce-form-login login" method="post">
+
+            <?php do_action( 'woocommerce_login_form_start' ); ?>
+
+            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                <!-- <label for="username"><?php esc_html_e( 'Username or email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label> -->
+                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" placeholder="Email Address" /><?php // @codingStandardsIgnoreLine ?>
             </p>
-            <p>
-                <input type="password" name="pwd" id="user_pass" placeholder="Password" required />
+            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                <!-- <label for="password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label> -->
+                <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password" placeholder="Password"/>
             </p>
-            <p>
-                <input type="submit" name="wp-submit" id="wp-submit" class="black_button w-100" value="Log In" />
+
+            <?php do_action( 'woocommerce_login_form' ); ?>
+
+            <p class="form-row">
+                <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
+                <button type="submit" class="black_button woocommerce-button button woocommerce-form-login__submit<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><?php esc_html_e( 'Log in', 'woocommerce' ); ?></button>
             </p>
-           <div class="group">
-            <p class="login-remember">
-                    <label>
-                        <input name="rememberme" type="checkbox" id="rememberme" value="forever" class="">
-                        <span>Remember Me</span>
+            <div class="group">
+                <p class="login-remember mb-0">
+                    <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme d-flex align-items-center">
+                        <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" placeholder="Password"/> <span><?php esc_html_e( 'Remember me', 'woocommerce' ); ?></span>
                     </label>
                 </p>
-                <p class="forgot-password">
-                    <a href="<?php echo esc_url(wp_lostpassword_url()); ?>">Forgot Password?</a>
+                <p class="woocommerce-LostPassword lost_password">
+                    <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Lost your password?', 'woocommerce' ); ?></a>
                 </p>
-           </div>
+            </div>
+            <p class="text-white text-center">Don’t Have an Account? <strong><a href="<?php echo get_home_url(); ?>/register/" target="_blank" rel="noopener noreferrer">Sign Up</a></strong></p>
+            <?php do_action( 'woocommerce_login_form_end' ); ?>
         </form>
         <?php
+        do_action( 'woocommerce_after_customer_login_form' );
+
         return ob_get_clean();
     }
     }
@@ -215,261 +362,349 @@ function custom_shop_per_page($cols) {
 
 
 
-function rc_woocommerce_recently_viewed_products( $atts, $content = null ) {
-    // Get shortcode parameters
-    extract(shortcode_atts(array(
-        "per_page" => '-1'
-    ), $atts));
-    // Get WooCommerce Global
-    global $woocommerce, $post;
-    // Get recently viewed product cookies data
-    $viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] ) : array();
-    $viewed_products = array_filter( array_map( 'absint', $viewed_products ) );
-    // If no data, quit
-    if ( empty( $viewed_products ) )
-        return __( 'You have not viewed any product yet!', 'rc_wc_rvp' );
-    // Create the object
-    ob_start();
-    // Get products per page
-    if( !isset( $per_page ) ? $number = 5 : $number = $per_page )
-    // Create query arguments array
-    $query_args = array(
-                    'posts_per_page' => $number,
-                    'no_found_rows'  => 1,
-                    'post_status'    => 'publish',
-                    'post_type'      => 'product',
-                    'post__in'       => $viewed_products,
-                    'orderby'        => 'rand'
-                    );
-    // Add meta_query to query args
-    $query_args['meta_query'] = array();
-    // Check products stock status
-    $query_args['meta_query'][] = $woocommerce->query->stock_status_meta_query();
-    // Create a new query
-    $r = new WP_Query($query_args);
-
-    // ----
-    if (empty($r)) {
-      return __( 'You have not viewed any product yet!', 'rc_wc_rvp' );
-
-    }?>
-    
- <?php while ( $r->have_posts() ) : $r->the_post(); 
-   $url= wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-   $featured_image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
-   $product = wc_get_product(get_the_ID());
-   $product_id = get_the_ID();
-   $video_iframe = get_field('video_iframe', $product_id);
-   if ($product) {
-       if ($product->is_type('variable')) {
-           $min_variation_price = number_format($product->get_variation_price('min'), 2);
-           $max_variation_price = number_format($product->get_variation_price('max'), 2);
-           $price_range = '₱' . $min_variation_price . ' - ' . '₱' . $max_variation_price;
-           $price = $price_range;
-       } else {
-           $price = $product->get_price_html();
-       }
+add_action( 'template_redirect', 'bbloomer_track_product_view', 9999 );
+ 
+function bbloomer_track_product_view() {
+   if ( ! is_singular( 'product' ) ) return;
+   global $post;
+   if ( empty( $_COOKIE['bbloomer_recently_viewed'] ) ) {
+      $viewed_products = array();
+   } else {
+      $viewed_products = wp_parse_id_list( (array) explode( '|', wp_unslash( $_COOKIE['bbloomer_recently_viewed'] ) ) );
    }
-   ?>
+   $keys = array_flip( $viewed_products );
+   if ( isset( $keys[ $post->ID ] ) ) {
+      unset( $viewed_products[ $keys[ $post->ID ] ] );
+   }
+   $viewed_products[] = $post->ID;
+   if ( count( $viewed_products ) > 15 ) {
+      array_shift( $viewed_products );
+   }
+   wc_setcookie( 'bbloomer_recently_viewed', implode( '|', $viewed_products ) );
+}
+ 
+add_shortcode( 'recently_viewed_products', 'bbloomer_recently_viewed_shortcode' );
+  
+function bbloomer_recently_viewed_shortcode() {
+   $viewed_products = ! empty( $_COOKIE['bbloomer_recently_viewed'] ) ? (array) explode( '|', wp_unslash( $_COOKIE['bbloomer_recently_viewed'] ) ) : array();
+   $viewed_products = array_reverse( array_filter( array_map( 'absint', $viewed_products ) ) );
+   if ( empty( $viewed_products ) ) return;
+   $title = '<h3>Recently Viewed</h3>';
+   $product_ids = implode( ",", $viewed_products );
+   return $title . do_shortcode("[products ids='$product_ids']");
+}
 
-   <!-- //put your theme html loop here -->
-    <div class="col-lg-4 col-md-6 col-sm-12 product_column" >
-        <div class="product_content">
-            <?php if(!empty($video_iframe)):?>
-                <div class="iframe d-none">
-                    <?php echo $video_iframe; ?>
-                </div>
-            <?php endif; ?>
-            <div class="product_image position-relative">
-                <img loading="lazy" src="<?php echo $featured_image_url; ?>" alt="<?php echo get_the_title(); ?>" class="cards">
-                <div class="absolute_button position-absolute <?php echo $product->is_on_sale() ? "" : "justify-content-end" ?>">
-                    <?php if ($product->is_on_sale()): ?>
-                        <span class="sale">Sale</span>
-                    <?php endif; ?>
-                    <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]') ?>
-                </div>
-                <div class="group_button_on_hover">
-                    <div class="view d-flex flex-column align-items-center position-relative">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
-                            <path d="M25.5 31.25C28.9518 31.25 31.75 28.4518 31.75 25C31.75 21.5482 28.9518 18.75 25.5 18.75C22.0482 18.75 19.25 21.5482 19.25 25C19.25 28.4518 22.0482 31.25 25.5 31.25Z" fill="white"/>
-                            <path d="M48.8436 24.4688C47.0058 19.7151 43.8154 15.6041 39.6667 12.6439C35.518 9.68368 30.5928 8.00402 25.4998 7.8125C20.4069 8.00402 15.4817 9.68368 11.333 12.6439C7.18422 15.6041 3.99382 19.7151 2.15607 24.4688C2.03196 24.812 2.03196 25.188 2.15607 25.5312C3.99382 30.2849 7.18422 34.3959 11.333 37.3561C15.4817 40.3163 20.4069 41.996 25.4998 42.1875C30.5928 41.996 35.518 40.3163 39.6667 37.3561C43.8154 34.3959 47.0058 30.2849 48.8436 25.5312C48.9677 25.188 48.9677 24.812 48.8436 24.4688ZM25.4998 35.1562C23.4911 35.1562 21.5275 34.5606 19.8573 33.4446C18.1871 32.3286 16.8854 30.7424 16.1167 28.8866C15.348 27.0308 15.1468 24.9887 15.5387 23.0186C15.9306 21.0485 16.8979 19.2388 18.3183 17.8184C19.7386 16.3981 21.5483 15.4308 23.5184 15.0389C25.4886 14.647 27.5306 14.8481 29.3865 15.6168C31.2423 16.3856 32.8285 17.6873 33.9444 19.3575C35.0604 21.0277 35.6561 22.9913 35.6561 25C35.6519 27.6923 34.5806 30.2732 32.6768 32.177C30.773 34.0808 28.1922 35.1521 25.4998 35.1562Z" fill="white"/>
-                        </svg>
-                        <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" rel="noopener noreferrer" class="stretched-link view">View</a>
-                    </div>
-                    <?php if(!empty($video_iframe)):?>
-                        <div class="play d-flex flex-column align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7318 8C14.0128 7.99929 13.3056 8.18176 12.6767 8.53019C12.0318 8.85891 11.4885 9.35694 11.105 9.9709C10.7216 10.5849 10.5124 11.2916 10.5 12.0153V37.9825C10.5124 38.7062 10.7216 39.413 11.105 40.0269C11.4885 40.6409 12.0318 41.1389 12.6767 41.4676C13.317 41.8233 14.0386 42.0066 14.771 41.9998C15.5034 41.993 16.2214 41.7962 16.855 41.4287L37.8437 28.4464C38.4914 28.1199 39.0357 27.62 39.4159 27.0024C39.7962 26.3847 39.9974 25.6736 39.9971 24.9483C39.9969 24.223 39.7952 23.512 39.4145 22.8946C39.0338 22.2772 38.4892 21.7777 37.8412 21.4517L16.8525 8.56667C16.2078 8.19453 15.4762 7.99906 14.7318 8Z" fill="white"/>
-                            </svg>
-                            <span class="play">View</span>
+
+// Register the custom endpoint for recently view products
+function add_custom_my_account_endpoint() {
+    add_rewrite_endpoint( 'recently-viewed', EP_ROOT | EP_PAGES );
+}
+add_action( 'init', 'add_custom_my_account_endpoint' );
+
+
+// Display content for the Recently Viewed endpoint
+function display_recently_viewed_products() {
+    echo do_shortcode('[recently_viewed_products]');
+}
+add_action( 'woocommerce_account_recently-viewed_endpoint', 'display_recently_viewed_products' );
+
+
+function add_custom_my_account_endpoint_news_letter() {
+    add_rewrite_endpoint( 'news-letter', EP_ROOT | EP_PAGES );
+}
+add_action( 'init', 'add_custom_my_account_endpoint_news_letter' );
+
+function add_custom_query_vars_news_letter( $vars ) {
+    $vars[] = 'news-letter';
+    return $vars;
+}
+add_filter( 'query_vars', 'add_custom_query_vars_news_letter' );
+
+function custom_my_account_endpoint_news_letter_content() {
+    wc_get_template_part( 'myaccount/news-letter' );
+}
+add_action( 'woocommerce_account_news-letter_endpoint', 'custom_my_account_endpoint_news_letter_content' );
+
+
+
+
+function add_custom_my_account_endpoint_order_status() {
+    add_rewrite_endpoint( 'order-status', EP_ROOT | EP_PAGES );
+}
+add_action( 'init', 'add_custom_my_account_endpoint_order_status' );
+
+function add_custom_query_vars_order_status( $vars ) {
+    $vars[] = 'order-status';
+    return $vars;
+}
+add_filter( 'query_vars', 'add_custom_query_vars_order_status' );
+
+function custom_my_account_endpoint_order_status_content() {
+    wc_get_template_part( 'myaccount/order-status' );
+}
+add_action( 'woocommerce_account_order-status_endpoint', 'custom_my_account_endpoint_order_status_content' );
+
+
+
+
+
+// Function to remove <br> tags from Contact Form 7 forms
+function remove_br_from_cf7_form($form) {
+    // Remove <br> and <br /> tags
+    $form = str_replace('<br>', '', $form);
+    $form = str_replace('<br />', '', $form);
+    return $form;
+}
+
+// Apply the function to the wpcf7_form_elements filter
+add_filter('wpcf7_form_elements', 'remove_br_from_cf7_form');
+
+
+
+
+
+
+
+
+
+// Register categories for pages
+function add_categories_to_pages() {
+    register_taxonomy_for_object_type('category', 'page');
+}
+add_action('init', 'add_categories_to_pages');
+
+// Add a new column to the pages list
+// function add_page_categories_column($columns) {
+//     $columns['page_categories'] = __('Categories', 'textdomain');
+//     return $columns;
+// }
+// add_filter('manage_pages_columns', 'add_page_categories_column');
+
+// Populate the new column with category data
+function populate_page_categories_column($column, $post_id) {
+    if ($column === 'page_categories') {
+        $categories = get_the_terms($post_id, 'category');
+        if ($categories && !is_wp_error($categories)) {
+            $category_names = array();
+            foreach ($categories as $category) {
+                $category_names[] = esc_html($category->name);
+            }
+            echo implode(', ', $category_names);
+        } else {
+            echo __('No Categories', 'textdomain');
+        }
+    }
+}
+add_action('manage_pages_custom_column', 'populate_page_categories_column', 10, 2);
+
+
+
+// Price Filter
+
+function price_filter_shortcode() {
+    ob_start();
+    ?>
+    <div id="price-filter" class="accordion-collapse collapse show">
+        <div class="accordion-body">
+            <p class="text-center">$500 is the maximum amount.</p>
+            <div class="range-slider">
+                <input id="min-price" value="0" min="0" max="200" step="1" type="range"/>
+                <input id="max-price" value="500" min="0" max="200" step="1" type="range"/>
+                <form action="">
+                    <div class="range_input">
+                        <div class="minimum">
+                            <input type="number" id="min-price-input" value="0" min="0" max="200"/>
                         </div>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="product_content">
-                <h3 class="text-center product_title"><?php echo esc_html(get_the_title()); ?></h3>
-                <div class="product_reviews d-flex align-items-center justify-content-center">
-                    <?php 
-                    $total_reviews = $product->get_review_count();
-                    for ($i = 1; $i <= 5; $i++): ?>
-                        <?php if ($i <= $total_reviews): ?>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#FFD600">
-                                <path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
-                            </svg>
-                        <?php else: ?>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="#A9A9A9">
-                                <path d="M10 0.5L12.2451 7.40983H19.5106L13.6327 11.6803L15.8779 18.5902L10 14.3197L4.12215 18.5902L6.36729 11.6803L0.489435 7.40983H7.75486L10 0.5Z"/>
-                            </svg>
-                        <?php endif; ?>
-                    <?php endfor; ?>
-                    <div class="review_summary">
-                        <span><?php echo number_format($total_reviews, 1); ?></span>
+                        <div class="maximum">
+                            <input type="number" id="max-price-input" value="200" min="0" max="200"/>
+                        </div>
                     </div>
-                </div>
-                <p class="price d-flex align-items-center justify-content-center"><?php echo $price; ?></p>
-            </div>
-            <div class="add_to_cart">
-                <?php echo do_shortcode('[add_to_cart id="' . $product->get_id() . '"]'); ?>
+                </form>
             </div>
         </div>
     </div>
-<!-- end html loop  -->
-<?php endwhile; ?>
-
-
-
-    <?php wp_reset_postdata();
-    return '<div class="row">' . ob_get_clean() . '</div>';
-    // ----
-    // Get clean object
-    $content .= ob_get_clean();
-    // Return whole content
-    return $content;
+    <?php
+    return ob_get_clean();
 }
-// Register the shortcode
-add_shortcode("woocommerce_recently_viewed_products", "rc_woocommerce_recently_viewed_products");
+add_shortcode('price_filter', 'price_filter_shortcode');
 
 
-// Add Payment Methods tab to My Account navigation
-function add_payment_methods_tab( $items ) {
-    // Add Payment Methods menu item
-    $items['payment-methods'] = __( 'Payment Methods', 'woocommerce' );
+function filter_products_by_price() {
+    // Check nonce for security
+    check_ajax_referer('price_filter_nonce', 'nonce');
 
-    return $items;
+    $min_price = isset($_POST['min_price']) ? floatval($_POST['min_price']) : 0;
+    $max_price = isset($_POST['max_price']) ? floatval($_POST['max_price']) : 200;
+
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 6,
+        'meta_query' => array(
+            array(
+                'key' => '_price',
+                'value' => array($min_price, $max_price),
+                'compare' => 'BETWEEN',
+                'type' => 'DECIMAL',
+            ),
+        ),
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        woocommerce_product_loop_start();
+        while ($query->have_posts()) {
+            $query->the_post();
+            
+            // Set up product data
+            $img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+            $product = wc_get_product(get_the_ID());
+            $product_id = get_the_ID();
+            $video_iframe = get_field('video_iframe', $product_id);
+            $title = get_the_title();
+            $product_url = get_the_permalink();
+            $price = $product->get_price_html();
+
+            if ($product->is_type('variable')) {
+                $min_variation_price = number_format($product->get_variation_price('min'), 2);
+                $max_variation_price = number_format($product->get_variation_price('max'), 2);
+                $price = '$' . $min_variation_price . ' - ' . '$' . $max_variation_price;
+            }
+
+            $data = array(
+                'img_url' => $img_url,
+                'title' => $title,
+                'price' => $price,
+                'product_url' => $product_url,
+                'product' => $product,
+                'product_id' => $product_id,
+                'video_iframe' => $video_iframe
+            );
+
+            // Load the template
+            ob_start();
+            ?>
+            <div class="col-lg-4 col-md-6 product_column">
+                <?php echo wc_get_template('template/product_content.php', $data); ?>
+            </div>
+            <?php
+            echo ob_get_clean();
+        }
+
+        woocommerce_product_loop_end();
+        
+        // Pagination
+        $totalPages = $query->max_num_pages;
+        echo '<div class="paging d-flex justify-content-center align-items-center">';
+        echo paginate_links(array(
+            'total' => $totalPages,
+            'mid_size' => 2
+        ));
+        echo '</div>';
+
+    } else {
+        echo '<p>No products found.</p>';
+    }
+
+    wp_reset_postdata();
+    wp_die();
 }
-add_filter( 'woocommerce_account_menu_items', 'add_payment_methods_tab', 10, 1 );
+add_action('wp_ajax_filter_products_by_price', 'filter_products_by_price');
+add_action('wp_ajax_nopriv_filter_products_by_price', 'filter_products_by_price');
 
-// Define the endpoint for the Payment Methods page
-function add_payment_methods_endpoint() {
-    add_rewrite_endpoint( 'payment-methods', EP_PAGES );
+
+function enqueue_price_filter_scripts() {
+    wp_enqueue_script('price-filter-js', get_template_directory_uri() . '/js/price-filter.js', array('jquery'), null, true);
+
+    wp_localize_script('price-filter-js', 'priceFilter', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('price_filter_nonce'),
+    ));
 }
-add_action( 'init', 'add_payment_methods_endpoint' );
+add_action('wp_enqueue_scripts', 'enqueue_price_filter_scripts');
 
-// Add content for the Payment Methods page
-function payment_methods_content() {
-    wc_get_template( 'myaccount/payment-methods.php' );
+
+
+
+
+
+
+
+function fab_business_shop_scripts()
+{
+    wp_enqueue_script('ic-cart-ajax', get_template_directory_uri() . '/js/mini-cart.js', array('jquery'), '1.0', true);
+    wp_localize_script(
+        'ic-cart-ajax',
+        'my_ajax_object',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('ic-mc-nc'),
+        )
+    );
 }
-add_action( 'woocommerce_account_payment-methods_endpoint', 'payment_methods_content' );
+add_action('wp_enqueue_scripts', 'fab_business_shop_scripts');
 
 
+// Here is the AJAX call 
+add_action('wp_ajax_ic_qty_update', 'ic_qty_update');
+add_action('wp_ajax_nopriv_ic_qty_update', 'ic_qty_update');
+
+function ic_qty_update()
+{
+    $key    = sanitize_text_field($_POST['key']);
+    $number = intval(sanitize_text_field($_POST['number']));
+
+    $cart = [
+        'count'      => 0,
+        'total'      => 0,
+        'item_price' => 0,
+    ];
+
+    if ($key && $number > 0 && wp_verify_nonce($_POST['security'], 'ic-mc-nc')) {
+        WC()->cart->set_quantity($key, $number);
+        $items              = WC()->cart->get_cart();
+        $cart               = [];
+        $cart['count']      = WC()->cart->cart_contents_count;
+        $cart['total']      = WC()->cart->get_cart_total();
+        $cart['item_price'] = wc_price($items[$key]['line_total']);
+    }
+
+    echo json_encode($cart);
+    wp_die();
+}
 
 
+// add_action('woocommerce_account_payment-methods_endpoint', 'add_payment_method_button');
 
-
-// function add_fireworks_categories() {
-//     $categories = array(
-//         'Badaboom Fireworks',
-//         'Black Cat Fireworks',
-//         'Black Scorpion/Chili Fireworks',
-//         'Blast Wave Fireworks',
-//         'Boomer',
-//         'Boomer Fireworks',
-//         'Bright Star Fireworks',
-//         'Brothers Fireworks',
-//         'Cannon Brand',
-//         'China Generic',
-//         'Cutting Edge Fireworks',
-//         'Dominator Fireworks',
-//         'Dominator Proline Fireworks',
-//         'Dragon Blade Fireworks',
-//         'Dragon Slayer Fireworks',
-//         'Eastsun Fireworks',
-//         'Fathead Fireworks',
-//         'Firehawk Fireworks',
-//         'Fisherman Pyrotechnics',
-//         'Flower King Fireworks',
-//         'Fowl Fireworks',
-//         'Freedom First Fireworks',
-//         'Golden Bear',
-//         'Great Grizzly',
-//         'Guandu Fireworks',
-//         'Happy Family Fireworks',
-//         'Hero Pyro',
-//         'Hot Shot Brand',
-//         'Inked Pyro',
-//         'Jetwell',
-//         'Keystone Fireworks',
-//         'King Bird Fireworks',
-//         'Kylin King',
-//         'Legend',
-//         'Legend Fireworks',
-//         'Leopard Fireworks',
-//         'Liberty Bell',
-//         'Lidu Fireworks Co.',
-//         'Link Triad Fireworks',
-//         'Machine Made Pyro',
-//         'Mad Ox Fireworks',
-//         'Magnus Fireworks',
-//         'Mean Monkey Fireworks',
-//         'Mega Ton Fireworks',
-//         'Megabanger',
-//         'Miracle Fireworks',
-//         'Mixed Brands',
-//         'Night Owl Fireworks',
-//         'OC Fireworks',
-//         'OCFireworks',
-//         'OMG Fireworks',
-//         'Overstock Central Fireworks',
-//         'Powder Keg Fireworks',
-//         'Power Blast Fireworks',
-//         'Pyro Demon Fireworks',
-//         'Pyro Diablo Fireworks',
-//         'Pyro Eagle Fireworks',
-//         'Pyro High Fireworks',
-//         'Pyro King',
-//         'Pyro Nation',
-//         'Pyro Packed Fireworks',
-//         'Raccoon Fireworks',
-//         'Red Rhino Fireworks',
-//         'Shock Wave',
-//         'Shogun',
-//         'Shotgun Brand Fireworks',
-//         'Showtime Fireworks',
-//         'Sky Bacon Fireworks',
-//         'Sky Painter Fireworks',
-//         'Sky Thunder',
-//         'Sunwing Fireworks',
-//         'T-Sky Fireworks',
-//         'Tannerite',
-//         'Time Bandit Fireworks',
-//         'Topgun Fireworks',
-//         'Wild Dragon Fireworks',
-//         'Winda',
-//         'Winda Fireworks',
-//         'Wise Guy Fireworks',
-//         'World Class Fireworks'
-//     );
-
-//     foreach ($categories as $category) {
-//         wp_insert_term($category, 'product_cat', array(
-//             'description' => '',
-//             'slug' => sanitize_title($category),
-//             'parent' => 0
-//         ));
-//     }
+// function add_payment_method_button() {
+//     echo '<a href="' . wc_get_endpoint_url('add-payment-method', '', wc_get_page_permalink('checkout')) . '" class="button">Add Payment Method</a>';
 // }
 
-// add_action('init', 'add_fireworks_categories');
 
 
 
+function add_custom_state_mappings( $states ) {
+    $states['PH']['00'] = 'Metro Manila'; // Custom mapping for Metro Manila
+    return $states;
+}
+add_filter( 'woocommerce_states', 'add_custom_state_mappings' );
+
+
+function dequeue_woocommerce_styles() {
+    if(is_front_page()){
+        wp_dequeue_style( 'woocommerce-general' );   
+        wp_dequeue_style( 'woocommerce-layout' );    
+        wp_dequeue_style( 'woocommerce-smallscreen' ); 
+        wp_dequeue_style( 'select2' ); 
+        wp_dequeue_style( 'wp-block-library-css' ); 
+        wp_dequeue_style( 'jquery-selectBox-css' ); 
+        wp_dequeue_style( 'yith-wcwl-font-awesome-css' ); 
+        wp_dequeue_style( 'woocommerce_prettyPhoto_css-css' ); 
+        wp_dequeue_style( 'yith-wcwl-main-css' ); 
+    }
+    elseif(is_account_page()){
+        wp_dequeue_style( 'woocommerce-layout' );
+        wp_dequeue_style( 'woocommerce-general' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'dequeue_woocommerce_styles', 20 );

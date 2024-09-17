@@ -10,10 +10,10 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/curbsided_pickup';
                     <div class="content mw-lg-100">
                         <h1 class="text-white">Curbside Pickup</h1>
                         <img loading="lazy" src="<?php echo $img_path?>/banner_image.jpg" alt="Curbside Pickup" class="w-100 d-block d-lg-none mb-3">
-                        <p class="text-white mb-0">Lorem ipsum dolor sit amet consectetur. Volutpat urna in ipsum nisi sit vitae risus. Dolor diam volutpat nulla nulla. Vitae malesuada odio et dictum senectus natoque in diam vitae. Mattis eu nunc ullamcorper eu ornare feugiat ante vel. Vitae phasellus nisi et semper pharetra. Bibendum suscipit lectus arcu et a.</p>
+                        <p class="text-white mb-0">Effortless Sparkle: Curbside Pickup Skip the lines and celebrate with ease!  Order your spectacular OC Fireworks display online and pick it up conveniently curbside. It's the perfect way to enjoy a dazzling fireworks show without the hassle.</p>
                     </div>
                 </div>
-                <div class="col-lg-5 d-none d-lg-block ps-lg-5">
+                <div class="col-lg-6 d-none d-lg-block ps-lg-5">
                     <div class="video">
                         <img loading="lazy" src="<?php echo $img_path?>/banner_image.jpg" alt="Curbside Pickup" class="w-100">
                     </div>
@@ -42,7 +42,7 @@ $img_path = get_stylesheet_directory_uri().'/assets/img/curbsided_pickup';
                 <div class="col-lg-6 col-md-12">
                     <div class="content">
                         <h2>When you arrive:</h2>
-                        <img src="<?php echo $img_path; ?>/maps.jpg" alt="When you arrive:" class="d-block d-lg-none w-100">
+                        <img src="<?php echo $img_path; ?>/maps.jpg" alt="When you arrive:" class="d-block d-lg-none w-100 maps">
                         <ul>
                            <li> Please check-in upfront</li>
                            <li> You will need your ID and the credit card used to pay for the order</li>

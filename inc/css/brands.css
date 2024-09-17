@@ -8,8 +8,16 @@ section.brands span{
     line-height: normal;
     text-transform: uppercase;
 }
+section.brands h1{
+    margin-bottom: calc(50px - 24px);
+}
 section.brands .row{
     gap: 24px 0;
+}
+section.brands .content img{
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
 }
 nav.pagination-container {
     display: flex;
@@ -43,5 +51,5 @@ nav.pagination-container div#pagination-numbers {
 }
 
 nav.pagination-container button.pagination-number.active {
-    color: #BF2126;
+    color: var(--secondary_font_color);
 }

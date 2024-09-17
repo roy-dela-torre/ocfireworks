@@ -56,7 +56,7 @@ do_action( 'yith_wcwl_before_wishlist_form', $wishlist );
 	if ( ! empty( $page_title ) ) :
 		?>
 		<div class="wishlist-title-container">
-			<div class="wishlist-title <?php echo ( $can_user_edit_title ) ? 'wishlist-title-with-form' : ''; ?>">
+			<div class="mb-0 wishlist-title w-100 text-center <?php echo ( $can_user_edit_title ) ? 'wishlist-title-with-form' : ''; ?>">
 				<?php
 				/**
 				 * APPLY_FILTER: yith_wcwl_wishlist_title
@@ -67,10 +67,10 @@ do_action( 'yith_wcwl_before_wishlist_form', $wishlist );
 				 *
 				 * @return string
 				 */
-				echo wp_kses_post( apply_filters( 'yith_wcwl_wishlist_title', '<h2>' . $page_title . '</h2>' ) );
+				echo wp_kses_post( apply_filters( 'yith_wcwl_wishlist_title', '<h1 class="p-0 text-center red_text">' . $page_title . '</h1>' ) );
 				?>
 				<?php if ( $can_user_edit_title ) : ?>
-					<a class="btn button show-title-form">
+					<a class="btn button show-title-form d-none">
 						<?php
 						/**
 						 * APPLY_FILTER: yith_wcwl_edit_title_icon
