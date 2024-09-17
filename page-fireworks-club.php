@@ -1,14 +1,14 @@
 <?php get_header();
 /*Template Name: Fireworks Club*/
 ?>
-<section class="banner">
+<section class="banner bg-white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="content">
                     <h1>Firework Clubs</h1>
                     <p>Find a Fireworks Club or Pyrotechnic Organizations Near You! We Greatly Encourage The Safe, Responsible and Legal Use of Fireworks and Pyrotechnic Devices.</p>
-                    <p>Find a Fireworks Club or Pyrotechnic Organizations Near You! We Greatly Encourage The Safe, Responsible and Legal Use of Fireworks and Pyrotechnic Devices.</p>
+                    <p>It Takes You to Get Involved and Help Keep This Hobby Alive !</p>
                     <p>If we missed anyone or you would like to submit a club or organization please contact via the contact link.</p>
                 </div>
             </div>
@@ -16,7 +16,7 @@
     </div>
 </section>
 
-<section class="main_content pt-0">
+<section class="main_content">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -113,7 +113,7 @@
                                                             <path d="M3.93359 20.3467V21.2145C3.93377 21.6881 4.12196 22.1422 4.45681 22.477C4.79166 22.8119 5.24576 23.0001 5.71931 23.0003H14.2836C14.7571 23.0001 15.2112 22.8119 15.5461 22.477C15.8809 22.1422 16.0691 21.6881 16.0693 21.2145V20.3467H3.93359ZM9.22645 21.3145H10.7765C10.8712 21.3145 10.962 21.3522 11.029 21.4191C11.096 21.4861 11.1336 21.577 11.1336 21.6717C11.1336 21.7664 11.096 21.8572 11.029 21.9242C10.962 21.9912 10.8712 22.0288 10.7765 22.0288H9.22645C9.13284 22.0271 9.04362 21.9888 8.97801 21.922C8.9124 21.8552 8.87564 21.7653 8.87564 21.6717C8.87564 21.5781 8.9124 21.4882 8.97801 21.4214C9.04362 21.3546 9.13284 21.3162 9.22645 21.3145Z" fill="#212121" />
                                                             <path d="M3.93359 6.48535H16.0693V19.6318H3.93359V6.48535Z" fill="#212121" />
                                                         </svg>
-                                                        <p>Phone: <?php echo esc_html($phone_value); ?></p>
+                                                        <p>Phone: <a href="tel:<?php echo esc_html($phone_value); ?>"><?php echo esc_html($phone_value); ?></a></p>
                                                     </div>
                                                 <?php endforeach; ?>
                                             </div>

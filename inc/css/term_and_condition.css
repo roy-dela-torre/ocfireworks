@@ -43,6 +43,11 @@ section.term_and_condition .content {
     margin: auto 0 auto auto;
 }
 
+section.term_and_condition .content P{
+    line-height: 140%;
+    margin-bottom: 20px;
+}
+
 section.term_and_condition{
     background: url('../../assets/img/terms_and_condition/banner.jpg')no-repeat center center/cover;
     background-attachment: fixed;

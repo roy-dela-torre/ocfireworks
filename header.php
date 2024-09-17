@@ -19,6 +19,19 @@
         gtag('config', 'G-1XD9KCVMXG');
     </script> -->
     <!-- Google tag (gtag.js) end -->
+    <!-- BEGIN MerchantWidget Code -->
+    <script id='merchantWidgetScript'
+        src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
+        defer>
+    </script>
+    <script type="text/javascript">
+        merchantWidgetScript.addEventListener('load', function() {
+            merchantwidget.start({
+                position: 'RIGHT_BOTTOM'
+            });
+        });
+    </script>
+    <!-- END MerchantWidget Code -->
 </head>
 
 <body <?php body_class(); ?>>

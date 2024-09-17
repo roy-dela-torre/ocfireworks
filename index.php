@@ -32,11 +32,11 @@ $img = get_stylesheet_directory_uri().'/assets/img/homepage';
     <div class="container-fluid">
         <div class="row justify-content-center">
             <h2 class="text-center">Brand Blast Off</h2>
-            <div class="owl-carousel owl-theme p-0" id="brands">
+            <marquee behavior="scroll" direction="left" id="brands">
                 <?php for($i=1;$i<=10;$i++){ ?>
                     <img src="<?php echo $img; ?>/logo<?php echo $i; ?>.png" alt="logo<?php echo $i; ?>" width="186" height="186">
                 <?php }?>
-            </div>
+            </marquee>
             <a href="<?php echo get_home_url(); ?>/brands/" target="_blank" rel="noopener noreferrer" class="view_all red_button">View All</a>
         </div>
     </div>
