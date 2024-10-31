@@ -1,0 +1,153 @@
+section h2 {
+    margin-bottom: 20px;
+}
+
+section .content p {
+    color: var(--primay_font_color);
+}
+
+section.best_fire_word .content.box {
+    border-radius: 10px;
+    border: 1px solid #212121;
+    background-color: var(--Alternate-Black, #212121);
+    padding: 40px 50px;
+    gap: 20px 0;
+}
+
+section.best_fire_word .content.box a{
+    text-decoration: underline;
+    color: #FFF;
+    font-family: 'Inter',sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    text-decoration-line: underline;
+}
+
+section.banner {
+    background: url('../../assets/img/fourth_of_july/banner.jpg')no-repeat center center/cover;
+}
+
+section.best_fire_word .row:first-child,
+section.how_to_plan_you_4th_of_july .row:first-child,
+section.how_to_use_4th_of_july .row:first-child {
+    margin-bottom: 60px;
+}
+
+section.best_fire_word .row:last-child,
+section.how_to_plan_you_4th_of_july .row:last-child,
+section.how_to_use_4th_of_july .row,
+section.what_do_you_need .row {
+    gap: 24px 0;
+}
+
+section.best_fire_word .content.box img,
+section.how_to_use_4th_of_july .row:last-child .content img,
+section.how_to_plan_you_4th_of_july .row:last-child .content img,
+section.what_do_you_need .content img {
+    width: 40px;
+    object-fit: contain;
+}
+
+
+
+
+section.how_to_plan_you_4th_of_july {
+    background-color: #F8F8F8;
+}
+
+section.how_to_plan_you_4th_of_july .row:first-child img,
+section.best_fire_word .row:first-child img,
+section.how_to_use_4th_of_july .row:first-child img {
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+section.how_to_plan_you_4th_of_july .content:not(.box) img {
+    margin-bottom: 30px;
+}
+
+section.how_to_plan_you_4th_of_july .row:last-child .content {
+    padding: 40px 50px;
+    border-radius: 10px;
+    border: 1px solid var(--Red, #BF2126);
+    gap: 20px 0;
+}
+
+section.how_to_use_4th_of_july .row:last-child {
+    gap: 60px 0;
+}
+
+section.how_to_use_4th_of_july .row:last-child .content {
+    gap: 20px 0;
+}
+
+
+section.what_do_you_need .header {
+    max-width: 850px;
+    margin: 0 auto 60px auto;
+}
+
+section.what_do_you_need .content {
+    padding: 40px 50px;
+    border-radius: 10px;
+    background: var(--For-red-cards, #8F1114);
+    gap: 20px 0;
+}
+
+
+section.related_products .paging {
+    gap: 0 9px;
+    margin-top: calc(60px - 24px);
+}
+
+
+section.related_products .paging a.page-numbers {
+    color: #ACACAC;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+    /* 138.889% */
+}
+
+section.related_products .paging span.page-numbers.current {
+    color: var(--Red, #BF2126);
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+    /* 138.889% */
+}
+
+
+
+
+
+@media (max-width:1400px) {
+
+    section.best_fire_word .content.box,
+    section.how_to_plan_you_4th_of_july .row:last-child .content {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width:767px) {
+
+    section.best_fire_word .content.box,
+    section.how_to_plan_you_4th_of_july .row:last-child .content,
+    section.what_do_you_need .content {
+        padding: 30px;
+    }
+
+    section.best_fire_word .content.box h3,
+    section.how_to_plan_you_4th_of_july .row:last-child .content h3 {
+        height: auto !important;
+    }
+}

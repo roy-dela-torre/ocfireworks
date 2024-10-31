@@ -1,0 +1,14 @@
+section.thank_you {
+    max-height: 770px;
+    background: url('../../assets/img/global/thankyou_bg.jpg')no-repeat center center/cover;
+}
+
+section.thank_you .content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+section.thank_you h1,
+section.thank_you p {
+    margin-bottom: 20px;
+}

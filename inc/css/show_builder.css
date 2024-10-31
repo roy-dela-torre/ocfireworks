@@ -1,0 +1,60 @@
+section.show_builder .contact_info{
+    gap: 30px 0;
+    margin-bottom: 60px;
+}
+section.show_builder .show_builder_info{
+    padding-left: 5%;
+    height: 100%;
+}
+section.show_builder form.wpcf7-form.invalid span.wpcf7-spinner{
+    display: block;
+}
+section.show_builder form.wpcf7-form span.wpcf7-spinner{
+    display: none;
+}
+
+section.show_builder .wpcf7-not-valid-tip{
+    color: #FFF;
+    font-family: 'Inter',sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px; /* 138.889% */
+}
+
+section.show_builder h1{
+    margin-bottom: 15px;
+}
+
+section.show_builder form.wpcf7-form.init{
+    margin-bottom: 0;
+}
+
+section.show_builder .row{
+    gap: 30px 0;
+}
+
+section.show_builder .contact_us_info{
+    padding-left: 5%;
+}
+
+@media (max-width: 1200px) {
+    section.show_builder form span:not(:last-child):not(:nth-child(5)){
+        width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    section.show_builder .contact_us_info{
+        padding-left: 0;
+    }
+    section.show_builder form span:not(:last-child):not(:nth-child(5)){
+        width: calc(50% - 7.5px);
+    }
+}
+@media (max-width:767px) {
+    section.show_builder form span:not(:last-child):not(:nth-child(5)){
+        width: 100%;
+    }
+   
+}

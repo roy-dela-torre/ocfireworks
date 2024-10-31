@@ -1,0 +1,80 @@
+section.term_and_condition .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+    max-width: calc(360px + 23px);
+    padding-right: 23px;
+    position: sticky;
+    top: calc(173px + 99px);
+
+}
+
+section.term_and_condition a {
+    color: #000;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+section.term_and_condition a:hover {
+    transition: .5 ease all;
+    border-radius: 7px;
+    color: var(--secondary_font_color);
+    -webkit-transition: .5 ease all;
+    -moz-transition: .5 ease all;
+    -ms-transition: .5 ease all;
+    -o-transition: .5 ease all;
+}
+
+section.term_and_condition .content>div {
+    margin-bottom: 60px;
+}
+
+section.term_and_condition .content>div:last-child {
+    margin-bottom: 0;
+}
+
+section.term_and_condition .content {
+    max-width: 1140px;
+    margin: auto 0 auto auto;
+}
+
+section.term_and_condition{
+    background: url('../../assets/img/terms_and_condition/banner.jpg')no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+section.term_and_condition h3{
+    font-size: clamp(1.875rem, 1.7157rem + 0.6536vw, 2.5rem);
+}
+
+section.term_and_condition h2,
+section.term_and_condition h3,
+section.term_and_condition h1{
+    margin-bottom: 20px;
+}
+
+section.term_and_condition div#button15 p:nth-child(2){
+    margin-bottom: 60px;
+}
+
+section.term_and_condition p{
+    line-height: 140%;
+    margin-bottom: 20px;
+}
+
+
+@media (max-width:991px) {
+section.term_and_condition .buttons {
+        max-width: 100%;
+        margin-bottom: 50px;
+    }
+
+    section.term_and_condition .buttons:after {
+        display: none;
+    }
+}

@@ -1,0 +1,134 @@
+body{
+    background-color: white;
+}
+section.banner {
+    background: url('../../assets/img/shipping_info/banner.png  ')no-repeat bottom center/cover;
+}
+
+section.banner .content {
+    max-width: 750px;
+}
+
+section.banner .row {
+    position: relative;
+    z-index: 1;
+}
+
+section.banner h1,
+section.banner p {
+    margin-bottom: 20px;
+}
+
+section.banner .image img{
+    max-width: 550px;
+    margin: 0 0 0 auto;
+}
+
+section.banner .image{
+    display: flex;
+}
+
+section.video h2 {
+    margin-bottom: 30px;
+}
+
+section.video .image img,
+section.video .image iframe {
+    width: 100%;
+    margin-bottom: 30px;
+    min-height: 410px;
+}
+
+section.video .header {
+    max-width: 1270px;
+    margin: 0 auto;
+}
+
+section.video .content {
+    max-width: 1270px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section.video span {
+    color: var(--Red, #BF2126);
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+section.accordion,
+footer{
+    background-color: #F8F8F8;
+}
+
+
+
+
+section.accordion div#accordionPanelsStayOpenExample {
+    display: flex;
+    flex-direction: column;
+    gap: 30px 0;
+}
+
+section.accordion div#accordionPanelsStayOpenExample .accordion-item {
+    border-radius: 5px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+section.accordion div#accordionPanelsStayOpenExample .accordion-button {
+    padding: 30px;
+    color: var(--Red, #BF2126);
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    border: none !important;
+    line-height: normal;
+    background-color: transparent;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+}
+
+section.accordion div#accordionPanelsStayOpenExample .accordion-button::after {
+    background-image: url('../../assets/img/shipping_info/accordion_dropdown.png');
+}
+
+section.accordion div#accordionPanelsStayOpenExample .accordion-body {
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-top: 20px;
+}
+
+
+
+@media (max-width: 1200px) {
+    section.banner {
+        /* padding: 70px 30px; */
+        /* max-height: 600px; */
+    }
+
+}
+
+@media (max-width: 991px) {
+    section.banner {
+        /* max-height: 100%; */
+        /* height: auto; */
+    }
+}
+
+@media (max-width: 767px) {
+    section.banner {
+        padding: 50px 20px;
+    }
+}

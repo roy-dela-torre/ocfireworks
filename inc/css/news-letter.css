@@ -1,0 +1,158 @@
+section.news_letter .new_letter_form_content {
+    display: flex;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    overflow: hidden
+}
+
+section.news_letter input[type=email] {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: #efefef;
+    color: #848484;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+    width: 100%;
+    border: none
+}
+
+section.news_letter input[type=email]::placeholder {
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px
+}
+
+section.news_letter span.wpcf7-form-control-wrap {
+    margin-bottom: 30px;
+    display: block
+}
+
+section.news_letter input[type=submit] {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: var(--Linear, linear-gradient(180deg, #626262 0, #000 100%));
+    color: #fff;
+    font-family: "Roboto Condensed", sans-serif;
+    font-stretch: condensed;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 100%;
+    border: none
+}
+
+section.news_letter input[type=submit]:hover {
+    transition: .5 ease all;
+    background: var(--Linear, linear-gradient(180deg, #fff 0, #bdbdbd 100%));
+    color: var(--secondary_font_color);
+    -webkit-transition: .5 ease all;
+    -moz-transition: .5 ease all;
+    -ms-transition: .5 ease all;
+    -o-transition: .5 ease all
+}
+
+section.news_letter .content {
+    background: url(../../assets/img/homepage/news_letter_form_bg.jpg) no-repeat center center/cover;
+    padding: 40px 50px
+}
+
+section.news_letter .content>p {
+    margin-bottom: 30px;
+}
+
+section.news_letter .new_letter_form_content>div {
+    width: 50%
+}
+
+section.news_letter .image img {
+    height: 100%;
+    object-fit: cover
+}
+
+section.news_letter form p {
+    margin-bottom: 0
+}
+
+section.news_letter h2 {
+    margin-bottom: 15px;
+}
+
+section.my_account .woocommerce-MyAccount-content form p:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 15px 0;
+    margin-bottom: 0 !important;
+}
+
+section.my_account .woocommerce-MyAccount-content form p {
+    margin-bottom: 0;
+    display: flex;
+    gap: 15px 0;
+}
+
+section.my_account .woocommerce-MyAccount-content {
+    padding: 0;
+}
+
+section.my_account .woocommerce-MyAccount-content .news_letter_content .content {
+    padding: 70px 62px;
+}
+
+section.my_account .woocommerce-MyAccount-content {
+    height: auto;
+}
+
+section.my_account .woocommerce-MyAccount-content .news_letter_content .content h3,
+section.my_account .woocommerce-MyAccount-content .news_letter_content .content p {
+    margin-bottom: 20px;
+}
+
+section.my_account .woocommerce-MyAccount-content .news_letter_content {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+section.my_account .woocommerce-MyAccount-content .news_letter_content .wpcf7 form .wpcf7-response-output,
+section.my_account .woocommerce-MyAccount-content .news_letter_content .wpcf7 form .wpcf7-not-valid-tip {
+    color: #212121;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+    /* 138.889% */
+}
+
+@media (max-width: 767px) {
+    section.my_account .woocommerce-MyAccount-content .news_letter_content .content {
+        padding: 50px 30px;
+    }
+}
+
+@media (max-width: 991px) {
+    section.news_letter .new_letter_form_content {
+        flex-direction: column
+    }
+
+    section.news_letter .new_letter_form_content img,
+    section.news_letter .new_letter_form_content>div {
+        width: 100%
+    }
+}
+
+
+@media (max-width: 767px) {
+    section.news_letter .content {
+        padding: 30px;
+    }
+}

@@ -1,0 +1,82 @@
+section.why_grand_finale {
+    background: url('../../assets/img/grand_finale/Why Grand Finale Fireworks.jpg')no-repeat center center/cover;
+}
+
+section.why_grand_finale .content {
+    max-width: 1070px;
+    margin: 0 auto;
+}
+
+section .content p:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    margin-bottom: 20px;
+}
+
+
+section.best_oc_grand .row:last-child .content {
+    padding: 40px 50px;
+    border-radius: 10px;
+    border: 1px solid #212121;
+    background: var(--For-red-cards, #8F1114);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+section.best_oc_grand .row:first-child {
+    margin-bottom: 60px;
+}
+
+section.best_oc_grand .row:last-child,
+section.guidline .row,
+section.how_to_set_up_grand .row {
+    gap: 30px 0;
+}
+
+section.best_oc_grand svg,
+section.best_oc_grand h3,
+section.guidline svg,
+section.guidline h3,
+section.how_to_set_up_grand .content h3,
+section.how_to_set_up_grand .content svg {
+    margin-bottom: 20px;
+}
+
+
+
+section.guidline {
+    background-color: rgba(248, 248, 248, 1);
+}
+
+section.guidline .header,
+section.how_to_set_up_grand .header {
+    max-width: 1070px;
+    margin: 0 auto 30px auto;
+}
+
+section.guidline .content {
+    padding: 40px 50px;
+    border-radius: 10px;
+    border: 1px solid var(--Red, #BF2126);
+    height: 100%;
+}
+
+section.how_to_set_up_grand .content {
+    padding: 40px 50px;
+    border-radius: 10px;
+    background: var(--Alternate-Black, #212121);
+    height: 100%;
+}
+
+@media (max-width: 767px) {
+
+    section.best_oc_grand .row:last-child .content,
+    section.guidline .content,
+    section.how_to_set_up_grand .content {
+        padding: 30px;
+    }
+}

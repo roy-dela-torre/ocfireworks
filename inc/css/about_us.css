@@ -1,0 +1,95 @@
+section.banner {
+    background: url('../../assets/img/shipping_info/banner.png  ')no-repeat bottom center/cover;
+    position: relative;
+    height: 100%;
+    max-height: 864px;
+    display: flex;
+    align-items: center;
+}
+body{
+    background-color: white !important;
+}
+section.banner .row {
+    position: relative;
+    z-index: 1;
+}
+
+section.banner h1,
+section.banner p {
+    margin-bottom: 20px;
+}
+
+
+section.brands{
+    background-color: #F8F8F8;
+}
+section.brands h2{
+    margin-bottom: 20px !important;
+}
+section.brands p{
+    margin-bottom: 60px;
+}
+
+section.brands img{
+    width: 186px;
+    height: auto;
+}
+
+section.brands a.view_all.red_button{
+    margin-top: 30px;
+}
+
+
+section.left_image_right_content h2{
+    margin-bottom: 20px;
+}
+section.left_image_right_content .image img{
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+section.map .content_map{
+    max-width: 1270px;
+    margin: 0 auto;
+}
+section.map .header{
+    max-width: 1010px;
+    margin: 0 auto 60px auto;
+}
+section.map iframe{
+    width: 100%;
+    max-width: 100%;
+    min-height: 450px;
+}
+
+section.map h2{
+    margin-bottom: 20px;
+}
+
+
+
+@media (max-width: 1200px) {
+    section.banner{
+        padding: 70px 30px;
+        max-height: 600px;
+    }
+    
+}
+@media (max-width: 991px) {
+    section.banner{
+        max-height: 100%;
+        height: auto;
+    }
+}
+@media (max-width: 767px) {
+    section.banner{
+        padding: 50px 20px;
+    }
+
+    section.brands img{
+        width: 124px;
+    }
+}

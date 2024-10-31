@@ -1,0 +1,96 @@
+section.office_hour .redular_business_hour,
+section.office_hour .how_close_are_we {
+    display: flex;
+    gap: 20px 50px;
+    flex-wrap: wrap;
+    margin: 60px 0;
+}
+
+section.office_hour .redular_business_hour {
+    max-width: 410px;
+}
+
+section.office_hour .sched>div,
+section.office_hour .location>div,
+section.office_hour .phone>div {
+    align-items: center;
+}
+
+section.office_hour .sched {
+    width: calc(50% - 25px);
+}
+
+section.office_hour li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+section.office_hour li p {
+    width: calc(100% - 40px);
+}
+
+section.office_hour ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+}
+
+section.office_hour .content {
+    max-width: calc(720px + 5%);
+    padding-right: 5%;
+}
+
+section.office_hour .location_info_and_contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+}
+
+section.office_hour img {
+    border-radius: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+section.office_hour .location_info_and_contact>p {
+    margin-bottom: calc(60px - 20px);
+}
+
+section.office_hour svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+section.office_hour .sched p {
+    width: calc(100% - 40px);
+}
+
+section.office_hour .map iframe{
+    width: 100%;
+    border-radius: 10px;
+}
+
+@media (max-width: 991px) {
+    section.office_hour .content {
+        max-width: 100%;
+        padding-right: 0;
+    }
+
+    section.office_hour .row {
+        gap: 70px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    section.office_hour .row {
+        gap: 50px 0;
+    }
+}
+
+@media (max-width: 575px) {
+    section.office_hour .sched {
+        width: 100%;
+    }
+}

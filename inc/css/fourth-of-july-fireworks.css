@@ -1,0 +1,34 @@
+section.best_fire_word{
+    background: url('../../assets/img/fourth_of_july/best_fireworks_bg.jpg')no-repeat center center/cover;
+}
+section.best_fire_word .image img,
+section.best_fire_word img.mobile{
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+section.best_fire_word h1{
+    margin-bottom: 20px;
+}
+
+
+
+section.best_fire_word .row:first-child{
+    margin-bottom: 60px;
+}
+section.best_fire_word .row:last-child{
+    gap: 24px 0;
+}
+section.best_fire_word .content.box{
+    padding: 40px 50px;
+    border-radius: 10px;
+    border: 1px solid #212121;
+    background: var(--Alternate-Black, #212121);
+    gap: 20px 0;
+}
+
+
+
+

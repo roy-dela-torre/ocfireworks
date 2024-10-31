@@ -1,0 +1,94 @@
+section.ocfirewordks_available{
+    background: url('../../assets/img/fireworks_for_wedding/OC Fireworks Available Online for Weddings.jpg')no-repeat center center/cover;
+}
+
+section.banner{
+    background: url('../../assets/img/fireworks_for_wedding/banner.png')no-repeat center center/cover;
+}
+
+section.ocfirewordks_available .header_content{
+    max-width: 720px;
+    margin:0 auto calc(60px - 24px) auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section.ocfirewordks_available .header_content h2{
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+section.ocfirewordks_available .row{
+    gap: 24px 0;
+}
+
+section.ocfirewordks_available .content{
+    gap: 20px 0;
+    padding: 40px 50px;
+    border-radius: 10px;
+    border: 1px solid #212121;
+    background: var(--Alternate-Black, #212121);
+    height: 100%;
+}
+
+section.ocfirewordks_available .content a{
+    color: #FFF;
+    font-family: 'Inter',sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    text-decoration-line: underline;
+}
+
+
+section.fireworks_cost .content{
+    max-width: 1030px;
+    margin: 0 auto;
+}
+section a{
+    text-decoration: underline;
+}
+
+
+section.other_fireworks_for_wedding .row{
+    gap: 60px 0;
+}
+section.other_fireworks_for_wedding .content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+}
+section.related_products .row{
+    gap: 24px 0;
+}
+
+
+section.consider_before_buyinh .content.red_box{
+    padding: 40px 50px;
+    border-radius: 10px;
+    background: var(--For-red-cards, #8F1114);
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+    height: 100%;
+}
+
+section.consider_before_buyinh .row:first-child{
+    margin-bottom: 60px;
+}
+section.consider_before_buyinh .row:last-child{
+    gap: 24px 0;
+}
+section.consider_before_buyinh h2,
+section.other_fireworks_for_wedding h2{
+    margin-bottom: 20px;
+}
+
+
+@media (max-width:767px) {
+    section.ocfirewordks_available .content,
+    section.consider_before_buyinh .content.red_box{
+        padding: 30px;
+    }
+}
