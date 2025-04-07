@@ -1,0 +1,35 @@
+Advanced CF7 DB
+Advanced Coupons for WooCommerce Free
+Advanced Custom Fields PRO
+Better Search Replace
+Category Order and Taxonomy Terms Order
+Classic Editor
+Contact Form 7
+Custom Post Type UI
+FG OpenCart to WooCommerce
+Flexible Shipping
+Force Regenerate Thumbnails
+Import Users
+Import Woocommerce
+Members
+Orders Chat for WooCommerce
+Post Type Switcher
+Premmerce Permalink Manager for WooCommerce
+Product Visibility by User Role for WooCommerce
+Redirection
+Redirection for Contact Form 7
+Role and Customer Based Pricing for WooCommerce
+String Locator
+UPS Live Rates and Access Points
+W3 Total Cache
+What The File
+WooCommerce
+WooCommerce Authorize.Net Gateway
+WooCommerce Cart Abandonment Recovery
+WooCommerce Checkout Manager
+WP Mail Logging
+WP Migrate Lite
+WP Ultimate CSV Importer
+YayPricing Lite - WooCommerce Dynamic Pricing And Discounts
+YITH WooCommerce Wishlist
+Yoast SEO

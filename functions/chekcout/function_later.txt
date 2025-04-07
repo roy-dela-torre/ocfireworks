@@ -1,0 +1,90 @@
+add_action('woocommerce_after_order_notes', 'custom_checkout_shipping_destination_options', 20);
+
+function custom_checkout_shipping_destination_options($checkout)
+{
+    echo '<h3>' . __('Shipping Destination Options') . '</h3>';
+    echo '<div class="woocommerce-checkbox-wrapper">';
+
+    if (have_rows('shipping_destination')) {
+        while (have_rows('shipping_destination')) {
+            the_row();
+            $title = get_sub_field('title');
+            $description = get_sub_field('description');
+            $amount = get_sub_field('ammount');
+            // Format title to lowercase and replace spaces with underscores
+            $formatted_title = esc_attr(strtolower(str_replace(' ', '_', $title)));
+
+            // Display each shipping destination option as a checkbox
+            ?>
+            <div class="shipping-destination-option">
+                <input type="checkbox" class="input-checkbox" value="<?php echo $formatted_title; ?>" 
+                       name="shipping_destination_options[]" id="shipping_destination_options_<?php echo $formatted_title; ?>">
+                <label for="shipping_destination_options_<?php echo $formatted_title; ?>" class="checkbox">
+                    <b><?php echo esc_html($title); ?></b>
+                    <?php if ($description) {
+                        echo '(' . esc_html($description) . ') ';
+                    } ?>
+                    <b>(+$<?php echo esc_html($amount); ?>)</b>
+                </label>
+            </div>
+            <?php
+        }
+    } else {
+        echo '<p>' . __('No shipping destinations available.') . '</p>';
+    }
+
+    echo '</div>';
+}
+add_action('wp_ajax_update_shipping_destination', 'custom_shipping_destination_update_order_meta');
+add_action('wp_ajax_nopriv_update_shipping_destination', 'custom_shipping_destination_update_order_meta');
+
+function custom_shipping_destination_update_order_meta()
+{
+    if (!empty($_POST['shipping_destination_options'])) {
+        WC()->session->set('shipping_destination_options', array_map('sanitize_text_field', $_POST['shipping_destination_options']));
+    } else {
+        WC()->session->set('shipping_destination_options', []);
+    }
+    wp_die();
+}
+add_action('woocommerce_cart_calculate_fees', 'custom_checkout_add_shipping_fees');
+
+function custom_checkout_add_shipping_fees($cart)
+{
+    if (is_admin() && !defined('DOING_AJAX')) {
+        return;
+    }
+
+    $selected_shipping_options = WC()->session->get('shipping_destination_options', []);
+    $shippinginfo = WC()->session->get('shippinginfo', []);
+
+    // Build shipping info if not already set
+    if (empty($shippinginfo) && have_rows('shipping_destination')) {
+        while (have_rows('shipping_destination')) {
+            the_row();
+            $title_fee = get_sub_field('title');
+            $amount_fee = get_sub_field('amount');
+
+            if ($title_fee && $amount_fee) {
+                $formatted_title = esc_attr(strtolower(str_replace(' ', '_', $title_fee)));
+                $shippinginfo[$formatted_title] = $amount_fee;
+            }
+        }
+        WC()->session->set('shippinginfo', $shippinginfo);
+    }
+
+    $additional_shipping_fee = 0;
+
+    // Calculate total fee for all selected shipping options
+    if (!empty($selected_shipping_options)) {
+        foreach ($selected_shipping_options as $option) {
+            if (isset($shippinginfo[$option])) {
+                $additional_shipping_fee += $shippinginfo[$option];
+            }
+        }
+    }
+
+    if ($additional_shipping_fee > 0) {
+        $cart->add_fee(__('Shipping Destination Fees', 'woocommerce'), $additional_shipping_fee);
+    }
+}
